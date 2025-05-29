@@ -8,21 +8,24 @@ const Testimonials = () => {
       role: "Sócia-Diretora",
       company: "Contábil Silva & Associados",
       content: "O MULTIBPO revolucionou nossa operação. Conseguimos atender 3x mais clientes com a mesma equipe. A automação dos processos contábeis foi um divisor de águas para nosso crescimento.",
-      rating: 5
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=80&h=80&fit=crop&crop=face"
     },
     {
       name: "João Santos",
       role: "Contador Responsável",
       company: "Santos Contabilidade",
       content: "A integração com WhatsApp mudou completamente nosso atendimento ao cliente. Agora oferecemos suporte 24/7 e nossos clientes estão muito mais satisfeitos com a agilidade das respostas.",
-      rating: 5
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=80&h=80&fit=crop&crop=face"
     },
     {
       name: "Ana Costa",
       role: "Gerente Financeira",
       company: "Costa & Partners",
       content: "Reduzimos nossos custos operacionais em mais de 50% após implementar a plataforma MULTIBPO. O ROI foi alcançado em apenas 3 meses. Recomendo para todos os escritórios contábeis.",
-      rating: 5
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=80&h=80&fit=crop&crop=face"
     }
   ];
 
@@ -53,10 +56,17 @@ const Testimonials = () => {
                     "{testimonial.content}"
                   </p>
                 </div>
-                <div className="border-t pt-6">
-                  <div className="font-semibold text-gray-900">{testimonial.name}</div>
-                  <div className="text-sm text-blue-600">{testimonial.role}</div>
-                  <div className="text-sm text-gray-500">{testimonial.company}</div>
+                <div className="border-t pt-6 flex items-center gap-4">
+                  <img 
+                    src={testimonial.image} 
+                    alt={testimonial.name}
+                    className="w-12 h-12 rounded-full object-cover"
+                  />
+                  <div>
+                    <div className="font-semibold text-gray-900">{testimonial.name}</div>
+                    <div className="text-sm text-blue-600">{testimonial.role}</div>
+                    <div className="text-sm text-gray-500">{testimonial.company}</div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
