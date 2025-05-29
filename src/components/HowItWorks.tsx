@@ -40,7 +40,7 @@ const HowItWorks = () => {
           {steps.map((step, index) => (
             <div key={index} className="text-center">
               <div className="relative mb-6">
-                <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
+                <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 transition-all duration-300 hover:bg-blue-700 hover:scale-110 hover:shadow-lg cursor-pointer">
                   {step.number}
                 </div>
                 {index < steps.length - 1 && (
