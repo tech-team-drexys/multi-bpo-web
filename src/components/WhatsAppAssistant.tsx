@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import WhatsAppChat from './WhatsAppChat';
+import { Clock, Users, Zap, Target } from 'lucide-react';
 
 const WhatsAppAssistant = () => {
   const [activeCategory, setActiveCategory] = useState('vendas');
@@ -23,6 +24,29 @@ const WhatsAppAssistant = () => {
       title: 'Promoções',
       icon: '🎯',
       description: 'Campanhas automáticas de marketing e ofertas especiais'
+    }
+  ];
+
+  const benefits = [
+    {
+      icon: Clock,
+      title: 'Atendimento 24/7',
+      description: 'Automatize respostas e atenda seus clientes a qualquer hora do dia.'
+    },
+    {
+      icon: Zap,
+      title: 'Resposta Rápida',
+      description: 'Redução de 80% no tempo de resposta para dúvidas frequentes.'
+    },
+    {
+      icon: Target,
+      title: 'Qualificação de Leads',
+      description: 'Identifique automaticamente clientes com maior potencial de conversão.'
+    },
+    {
+      icon: Users,
+      title: 'Integração Completa',
+      description: 'Conecte com seus sistemas contábeis e CRM existentes.'
     }
   ];
 
@@ -71,23 +95,33 @@ const WhatsAppAssistant = () => {
                 </button>
               ))}
             </div>
-
-            <div className="bg-blue-50 p-6 rounded-xl border border-blue-200">
-              <h4 className="text-lg font-semibold text-blue-800 mb-2">
-                🚀 Benefícios do Assistente Virtual
-              </h4>
-              <ul className="text-blue-700 space-y-1">
-                <li>• Atendimento 24/7 automatizado</li>
-                <li>• Redução de 80% no tempo de resposta</li>
-                <li>• Integração com sistemas contábeis</li>
-                <li>• Qualificação automática de leads</li>
-              </ul>
-            </div>
           </div>
 
           {/* Simulação de Chat - Lado Direito */}
           <div className="flex justify-center">
             <WhatsAppChat activeCategory={activeCategory} />
+          </div>
+        </div>
+
+        {/* Seção de Benefícios */}
+        <div className="mt-16">
+          <div className="bg-white p-8 rounded-2xl border border-gray-200 shadow-lg">
+            <h4 className="text-2xl font-semibold text-gray-900 mb-8 text-center">
+              🚀 Benefícios do Assistente Virtual
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {benefits.map((benefit, index) => (
+                <div key={index} className="text-left">
+                  <benefit.icon className="w-8 h-8 text-blue-600 mb-3" strokeWidth={1.5} />
+                  <h5 className="text-lg font-semibold text-gray-900 mb-2">
+                    {benefit.title}
+                  </h5>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {benefit.description}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

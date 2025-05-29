@@ -3,14 +3,14 @@ import { Button } from '@/components/ui/button';
 
 const CallToActionBanner = () => {
   return (
-    <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+    <section className="py-20 bg-gradient-to-r from-purple-600 to-purple-800 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h2 className="text-3xl md:text-4xl font-bold leading-tight">
               Pronto para <span className="text-green-400">Transformar</span> seu Escritório Contábil?
             </h2>
-            <p className="text-xl text-blue-100 leading-relaxed">
+            <p className="text-xl text-purple-100 leading-relaxed">
               Junte-se a mais de 500 escritórios que já revolucionaram seus processos 
               com nossas soluções digitais inteligentes. Comece gratuitamente hoje!
             </p>
@@ -20,19 +20,19 @@ const CallToActionBanner = () => {
                 <div className="w-6 h-6 bg-green-400 rounded-full flex items-center justify-center">
                   <span className="text-sm font-bold text-green-900">✓</span>
                 </div>
-                <span className="text-blue-100">Setup gratuito e sem compromisso</span>
+                <span className="text-purple-100">Setup gratuito e sem compromisso</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-6 h-6 bg-green-400 rounded-full flex items-center justify-center">
                   <span className="text-sm font-bold text-green-900">✓</span>
                 </div>
-                <span className="text-blue-100">Suporte dedicado 24/7</span>
+                <span className="text-purple-100">Suporte dedicado 24/7</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-6 h-6 bg-green-400 rounded-full flex items-center justify-center">
                   <span className="text-sm font-bold text-green-900">✓</span>
                 </div>
-                <span className="text-blue-100">Implementação em menos de 48h</span>
+                <span className="text-purple-100">Implementação em menos de 48h</span>
               </div>
             </div>
 
@@ -42,7 +42,7 @@ const CallToActionBanner = () => {
               </Button>
               <Button 
                 variant="outline" 
-                className="border-white text-white hover:bg-white hover:text-blue-800 px-8 py-4 text-lg font-semibold"
+                className="border-white text-white hover:bg-white hover:text-purple-800 px-8 py-4 text-lg font-semibold bg-transparent"
               >
                 Agendar Demonstração
               </Button>
