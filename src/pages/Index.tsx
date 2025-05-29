@@ -5,6 +5,7 @@ import Services from '@/components/Services';
 import WhatsAppAssistant from '@/components/WhatsAppAssistant';
 import HowItWorks from '@/components/HowItWorks';
 import Benefits from '@/components/Benefits';
+import CallToActionBanner from '@/components/CallToActionBanner';
 import Testimonials from '@/components/Testimonials';
 import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
@@ -18,6 +19,7 @@ const Index = () => {
       <WhatsAppAssistant />
       <HowItWorks />
       <Benefits />
+      <CallToActionBanner />
       <Testimonials />
       <ContactForm />
       <Footer />
