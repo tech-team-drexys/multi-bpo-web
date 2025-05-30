@@ -1,10 +1,7 @@
-
 import { Button } from '@/components/ui/button';
 import { CheckCircle, Clock, Headphones, Zap } from 'lucide-react';
-
 const CallToActionBanner = () => {
-  return (
-    <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+  return <section className="py-20 bg-gradient-to-r from-blue-800 to-blue-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
@@ -43,11 +40,7 @@ const CallToActionBanner = () => {
 
           <div className="relative flex justify-center">
             <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=600&h=400&fit=crop&crop=face" 
-                alt="Profissionais usando tecnologia MULTIBPO para automação contábil" 
-                className="rounded-2xl shadow-2xl w-full max-w-md" 
-              />
+              <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=600&h=400&fit=crop&crop=face" alt="Profissionais usando tecnologia MULTIBPO para automação contábil" className="rounded-2xl shadow-2xl w-full max-w-md" />
               <div className="absolute -bottom-6 -right-6 bg-green-500 text-white p-4 rounded-xl shadow-lg">
                 <div className="text-center">
                   <div className="text-2xl font-bold">500+</div>
@@ -58,8 +51,6 @@ const CallToActionBanner = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default CallToActionBanner;
