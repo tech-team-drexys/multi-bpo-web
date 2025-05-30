@@ -1,6 +1,7 @@
 
 import Header from '@/components/Header';
-import Hero from '@/components/Hero';
+import NewHero from '@/components/NewHero';
+import About from '@/components/About';
 import Services from '@/components/Services';
 import WhatsAppAssistant from '@/components/WhatsAppAssistant';
 import HowItWorks from '@/components/HowItWorks';
@@ -14,7 +15,8 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <Hero />
+      <NewHero />
+      <About />
       <Services />
       <WhatsAppAssistant />
       <HowItWorks />
