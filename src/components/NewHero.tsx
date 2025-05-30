@@ -31,21 +31,21 @@ const NewHero = () => {
 
         {/* Glassmorphism Prompt Box */}
         <div className="max-w-2xl mx-auto mb-8">
-          <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-6 shadow-2xl">
+          <div className="backdrop-blur-md bg-white/10 border border-white/20 p-6 shadow-2xl py-[18px] px-[18px] rounded-3xl">
             <form onSubmit={handleSubmit} className="space-y-4">
               <Input value={prompt} onChange={e => setPrompt(e.target.value)} placeholder="Descreva os desafios do seu escritório contábil..." className="w-full bg-white/20 border-white/30 text-white placeholder:text-white/70 rounded-xl px-4 py-3 text-lg backdrop-blur-sm focus:bg-white/25 focus:border-white/50 transition-all" />
               
               <div className="flex justify-between items-center">
-                <Button type="button" variant="ghost" size="icon" className="w-12 h-12 rounded-full border border-white text-white transition-all bg-transparent">
+                <Button type="button" variant="ghost" size="icon" className="w-9 h-9 rounded-full border border-white text-white transition-all bg-transparent">
                   <Plus size={20} />
                 </Button>
 
                 <div className="flex gap-2">
-                  <Button type="button" variant="ghost" size="icon" className="w-12 h-12 rounded-full border border-white text-white transition-all bg-transparent">
+                  <Button type="button" variant="ghost" size="icon" className="w-9 h-9 rounded-full border border-white text-white transition-all bg-transparent">
                     <Mic size={20} />
                   </Button>
                   
-                  <Button type="submit" variant="ghost" size="icon" className="w-12 h-12 rounded-full border border-white text-white transition-all bg-transparent">
+                  <Button type="submit" variant="ghost" size="icon" className="w-9 h-9 rounded-full border border-white text-white transition-all bg-transparent">
                     <ArrowUp size={20} />
                   </Button>
                 </div>
