@@ -113,7 +113,37 @@
   }
   
   .animate-bounce-slow {
-    animation: bounce 2s infinite;
+    animation: bounce-slow 3s infinite;
+  }
+  
+  /* Custom scrollbar styles */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+  
+  .scrollbar-thumb-white\/30::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .scrollbar-thumb-white\/30::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar-thumb-white\/30::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+  }
+  
+  .scrollbar-thumb-white\/30::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
+  
+  .scrollbar-track-transparent::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .hover\:scrollbar-thumb-white\/50:hover::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5);
   }
 }
 
@@ -125,5 +155,20 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes bounce-slow {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  40%, 43% {
+    transform: translate3d(0, -15px, 0);
+  }
+  70% {
+    transform: translate3d(0, -7px, 0);
+  }
+  90% {
+    transform: translate3d(0, -2px, 0);
   }
 }
