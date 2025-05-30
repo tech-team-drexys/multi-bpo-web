@@ -53,7 +53,7 @@ const NewHero = () => {
                     <Mic size={24} />
                   </Button>
                   
-                  <Button type="submit" variant="ghost" size="icon" className="w-9 h-9 rounded-full border border-white text-white transition-all bg-transparent hover:bg-white/20">
+                  <Button type="submit" variant="ghost" size="icon" className="w-9 h-9 rounded-full text-white transition-all bg-transparent hover:bg-white/20 hover:text-white">
                     <ArrowUp size={24} />
                   </Button>
                 </div>
