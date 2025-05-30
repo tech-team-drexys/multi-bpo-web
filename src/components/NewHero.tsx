@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, Plus, Mic, ArrowUp } from 'lucide-react';
+import TypewriterText from './TypewriterText';
 
 const NewHero = () => {
   const [prompt, setPrompt] = useState('');
@@ -34,14 +35,16 @@ const NewHero = () => {
 
       {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 className="text-4xl font-bold text-white mb-16 leading-tight md:text-5xl">
-          O seu escritório de contabilidade está preparado para o futuro?
+        <h1 className="text-4xl font-bold text-white mb-20 leading-tight md:text-5xl">
+          O seu escritório de contabilidade está preparado para o{' '}
+          <TypewriterText text="futuro" className="text-white" />
+          ?
         </h1>
 
         {/* Glassmorphism Prompt Box */}
         <div className="max-w-2xl mx-auto mb-8">
-          <div className="backdrop-blur-md border border-white/20 p-6 shadow-2xl px-[18px] rounded-3xl transition-all duration-300 group bg-black/40 hover:bg-black/60 py-[15px]">
-            <form onSubmit={handleSubmit} className="space-y-1">
+          <div className="backdrop-blur-md border border-white/20 p-6 shadow-2xl px-[18px] rounded-3xl transition-all duration-300 group bg-black/40 hover:bg-black/60 py-[12px]">
+            <form onSubmit={handleSubmit} className="space-y-0">
               <div className="relative">
                 <textarea 
                   value={prompt}
@@ -66,7 +69,7 @@ const NewHero = () => {
                   type="button" 
                   variant="ghost" 
                   size="icon" 
-                  className="w-10 h-10 rounded-full text-white transition-all bg-transparent hover:bg-white/20 hover:text-white text-base"
+                  className="w-12 h-12 rounded-full text-white transition-all bg-transparent hover:bg-white/20 hover:text-white text-base"
                 >
                   <Plus size={20} />
                 </Button>
@@ -76,7 +79,7 @@ const NewHero = () => {
                     type="button" 
                     variant="ghost" 
                     size="icon" 
-                    className="w-10 h-10 rounded-full text-white transition-all bg-transparent hover:bg-white/20 hover:text-white"
+                    className="w-12 h-12 rounded-full text-white transition-all bg-transparent hover:bg-white/20 hover:text-white"
                   >
                     <Mic size={20} />
                   </Button>
@@ -85,7 +88,7 @@ const NewHero = () => {
                     type="submit" 
                     variant="ghost" 
                     size="icon" 
-                    className="w-10 h-10 rounded-full text-white transition-all bg-transparent hover:bg-white/20 hover:text-white"
+                    className="w-12 h-12 rounded-full text-white transition-all bg-transparent hover:bg-white/20 hover:text-white"
                   >
                     <ArrowUp size={20} />
                   </Button>
@@ -106,7 +109,7 @@ const NewHero = () => {
           onClick={scrollToNextSection}
           variant="ghost" 
           size="icon" 
-          className="w-10 h-10 text-white transition-all animate-bounce-slow rounded-full bg-transparent hover:bg-white/10"
+          className="w-12 h-12 text-white transition-all animate-bounce-slow rounded-full bg-transparent hover:bg-white/10"
         >
           <ChevronDown size={20} />
         </Button>
