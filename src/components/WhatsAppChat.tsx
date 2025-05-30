@@ -81,8 +81,9 @@ const WhatsAppChat: React.FC<WhatsAppChatProps> = ({
   useEffect(() => {
     const currentScenario = chatScenarios[activeCategory as keyof typeof chatScenarios];
     if (!currentScenario || messageIndex >= currentScenario.length) return;
+
     const message = currentScenario[messageIndex];
-    const typingDelay = message.sender === 'bot' ? 1000 : 1400; // AI: 1s, User: 1.4s
+    const typingDelay = messageIndex === 0 ? 0 : (message.sender === 'bot' ? 500 : 700); // No delay for first message, AI: 0.5s, User: 0.7s
 
     const timer = setTimeout(() => {
       setIsTyping(true);
@@ -99,8 +100,9 @@ const WhatsAppChat: React.FC<WhatsAppChatProps> = ({
         setMessages(prev => [...prev, newMessage]);
         setIsTyping(false);
         setMessageIndex(prev => prev + 1);
-      }, 1500);
+      }, message.sender === 'bot' ? 500 : 1050); // AI typing: 0.5s, User typing: 1.05s (0.7 * 1.5s)
     }, typingDelay);
+
     return () => clearTimeout(timer);
   }, [activeCategory, messageIndex]);
   return <div className="relative">
@@ -124,7 +126,7 @@ const WhatsAppChat: React.FC<WhatsAppChatProps> = ({
         }}>
             <div className="space-y-3">
               {messages.map(message => <div key={message.id} className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-                  <div className={`max-w-xs px-4 py-2 rounded-lg shadow-sm animate-fade-in ${message.sender === 'user' ? 'bg-emerald-800 text-white rounded-br-none' : 'bg-white text-gray-800 rounded-bl-none border'}`}>
+                  <div className={`max-w-xs px-4 py-2 rounded-lg shadow-sm animate-fade-in ${message.sender === 'user' ? 'bg-emerald-700 text-white rounded-br-none' : 'bg-white text-gray-800 rounded-bl-none border'}`}>
                     <p className="text-sm whitespace-pre-line">{message.text}</p>
                     <p className={`text-xs mt-1 ${message.sender === 'user' ? 'text-green-100' : 'text-gray-500'}`}>
                       {message.timestamp}
