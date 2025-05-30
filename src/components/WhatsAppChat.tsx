@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 interface Message {
   id: number;
@@ -81,13 +82,17 @@ const WhatsAppChat: React.FC<WhatsAppChatProps> = ({
   useEffect(() => {
     const currentScenario = chatScenarios[activeCategory as keyof typeof chatScenarios];
     if (!currentScenario || messageIndex >= currentScenario.length) return;
+    
+    const message = currentScenario[messageIndex];
+    const typingDelay = message.sender === 'bot' ? 1000 : 1400; // AI: 1s, User: 1.4s
+    
     const timer = setTimeout(() => {
       setIsTyping(true);
       setTimeout(() => {
         const newMessage: Message = {
           id: messageIndex,
-          text: currentScenario[messageIndex].text,
-          sender: currentScenario[messageIndex].sender,
+          text: message.text,
+          sender: message.sender,
           timestamp: new Date().toLocaleTimeString('pt-BR', {
             hour: '2-digit',
             minute: '2-digit'
@@ -97,7 +102,7 @@ const WhatsAppChat: React.FC<WhatsAppChatProps> = ({
         setIsTyping(false);
         setMessageIndex(prev => prev + 1);
       }, 1500);
-    }, 1000);
+    }, typingDelay);
     return () => clearTimeout(timer);
   }, [activeCategory, messageIndex]);
   return <div className="relative">
@@ -121,7 +126,7 @@ const WhatsAppChat: React.FC<WhatsAppChatProps> = ({
         }}>
             <div className="space-y-3">
               {messages.map(message => <div key={message.id} className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-                  <div className={`max-w-xs px-4 py-2 rounded-lg shadow-sm animate-fade-in ${message.sender === 'user' ? 'bg-green-500 text-white rounded-br-none' : 'bg-white text-gray-800 rounded-bl-none border'}`}>
+                  <div className={`max-w-xs px-4 py-2 rounded-lg shadow-sm animate-fade-in ${message.sender === 'user' ? 'bg-emerald-800 text-white rounded-br-none' : 'bg-white text-gray-800 rounded-bl-none border'}`}>
                     <p className="text-sm whitespace-pre-line">{message.text}</p>
                     <p className={`text-xs mt-1 ${message.sender === 'user' ? 'text-green-100' : 'text-gray-500'}`}>
                       {message.timestamp}
