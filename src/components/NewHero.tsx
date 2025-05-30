@@ -24,7 +24,7 @@ const NewHero = () => {
 
       {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 className="text-4xl md:text-6xl font-bold text-white mb-8 leading-tight">
+        <h1 className="text-4xl font-bold text-white mb-8 leading-tight md:text-5xl">
           O seu escritório de contabilidade está preparado para o futuro?
         </h1>
 
