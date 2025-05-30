@@ -30,7 +30,7 @@ const Header = () => {
             <div className="flex-shrink-0">
               <div className="flex items-center space-x-2">
                 <img 
-                  src="/lovable-uploads/febbaa6b-9b3b-4bec-b4ec-adb1d9efab32.png" 
+                  src="/lovable-uploads/7f9c858b-7f32-49e9-a746-6e96fa1d6e2d.png" 
                   alt="MULTIBPO Logo" 
                   className={`w-auto transition-all duration-300 ${
                     hasScrolled ? 'h-6' : 'h-8'
@@ -42,31 +42,56 @@ const Header = () => {
           
           <nav className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              <a href="#home" className={`px-3 py-2 text-sm font-medium transition-colors ${
+              <a href="#home" className={`px-3 py-2 text-sm font-medium transition-colors relative group ${
                 hasScrolled 
                   ? 'text-gray-800 hover:text-blue-500' 
-                  : 'text-white hover:text-blue-500'
-              }`}>Início</a>
-              <a href="#services" className={`px-3 py-2 text-sm font-medium transition-colors ${
+                  : 'text-white hover:text-white'
+              }`}>
+                Início
+                {!hasScrolled && (
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                )}
+              </a>
+              <a href="#services" className={`px-3 py-2 text-sm font-medium transition-colors relative group ${
                 hasScrolled 
                   ? 'text-gray-800 hover:text-blue-500' 
-                  : 'text-white hover:text-blue-500'
-              }`}>Serviços</a>
-              <a href="#how-it-works" className={`px-3 py-2 text-sm font-medium transition-colors ${
+                  : 'text-white hover:text-white'
+              }`}>
+                Serviços
+                {!hasScrolled && (
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                )}
+              </a>
+              <a href="#how-it-works" className={`px-3 py-2 text-sm font-medium transition-colors relative group ${
                 hasScrolled 
                   ? 'text-gray-800 hover:text-blue-500' 
-                  : 'text-white hover:text-blue-500'
-              }`}>Como Funciona</a>
-              <a href="#testimonials" className={`px-3 py-2 text-sm font-medium transition-colors ${
+                  : 'text-white hover:text-white'
+              }`}>
+                Como Funciona
+                {!hasScrolled && (
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                )}
+              </a>
+              <a href="#testimonials" className={`px-3 py-2 text-sm font-medium transition-colors relative group ${
                 hasScrolled 
                   ? 'text-gray-800 hover:text-blue-500' 
-                  : 'text-white hover:text-blue-500'
-              }`}>Depoimentos</a>
-              <a href="#contact" className={`px-3 py-2 text-sm font-medium transition-colors ${
+                  : 'text-white hover:text-white'
+              }`}>
+                Depoimentos
+                {!hasScrolled && (
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                )}
+              </a>
+              <a href="#contact" className={`px-3 py-2 text-sm font-medium transition-colors relative group ${
                 hasScrolled 
                   ? 'text-gray-800 hover:text-blue-500' 
-                  : 'text-white hover:text-blue-500'
-              }`}>Contato</a>
+                  : 'text-white hover:text-white'
+              }`}>
+                Contato
+                {!hasScrolled && (
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                )}
+              </a>
             </div>
           </nav>
 
