@@ -40,14 +40,14 @@ const NewHero = () => {
 
         {/* Glassmorphism Prompt Box */}
         <div className="max-w-2xl mx-auto mb-8">
-          <div className="backdrop-blur-md border border-white/20 p-6 shadow-2xl py-[18px] px-[18px] rounded-3xl transition-all duration-300 group bg-black/40 hover:bg-black/50">
-            <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="backdrop-blur-md border border-white/20 p-6 shadow-2xl py-[18px] px-[18px] rounded-3xl transition-all duration-300 group bg-black/40 hover:bg-black/60">
+            <form onSubmit={handleSubmit} className="space-y-2">
               <div className="relative">
                 <textarea
                   value={prompt}
                   onChange={(e) => setPrompt(e.target.value)}
                   placeholder="Descreva os desafios do seu escritório contábil..."
-                  className="w-full bg-transparent border-none outline-none text-white placeholder:text-white/70 text-lg resize-none max-h-[120px] min-h-[60px] overflow-y-auto scrollbar-thin scrollbar-thumb-white/30 scrollbar-track-transparent hover:scrollbar-thumb-white/50"
+                  className="w-full bg-transparent border-none outline-none text-white placeholder:text-white/70 text-lg resize-none max-h-[90px] min-h-[60px] overflow-y-auto scrollbar-thin scrollbar-thumb-white/30 scrollbar-track-transparent hover:scrollbar-thumb-white/50"
                   rows={1}
                   style={{
                     lineHeight: '1.5',
@@ -56,7 +56,7 @@ const NewHero = () => {
                   onInput={(e) => {
                     const target = e.target as HTMLTextAreaElement;
                     target.style.height = 'auto';
-                    target.style.height = Math.min(target.scrollHeight, 120) + 'px';
+                    target.style.height = Math.min(target.scrollHeight, 90) + 'px';
                   }}
                 />
               </div>
@@ -68,7 +68,7 @@ const NewHero = () => {
                   size="icon" 
                   className="w-9 h-9 rounded-full border border-white text-white transition-all bg-transparent hover:bg-white/20"
                 >
-                  <Plus size={20} />
+                  <Plus size={24} />
                 </Button>
 
                 <div className="flex gap-2">
@@ -78,7 +78,7 @@ const NewHero = () => {
                     size="icon" 
                     className="w-9 h-9 rounded-full border border-white text-white transition-all bg-transparent hover:bg-white/20"
                   >
-                    <Mic size={20} />
+                    <Mic size={24} />
                   </Button>
                   
                   <Button 
@@ -87,7 +87,7 @@ const NewHero = () => {
                     size="icon" 
                     className="w-9 h-9 rounded-full border border-white text-white transition-all bg-transparent hover:bg-white/20"
                   >
-                    <ArrowUp size={20} />
+                    <ArrowUp size={24} />
                   </Button>
                 </div>
               </div>
@@ -108,7 +108,7 @@ const NewHero = () => {
           size="icon" 
           className="w-12 h-12 text-white transition-all animate-bounce-slow rounded-full bg-transparent hover:bg-white/10"
         >
-          <ChevronDown size={32} />
+          <ChevronDown size={40} />
         </Button>
       </div>
     </section>
