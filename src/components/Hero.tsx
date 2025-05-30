@@ -45,8 +45,8 @@ const Hero = () => {
           <div className="relative">
             <div className="bg-white rounded-2xl shadow-2xl p-8">
               <img 
-                src="/lovable-uploads/baacc4a8-a720-46ec-8663-fa1b3e3847e1.png" 
-                alt="Profissionais de contabilidade trabalhando com tecnologia MULTIBPO"
+                src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&h=400&fit=crop" 
+                alt="Profissionais contábeis utilizando tecnologia avançada em escritório moderno com automação e ferramentas digitais MULTIBPO"
                 className="w-full h-auto rounded-lg"
               />
             </div>

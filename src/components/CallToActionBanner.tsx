@@ -1,6 +1,10 @@
+
 import { Button } from '@/components/ui/button';
+import { CheckCircle, Clock, Headphones, Zap } from 'lucide-react';
+
 const CallToActionBanner = () => {
-  return <section className="">
+  return (
+    <section className="">
       <div className="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white my-0 mx-0 px-[80px]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
@@ -14,21 +18,15 @@ const CallToActionBanner = () => {
             
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <div className="w-6 h-6 bg-green-400 rounded-full flex items-center justify-center">
-                  <span className="text-sm font-bold text-green-900">✓</span>
-                </div>
+                <CheckCircle className="w-6 h-6 text-green-400" />
                 <span className="text-purple-100">Setup gratuito e sem compromisso</span>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-6 h-6 bg-green-400 rounded-full flex items-center justify-center">
-                  <span className="text-sm font-bold text-green-900">✓</span>
-                </div>
+                <Headphones className="w-6 h-6 text-green-400" />
                 <span className="text-purple-100">Suporte dedicado 24/7</span>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-6 h-6 bg-green-400 rounded-full flex items-center justify-center">
-                  <span className="text-sm font-bold text-green-900">✓</span>
-                </div>
+                <Zap className="w-6 h-6 text-green-400" />
                 <span className="text-purple-100">Implementação em menos de 48h</span>
               </div>
             </div>
@@ -45,7 +43,11 @@ const CallToActionBanner = () => {
 
           <div className="relative flex justify-center">
             <div className="relative">
-              <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=600&h=400&fit=crop&crop=face" alt="Profissionais usando tecnologia MULTIBPO para automação contábil" className="rounded-2xl shadow-2xl w-full max-w-md" />
+              <img 
+                src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=600&h=400&fit=crop&crop=face" 
+                alt="Profissionais usando tecnologia MULTIBPO para automação contábil" 
+                className="rounded-2xl shadow-2xl w-full max-w-md" 
+              />
               <div className="absolute -bottom-6 -right-6 bg-green-500 text-white p-4 rounded-xl shadow-lg">
                 <div className="text-center">
                   <div className="text-2xl font-bold">500+</div>
@@ -56,6 +58,8 @@ const CallToActionBanner = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default CallToActionBanner;

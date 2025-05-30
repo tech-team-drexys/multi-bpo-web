@@ -6,10 +6,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-6 bg-blue-600 rounded-sm flex items-center justify-center">
-                <span className="text-white font-bold text-xs">M</span>
-              </div>
-              <span className="text-xl font-bold">MULTI<span className="text-blue-400">BPO</span></span>
+              <img 
+                src="/lovable-uploads/febbaa6b-9b3b-4bec-b4ec-adb1d9efab32.png" 
+                alt="MULTIBPO Logo" 
+                className="h-8 w-auto brightness-0 invert"
+              />
             </div>
             <p className="text-gray-400 leading-relaxed">
               Soluções digitais inteligentes para revolucionar a gestão de escritórios contábeis.

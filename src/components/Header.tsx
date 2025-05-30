@@ -13,10 +13,11 @@ const Header = () => {
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-6 bg-blue-600 rounded-sm flex items-center justify-center">
-                  <span className="text-white font-bold text-xs">M</span>
-                </div>
-                <span className="text-xl font-bold text-gray-900">MULTI<span className="text-blue-600">BPO</span></span>
+                <img 
+                  src="/lovable-uploads/febbaa6b-9b3b-4bec-b4ec-adb1d9efab32.png" 
+                  alt="MULTIBPO Logo" 
+                  className="h-8 w-auto"
+                />
               </div>
             </div>
           </div>
