@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -18,7 +19,7 @@ const Header = () => {
   }, [hasScrolled]);
 
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       hasScrolled 
         ? 'backdrop-blur-md shadow-lg bg-black/20' 
         : 'bg-transparent shadow-none'
@@ -50,7 +51,7 @@ const Header = () => {
           </nav>
 
           <div className="hidden md:block">
-            <Button className="bg-green-500 hover:bg-green-600 text-white">
+            <Button className="bg-green-500 hover:bg-green-600 text-white hover:text-white">
               Começar Agora
             </Button>
           </div>
@@ -60,7 +61,7 @@ const Header = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-white hover:text-blue-300"
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMenuOpen ? <X size={24} className="text-white" /> : <Menu size={24} className="text-white" />}
             </button>
           </div>
         </div>
@@ -73,7 +74,7 @@ const Header = () => {
               <a href="#how-it-works" className="block text-white hover:text-blue-300 px-3 py-2 text-base font-medium">Como Funciona</a>
               <a href="#testimonials" className="block text-white hover:text-blue-300 px-3 py-2 text-base font-medium">Depoimentos</a>
               <a href="#contact" className="block text-white hover:text-blue-300 px-3 py-2 text-base font-medium">Contato</a>
-              <Button className="w-full mt-4 bg-green-500 hover:bg-green-600 text-white">
+              <Button className="w-full mt-4 bg-green-500 hover:bg-green-600 text-white hover:text-white">
                 Começar Agora
               </Button>
             </div>
