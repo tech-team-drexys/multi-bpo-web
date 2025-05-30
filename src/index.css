@@ -113,7 +113,7 @@
   }
   
   .animate-bounce-slow {
-    animation: bounce-slow 3s infinite;
+    animation: bounce-slow 2s infinite;
   }
   
   /* Custom scrollbar styles */
@@ -163,10 +163,10 @@
     transform: translate3d(0, 0, 0);
   }
   40%, 43% {
-    transform: translate3d(0, -15px, 0);
+    transform: translate3d(0, -10px, 0);
   }
   70% {
-    transform: translate3d(0, -7px, 0);
+    transform: translate3d(0, -5px, 0);
   }
   90% {
     transform: translate3d(0, -2px, 0);
