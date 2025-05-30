@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 interface Message {
   id: number;
@@ -82,10 +81,9 @@ const WhatsAppChat: React.FC<WhatsAppChatProps> = ({
   useEffect(() => {
     const currentScenario = chatScenarios[activeCategory as keyof typeof chatScenarios];
     if (!currentScenario || messageIndex >= currentScenario.length) return;
-    
     const message = currentScenario[messageIndex];
     const typingDelay = message.sender === 'bot' ? 1000 : 1400; // AI: 1s, User: 1.4s
-    
+
     const timer = setTimeout(() => {
       setIsTyping(true);
       setTimeout(() => {
@@ -110,7 +108,7 @@ const WhatsAppChat: React.FC<WhatsAppChatProps> = ({
       <div className="w-80 h-[600px] bg-black rounded-[3rem] p-2 shadow-2xl">
         <div className="w-full h-full bg-white rounded-[2.5rem] overflow-hidden flex flex-col">
           {/* Header do WhatsApp */}
-          <div className="text-white p-4 flex items-center gap-3 bg-emerald-800">
+          <div className="text-white p-4 flex items-center gap-3 bg-emerald-700">
             <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center">
               <span className="text-lg">🤖</span>
             </div>
