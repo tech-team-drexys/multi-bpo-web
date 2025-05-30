@@ -37,7 +37,7 @@ const CallToActionBanner = () => {
               <Button className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 text-lg font-semibold">
                 Começar Gratuitamente
               </Button>
-              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg font-semibold bg-transparent">
+              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-purple-800 px-8 py-4 text-lg font-semibold bg-transparent">
                 Agendar Demonstração
               </Button>
             </div>
