@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -21,7 +20,7 @@ const Header = () => {
   return (
     <header className={`sticky top-0 z-50 transition-all duration-300 ${
       hasScrolled 
-        ? 'backdrop-blur-md shadow-lg bg-black/30' 
+        ? 'backdrop-blur-md shadow-lg bg-black/20' 
         : 'bg-transparent shadow-none'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -68,7 +67,7 @@ const Header = () => {
 
         {isMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black/50 backdrop-blur-sm border-t border-white/20 rounded-b-lg">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black/30 backdrop-blur-sm border-t border-white/20 rounded-b-lg">
               <a href="#home" className="block text-white hover:text-blue-300 px-3 py-2 text-base font-medium">Início</a>
               <a href="#services" className="block text-white hover:text-blue-300 px-3 py-2 text-base font-medium">Serviços</a>
               <a href="#how-it-works" className="block text-white hover:text-blue-300 px-3 py-2 text-base font-medium">Como Funciona</a>
