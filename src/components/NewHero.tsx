@@ -30,7 +30,7 @@ const NewHero = () => {
 
         {/* Glassmorphism Prompt Box */}
         <div className="max-w-2xl mx-auto mb-8">
-          <div className="backdrop-blur-md bg-black/10 border border-white/20 p-6 shadow-2xl py-[18px] px-[18px] rounded-3xl hover:bg-white/15 transition-all duration-300 group">
+          <div className="backdrop-blur-md border border-white/20 p-6 shadow-2xl py-[18px] px-[18px] rounded-3xl transition-all duration-300 group bg-black/40">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="relative">
                 <textarea value={prompt} onChange={e => setPrompt(e.target.value)} placeholder="Descreva os desafios do seu escritório contábil..." className="w-full bg-transparent border-none outline-none text-white placeholder:text-white/70 text-lg resize-none max-h-[144px] min-h-[60px] overflow-y-auto scrollbar-thin scrollbar-thumb-white/30 scrollbar-track-transparent hover:scrollbar-thumb-white/50" rows={1} style={{
