@@ -1,11 +1,14 @@
+
 import { Button } from '@/components/ui/button';
+
 const Hero = () => {
-  return <section id="home" className="bg-gray-50 py-20">
+  return (
+    <section id="home" className="bg-gray-50 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div className="space-y-4">
-              <h1 className="text-4xl text-gray-900 leading-tight md:text-4xl font-bold">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
                 Soluções Digitais <span className="text-blue-600">Inteligentes</span> para Contadores
               </h1>
               <p className="text-xl text-gray-600 leading-relaxed">
@@ -41,11 +44,17 @@ const Hero = () => {
 
           <div className="relative">
             <div className="bg-white rounded-2xl shadow-2xl p-8">
-              <img src="/lovable-uploads/baacc4a8-a720-46ec-8663-fa1b3e3847e1.png" alt="Profissionais de contabilidade trabalhando com tecnologia MULTIBPO" className="w-full h-auto rounded-lg" />
+              <img 
+                src="/lovable-uploads/baacc4a8-a720-46ec-8663-fa1b3e3847e1.png" 
+                alt="Profissionais de contabilidade trabalhando com tecnologia MULTIBPO"
+                className="w-full h-auto rounded-lg"
+              />
             </div>
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Hero;
