@@ -44,7 +44,7 @@ const NewHero = () => {
               </div>
               
               <div className="flex justify-between items-center">
-                <Button type="button" variant="ghost" size="icon" className="w-9 h-9 rounded-full text-white transition-all bg-transparent hover:bg-white/20 hover:text-white text-xl">
+                <Button type="button" variant="ghost" size="icon" className="w-9 h-9 rounded-full text-white transition-all bg-transparent hover:bg-white/20 hover:text-white text-base">
                   <Plus size={24} />
                 </Button>
 
