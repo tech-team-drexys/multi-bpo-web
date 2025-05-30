@@ -1,16 +1,10 @@
-
 const Footer = () => {
-  return (
-    <footer className="bg-gray-900 text-white">
+  return <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <img 
-                src="/lovable-uploads/febbaa6b-9b3b-4bec-b4ec-adb1d9efab32.png" 
-                alt="MULTIBPO Logo" 
-                className="h-8 w-auto brightness-0 invert"
-              />
+              <img src="/lovable-uploads/febbaa6b-9b3b-4bec-b4ec-adb1d9efab32.png" alt="MULTIBPO Logo" className="h-8 w-auto brightness-0 invert" />
             </div>
             <p className="text-gray-400 leading-relaxed">
               Soluções digitais inteligentes para revolucionar a gestão de escritórios contábeis.
@@ -40,10 +34,10 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contato</h3>
             <ul className="space-y-2 text-gray-400">
-              <li>contato@multibpo.com.br</li>
-              <li>(11) 99999-9999</li>
-              <li>Segunda a Sexta</li>
-              <li>8h às 18h</li>
+              <li>Fale conosco</li>
+              <li>FAQ</li>
+              <li>WhatsApp</li>
+              
             </ul>
           </div>
         </div>
@@ -58,8 +52,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
