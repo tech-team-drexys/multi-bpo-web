@@ -1,16 +1,33 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10 && !hasScrolled) {
+        setHasScrolled(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [hasScrolled]);
 
   return (
-    <header className="bg-transparent shadow-none border-b-0 sticky top-0 z-50 backdrop-blur-sm">
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent"></div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex justify-between items-center h-16">
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${
+      hasScrolled 
+        ? 'backdrop-blur-md shadow-lg bg-black/30' 
+        : 'bg-transparent shadow-none'
+    }`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className={`flex justify-between items-center transition-all duration-300 ${
+          hasScrolled ? 'h-12' : 'h-16'
+        }`}>
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <div className="flex items-center space-x-2">
