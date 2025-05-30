@@ -44,12 +44,12 @@ const NewHero = () => {
               </div>
               
               <div className="flex justify-between items-center">
-                <Button type="button" variant="ghost" size="icon" className="w-9 h-9 rounded-full border border-white text-white transition-all bg-transparent hover:bg-white/20 hover:text-white">
+                <Button type="button" variant="ghost" size="icon" className="w-9 h-9 rounded-full text-white transition-all bg-transparent hover:bg-white/20 hover:text-white text-xl">
                   <Plus size={24} />
                 </Button>
 
                 <div className="flex gap-2">
-                  <Button type="button" variant="ghost" size="icon" className="w-9 h-9 rounded-full border border-white text-white transition-all bg-transparent hover:bg-white/20 hover:text-white">
+                  <Button type="button" variant="ghost" size="icon" className="w-9 h-9 rounded-full text-white transition-all bg-transparent hover:bg-white/20 hover:text-white">
                     <Mic size={24} />
                   </Button>
                   
