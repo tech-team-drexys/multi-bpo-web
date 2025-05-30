@@ -40,7 +40,7 @@ const NewHero = () => {
 
         {/* Glassmorphism Prompt Box */}
         <div className="max-w-2xl mx-auto mb-8">
-          <div className="backdrop-blur-md border border-white/20 p-6 shadow-2xl py-[15px] px-[18px] rounded-3xl transition-all duration-300 group bg-black/40 hover:bg-black/60">
+          <div className="backdrop-blur-md border border-white/20 p-6 shadow-2xl py-[12px] px-[18px] rounded-3xl transition-all duration-300 group bg-black/40 hover:bg-black/60">
             <form onSubmit={handleSubmit} className="space-y-2">
               <div className="relative">
                 <textarea 
@@ -66,9 +66,9 @@ const NewHero = () => {
                   type="button" 
                   variant="ghost" 
                   size="icon" 
-                  className="w-9 h-9 rounded-full text-white transition-all bg-transparent hover:bg-white/20 hover:text-white text-base"
+                  className="w-11 h-11 rounded-full text-white transition-all bg-transparent hover:bg-white/20 hover:text-white text-base"
                 >
-                  <Plus size={24} />
+                  <Plus size={20} />
                 </Button>
 
                 <div className="flex gap-2">
@@ -76,18 +76,18 @@ const NewHero = () => {
                     type="button" 
                     variant="ghost" 
                     size="icon" 
-                    className="w-9 h-9 rounded-full text-white transition-all bg-transparent hover:bg-white/20 hover:text-white"
+                    className="w-11 h-11 rounded-full text-white transition-all bg-transparent hover:bg-white/20 hover:text-white"
                   >
-                    <Mic size={24} />
+                    <Mic size={20} />
                   </Button>
                   
                   <Button 
                     type="submit" 
                     variant="ghost" 
                     size="icon" 
-                    className="w-9 h-9 rounded-full text-white transition-all bg-transparent hover:bg-white/20 hover:text-white"
+                    className="w-11 h-11 rounded-full text-white transition-all bg-transparent hover:bg-white/20 hover:text-white"
                   >
-                    <ArrowUp size={24} />
+                    <ArrowUp size={20} />
                   </Button>
                 </div>
               </div>
@@ -106,9 +106,9 @@ const NewHero = () => {
           onClick={scrollToNextSection} 
           variant="ghost" 
           size="icon" 
-          className="w-12 h-12 text-white transition-all animate-bounce-slow rounded-full bg-transparent hover:bg-white/10"
+          className="w-14 h-14 text-white transition-all animate-bounce-slow rounded-full bg-transparent hover:bg-white/10"
         >
-          <ChevronDown size={40} />
+          <ChevronDown size={20} />
         </Button>
       </div>
     </section>

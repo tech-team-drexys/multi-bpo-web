@@ -19,12 +19,12 @@ const Header = () => {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       hasScrolled 
-        ? 'backdrop-blur-md shadow-lg bg-black/20' 
+        ? 'backdrop-blur-md shadow-lg bg-transparent' 
         : 'bg-transparent shadow-none'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`flex justify-between items-center transition-all duration-300 ${
-          hasScrolled ? 'h-12 py-2' : 'h-16'
+          hasScrolled ? 'h-12 py-4' : 'h-16 py-2'
         }`}>
           <div className="flex items-center">
             <div className="flex-shrink-0">
@@ -33,7 +33,7 @@ const Header = () => {
                   src="/lovable-uploads/febbaa6b-9b3b-4bec-b4ec-adb1d9efab32.png" 
                   alt="MULTIBPO Logo" 
                   className={`w-auto transition-all duration-300 ${
-                    hasScrolled ? 'h-6' : 'h-8'
+                    hasScrolled ? 'h-5' : 'h-8'
                   }`} 
                 />
               </div>
@@ -52,7 +52,7 @@ const Header = () => {
 
           <div className="hidden md:block">
             <Button className={`text-white hover:text-white bg-blue-800 hover:bg-blue-700 transition-all duration-300 ${
-              hasScrolled ? 'h-8 px-3 text-xs' : 'h-10 px-4 text-sm'
+              hasScrolled ? 'h-7 px-2 text-xs' : 'h-10 px-4 text-sm'
             }`}>
               Começar Agora
             </Button>
