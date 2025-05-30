@@ -36,12 +36,12 @@ const NewHero = () => {
               <Input value={prompt} onChange={e => setPrompt(e.target.value)} placeholder="Descreva os desafios do seu escritório contábil..." className="w-full bg-white/20 border-white/30 text-white placeholder:text-white/70 rounded-xl px-4 py-3 text-lg backdrop-blur-sm focus:bg-white/25 focus:border-white/50 transition-all" />
               
               <div className="flex justify-between items-center">
-                <Button type="button" variant="ghost" size="icon" className="w-12 h-12 rounded-full border border-white/30 text-white transition-all bg-transparent">
+                <Button type="button" variant="ghost" size="icon" className="w-12 h-12 rounded-full border border-white text-white transition-all bg-transparent">
                   <Plus size={20} />
                 </Button>
 
                 <div className="flex gap-2">
-                  <Button type="button" variant="ghost" size="icon" className="w-12 h-12 rounded-full border border-white/30 text-white transition-all bg-transparent">
+                  <Button type="button" variant="ghost" size="icon" className="w-12 h-12 rounded-full border border-white text-white transition-all bg-transparent">
                     <Mic size={20} />
                   </Button>
                   
