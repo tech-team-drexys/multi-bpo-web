@@ -61,7 +61,7 @@ const NewHero = () => {
 
       {/* Scroll Down Button */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
-        <Button onClick={scrollToNextSection} variant="ghost" size="icon" className="w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 border border-white/30 text-white transition-all animate-bounce">
+        <Button onClick={scrollToNextSection} variant="ghost" size="icon" className="w-12 h-12 text-white transition-all animate-bounce rounded-none bg-transparent">
           <ChevronDown size={24} />
         </Button>
       </div>
