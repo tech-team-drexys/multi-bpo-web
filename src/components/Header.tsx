@@ -24,7 +24,7 @@ const Header = () => {
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`flex justify-between items-center transition-all duration-300 ${
-          hasScrolled ? 'h-14 py-8' : 'h-16 py-2'
+          hasScrolled ? 'h-14 py-6' : 'h-16 py-2'
         }`}>
           <div className="flex items-center">
             <div className="flex-shrink-0">
@@ -33,7 +33,7 @@ const Header = () => {
                   src="/lovable-uploads/febbaa6b-9b3b-4bec-b4ec-adb1d9efab32.png" 
                   alt="MULTIBPO Logo" 
                   className={`w-auto transition-all duration-300 ${
-                    hasScrolled ? 'h-5' : 'h-8'
+                    hasScrolled ? 'h-6' : 'h-8'
                   }`} 
                 />
               </div>
@@ -42,30 +42,30 @@ const Header = () => {
           
           <nav className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              <a href="#home" className={`px-3 py-2 text-sm font-medium transition-all duration-300 relative ${
+              <a href="#home" className={`px-3 py-2 text-sm font-medium transition-colors ${
                 hasScrolled 
                   ? 'text-gray-800 hover:text-blue-500' 
-                  : 'text-white hover:text-white after:content-[""] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-white after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left'
+                  : 'text-white hover:text-blue-500'
               }`}>Início</a>
-              <a href="#services" className={`px-3 py-2 text-sm font-medium transition-all duration-300 relative ${
+              <a href="#services" className={`px-3 py-2 text-sm font-medium transition-colors ${
                 hasScrolled 
                   ? 'text-gray-800 hover:text-blue-500' 
-                  : 'text-white hover:text-white after:content-[""] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-white after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left'
+                  : 'text-white hover:text-blue-500'
               }`}>Serviços</a>
-              <a href="#how-it-works" className={`px-3 py-2 text-sm font-medium transition-all duration-300 relative ${
+              <a href="#how-it-works" className={`px-3 py-2 text-sm font-medium transition-colors ${
                 hasScrolled 
                   ? 'text-gray-800 hover:text-blue-500' 
-                  : 'text-white hover:text-white after:content-[""] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-white after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left'
+                  : 'text-white hover:text-blue-500'
               }`}>Como Funciona</a>
-              <a href="#testimonials" className={`px-3 py-2 text-sm font-medium transition-all duration-300 relative ${
+              <a href="#testimonials" className={`px-3 py-2 text-sm font-medium transition-colors ${
                 hasScrolled 
                   ? 'text-gray-800 hover:text-blue-500' 
-                  : 'text-white hover:text-white after:content-[""] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-white after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left'
+                  : 'text-white hover:text-blue-500'
               }`}>Depoimentos</a>
-              <a href="#contact" className={`px-3 py-2 text-sm font-medium transition-all duration-300 relative ${
+              <a href="#contact" className={`px-3 py-2 text-sm font-medium transition-colors ${
                 hasScrolled 
                   ? 'text-gray-800 hover:text-blue-500' 
-                  : 'text-white hover:text-white after:content-[""] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-white after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left'
+                  : 'text-white hover:text-blue-500'
               }`}>Contato</a>
             </div>
           </nav>
@@ -73,7 +73,7 @@ const Header = () => {
           <div className="hidden md:block">
             <Button className={`transition-all duration-300 ${
               hasScrolled 
-                ? 'h-7 px-3 text-xs text-white hover:text-white bg-blue-800 hover:bg-blue-700' 
+                ? 'h-8 px-3 text-xs text-white hover:text-white bg-blue-800 hover:bg-blue-700' 
                 : 'h-10 px-4 text-sm text-white hover:text-white bg-blue-800 hover:bg-blue-700'
             }`}>
               Começar Agora
@@ -90,9 +90,9 @@ const Header = () => {
               }`}
             >
               {isMenuOpen ? (
-                <X size={hasScrolled ? 20 : 24} className={hasScrolled ? 'text-gray-800' : 'text-white'} />
+                <X size={24} className={hasScrolled ? 'text-gray-800' : 'text-white'} />
               ) : (
-                <Menu size={hasScrolled ? 20 : 24} className={hasScrolled ? 'text-gray-800' : 'text-white'} />
+                <Menu size={24} className={hasScrolled ? 'text-gray-800' : 'text-white'} />
               )}
             </button>
           </div>

@@ -172,12 +172,3 @@
     transform: translate3d(0, -2px, 0);
   }
 }
-
-@keyframes blink {
-  0%, 50% {
-    opacity: 1;
-  }
-  51%, 100% {
-    opacity: 0;
-  }
-}
