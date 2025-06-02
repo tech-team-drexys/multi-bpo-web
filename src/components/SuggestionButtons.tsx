@@ -48,7 +48,7 @@ const SuggestionButtons = ({ onSuggestionClick }: SuggestionButtonsProps) => {
               px-4 py-2 h-auto min-h-[44px]
               rounded-2xl text-sm font-medium
               transition-all duration-300 ease-out
-              hover:scale-103 hover:border-white/40
+              hover:border-white/40
               hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]
               transform-gpu
               ${index < visibleButtons 
