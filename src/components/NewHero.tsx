@@ -125,8 +125,8 @@ const NewHero = () => {
         </div>
 
       <div><button className="
-  bg-black/50 backdrop-blur-md border border-white/20 
-  hover:scale-103 hover:bg-white/15 hover:border-white/30
+  bg-black/40 text-white backdrop-blur-md border border-white/20 
+  hover:scale-103 hover:bg-black/60 hover:border-white/30
   hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]
   transition-all duration-300 ease-out
   px-4 py-2 rounded-lg
