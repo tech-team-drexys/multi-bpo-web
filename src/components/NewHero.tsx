@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, Plus, Mic, ArrowUp } from 'lucide-react';
 import TypewriterEffect from './TypewriterEffect';
+import SuggestionButtons from './SuggestionButtons';
 
 const NewHero = () => {
   const [prompt, setPrompt] = useState('');
@@ -19,6 +20,10 @@ const NewHero = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Prompt submitted:', prompt);
+  };
+
+  const handleSuggestionClick = (suggestion: string) => {
+    setPrompt(suggestion);
   };
 
   const placeholderSuggestions = [
@@ -124,15 +129,10 @@ const NewHero = () => {
           </div>
         </div>
 
-      <div><button className="
-  bg-black/40 text-white backdrop-blur-md border border-white/20 
-  hover:scale-103 hover:bg-black/60 hover:border-white/30
-  hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]
-  transition-all duration-300 ease-out
-  px-4 py-2 rounded-lg
-">
-  Texto do botão
-</button></div>
+        {/* Suggestion Buttons */}
+        <div className="mb-12">
+          <SuggestionButtons onSuggestionClick={handleSuggestionClick} />
+        </div>
         
         {/* Heading 2 */}
         <h2 className="text-2xl md:text-3xl font-semibold text-white/90 mb-12">Conte com as soluções da MULTI BPO</h2>
