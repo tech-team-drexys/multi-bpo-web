@@ -8,6 +8,7 @@ interface TypewriterEffectProps {
   deletingSpeed?: number;
   pauseDuration?: number;
   showCursor?: boolean;
+  onWordChange?: (currentIndex: number) => void;
 }
 
 const TypewriterEffect = ({ 
@@ -16,7 +17,8 @@ const TypewriterEffect = ({
   typingSpeed = 150, 
   deletingSpeed = 100, 
   pauseDuration = 2000,
-  showCursor = true
+  showCursor = true,
+  onWordChange
 }: TypewriterEffectProps) => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
@@ -38,7 +40,11 @@ const TypewriterEffect = ({
           setCurrentText(currentText.slice(0, -1));
         } else {
           setIsDeleting(false);
-          setCurrentWordIndex((prev) => (prev + 1) % words.length);
+          const nextIndex = (currentWordIndex + 1) % words.length;
+          setCurrentWordIndex(nextIndex);
+          if (onWordChange) {
+            onWordChange(nextIndex);
+          }
         }
       } else {
         if (currentText.length < currentWord.length) {
@@ -50,7 +56,7 @@ const TypewriterEffect = ({
     }, isPaused ? pauseDuration : isDeleting ? deletingSpeed : typingSpeed);
 
     return () => clearTimeout(timeout);
-  }, [currentText, isDeleting, isPaused, currentWordIndex, words, typingSpeed, deletingSpeed, pauseDuration]);
+  }, [currentText, isDeleting, isPaused, currentWordIndex, words, typingSpeed, deletingSpeed, pauseDuration, onWordChange]);
 
   return (
     <span className={`${className} inline-flex items-center`}>
