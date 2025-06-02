@@ -7,6 +7,7 @@ import SuggestionButtons from './SuggestionButtons';
 
 const NewHero = () => {
   const [prompt, setPrompt] = useState('');
+  const [lastPlaceholderIndex, setLastPlaceholderIndex] = useState(-1);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,6 +25,15 @@ const NewHero = () => {
     "Sou MEI, posso contratar funcionário?",
     "Tem como pagar menos impostos legalmente?"
   ];
+
+  // Function to get next placeholder avoiding repetition
+  const getNextPlaceholder = () => {
+    let availableSuggestions = placeholderSuggestions.filter((_, index) => index !== lastPlaceholderIndex);
+    if (availableSuggestions.length === 0) {
+      availableSuggestions = placeholderSuggestions;
+    }
+    return availableSuggestions;
+  };
 
   return (
     <section className="relative min-h-screen flex flex-col overflow-hidden">
@@ -78,11 +88,18 @@ const NewHero = () => {
                     {!prompt && (
                       <div className="absolute top-0 left-0 text-white/60 text-lg pointer-events-none">
                         <TypewriterEffect 
-                          words={placeholderSuggestions}
+                          key={lastPlaceholderIndex}
+                          words={getNextPlaceholder()}
                           typingSpeed={38}
                           deletingSpeed={40}
                           pauseDuration={4200}
                           showCursor={false}
+                          onWordChange={(currentIndex) => {
+                            const actualIndex = placeholderSuggestions.findIndex(
+                              suggestion => suggestion === getNextPlaceholder()[currentIndex]
+                            );
+                            setLastPlaceholderIndex(actualIndex);
+                          }}
                         />
                       </div>
                     )}
