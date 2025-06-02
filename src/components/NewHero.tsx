@@ -48,9 +48,9 @@ const NewHero = () => {
           <TypewriterEffect 
             words={['o futuro?', 'a digitalização?', 'a inovação?', 'a automação?']}
             className="text-green-400"
-            typingSpeed={60}
-            deletingSpeed={70}
-            pauseDuration={3200}
+            typingSpeed={85}
+            deletingSpeed={65}
+            pauseDuration={3000}
             showCursor={true}
           />
         </h1>
@@ -80,8 +80,8 @@ const NewHero = () => {
                   <div className="absolute top-0 left-0 text-white/70 text-lg pointer-events-none">
                     <TypewriterEffect 
                       words={placeholderSuggestions}
-                      typingSpeed={35}
-                      deletingSpeed={50}
+                      typingSpeed={30}
+                      deletingSpeed={40}
                       pauseDuration={2700}
                       showCursor={false}
                     />
