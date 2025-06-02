@@ -48,9 +48,9 @@ const NewHero = () => {
           <TypewriterEffect 
             words={['o futuro?', 'a digitalização?', 'a inovação?', 'a automação?']}
             className="text-green-400"
-            typingSpeed={120}
-            deletingSpeed={80}
-            pauseDuration={2500}
+            typingSpeed={60}
+            deletingSpeed={70}
+            pauseDuration={3200}
             showCursor={true}
           />
         </h1>
