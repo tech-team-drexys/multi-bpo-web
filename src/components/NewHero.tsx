@@ -21,6 +21,14 @@ const NewHero = () => {
     console.log('Prompt submitted:', prompt);
   };
 
+  const placeholderSuggestions = [
+    "O que pode me fazer cair na malha fina?",
+    "O que eu preciso para abrir minha empresa?",
+    "Qual a diferença de um regime tributário para o outro?",
+    "Sou MEI, posso contratar funcionário?",
+    "Tem como pagar menos impostos legalmente?"
+  ];
+
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
       {/* Video Background with Overlay */}
@@ -43,18 +51,19 @@ const NewHero = () => {
             typingSpeed={120}
             deletingSpeed={80}
             pauseDuration={2500}
+            showCursor={true}
           />
         </h1>
 
         {/* Glassmorphism Prompt Box */}
-        <div className="max-w-4xl mx-auto mb-8">
+        <div className="max-w-5xl mx-auto mb-8">
           <div className="backdrop-blur-md border border-white/20 p-6 shadow-2xl px-[24px] rounded-3xl transition-all duration-300 group bg-black/40 hover:bg-black/60 py-[20px]">
             <form onSubmit={handleSubmit} className="space-y-1">
               <div className="relative">
                 <textarea 
                   value={prompt}
                   onChange={e => setPrompt(e.target.value)}
-                  placeholder="Descreva os desafios do seu escritório contábil..."
+                  placeholder=""
                   className="w-full bg-transparent border-none outline-none text-white placeholder:text-white/70 text-lg resize-none max-h-[150px] min-h-[80px] overflow-y-auto scrollbar-thin scrollbar-thumb-white/30 scrollbar-track-transparent hover:scrollbar-thumb-white/50"
                   rows={2}
                   style={{
@@ -67,6 +76,17 @@ const NewHero = () => {
                     target.style.height = Math.min(target.scrollHeight, 150) + 'px';
                   }}
                 />
+                {!prompt && (
+                  <div className="absolute top-0 left-0 text-white/70 text-lg pointer-events-none">
+                    <TypewriterEffect 
+                      words={placeholderSuggestions}
+                      typingSpeed={80}
+                      deletingSpeed={50}
+                      pauseDuration={3000}
+                      showCursor={false}
+                    />
+                  </div>
+                )}
               </div>
               
               <div className="flex justify-between items-center">

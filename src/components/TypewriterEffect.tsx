@@ -7,6 +7,7 @@ interface TypewriterEffectProps {
   typingSpeed?: number;
   deletingSpeed?: number;
   pauseDuration?: number;
+  showCursor?: boolean;
 }
 
 const TypewriterEffect = ({ 
@@ -14,7 +15,8 @@ const TypewriterEffect = ({
   className = "", 
   typingSpeed = 150, 
   deletingSpeed = 100, 
-  pauseDuration = 2000 
+  pauseDuration = 2000,
+  showCursor = true
 }: TypewriterEffectProps) => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
@@ -53,9 +55,11 @@ const TypewriterEffect = ({
   return (
     <span className={`${className} inline-flex items-center`}>
       {currentText || '\u00A0'}
-      <span className="ml-1 inline-block w-0.5 h-[1em] bg-current animate-blink">
-        
-      </span>
+      {showCursor && (
+        <span className="ml-1 inline-block w-0.5 h-[1em] bg-current animate-blink">
+          
+        </span>
+      )}
     </span>
   );
 };
