@@ -60,6 +60,7 @@ const NewHero = () => {
         <div className="max-w-5xl mx-auto mb-8">
           <div className="backdrop-blur-md border border-white/20 p-6 shadow-2xl px-[24px] rounded-3xl transition-all duration-300 group bg-black/40 hover:bg-black/60 py-[20px]">
             <form onSubmit={handleSubmit} className="space-y-1">
+              <label htmlFor="prompt-input" className="sr-only">
               <div className="relative">
                 <textarea 
                   value={prompt}
@@ -88,6 +89,7 @@ const NewHero = () => {
                     />
                   </div>
                 )}
+              </label>
               </div>
               
               <div className="flex justify-between items-center">
