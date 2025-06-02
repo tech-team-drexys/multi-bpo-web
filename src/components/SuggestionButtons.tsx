@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 
@@ -52,13 +51,13 @@ const SuggestionButtons = ({ onSuggestionClick }: SuggestionButtonsProps) => {
               hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]
               transform-gpu
               ${index < visibleButtons 
-                ? 'opacity-100 translate-y-0' 
+                ? 'opacity-100 translate-y-0 [transition-delay:0ms]' 
                 : 'opacity-0 translate-y-4'
               }
             `}
-            style={{
-              transitionDelay: index < visibleButtons ? `${index * 150}ms` : '0ms'
-            }}
+            style={index >= visibleButtons ? {
+              transitionDelay: `${index * 150}ms`
+            } : undefined}
           >
             {suggestion}
           </Button>
