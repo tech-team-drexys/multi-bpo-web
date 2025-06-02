@@ -4,7 +4,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <img src="/lovable-uploads/26a6155d-39f9-480a-b9fb-504f8308c172.png" alt="MULTIBPO Logo" className="h-8 w-auto" />
+              <img src="/lovable-uploads/7f9c858b-7f32-49e9-a746-6e96fa1d6e2d.png" alt="MULTIBPO Logo" className="h-8 w-auto" />
             </div>
             <p className="text-gray-400 leading-relaxed">
               Soluções digitais inteligentes para revolucionar a gestão de escritórios contábeis.
