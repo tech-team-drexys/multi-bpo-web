@@ -57,7 +57,7 @@ const SuggestionButtons = ({ onSuggestionClick }: SuggestionButtonsProps) => {
               }
             `}
             style={{
-              transitionDelay: `${index * 150}ms`
+              transitionDelay: index < visibleButtons ? `${index * 150}ms` : '0ms'
             }}
           >
             {suggestion}

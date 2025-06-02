@@ -48,8 +48,8 @@ const NewHero = () => {
 
       {/* Content */}
       {/* Heading + typewriter */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 className="text-4xl font-bold text-white mb-16 leading-tight md:text-5xl">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
+        <h1 className="text-4xl font-bold text-white mb-12 leading-tight md:text-5xl">
           O seu escritório de contabilidade está preparado para{' '}
           <TypewriterEffect 
             words={['o futuro?', 'a digitalização?', 'a inovação?', 'a automação?']}
@@ -62,7 +62,7 @@ const NewHero = () => {
         </h1>
 
         {/* Glassmorphism Prompt Box */}
-        <div className="max-w-5xl mx-auto mb-8">
+        <div className="max-w-5xl mx-auto mb-6">
           <div className="backdrop-blur-md border border-white/20 p-6 shadow-2xl px-[24px] rounded-3xl transition-all duration-300 group bg-black/40 hover:bg-black/60 py-[20px]">
             <form onSubmit={handleSubmit} className="space-y-1">
               <div className="relative">
@@ -130,12 +130,12 @@ const NewHero = () => {
         </div>
 
         {/* Suggestion Buttons */}
-        <div className="mb-12">
+        <div className="mb-8">
           <SuggestionButtons onSuggestionClick={handleSuggestionClick} />
         </div>
         
         {/* Heading 2 */}
-        <h2 className="text-2xl md:text-3xl font-semibold text-white/90 mb-12">Conte com as soluções da MULTI BPO</h2>
+        <h2 className="text-2xl md:text-3xl font-semibold text-white/90 mb-8">Conte com as soluções da MULTI BPO</h2>
       </div>
 
       {/* Scroll Down Button */}
