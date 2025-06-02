@@ -50,7 +50,7 @@ const NewHero = () => {
             className="text-green-400"
             typingSpeed={85}
             deletingSpeed={65}
-            pauseDuration={3000}
+            pauseDuration={3500}
             showCursor={true}
           />
         </h1>
@@ -77,12 +77,12 @@ const NewHero = () => {
                   }}
                 />
                 {!prompt && (
-                  <div className="absolute top-0 left-0 text-white/70 text-lg pointer-events-none">
+                  <div className="absolute top-0 left-0 text-white/60 text-lg pointer-events-none">
                     <TypewriterEffect 
                       words={placeholderSuggestions}
                       typingSpeed={30}
                       deletingSpeed={40}
-                      pauseDuration={4000}
+                      pauseDuration={4200}
                       showCursor={false}
                     />
                   </div>
