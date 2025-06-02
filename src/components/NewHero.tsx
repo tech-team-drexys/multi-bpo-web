@@ -39,7 +39,7 @@ const NewHero = () => {
         </h1>
 
         {/* Glassmorphism Prompt Box */}
-        <div className="max-w-3xl mx-auto mb-8">
+        <div className="max-w-4xl mx-auto mb-8">
           <div className="backdrop-blur-md border border-white/20 p-6 shadow-2xl px-[24px] rounded-3xl transition-all duration-300 group bg-black/40 hover:bg-black/60 py-[20px]">
             <form onSubmit={handleSubmit} className="space-y-1">
               <div className="relative">
