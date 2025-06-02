@@ -52,11 +52,9 @@ const TypewriterEffect = ({
 
   return (
     <span className={`${className} inline-flex items-center`}>
-      <span className="relative">
-        {currentText}
-        <span className="ml-1 inline-block w-0.5 h-[1em] bg-current animate-pulse">
-          |
-        </span>
+      {currentText}
+      <span className="ml-1 inline-block w-0.5 h-[1em] bg-current animate-blink">
+        |
       </span>
     </span>
   );

@@ -116,6 +116,10 @@
     animation: bounce-slow 2s infinite;
   }
   
+  .animate-blink {
+    animation: blink 1s infinite;
+  }
+  
   /* Custom scrollbar styles */
   .scrollbar-thin {
     scrollbar-width: thin;
@@ -170,5 +174,14 @@
   }
   90% {
     transform: translate3d(0, -2px, 0);
+  }
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
   }
 }
