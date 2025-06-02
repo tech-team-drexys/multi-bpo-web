@@ -42,6 +42,7 @@ const NewHero = () => {
       </div>
 
       {/* Content */}
+      {/* Heading + typewriter */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 className="text-4xl font-bold text-white mb-16 leading-tight md:text-5xl">
           O seu escritório de contabilidade está preparado para{' '}
@@ -123,6 +124,7 @@ const NewHero = () => {
           </div>
         </div>
 
+        {/* Heading 2 */}
         <h2 className="text-2xl md:text-3xl font-semibold text-white/90 mb-12">Conte com as soluções da MULTI BPO</h2>
       </div>
 
@@ -134,7 +136,7 @@ const NewHero = () => {
           size="icon" 
           className="w-10 h-10 text-white transition-all animate-bounce-slow rounded-full bg-transparent hover:bg-white/10"
         >
-          <ChevronDown size={20} />
+          <ChevronDown size={50} />
         </Button>
       </div>
     </section>
