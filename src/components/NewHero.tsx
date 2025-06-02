@@ -63,7 +63,8 @@ const NewHero = () => {
                       value={prompt}
                       onChange={e => setPrompt(e.target.value)}
                       placeholder=""
-                      className="w-full bg-transparent border-none outline-none text-white placeholder:text-white/70 text-lg resize-none max-h-[150px] min-h-[80px] overflow-y-auto scrollbar-thin scrollbar-thumb-white/30 scrollbar-track-transparent hover:scrollbar-thumb-white/50"
+                      className="w-full bg-transparent border-none outline-none text-white placeholder:text-white/70 text-lg resize-none max-h-[150px] min-h-[80px] overflow-y-auto scrollbar-custom"
+
                       rows={2}
                       style={{
                         lineHeight: '1.5',
