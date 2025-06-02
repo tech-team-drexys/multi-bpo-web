@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -38,7 +39,7 @@ const Header = () => {
                 />
                 {/* Logo dark (após a animação) */}
                 <img 
-                  src="/lovable-uploads/878d3c4a-dc9a-465a-b639-321f2ded3864.png" 
+                  src="/lovable-uploads/7f9c858b-7f32-49e9-a746-6e96fa1d6e2d.png" 
                   alt="MULTIBPO Logo" 
                   className={`w-auto transition-all duration-300 ${
                     hasScrolled ? 'h-6 opacity-100' : 'h-8 opacity-0'
