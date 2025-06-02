@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, Plus, Mic, ArrowUp } from 'lucide-react';
 import TypewriterEffect from './TypewriterEffect';
+import FadeBlurEffect from './FadeBlurEffect';
 
 const NewHero = () => {
   const [prompt, setPrompt] = useState('');
@@ -78,12 +79,11 @@ const NewHero = () => {
                 />
                 {!prompt && (
                   <div className="absolute top-0 left-0 text-white/70 text-lg pointer-events-none">
-                    <TypewriterEffect 
-                      words={placeholderSuggestions}
-                      typingSpeed={120}
-                      deletingSpeed={50}
-                      pauseDuration={3000}
-                      showCursor={false}
+                    <FadeBlurEffect 
+                      texts={placeholderSuggestions}
+                      textDuration={4000}
+                      transitionDuration={800}
+                      pauseDuration={500}
                     />
                   </div>
                 )}
