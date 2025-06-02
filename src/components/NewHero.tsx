@@ -81,9 +81,9 @@ const NewHero = () => {
                   <div className="absolute top-0 left-0 text-white/70 text-lg pointer-events-none">
                     <FadeBlurEffect 
                       texts={placeholderSuggestions}
-                      textDuration={4000}
-                      transitionDuration={800}
-                      pauseDuration={500}
+                      textDuration={3500}
+                      transitionDuration={500}
+                      pauseDuration={200}
                     />
                   </div>
                 )}
