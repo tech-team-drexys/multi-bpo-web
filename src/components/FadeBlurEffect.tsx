@@ -18,7 +18,6 @@ const FadeBlurEffect = ({
 }: FadeBlurEffectProps) => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
-  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     const cycle = async () => {
@@ -31,13 +30,11 @@ const FadeBlurEffect = ({
       // Wait for transition to complete
       await new Promise(resolve => setTimeout(resolve, transitionDuration));
       
-      // Pause between changes
-      setIsPaused(true);
-      await new Promise(resolve => setTimeout(resolve, pauseDuration));
-      setIsPaused(false);
-      
-      // Change to next text
+      // Change to next text while invisible
       setCurrentTextIndex((prev) => (prev + 1) % texts.length);
+      
+      // Pause between changes
+      await new Promise(resolve => setTimeout(resolve, pauseDuration));
       
       // Start fade in
       setIsVisible(true);
@@ -54,7 +51,7 @@ const FadeBlurEffect = ({
       className={`${className} transition-all duration-[800ms] ease-in-out ${
         isVisible 
           ? 'opacity-100 blur-0' 
-          : 'opacity-30 blur-sm'
+          : 'opacity-0 blur-sm'
       }`}
       style={{
         transitionDuration: `${transitionDuration}ms`
