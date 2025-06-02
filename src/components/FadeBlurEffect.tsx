@@ -14,7 +14,7 @@ const FadeBlurEffect = ({
   className = "", 
   textDuration = 4000,
   transitionDuration = 800,
-  pauseDuration = 500
+  pauseDuration = 200
 }: FadeBlurEffectProps) => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
@@ -33,7 +33,7 @@ const FadeBlurEffect = ({
       // Change to next text while invisible
       setCurrentTextIndex((prev) => (prev + 1) % texts.length);
       
-      // Pause between changes
+      // Pause between changes (reduced time)
       await new Promise(resolve => setTimeout(resolve, pauseDuration));
       
       // Start fade in
