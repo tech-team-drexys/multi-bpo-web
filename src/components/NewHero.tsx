@@ -1,20 +1,12 @@
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { ChevronDown, Plus, Mic, ArrowUp } from 'lucide-react';
+import { Plus, Mic, ArrowUp } from 'lucide-react';
 import TypewriterEffect from './TypewriterEffect';
 import SuggestionButtons from './SuggestionButtons';
 
 const NewHero = () => {
   const [prompt, setPrompt] = useState('');
-
-  const scrollToNextSection = () => {
-    const nextSection = document.getElementById('about');
-    if (nextSection) {
-      nextSection.scrollIntoView({
-        behavior: 'smooth'
-      });
-    }
-  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,10 +38,10 @@ const NewHero = () => {
       </div>
 
       {/* Content Container - Centralized */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
-        <div className="max-w-5xl mx-auto text-center space-y-8">
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto text-center space-y-6">
           {/* Heading + typewriter */}
-          <div className="space-y-12">
+          <div className="space-y-8">
             <h1 className="text-4xl font-bold text-white leading-tight md:text-5xl">
               O seu escritório de contabilidade está preparado para{' '}
               <TypewriterEffect 
@@ -141,18 +133,6 @@ const NewHero = () => {
             </h2>
           </div>
         </div>
-      </div>
-
-      {/* Scroll Down Button */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
-        <Button 
-          onClick={scrollToNextSection} 
-          variant="ghost" 
-          size="icon" 
-          className="w-10 h-10 text-white transition-all animate-bounce-slow rounded-full bg-transparent hover:bg-white/10"
-        >
-          <ChevronDown size={20} />
-        </Button>
       </div>
     </section>
   );
