@@ -37,12 +37,12 @@ const NewHero = () => {
         <div className="absolute inset-0 bg-black/60"></div>
       </div>
 
-      {/* Content Container - Centralized */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto text-center space-y-6">
+      {/* Content Container - Truly Centralized */}
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto text-center space-y-4">
           {/* Heading + typewriter */}
-          <div className="space-y-8">
-            <h1 className="text-4xl font-bold text-white leading-tight md:text-5xl">
+          <div className="space-y-6">
+            <h1 className="text-3xl font-bold text-white leading-tight md:text-4xl">
               O seu escritório de contabilidade está preparado para{' '}
               <TypewriterEffect 
                 words={['o futuro?', 'a digitalização?', 'a inovação?', 'a automação?']}
@@ -128,7 +128,7 @@ const NewHero = () => {
             </div>
             
             {/* Heading 2 */}
-            <h2 className="text-2xl md:text-3xl font-semibold text-white/90">
+            <h2 className="text-xl md:text-2xl font-semibold text-white/90">
               Conte com as soluções da MULTI BPO
             </h2>
           </div>
