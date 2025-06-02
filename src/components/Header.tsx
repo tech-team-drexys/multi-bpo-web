@@ -30,7 +30,7 @@ const Header = () => {
             <div className="flex-shrink-0">
               <div className="flex items-center space-x-2">
                 <img 
-                  src="/lovable-uploads/7f9c858b-7f32-49e9-a746-6e96fa1d6e2d.png" 
+                  src="/lovable-uploads/878d3c4a-dc9a-465a-b639-321f2ded3864.png" 
                   alt="MULTIBPO Logo" 
                   className={`w-auto transition-all duration-300 ${
                     hasScrolled ? 'h-6' : 'h-8'
@@ -99,8 +99,8 @@ const Header = () => {
             <Button className={`transition-all duration-300 ${
               hasScrolled 
                 ? 'h-8 px-3 text-xs text-white hover:text-white bg-blue-800 hover:bg-blue-700' 
-                : 'h-10 px-4 text-sm text-white hover:text-white bg-blue-800 hover:bg-blue-700'
-            }`}>
+                : 'h-10 px-4 text-sm border-white text-white hover:bg-white hover:text-blue-800 bg-transparent'
+            }`} variant={hasScrolled ? "default" : "outline"}>
               Começar Agora
             </Button>
           </div>
