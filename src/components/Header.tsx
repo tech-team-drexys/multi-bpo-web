@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -24,13 +23,13 @@ const Header = () => {
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`flex justify-between items-center transition-all duration-300 ${
-          hasScrolled ? 'h-14 py-6' : 'h-16 py-2'
+          hasScrolled ? 'h-14 py-8' : 'h-16 py-2'
         }`}>
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <div className="flex items-center space-x-2">
                 <img 
-                  src="/lovable-uploads/878d3c4a-dc9a-465a-b639-321f2ded3864.png" 
+                  src="/lovable-uploads/26a6155d-39f9-480a-b9fb-504f8308c172.png" 
                   alt="MULTIBPO Logo" 
                   className={`w-auto transition-all duration-300 ${
                     hasScrolled ? 'h-6' : 'h-8'
