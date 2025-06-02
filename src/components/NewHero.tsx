@@ -82,7 +82,7 @@ const NewHero = () => {
                       words={placeholderSuggestions}
                       typingSpeed={30}
                       deletingSpeed={40}
-                      pauseDuration={2700}
+                      pauseDuration={4000}
                       showCursor={false}
                     />
                   </div>
