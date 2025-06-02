@@ -39,7 +39,7 @@ const NewHero = () => {
 
       {/* Content Container - Truly Centralized */}
       <div className="relative z-10 flex-1 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto text-center space-y-4">
+        <div className="max-w-4xl mx-auto text-center space-y-4">
           {/* Heading + typewriter */}
           <div className="space-y-6">
             <h1 className="text-3xl font-bold text-white leading-tight md:text-4xl">
