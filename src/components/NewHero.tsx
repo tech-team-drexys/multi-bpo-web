@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, Plus, Mic, ArrowUp } from 'lucide-react';
+import TypewriterEffect from './TypewriterEffect';
 
 const NewHero = () => {
   const [prompt, setPrompt] = useState('');
@@ -35,7 +36,14 @@ const NewHero = () => {
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 className="text-4xl font-bold text-white mb-16 leading-tight md:text-5xl">
-          O seu escritório de contabilidade está preparado para o futuro?
+          O seu escritório de contabilidade está preparado para{' '}
+          <TypewriterEffect 
+            words={['o futuro?', 'a digitalização?', 'a inovação?', 'a automação?']}
+            className="text-green-400"
+            typingSpeed={120}
+            deletingSpeed={80}
+            pauseDuration={2500}
+          />
         </h1>
 
         {/* Glassmorphism Prompt Box */}
