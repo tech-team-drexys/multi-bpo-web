@@ -80,7 +80,7 @@ const NewHero = () => {
                         <TypewriterEffect 
                           words={placeholderSuggestions}
                           typingSpeed={38}
-                          deletingSpeed={40}
+                          deletingSpeed={30}
                           pauseDuration={4200}
                           showCursor={false}
                         />
