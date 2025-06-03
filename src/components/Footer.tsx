@@ -81,7 +81,7 @@ const Footer = () => {
 
             {/* CRC e endereço */}
             <div className="space-y-2 text-sm text-gray-400">
-              <p className="font-medium">MULTI BPO LTDA | CRC/SP N° 045316</p>
+              <p className="font-medium">MULTI BPO LTDA | CRC/SP 045316</p>
               <p>Alameda Araguaia 2044 | Conj. 910 - Bloco 1</p>
               <p>Alphaville, Barueri - SP | CEP 06455-906</p>
             </div>
@@ -202,9 +202,15 @@ const Footer = () => {
 
         <div className="border-t border-gray-500 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
-            © 2024 MULTIBPO. Todos os direitos reservados.
+            © MULTI BPO DO BRASIL LTDA | CNPJ 46.505.712/0001-63 | Todos os direitos reservados.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
+            <Link
+              to="/"
+              className="text-gray-400 hover:text-white hover:underline transition-colors text-sm"
+            >
+              Contato
+            </Link>
             <Link
               to="/privacy-policy"
               className="text-gray-400 hover:text-white hover:underline transition-colors text-sm"
