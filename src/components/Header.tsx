@@ -1,7 +1,14 @@
+
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface HeaderProps {
   enableScrollAnimation?: boolean;
@@ -37,6 +44,35 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
 
   // Se a animação não está habilitada, sempre use o estilo "scrolled"
   const isScrolledState = enableScrollAnimation ? hasScrolled : true;
+
+  const servicosItems = [
+    "Automação Contábil",
+    "Integração WhatsApp Business",
+    "Desenvolvimento de Apps",
+    "Marketing Digital",
+    "Consultoria em IA",
+    "Sistemas de Gestão",
+    "Business Intelligence",
+    "Análise de Dados",
+    "Cloud Computing",
+    "Segurança Digital",
+    "E-commerce Solutions",
+    "CRM Personalizado",
+    "Workflow Automation",
+    "API Integration",
+    "Digital Transformation",
+    "Process Optimization",
+    "Tech Support"
+  ];
+
+  const cursosItems = [
+    "Contabilidade Digital",
+    "Marketing para Contadores",
+    "Gestão de Escritórios",
+    "Excel Avançado",
+    "Power BI",
+    "Inteligência Artificial"
+  ];
 
   return (
     <header
@@ -90,53 +126,67 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
                 )}
               </a>
               <a
-                href="#services"
+                href="#about"
                 className={`px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group ${
                   isScrolledState
                     ? "text-gray-800 hover:text-blue-800"
                     : "text-white hover:text-white"
                 }`}
               >
-                Serviços
+                Quem Somos
                 {!isScrolledState && (
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                 )}
               </a>
+              <DropdownMenu>
+                <DropdownMenuTrigger className={`flex items-center px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group ${
+                  isScrolledState
+                    ? "text-gray-800 hover:text-blue-800"
+                    : "text-white hover:text-white"
+                }`}>
+                  Serviços
+                  <ChevronDown className="ml-1 h-3 w-3 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                  {!isScrolledState && (
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                  )}
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-64 bg-slate-200 shadow-lg border-0 p-2">
+                  {servicosItems.map((item, index) => (
+                    <DropdownMenuItem key={index} className="text-gray-800 hover:bg-white/50 cursor-pointer transition-all duration-200 hover:underline">
+                      {item}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+              <DropdownMenu>
+                <DropdownMenuTrigger className={`flex items-center px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group ${
+                  isScrolledState
+                    ? "text-gray-800 hover:text-blue-800"
+                    : "text-white hover:text-white"
+                }`}>
+                  Cursos
+                  <ChevronDown className="ml-1 h-3 w-3 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                  {!isScrolledState && (
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                  )}
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-64 bg-slate-200 shadow-lg border-0 p-2">
+                  {cursosItems.map((item, index) => (
+                    <DropdownMenuItem key={index} className="text-gray-800 hover:bg-white/50 cursor-pointer transition-all duration-200 hover:underline">
+                      {item}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
               <a
-                href="#how-it-works"
+                href="#blog"
                 className={`px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group ${
                   isScrolledState
                     ? "text-gray-800 hover:text-blue-800"
                     : "text-white hover:text-white"
                 }`}
               >
-                Como Funciona
-                {!isScrolledState && (
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-                )}
-              </a>
-              <a
-                href="#testimonials"
-                className={`px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group ${
-                  isScrolledState
-                    ? "text-gray-800 hover:text-blue-800"
-                    : "text-white hover:text-white"
-                }`}
-              >
-                Cursos
-                {!isScrolledState && (
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-                )}
-              </a>
-              <a
-                href="#contact"
-                className={`px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group ${
-                  isScrolledState
-                    ? "text-gray-800 hover:text-blue-800"
-                    : "text-white hover:text-white"
-                }`}
-              >
-                Contato
+                Blog
                 {!isScrolledState && (
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                 )}
@@ -204,28 +254,28 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
                 Início
               </a>
               <a
+                href="#about"
+                className="block text-white hover:text-blue-300 px-3 py-2 text-base font-medium"
+              >
+                Quem Somos
+              </a>
+              <a
                 href="#services"
                 className="block text-white hover:text-blue-300 px-3 py-2 text-base font-medium"
               >
                 Serviços
               </a>
               <a
-                href="#how-it-works"
-                className="block text-white hover:text-blue-300 px-3 py-2 text-base font-medium"
-              >
-                Como Funciona
-              </a>
-              <a
-                href="#testimonials"
+                href="#courses"
                 className="block text-white hover:text-blue-300 px-3 py-2 text-base font-medium"
               >
                 Cursos
               </a>
               <a
-                href="#contact"
+                href="#blog"
                 className="block text-white hover:text-blue-300 px-3 py-2 text-base font-medium"
               >
-                Contato
+                Blog
               </a>
               <div className="flex flex-col gap-2 mt-4">
                 <Button className="w-full bg-green-500 hover:bg-green-600 text-white hover:text-white">
