@@ -7,14 +7,14 @@ const PrivacyPolicy = () => {
     <div className="min-h-screen bg-white">
       <Header />
       
-      <main className="pt-32 pb-16">
+      <main className="pt-32 pb-32">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold text-gray-900 mb-8">
               Política de Privacidade
             </h1>
             
-            <div className="bg-gray-50 p-8 rounded-lg">
+            <div className="bg-gray-100 p-8 rounded-lg">
               <div className="text-lg text-gray-700 space-y-2">
                 <p><strong>Última atualização:</strong> 02 de junho de 2025</p>
                 <p><strong>Responsável pelo tratamento dos dados:</strong> MULTI BPO DO BRASIL | CNPJ 46.505.712/0001-63</p>
@@ -207,7 +207,7 @@ const PrivacyPolicy = () => {
               </div>
             </section>
 
-            <section className="bg-gray-50 p-8 rounded-lg">
+            <section className="bg-gray-100 p-8 rounded-lg">
               <h2 className="text-2xl font-semibold text-blue-950 mb-4">
                 Conformidade
               </h2>
