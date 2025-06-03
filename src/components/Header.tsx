@@ -34,7 +34,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
       <div className="max-w-[1440px] mx-auto px-4 sm:px-14 lg:px-14">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <Link to="/" className="relative w-[120px] h-8">
+            <Link to="/" className="relative w-[100px] lg:w-[120px] h-8">
               {/* Logo light (antes da animação) */}
               <img
                 src="/lovable-uploads/23df4ac1-3e96-4fab-b0ce-fad4c7379950.png"
@@ -54,11 +54,11 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
             </Link>
           </div>
 
-          <nav className="hidden min-[845px]:block">
-            <div className="flex items-baseline space-x-6">
+          <nav className="hidden min-[945px]:block">
+            <div className="flex items-baseline space-x-4 lg:space-x-6">
               <Link
                 to="/"
-                className={`px-2 py-2 text-sm font-medium transition-colors relative group ${
+                className={`px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group ${
                   isScrolledState
                     ? "text-gray-800 hover:text-blue-800"
                     : "text-white hover:text-white"
@@ -71,7 +71,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
               </Link>
               <a
                 href="#services"
-                className={`px-2 py-2 text-sm font-medium transition-colors relative group ${
+                className={`px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group ${
                   isScrolledState
                     ? "text-gray-800 hover:text-blue-800"
                     : "text-white hover:text-white"
@@ -84,7 +84,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
               </a>
               <a
                 href="#how-it-works"
-                className={`px-2 py-2 text-sm font-medium transition-colors relative group ${
+                className={`px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group ${
                   isScrolledState
                     ? "text-gray-800 hover:text-blue-800"
                     : "text-white hover:text-white"
@@ -97,7 +97,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
               </a>
               <a
                 href="#testimonials"
-                className={`px-2 py-2 text-sm font-medium transition-colors relative group ${
+                className={`px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group ${
                   isScrolledState
                     ? "text-gray-800 hover:text-blue-800"
                     : "text-white hover:text-white"
@@ -110,7 +110,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
               </a>
               <a
                 href="#contact"
-                className={`px-2 py-2 text-sm font-medium transition-colors relative group ${
+                className={`px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group ${
                   isScrolledState
                     ? "text-gray-800 hover:text-blue-800"
                     : "text-white hover:text-white"
@@ -124,20 +124,29 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
             </div>
           </nav>
 
-          <div className="hidden min-[845px]:block">
+          <div className="hidden min-[945px]:flex gap-2 lg:gap-4">
             <Button
-              className={`w-[120px] h-10 text-sm font-medium transition-colors duration-300 ${
+              className={`w-[110px] lg:w-[130px] h-9 lg:h-10 text-xs lg:text-sm font-medium transition-colors duration-300 ${
                 isScrolledState
-                  ? "text-white hover:text-white bg-blue-800 hover:bg-blue-700"
-                  : "border-white text-white hover:bg-white hover:text-blue-800 bg-transparent"
+                  ? "text-blue-800 bg-transparent border-[1px] border-blue-800 hover:bg-blue-800 hover:text-white"
+                  : "border-white text-white hover:bg-white hover:text-blue-600 bg-transparent"
               }`}
               variant={isScrolledState ? "default" : "outline"}
             >
               Começar Agora
             </Button>
+            <Button
+              className={`w-[110px] lg:w-[130px] h-9 lg:h-10 text-xs lg:text-sm font-medium transition-colors duration-300 ${
+                isScrolledState
+                  ? "bg-emerald-500 hover:bg-emerald-600 text-white"
+                  : "bg-white hover:bg-emerald-500 text-black hover:text-white"
+              }`}
+            >
+              Login
+            </Button>
           </div>
 
-          <div className="min-[845px]:hidden">
+          <div className="min-[945px]:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className={`transition-colors ${
@@ -162,7 +171,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
         </div>
 
         {isMenuOpen && (
-          <div className="min-[845px]:hidden">
+          <div className="min-[945px]:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black/30 backdrop-blur-sm border-t border-white/20 rounded-b-lg">
               <Link
                 to="/"
@@ -194,9 +203,14 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
               >
                 Contato
               </a>
-              <Button className="w-full mt-4 bg-green-500 hover:bg-green-600 text-white hover:text-white">
-                Começar Agora
-              </Button>
+              <div className="flex flex-col gap-2 mt-4">
+                <Button className="w-full bg-green-500 hover:bg-green-600 text-white hover:text-white">
+                  Começar Agora
+                </Button>
+                <Button className="w-full bg-gradient-to-r from-blue-600 to-green-400 hover:from-blue-500 hover:to-green-300 text-white">
+                  Fale Conosco
+                </Button>
+              </div>
             </div>
           </div>
         )}

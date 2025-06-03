@@ -64,17 +64,18 @@ const NewHero = () => {
       <div className="relative z-10 flex-1 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center space-y-4">
           {/* Heading + typewriter */}
-          <div className="space-y-12">
-            <h1 className="text-3xl font-bold text-white leading-tight md:text-4xl mt-[10rem]">
+          <div className="space-y-10 my-12">
+            <h1 className="text-3xl font-bold text-white leading-tight md:text-4xl mt-24">
               O seu Escritório de Contabilidade está preparado para{" "}
               <TypewriterEffect
                 words={[
-                  "o futuro?",
-                  "a digitalização?",
-                  "a inovação?",
-                  "a automação?",
+                  "o Futuro?",
+                  "a Digitalização?",
+                  "a Inovação?",
+                  "a Automação?",
+                  "a Inteligência Artificial?",
                 ]}
-                className="text-blue-600"
+                className="text-blue-500"
                 typingSpeed={85}
                 deletingSpeed={65}
                 pauseDuration={1500}
