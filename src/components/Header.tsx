@@ -61,7 +61,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
                 to="/"
                 className={`px-2 py-2 text-sm font-medium transition-colors relative group ${
                   isScrolledState
-                    ? "text-gray-800 hover:text-blue-600"
+                    ? "text-gray-800 hover:text-blue-800"
                     : "text-white hover:text-white"
                 }`}
               >
@@ -74,7 +74,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
                 href="#services"
                 className={`px-2 py-2 text-sm font-medium transition-colors relative group ${
                   isScrolledState
-                    ? "text-gray-800 hover:text-blue-600"
+                    ? "text-gray-800 hover:text-blue-800"
                     : "text-white hover:text-white"
                 }`}
               >
@@ -87,7 +87,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
                 href="#how-it-works"
                 className={`px-2 py-2 text-sm font-medium transition-colors relative group ${
                   isScrolledState
-                    ? "text-gray-800 hover:text-blue-600"
+                    ? "text-gray-800 hover:text-blue-800"
                     : "text-white hover:text-white"
                 }`}
               >
@@ -100,7 +100,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
                 href="#testimonials"
                 className={`px-2 py-2 text-sm font-medium transition-colors relative group ${
                   isScrolledState
-                    ? "text-gray-800 hover:text-blue-600"
+                    ? "text-gray-800 hover:text-blue-800"
                     : "text-white hover:text-white"
                 }`}
               >
@@ -113,7 +113,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
                 href="#contact"
                 className={`px-2 py-2 text-sm font-medium transition-colors relative group ${
                   isScrolledState
-                    ? "text-gray-800 hover:text-blue-600"
+                    ? "text-gray-800 hover:text-blue-800"
                     : "text-white hover:text-white"
                 }`}
               >
