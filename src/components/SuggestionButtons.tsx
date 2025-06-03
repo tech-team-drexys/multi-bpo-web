@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
 
 interface SuggestionButtonsProps {
   onSuggestionClick: (text: string) => void;
@@ -9,18 +9,18 @@ const SuggestionButtons = ({ onSuggestionClick }: SuggestionButtonsProps) => {
   const [visibleButtons, setVisibleButtons] = useState(0);
 
   const suggestions = [
-    'O que é DAS?',
-    'Como abrir empresa?',
-    'Vale a pena ser MEI?',
-    'Quais guias pagar?',
-    'Pendência no CNPJ',
-    'Como reduzir imposto?',
-    'Mudei de regime, e aí?'
+    "O que é DAS?",
+    "Como abrir empresa?",
+    "Vale a pena ser MEI?",
+    "Quais guias pagar?",
+    "Pendência no CNPJ",
+    "Como reduzir imposto?",
+    "Mudei de regime, e aí?",
   ];
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setVisibleButtons(prev => {
+      setVisibleButtons((prev) => {
         if (prev < suggestions.length) {
           return prev + 1;
         }
@@ -48,16 +48,21 @@ const SuggestionButtons = ({ onSuggestionClick }: SuggestionButtonsProps) => {
               rounded-2xl text-sm font-medium
               transition-all duration-300 ease-out
               hover:border-white/40
-              hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]
+              hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]
               transform-gpu
-              ${index < visibleButtons 
-                ? 'opacity-100 translate-y-0 [transition-delay:0ms]' 
-                : 'opacity-0 translate-y-4'
+              ${
+                index < visibleButtons
+                  ? "opacity-100 translate-y-0 [transition-delay:0ms]"
+                  : "opacity-0 translate-y-4"
               }
             `}
-            style={index >= visibleButtons ? {
-              transitionDelay: `${index * 150}ms`
-            } : undefined}
+            style={
+              index >= visibleButtons
+                ? {
+                    transitionDelay: `${index * 150}ms`,
+                  }
+                : undefined
+            }
           >
             {suggestion}
           </Button>

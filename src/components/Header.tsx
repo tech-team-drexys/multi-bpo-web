@@ -40,8 +40,10 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolledState ? "bg-white border-b border-gray-200" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-1 ${
+        isScrolledState
+          ? "bg-white border-b border-gray-200"
+          : "bg-transparent border-b border-transparent"
       }`}
     >
       <div className="max-w-[1440px] mx-auto px-4 sm:px-14 lg:px-14">
