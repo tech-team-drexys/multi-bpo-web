@@ -10,14 +10,17 @@ const PrivacyPolicy = () => {
       <main className="pt-32 pb-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            <h1 className="text-4xl font-bold text-gray-900 mb-8">
               Política de Privacidade
             </h1>
-            <div className="text-lg text-gray-600 space-y-2">
-              <p><strong>Última atualização:</strong> 02 de junho de 2025</p>
-              <p><strong>Responsável pelo tratamento dos dados:</strong> MULTI BPO DO BRASIL | CNPJ 46.505.712/0001-63</p>
-              <p><strong>Endereço eletrônico:</strong> <a href="https://www.multibpo.com.br" className="text-blue-600 hover:underline">https://www.multibpo.com.br</a></p>
-              <p><strong>E-mail para contato:</strong> <a href="mailto:privacidade@multibpo.com.br" className="text-blue-600 hover:underline">privacidade@multibpo.com.br</a></p>
+            
+            <div className="bg-gray-50 p-8 rounded-lg">
+              <div className="text-lg text-gray-700 space-y-2">
+                <p><strong>Última atualização:</strong> 02 de junho de 2025</p>
+                <p><strong>Responsável pelo tratamento dos dados:</strong> MULTI BPO DO BRASIL | CNPJ 46.505.712/0001-63</p>
+                <p><strong>Endereço eletrônico:</strong> <a href="https://www.multibpo.com.br" className="text-blue-600 hover:underline">https://www.multibpo.com.br</a></p>
+                <p><strong>E-mail para contato:</strong> <a href="mailto:privacidade@multibpo.com.br" className="text-blue-600 hover:underline">privacidade@multibpo.com.br</a></p>
+              </div>
             </div>
           </div>
 
