@@ -45,33 +45,34 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
   // Se a animação não está habilitada, sempre use o estilo "scrolled"
   const isScrolledState = enableScrollAnimation ? hasScrolled : true;
 
-  const servicosItems = [
-    "Automação Contábil",
-    "Integração WhatsApp Business",
-    "Desenvolvimento de Apps",
-    "Marketing Digital",
-    "Consultoria em IA",
-    "Sistemas de Gestão",
-    "Business Intelligence",
-    "Análise de Dados",
-    "Cloud Computing",
-    "Segurança Digital",
-    "E-commerce Solutions",
-    "CRM Personalizado",
-    "Workflow Automation",
-    "API Integration",
-    "Digital Transformation",
-    "Process Optimization",
-    "Tech Support"
+  const servicosCategories = [
+    {
+      title: "Automação & IA",
+      items: ["Automação Contábil", "Consultoria em IA", "Workflow Automation", "Process Optimization", "API Integration", "Digital Transformation"]
+    },
+    {
+      title: "Desenvolvimento",
+      items: ["Desenvolvimento de Apps", "Sistemas de Gestão", "E-commerce Solutions", "CRM Personalizado", "Cloud Computing"]
+    },
+    {
+      title: "Marketing & Dados",
+      items: ["Marketing Digital", "Business Intelligence", "Análise de Dados", "Segurança Digital", "Tech Support", "Integração WhatsApp Business"]
+    }
   ];
 
-  const cursosItems = [
-    "Contabilidade Digital",
-    "Marketing para Contadores",
-    "Gestão de Escritórios",
-    "Excel Avançado",
-    "Power BI",
-    "Inteligência Artificial"
+  const cursosCategories = [
+    {
+      title: "Contabilidade",
+      items: ["Contabilidade Digital", "Gestão de Escritórios"]
+    },
+    {
+      title: "Marketing & Tecnologia",
+      items: ["Marketing para Contadores", "Inteligência Artificial"]
+    },
+    {
+      title: "Ferramentas",
+      items: ["Excel Avançado", "Power BI"]
+    }
   ];
 
   return (
@@ -139,7 +140,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
                 )}
               </a>
               <DropdownMenu>
-                <DropdownMenuTrigger className={`flex items-center px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group ${
+                <DropdownMenuTrigger className={`flex items-center px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group focus:outline-none ${
                   isScrolledState
                     ? "text-gray-800 hover:text-blue-800"
                     : "text-white hover:text-white"
@@ -150,16 +151,25 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                   )}
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-64 bg-slate-200 shadow-lg border-0 p-2">
-                  {servicosItems.map((item, index) => (
-                    <DropdownMenuItem key={index} className="text-gray-800 hover:bg-white/50 cursor-pointer transition-all duration-200 hover:underline">
-                      {item}
-                    </DropdownMenuItem>
-                  ))}
+                <DropdownMenuContent className="w-[600px] bg-slate-200 shadow-lg border-0 p-4">
+                  <div className="grid grid-cols-3 gap-6">
+                    {servicosCategories.map((category, categoryIndex) => (
+                      <div key={categoryIndex}>
+                        <h4 className="font-semibold text-gray-900 mb-2 text-sm">{category.title}</h4>
+                        <div className="space-y-1">
+                          {category.items.map((item, index) => (
+                            <DropdownMenuItem key={index} className="text-gray-800 hover:bg-white/50 cursor-pointer transition-all duration-200 text-xs p-2">
+                              {item}
+                            </DropdownMenuItem>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </DropdownMenuContent>
               </DropdownMenu>
               <DropdownMenu>
-                <DropdownMenuTrigger className={`flex items-center px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group ${
+                <DropdownMenuTrigger className={`flex items-center px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group focus:outline-none ${
                   isScrolledState
                     ? "text-gray-800 hover:text-blue-800"
                     : "text-white hover:text-white"
@@ -170,12 +180,21 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                   )}
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-64 bg-slate-200 shadow-lg border-0 p-2">
-                  {cursosItems.map((item, index) => (
-                    <DropdownMenuItem key={index} className="text-gray-800 hover:bg-white/50 cursor-pointer transition-all duration-200 hover:underline">
-                      {item}
-                    </DropdownMenuItem>
-                  ))}
+                <DropdownMenuContent className="w-[450px] bg-slate-200 shadow-lg border-0 p-4">
+                  <div className="grid grid-cols-3 gap-6">
+                    {cursosCategories.map((category, categoryIndex) => (
+                      <div key={categoryIndex}>
+                        <h4 className="font-semibold text-gray-900 mb-2 text-sm">{category.title}</h4>
+                        <div className="space-y-1">
+                          {category.items.map((item, index) => (
+                            <DropdownMenuItem key={index} className="text-gray-800 hover:bg-white/50 cursor-pointer transition-all duration-200 text-xs p-2">
+                              {item}
+                            </DropdownMenuItem>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </DropdownMenuContent>
               </DropdownMenu>
               <a
