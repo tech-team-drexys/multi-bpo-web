@@ -1,3 +1,6 @@
+
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <footer className="text-white bg-blue-950">
@@ -96,18 +99,18 @@ const Footer = () => {
             © 2024 MULTIBPO. Todos os direitos reservados.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a
-              href="#"
+            <Link
+              to="/privacy-policy"
               className="text-gray-400 hover:text-blue-400 transition-colors text-sm"
             >
               Política de Privacidade
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/terms-of-use"
               className="text-gray-400 hover:text-blue-400 transition-colors text-sm"
             >
               Termos de Uso
-            </a>
+            </Link>
           </div>
         </div>
       </div>
