@@ -15,7 +15,7 @@ const PrivacyPolicy = () => {
             </h1>
             
             <div className="bg-gray-100 p-8 rounded-lg">
-              <div className="text-lg text-gray-700 space-y-2">
+              <div className="text-lg text-gray-700 space-y-2 text-left">
                 <p><strong>Última atualização:</strong> 02 de junho de 2025</p>
                 <p><strong>Responsável pelo tratamento dos dados:</strong> MULTI BPO DO BRASIL | CNPJ 46.505.712/0001-63</p>
                 <p><strong>Endereço eletrônico:</strong> <a href="https://www.multibpo.com.br" className="text-blue-600 hover:underline">https://www.multibpo.com.br</a></p>
