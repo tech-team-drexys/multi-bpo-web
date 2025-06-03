@@ -1,24 +1,34 @@
+
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const Header = () => {
+interface HeaderProps {
+  enableScrollAnimation?: boolean;
+}
+
+const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
 
   useEffect(() => {
+    if (!enableScrollAnimation) return;
+
     const handleScroll = () => {
       setHasScrolled(window.scrollY > 10);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [enableScrollAnimation]);
+
+  // Se a animação não está habilitada, sempre use o estilo "scrolled"
+  const isScrolledState = enableScrollAnimation ? hasScrolled : true;
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        hasScrolled ? "bg-white shadow-lg" : "bg-transparent shadow-none"
+        isScrolledState ? "bg-white shadow-lg" : "bg-transparent shadow-none"
       }`}
     >
       <div className="max-w-8xl mx-auto px-4 sm:px-8 lg:px-14">
@@ -30,7 +40,7 @@ const Header = () => {
                 src="/lovable-uploads/23df4ac1-3e96-4fab-b0ce-fad4c7379950.png"
                 alt="MULTIBPO Logo"
                 className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
-                  hasScrolled ? "opacity-0" : "opacity-100"
+                  isScrolledState ? "opacity-0" : "opacity-100"
                 }`}
               />
               {/* Logo dark (após a animação) */}
@@ -38,7 +48,7 @@ const Header = () => {
                 src="/lovable-uploads/7f9c858b-7f32-49e9-a746-6e96fa1d6e2d.png"
                 alt="MULTIBPO Logo"
                 className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
-                  hasScrolled ? "opacity-100" : "opacity-0"
+                  isScrolledState ? "opacity-100" : "opacity-0"
                 }`}
               />
             </div>
@@ -49,65 +59,65 @@ const Header = () => {
               <a
                 href="#home"
                 className={`px-2 py-2 text-sm font-medium transition-colors relative group ${
-                  hasScrolled
+                  isScrolledState
                     ? "text-gray-800 hover:text-blue-500"
                     : "text-white hover:text-white"
                 }`}
               >
                 Início
-                {!hasScrolled && (
+                {!isScrolledState && (
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                 )}
               </a>
               <a
                 href="#services"
                 className={`px-2 py-2 text-sm font-medium transition-colors relative group ${
-                  hasScrolled
+                  isScrolledState
                     ? "text-gray-800 hover:text-blue-500"
                     : "text-white hover:text-white"
                 }`}
               >
                 Serviços
-                {!hasScrolled && (
+                {!isScrolledState && (
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                 )}
               </a>
               <a
                 href="#how-it-works"
                 className={`px-2 py-2 text-sm font-medium transition-colors relative group ${
-                  hasScrolled
+                  isScrolledState
                     ? "text-gray-800 hover:text-blue-500"
                     : "text-white hover:text-white"
                 }`}
               >
                 Como Funciona
-                {!hasScrolled && (
+                {!isScrolledState && (
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                 )}
               </a>
               <a
                 href="#testimonials"
                 className={`px-2 py-2 text-sm font-medium transition-colors relative group ${
-                  hasScrolled
+                  isScrolledState
                     ? "text-gray-800 hover:text-blue-500"
                     : "text-white hover:text-white"
                 }`}
               >
                 Cursos
-                {!hasScrolled && (
+                {!isScrolledState && (
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                 )}
               </a>
               <a
                 href="#contact"
                 className={`px-2 py-2 text-sm font-medium transition-colors relative group ${
-                  hasScrolled
+                  isScrolledState
                     ? "text-gray-800 hover:text-blue-500"
                     : "text-white hover:text-white"
                 }`}
               >
                 Contato
-                {!hasScrolled && (
+                {!isScrolledState && (
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                 )}
               </a>
@@ -117,11 +127,11 @@ const Header = () => {
           <div className="hidden md:block">
             <Button
               className={`w-[120px] h-10 text-sm font-medium transition-colors duration-300 ${
-                hasScrolled
+                isScrolledState
                   ? "text-white hover:text-white bg-blue-800 hover:bg-blue-700"
                   : "border-white text-white hover:bg-white hover:text-blue-800 bg-transparent"
               }`}
-              variant={hasScrolled ? "default" : "outline"}
+              variant={isScrolledState ? "default" : "outline"}
             >
               Começar Agora
             </Button>
@@ -131,7 +141,7 @@ const Header = () => {
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className={`transition-colors ${
-                hasScrolled
+                isScrolledState
                   ? "text-gray-800 hover:text-blue-500"
                   : "text-white hover:text-blue-300"
               }`}
@@ -139,12 +149,12 @@ const Header = () => {
               {isMenuOpen ? (
                 <X
                   size={24}
-                  className={hasScrolled ? "text-gray-800" : "text-white"}
+                  className={isScrolledState ? "text-gray-800" : "text-white"}
                 />
               ) : (
                 <Menu
                   size={24}
-                  className={hasScrolled ? "text-gray-800" : "text-white"}
+                  className={isScrolledState ? "text-gray-800" : "text-white"}
                 />
               )}
             </button>

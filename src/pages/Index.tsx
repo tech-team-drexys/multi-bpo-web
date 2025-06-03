@@ -1,4 +1,3 @@
-
 import Header from '@/components/Header';
 import NewHero from '@/components/NewHero';
 import About from '@/components/About';
@@ -14,7 +13,7 @@ import Footer from '@/components/Footer';
 const Index = () => {
   return (
     <div className="min-h-screen bg-white">
-      <Header />
+      <Header enableScrollAnimation={true} />
       <NewHero />
       <About />
       <Services />
