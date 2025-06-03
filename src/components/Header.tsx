@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 interface HeaderProps {
   enableScrollAnimation?: boolean;
@@ -10,6 +10,19 @@ interface HeaderProps {
 const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleNavigateToHome = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
+    event.preventDefault();
+    if (location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      navigate("/");
+    }
+  };
 
   useEffect(() => {
     if (!enableScrollAnimation) return;
@@ -34,7 +47,11 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
       <div className="max-w-[1440px] mx-auto px-4 sm:px-14 lg:px-14">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <Link to="/" className="relative w-[100px] lg:w-[120px] h-8">
+            <a
+              href="/"
+              onClick={handleNavigateToHome}
+              className="relative w-[100px] lg:w-[120px] h-8 cursor-pointer"
+            >
               {/* Logo light (antes da animação) */}
               <img
                 src="/lovable-uploads/23df4ac1-3e96-4fab-b0ce-fad4c7379950.png"
@@ -51,14 +68,15 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
                   isScrolledState ? "opacity-100" : "opacity-0"
                 }`}
               />
-            </Link>
+            </a>
           </div>
 
           <nav className="hidden min-[945px]:block">
             <div className="flex items-baseline space-x-4 lg:space-x-6">
-              <Link
-                to="/"
-                className={`px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group ${
+              <a
+                href="/"
+                onClick={handleNavigateToHome}
+                className={`px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group cursor-pointer ${
                   isScrolledState
                     ? "text-gray-800 hover:text-blue-800"
                     : "text-white hover:text-white"
@@ -68,7 +86,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
                 {!isScrolledState && (
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                 )}
-              </Link>
+              </a>
               <a
                 href="#services"
                 className={`px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group ${
@@ -173,12 +191,16 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
         {isMenuOpen && (
           <div className="min-[945px]:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black/30 backdrop-blur-sm border-t border-white/20 rounded-b-lg">
-              <Link
-                to="/"
-                className="block text-white hover:text-blue-300 px-3 py-2 text-base font-medium"
+              <a
+                href="/"
+                onClick={(e) => {
+                  handleNavigateToHome(e);
+                  setIsMenuOpen(false);
+                }}
+                className="block text-white hover:text-blue-300 px-3 py-2 text-base font-medium cursor-pointer"
               >
                 Início
-              </Link>
+              </a>
               <a
                 href="#services"
                 className="block text-white hover:text-blue-300 px-3 py-2 text-base font-medium"
