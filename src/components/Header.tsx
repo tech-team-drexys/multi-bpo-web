@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -32,7 +31,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
         isScrolledState ? "bg-white border-b border-gray-200" : "bg-transparent"
       }`}
     >
-      <div className="max-w-8xl mx-auto px-4 sm:px-8 lg:px-14">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-14 lg:px-14">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link to="/" className="relative w-[120px] h-8">
@@ -55,7 +54,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
             </Link>
           </div>
 
-          <nav className="hidden md:block">
+          <nav className="hidden min-[845px]:block">
             <div className="flex items-baseline space-x-6">
               <Link
                 to="/"
@@ -125,7 +124,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
             </div>
           </nav>
 
-          <div className="hidden md:block">
+          <div className="hidden min-[845px]:block">
             <Button
               className={`w-[120px] h-10 text-sm font-medium transition-colors duration-300 ${
                 isScrolledState
@@ -138,7 +137,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
             </Button>
           </div>
 
-          <div className="md:hidden">
+          <div className="min-[845px]:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className={`transition-colors ${
@@ -163,7 +162,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
         </div>
 
         {isMenuOpen && (
-          <div className="md:hidden">
+          <div className="min-[845px]:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black/30 backdrop-blur-sm border-t border-white/20 rounded-b-lg">
               <Link
                 to="/"
