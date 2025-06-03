@@ -1,4 +1,5 @@
 
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -48,9 +49,9 @@ const NewHero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col w-full max-w-[1440px] mx-auto overflow-hidden">
+    <section className="relative min-h-screen flex flex-col overflow-hidden">
       {/* Video Background with Overlay */}
-      <div className="absolute inset-0 z-0 w-full">
+      <div className="absolute inset-0 z-0">
         <video
           src="/video2.mp4"
           autoPlay
@@ -176,3 +177,4 @@ const NewHero = () => {
 };
 
 export default NewHero;
+
