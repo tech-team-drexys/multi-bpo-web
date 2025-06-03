@@ -28,7 +28,6 @@ const Footer = () => {
 
             {/* Redes sociais */}
             <div className="space-y-3">
-              <h3 className="text-lg font-semibold">Siga-nos</h3>
               <div className="flex space-x-4">
                 <a
                   href="#"
