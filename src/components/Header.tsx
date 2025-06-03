@@ -52,11 +52,11 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
     },
     {
       title: "Desenvolvimento",
-      items: ["Desenvolvimento de Apps", "Sistemas de Gestão", "E-commerce Solutions", "CRM Personalizado", "Cloud Computing"]
+      items: ["Desenvolvimento de Apps", "Sistemas de Gestão", "E-commerce Solutions", "CRM Personalizado", "Cloud Computing", "Integração de Sistemas"]
     },
     {
       title: "Marketing & Dados",
-      items: ["Marketing Digital", "Business Intelligence", "Análise de Dados", "Segurança Digital", "Tech Support", "Integração WhatsApp Business"]
+      items: ["Marketing Digital", "Business Intelligence", "Análise de Dados", "Segurança Digital", "Tech Support"]
     }
   ];
 
@@ -139,64 +139,64 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                 )}
               </a>
-              <DropdownMenu>
-                <DropdownMenuTrigger className={`flex items-center px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group focus:outline-none ${
+              <div className="relative group">
+                <div className={`flex items-center px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative cursor-pointer ${
                   isScrolledState
                     ? "text-gray-800 hover:text-blue-800"
                     : "text-white hover:text-white"
                 }`}>
                   Serviços
-                  <ChevronDown className="ml-1 h-3 w-3 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                  <ChevronDown className="ml-1 h-3 w-3 transition-transform duration-200 group-hover:rotate-180" />
                   {!isScrolledState && (
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                   )}
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-[600px] bg-slate-200 shadow-lg border-0 p-4">
-                  <div className="grid grid-cols-3 gap-6">
+                </div>
+                <div className="absolute top-full left-0 w-[650px] bg-slate-200 shadow-lg border-0 p-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                  <div className="grid grid-cols-3 gap-8">
                     {servicosCategories.map((category, categoryIndex) => (
-                      <div key={categoryIndex}>
-                        <h4 className="font-semibold text-gray-900 mb-2 text-sm">{category.title}</h4>
-                        <div className="space-y-1">
+                      <div key={categoryIndex} className="text-left">
+                        <h4 className="font-semibold text-gray-900 mb-3 text-sm text-left">{category.title}</h4>
+                        <div className="space-y-2">
                           {category.items.map((item, index) => (
-                            <DropdownMenuItem key={index} className="text-gray-800 hover:bg-white/50 cursor-pointer transition-all duration-200 text-xs p-2">
+                            <div key={index} className="text-gray-800 hover:bg-white/50 cursor-pointer transition-all duration-200 text-xs p-2 rounded text-left">
                               {item}
-                            </DropdownMenuItem>
+                            </div>
                           ))}
                         </div>
                       </div>
                     ))}
                   </div>
-                </DropdownMenuContent>
-              </DropdownMenu>
-              <DropdownMenu>
-                <DropdownMenuTrigger className={`flex items-center px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group focus:outline-none ${
+                </div>
+              </div>
+              <div className="relative group">
+                <div className={`flex items-center px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative cursor-pointer ${
                   isScrolledState
                     ? "text-gray-800 hover:text-blue-800"
                     : "text-white hover:text-white"
                 }`}>
                   Cursos
-                  <ChevronDown className="ml-1 h-3 w-3 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                  <ChevronDown className="ml-1 h-3 w-3 transition-transform duration-200 group-hover:rotate-180" />
                   {!isScrolledState && (
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                   )}
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-[450px] bg-slate-200 shadow-lg border-0 p-4">
-                  <div className="grid grid-cols-3 gap-6">
+                </div>
+                <div className="absolute top-full left-0 w-[500px] bg-slate-200 shadow-lg border-0 p-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                  <div className="grid grid-cols-3 gap-8">
                     {cursosCategories.map((category, categoryIndex) => (
-                      <div key={categoryIndex}>
-                        <h4 className="font-semibold text-gray-900 mb-2 text-sm">{category.title}</h4>
-                        <div className="space-y-1">
+                      <div key={categoryIndex} className="text-left">
+                        <h4 className="font-semibold text-gray-900 mb-3 text-sm text-left">{category.title}</h4>
+                        <div className="space-y-2">
                           {category.items.map((item, index) => (
-                            <DropdownMenuItem key={index} className="text-gray-800 hover:bg-white/50 cursor-pointer transition-all duration-200 text-xs p-2">
+                            <div key={index} className="text-gray-800 hover:bg-white/50 cursor-pointer transition-all duration-200 text-xs p-2 rounded text-left">
                               {item}
-                            </DropdownMenuItem>
+                            </div>
                           ))}
                         </div>
                       </div>
                     ))}
                   </div>
-                </DropdownMenuContent>
-              </DropdownMenu>
+                </div>
+              </div>
               <a
                 href="#blog"
                 className={`px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group ${
