@@ -8,11 +8,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <img
-                src="/lovable-uploads/7f9c858b-7f32-49e9-a746-6e96fa1d6e2d.png"
-                alt="MULTIBPO Logo"
-                className="h-8 w-auto"
-              />
+              <Link to="/">
+                <img
+                  src="/lovable-uploads/23df4ac1-3e96-4fab-b0ce-fad4c7379950.png"
+                  alt="MULTIBPO Logo"
+                  className="h-8 w-auto"
+                />
+              </Link>
             </div>
             <p className="text-gray-400 leading-relaxed">
               Soluções digitais inteligentes para revolucionar a gestão de
@@ -24,22 +26,22 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Serviços</h3>
             <ul className="space-y-2 text-gray-400">
               <li>
-                <a href="#" className="hover:text-blue-400 transition-colors">
+                <a href="#" className="hover:text-blue-400 hover:underline transition-colors">
                   Automação Contábil
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-blue-400 transition-colors">
+                <a href="#" className="hover:text-blue-400 hover:underline transition-colors">
                   Integração WhatsApp
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-blue-400 transition-colors">
+                <a href="#" className="hover:text-blue-400 hover:underline transition-colors">
                   Desenvolvimento de Apps
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-blue-400 transition-colors">
+                <a href="#" className="hover:text-blue-400 hover:underline transition-colors">
                   Marketing Digital
                 </a>
               </li>
@@ -50,22 +52,22 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Empresa</h3>
             <ul className="space-y-2 text-gray-400">
               <li>
-                <a href="#" className="hover:text-blue-400 transition-colors">
+                <a href="#" className="hover:text-blue-400 hover:underline transition-colors">
                   Sobre Nós
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-blue-400 transition-colors">
+                <a href="#" className="hover:text-blue-400 hover:underline transition-colors">
                   Nossa Equipe
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-blue-400 transition-colors">
+                <a href="#" className="hover:text-blue-400 hover:underline transition-colors">
                   Carreiras
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-blue-400 transition-colors">
+                <a href="#" className="hover:text-blue-400 hover:underline transition-colors">
                   Blog
                 </a>
               </li>
@@ -76,17 +78,17 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Contato</h3>
             <ul className="space-y-2 text-gray-400">
               <li>
-                <a href="#" className="hover:text-blue-400 transition-colors">
+                <a href="#" className="hover:text-blue-400 hover:underline transition-colors">
                   Fale conosco
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-blue-400 transition-colors">
+                <a href="#" className="hover:text-blue-400 hover:underline transition-colors">
                   FAQ
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-blue-400 transition-colors">
+                <a href="#" className="hover:text-blue-400 hover:underline transition-colors">
                   WhatsApp
                 </a>
               </li>
@@ -101,13 +103,13 @@ const Footer = () => {
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link
               to="/privacy-policy"
-              className="text-gray-400 hover:text-blue-400 transition-colors text-sm"
+              className="text-gray-400 hover:text-blue-400 hover:underline transition-colors text-sm"
             >
               Política de Privacidade
             </Link>
             <Link
               to="/terms-of-use"
-              className="text-gray-400 hover:text-blue-400 transition-colors text-sm"
+              className="text-gray-400 hover:text-blue-400 hover:underline transition-colors text-sm"
             >
               Termos de Uso
             </Link>
