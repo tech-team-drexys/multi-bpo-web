@@ -51,13 +51,17 @@ const NewHero = () => {
       {/* Video Background with Overlay */}
       <div className="absolute inset-0 z-0">
         <video
-          src="/hero video.webm"
+          playsInline
+          preload="metadata"
           autoPlay
           muted
           loop
-          poster="/0001.png"
           className="w-full h-full object-cover"
-        />
+        >
+          <source src="/hero video.webm" type="video/webm" />
+          <source src="/hero video.mp4" type="video/mp4" />
+          <img src="/0001.png" alt="Fallback Image" />
+        </video>
         <div className="absolute inset-0 bg-black/60"></div>
       </div>
 
