@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,6 +11,38 @@ import SuggestionButtons from "./SuggestionButtons";
 
 const NewHero = () => {
   const [prompt, setPrompt] = useState("");
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      const handleLoadStart = () => console.log("Video: Load started");
+      const handleCanPlay = () => console.log("Video: Can play");
+      const handleError = (e: Event) => {
+        console.error("Video error:", e);
+        const target = e.target as HTMLVideoElement;
+        console.error("Video error details:", {
+          error: target.error,
+          networkState: target.networkState,
+          readyState: target.readyState,
+          currentSrc: target.currentSrc,
+        });
+      };
+      const handleLoadedData = () => console.log("Video: Data loaded");
+
+      video.addEventListener("loadstart", handleLoadStart);
+      video.addEventListener("canplay", handleCanPlay);
+      video.addEventListener("error", handleError);
+      video.addEventListener("loadeddata", handleLoadedData);
+
+      return () => {
+        video.removeEventListener("loadstart", handleLoadStart);
+        video.removeEventListener("canplay", handleCanPlay);
+        video.removeEventListener("error", handleError);
+        video.removeEventListener("loadeddata", handleLoadedData);
+      };
+    }
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -57,8 +89,8 @@ const NewHero = () => {
           loop
           className="w-full h-full object-cover"
         >
-          <source src="/hero video.webm" type="video/webm" />
-          <source src="/hero video.mp4" type="video/mp4" />
+          <source src="/hero-video.webm" type="video/webm" />
+          <source src="/hero-video.mp4" type="video/mp4" />
           <img src="/0001.png" alt="Fallback Image" />
         </video>
         <div className="absolute inset-0 bg-black/60"></div>
