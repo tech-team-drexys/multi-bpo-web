@@ -83,14 +83,13 @@ const NewHero = () => {
       {/* Video Background with Overlay */}
       <div className="absolute inset-0 z-0">
         <video
-          src="/hero video.mp4"
+          src="/hero-video.mp4"
           autoPlay
           muted
           loop
           playsInline
           preload="metadata"
           className="w-full h-full object-cover"
-          poster="/0001.png"
         />
         <div className="absolute inset-0 bg-black/60"></div>
       </div>
