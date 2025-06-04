@@ -1,5 +1,3 @@
-
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -53,10 +51,11 @@ const NewHero = () => {
       {/* Video Background with Overlay */}
       <div className="absolute inset-0 z-0">
         <video
-          src="/video2.mp4"
+          src="/hero video.webm"
           autoPlay
           muted
           loop
+          poster="/0001.png"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/60"></div>
@@ -177,4 +176,3 @@ const NewHero = () => {
 };
 
 export default NewHero;
-
