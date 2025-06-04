@@ -300,8 +300,8 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
             <Button
               className={`w-[110px] lg:w-[130px] h-9 lg:h-10 text-xs lg:text-sm font-medium transition-colors duration-300 ${
                 isScrolledState
-                  ? "bg-emerald-500 hover:bg-emerald-700 text-white"
-                  : "bg-white hover:bg-emerald-500 text-black hover:text-white"
+                  ? "bg-green-500 hover:bg-green-600 text-white"
+                  : "bg-white hover:bg-green-500 text-black hover:text-white"
               }`}
             >
               Login
@@ -337,7 +337,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
             ref={menuRef}
             className="min-[945px]:hidden absolute top-full left-0 right-0 mx-6 mt-2 z-50"
           >
-            <div className="py-6 space-y-1 sm:px-6 bg-slate-200 rounded-xl shadow-lg max-h-[calc(100vh-8rem)] overflow-y-auto">
+            <div className="py-6 px-6 space-y-1 bg-gray-100 rounded-xl shadow-lg max-h-[calc(100vh-8rem)] overflow-y-auto scrollbar-custom">
               <a
                 href="/"
                 onClick={(e) => {

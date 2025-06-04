@@ -9,13 +9,13 @@ const SuggestionButtons = ({ onSuggestionClick }: SuggestionButtonsProps) => {
   const [visibleButtons, setVisibleButtons] = useState(0);
 
   const suggestions = [
-    "O que é DAS?",
-    "Como abrir empresa?",
-    "Vale a pena ser MEI?",
-    "Quais guias pagar?",
-    "Pendência no CNPJ",
-    "Como reduzir imposto?",
-    "Mudei de regime, e aí?",
+    "Consultar Optante - SN",
+    "Pesquisar CNPJ RFB",
+    "Consultar I.E.",
+    "Consultar CNAE",
+    "Consultar Atividade",
+    "Consultar CND Federal",
+    "Consultar CND Estadual",
   ];
 
   useEffect(() => {

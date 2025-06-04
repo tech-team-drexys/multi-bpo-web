@@ -3,7 +3,7 @@ import { Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="text-slate-600 bg-slate-100">
+    <footer className="text-slate-600 bg-gray-200">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-12 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           {/* Primeira div - ~40% (2 colunas de 5) */}
