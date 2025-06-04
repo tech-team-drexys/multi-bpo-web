@@ -1,5 +1,4 @@
-
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -17,8 +16,12 @@ interface HeaderProps {
 const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
+  const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(
+    null
+  );
   const location = useLocation();
   const navigate = useNavigate();
+  const menuRef = useRef<HTMLDivElement>(null);
 
   const handleNavigateToHome = (
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
@@ -42,37 +45,93 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [enableScrollAnimation]);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    if (isMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    // Cleanup function to restore scroll on component unmount if menu was open
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
+
   // Se a animação não está habilitada, sempre use o estilo "scrolled"
   const isScrolledState = enableScrollAnimation ? hasScrolled : true;
+
+  const toggleMobileDropdown = (dropdownName: string) => {
+    setOpenMobileDropdown(
+      openMobileDropdown === dropdownName ? null : dropdownName
+    );
+  };
 
   const servicosCategories = [
     {
       title: "Automação & IA",
-      items: ["Automação Contábil", "Consultoria em IA", "Workflow Automation", "Process Optimization", "API Integration", "Digital Transformation"]
+      items: [
+        "Automação Contábil",
+        "Consultoria em IA",
+        "Workflow Automation",
+        "Process Optimization",
+        "API Integration",
+        "Digital Transformation",
+      ],
     },
     {
       title: "Desenvolvimento",
-      items: ["Desenvolvimento de Apps", "Sistemas de Gestão", "E-commerce Solutions", "CRM Personalizado", "Cloud Computing", "Integração de Sistemas"]
+      items: [
+        "Desenvolvimento de Apps",
+        "Sistemas de Gestão",
+        "E-commerce Solutions",
+        "CRM Personalizado",
+        "Cloud Computing",
+        "Integração de Sistemas",
+      ],
     },
     {
       title: "Marketing & Dados",
-      items: ["Marketing Digital", "Business Intelligence", "Análise de Dados", "Segurança Digital", "Tech Support"]
-    }
+      items: [
+        "Marketing Digital",
+        "Business Intelligence",
+        "Análise de Dados",
+        "Segurança Digital",
+        "Tech Support",
+      ],
+    },
   ];
 
   const cursosCategories = [
     {
       title: "Contabilidade",
-      items: ["Contabilidade Digital", "Gestão de Escritórios"]
+      items: ["Contabilidade Digital", "Gestão de Escritórios"],
     },
     {
       title: "Marketing & Tecnologia",
-      items: ["Marketing para Contadores", "Inteligência Artificial"]
+      items: ["Marketing para Contadores", "Inteligência Artificial"],
     },
     {
       title: "Ferramentas",
-      items: ["Excel Avançado", "Power BI"]
-    }
+      items: ["Excel Avançado", "Power BI"],
+    },
   ];
 
   return (
@@ -93,7 +152,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
             >
               {/* Logo light (antes da animação) */}
               <img
-                src="/lovable-uploads/23df4ac1-3e96-4fab-b0ce-fad4c7379950.png"
+                src="/lovable-uploads/light-logo.png"
                 alt="MULTIBPO Logo"
                 className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
                   isScrolledState ? "opacity-0" : "opacity-100"
@@ -101,7 +160,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
               />
               {/* Logo dark (após a animação) */}
               <img
-                src="/lovable-uploads/7f9c858b-7f32-49e9-a746-6e96fa1d6e2d.png"
+                src="/lovable-uploads/logo.png"
                 alt="MULTIBPO Logo"
                 className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
                   isScrolledState ? "opacity-100" : "opacity-0"
@@ -140,25 +199,32 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
                 )}
               </a>
               <div className="relative group">
-                <div className={`flex items-center px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative cursor-pointer ${
-                  isScrolledState
-                    ? "text-gray-800 hover:text-blue-800"
-                    : "text-white hover:text-white"
-                }`}>
+                <div
+                  className={`flex items-center px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative cursor-pointer ${
+                    isScrolledState
+                      ? "text-gray-800 hover:text-blue-800"
+                      : "text-white hover:text-white"
+                  }`}
+                >
                   Serviços
                   <ChevronDown className="ml-1 h-3 w-3 transition-transform duration-200 group-hover:rotate-180" />
                   {!isScrolledState && (
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                   )}
                 </div>
-                <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-[650px] bg-slate-200 shadow-lg border-0 p-6 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-[650px] bg-slate-100 shadow-lg border-0 p-6 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                   <div className="grid grid-cols-3 gap-8">
                     {servicosCategories.map((category, categoryIndex) => (
                       <div key={categoryIndex} className="text-left">
-                        <h4 className="font-semibold text-gray-900 mb-3 text-sm text-left">{category.title}</h4>
+                        <h4 className="font-semibold text-gray-900 mb-3 text-sm text-left">
+                          {category.title}
+                        </h4>
                         <div className="space-y-2">
                           {category.items.map((item, index) => (
-                            <div key={index} className="text-gray-800 hover:bg-white/50 cursor-pointer transition-all duration-200 text-xs p-2 rounded text-left">
+                            <div
+                              key={index}
+                              className="text-gray-800 hover:bg-white/50 cursor-pointer transition-all duration-200 text-xs p-2 rounded text-left"
+                            >
                               {item}
                             </div>
                           ))}
@@ -169,25 +235,32 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
                 </div>
               </div>
               <div className="relative group">
-                <div className={`flex items-center px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative cursor-pointer ${
-                  isScrolledState
-                    ? "text-gray-800 hover:text-blue-800"
-                    : "text-white hover:text-white"
-                }`}>
+                <div
+                  className={`flex items-center px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative cursor-pointer ${
+                    isScrolledState
+                      ? "text-gray-800 hover:text-blue-800"
+                      : "text-white hover:text-white"
+                  }`}
+                >
                   Cursos
                   <ChevronDown className="ml-1 h-3 w-3 transition-transform duration-200 group-hover:rotate-180" />
                   {!isScrolledState && (
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                   )}
                 </div>
-                <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-[500px] bg-slate-200 shadow-lg border-0 p-6 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-[500px] bg-slate-100 shadow-lg border-0 p-6 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                   <div className="grid grid-cols-3 gap-8">
                     {cursosCategories.map((category, categoryIndex) => (
                       <div key={categoryIndex} className="text-left">
-                        <h4 className="font-semibold text-gray-900 mb-3 text-sm text-left">{category.title}</h4>
+                        <h4 className="font-semibold text-gray-900 mb-3 text-sm text-left">
+                          {category.title}
+                        </h4>
                         <div className="space-y-2">
                           {category.items.map((item, index) => (
-                            <div key={index} className="text-gray-800 hover:bg-white/50 cursor-pointer transition-all duration-200 text-xs p-2 rounded text-left">
+                            <div
+                              key={index}
+                              className="text-gray-800 hover:bg-white/50 cursor-pointer transition-all duration-200 text-xs p-2 rounded text-left"
+                            >
                               {item}
                             </div>
                           ))}
@@ -218,7 +291,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
               className={`w-[110px] lg:w-[130px] h-9 lg:h-10 text-xs lg:text-sm font-medium transition-colors duration-300 ${
                 isScrolledState
                   ? "text-blue-800 bg-transparent border-[1px] border-blue-800 hover:bg-blue-800 hover:text-white"
-                  : "border-white text-white hover:bg-white hover:text-blue-600 bg-transparent"
+                  : "border-white text-white hover:bg-white hover:text-black bg-transparent"
               }`}
               variant={isScrolledState ? "default" : "outline"}
             >
@@ -227,7 +300,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
             <Button
               className={`w-[110px] lg:w-[130px] h-9 lg:h-10 text-xs lg:text-sm font-medium transition-colors duration-300 ${
                 isScrolledState
-                  ? "bg-emerald-500 hover:bg-emerald-600 text-white"
+                  ? "bg-emerald-500 hover:bg-emerald-700 text-white"
                   : "bg-white hover:bg-emerald-500 text-black hover:text-white"
               }`}
             >
@@ -260,48 +333,114 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
         </div>
 
         {isMenuOpen && (
-          <div className="min-[945px]:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black/30 backdrop-blur-sm border-t border-white/20 rounded-b-lg">
+          <div
+            ref={menuRef}
+            className="min-[945px]:hidden absolute top-full left-0 right-0 mx-6 mt-2 z-50"
+          >
+            <div className="py-6 space-y-1 sm:px-6 bg-slate-200 rounded-xl shadow-lg max-h-[calc(100vh-8rem)] overflow-y-auto">
               <a
                 href="/"
                 onClick={(e) => {
                   handleNavigateToHome(e);
                   setIsMenuOpen(false);
                 }}
-                className="block text-white hover:text-blue-300 px-3 py-2 text-base font-medium cursor-pointer"
+                className="block text-slate-700 hover:text-blue-600 px-3 py-2 text-base font-medium cursor-pointer"
               >
                 Início
               </a>
               <a
                 href="#about"
-                className="block text-white hover:text-blue-300 px-3 py-2 text-base font-medium"
+                onClick={() => setIsMenuOpen(false)}
+                className="block text-slate-700 hover:text-blue-600 px-3 py-2 text-base font-medium"
               >
                 Quem Somos
               </a>
-              <a
-                href="#services"
-                className="block text-white hover:text-blue-300 px-3 py-2 text-base font-medium"
-              >
-                Serviços
-              </a>
-              <a
-                href="#courses"
-                className="block text-white hover:text-blue-300 px-3 py-2 text-base font-medium"
-              >
-                Cursos
-              </a>
+
+              {/* Dropdown Serviços Mobile */}
+              <div>
+                <button
+                  onClick={() => toggleMobileDropdown("servicos")}
+                  className="w-full flex justify-between items-center text-slate-700 hover:text-blue-600 px-3 py-2 text-base font-medium"
+                >
+                  Serviços
+                  <ChevronDown
+                    className={`ml-1 h-4 w-4 transition-transform duration-200 ${
+                      openMobileDropdown === "servicos" ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {openMobileDropdown === "servicos" && (
+                  <div className="pl-6 pb-2 space-y-1">
+                    {servicosCategories.map((category) =>
+                      category.items.map((item, index) => (
+                        <a
+                          key={`${category.title}-${index}`}
+                          href={`#service-${item
+                            .toLowerCase()
+                            .replace(/\s+/g, "-")}`}
+                          onClick={() => setIsMenuOpen(false)}
+                          className="block text-slate-600 hover:text-blue-500 px-3 py-1.5 text-sm"
+                        >
+                          {item}
+                        </a>
+                      ))
+                    )}
+                  </div>
+                )}
+              </div>
+
+              {/* Dropdown Cursos Mobile */}
+              <div>
+                <button
+                  onClick={() => toggleMobileDropdown("cursos")}
+                  className="w-full flex justify-between items-center text-slate-700 hover:text-blue-600 px-3 py-2 text-base font-medium"
+                >
+                  Cursos
+                  <ChevronDown
+                    className={`ml-1 h-4 w-4 transition-transform duration-200 ${
+                      openMobileDropdown === "cursos" ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {openMobileDropdown === "cursos" && (
+                  <div className="pl-6 pb-2 space-y-1">
+                    {cursosCategories.map((category) =>
+                      category.items.map((item, index) => (
+                        <a
+                          key={`${category.title}-${index}`}
+                          href={`#course-${item
+                            .toLowerCase()
+                            .replace(/\s+/g, "-")}`}
+                          onClick={() => setIsMenuOpen(false)}
+                          className="block text-slate-600 hover:text-blue-500 px-3 py-1.5 text-sm"
+                        >
+                          {item}
+                        </a>
+                      ))
+                    )}
+                  </div>
+                )}
+              </div>
+
               <a
                 href="#blog"
-                className="block text-white hover:text-blue-300 px-3 py-2 text-base font-medium"
+                onClick={() => setIsMenuOpen(false)}
+                className="block text-slate-700 hover:text-blue-600 px-3 py-2 text-base font-medium"
               >
                 Blog
               </a>
-              <div className="flex flex-col gap-2 mt-4">
-                <Button className="w-full bg-green-500 hover:bg-green-600 text-white hover:text-white">
+              <div className="flex flex-col gap-2 mt-4 pt-4 border-t border-slate-300">
+                <Button
+                  onClick={() => setIsMenuOpen(false)}
+                  className="w-full h-10 text-sm font-medium text-blue-800 bg-transparent border-[1px] border-blue-800 hover:bg-blue-800 hover:text-white"
+                >
                   Começar Agora
                 </Button>
-                <Button className="w-full bg-gradient-to-r from-blue-600 to-green-400 hover:from-blue-500 hover:to-green-300 text-white">
-                  Fale Conosco
+                <Button
+                  onClick={() => setIsMenuOpen(false)}
+                  className="w-full h-10 text-sm font-medium bg-emerald-500 hover:bg-emerald-700 text-white"
+                >
+                  Login
                 </Button>
               </div>
             </div>

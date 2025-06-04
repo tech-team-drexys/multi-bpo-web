@@ -3,7 +3,7 @@ import { Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="text-white bg-slate-950">
+    <footer className="text-slate-600 bg-slate-100">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-12 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           {/* Primeira div - ~40% (2 colunas de 5) */}
@@ -13,13 +13,13 @@ const Footer = () => {
               <div className="flex items-center space-x-2">
                 <Link to="/">
                   <img
-                    src="/lovable-uploads/23df4ac1-3e96-4fab-b0ce-fad4c7379950.png"
+                    src="/lovable-uploads/logo.png"
                     alt="MULTIBPO Logo"
                     className="h-8 w-auto"
                   />
                 </Link>
               </div>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="text-gray-500 leading-relaxed">
                 Somos especialistas em automação e terceirização de processos
                 para escritórios de contabilidade, trazendo a Inteligência para
                 sua contabilidade operar no automático.
@@ -31,35 +31,35 @@ const Footer = () => {
               <div className="flex space-x-4">
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-700 hover:text-black transition-colors"
                   aria-label="Instagram"
                 >
                   <Instagram size={20} />
                 </a>
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-700 hover:text-black transition-colors"
                   aria-label="LinkedIn"
                 >
                   <Linkedin size={20} />
                 </a>
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-700 hover:text-black transition-colors"
                   aria-label="Twitter"
                 >
                   <Twitter size={20} />
                 </a>
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-700 hover:text-black transition-colors"
                   aria-label="YouTube"
                 >
                   <Youtube size={20} />
                 </a>
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-700 hover:text-black transition-colors"
                   aria-label="Facebook"
                 >
                   <svg
@@ -72,7 +72,7 @@ const Footer = () => {
                 </a>
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-700 hover:text-black transition-colors"
                   aria-label="TikTok"
                 >
                   <svg
@@ -87,7 +87,7 @@ const Footer = () => {
             </div>
 
             {/* CRC e endereço */}
-            <div className="space-y-2 text-sm text-gray-400">
+            <div className="space-y-2 text-sm text-gray-500">
               <p className="font-medium">MULTI BPO LTDA | CRC/SP 045316</p>
               <p>Alameda Araguaia 2044 | Conj. 910 - Bloco 1</p>
               <p>Alphaville, Barueri - SP | CEP 06455-906</p>
@@ -99,36 +99,24 @@ const Footer = () => {
             {/* Empresa */}
             <div>
               <h3 className="text-lg font-semibold mb-4">Empresa</h3>
-              <ul className="space-y-2 text-gray-300">
+              <ul className="space-y-2 text-gray-600">
                 <li>
-                  <a
-                    href="#"
-                    className="hover:text-white hover:underline transition-colors"
-                  >
+                  <a href="#" className=" hover:underline">
                     Sobre Nós
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="hover:text-white hover:underline transition-colors"
-                  >
+                  <a href="#" className="hover:underline">
                     Nossa Equipe
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="hover:text-white hover:underline transition-colors"
-                  >
+                  <a href="#" className="hover:underline">
                     Carreiras
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="hover:text-white hover:underline transition-colors"
-                  >
+                  <a href="#" className="hover:underline">
                     Blog
                   </a>
                 </li>
@@ -138,36 +126,24 @@ const Footer = () => {
             {/* Serviços */}
             <div>
               <h3 className="text-lg font-semibold mb-4">Serviços</h3>
-              <ul className="space-y-2 text-gray-300">
+              <ul className="space-y-2 text-gray-600">
                 <li>
-                  <a
-                    href="#"
-                    className="hover:text-white hover:underline transition-colors"
-                  >
+                  <a href="#" className="hover:underline">
                     Automação Contábil
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="hover:text-white hover:underline transition-colors"
-                  >
+                  <a href="#" className=" hover:underline">
                     Integração WhatsApp
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="hover:text-white hover:underline transition-colors"
-                  >
+                  <a href="#" className="hover:underline">
                     Desenvolvimento de Apps
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="hover:text-white hover:underline transition-colors"
-                  >
+                  <a href="#" className="hover:underline">
                     Marketing Digital
                   </a>
                 </li>
@@ -177,28 +153,19 @@ const Footer = () => {
             {/* Contato */}
             <div>
               <h3 className="text-lg font-semibold mb-4">Contato</h3>
-              <ul className="space-y-2 text-gray-300">
+              <ul className="space-y-2 text-gray-600">
                 <li>
-                  <a
-                    href="#"
-                    className="hover:text-white hover:underline transition-colors"
-                  >
+                  <a href="#" className="hover:underline">
                     Fale conosco
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="hover:text-white hover:underline transition-colors"
-                  >
+                  <a href="#" className="hover:underline">
                     FAQ
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="hover:text-white hover:underline transition-colors"
-                  >
+                  <a href="#" className="hover:underline">
                     WhatsApp
                   </a>
                 </li>
@@ -207,27 +174,24 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-500 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm">
+        <div className="border-t border-gray-300 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-gray-500 text-sm sm:pr-8">
             © MULTI BPO DO BRASIL LTDA | CNPJ 46.505.712/0001-63 | Todos os
             direitos reservados.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link
-              to="/"
-              className="text-gray-300 hover:text-white hover:underline transition-colors text-sm"
-            >
+            <Link to="/" className="text-gray-500 hover:underline text-sm">
               Contato
             </Link>
             <Link
               to="/privacy-policy"
-              className="text-gray-300 hover:text-white hover:underline transition-colors text-sm"
+              className="text-gray-500 hover:underline text-sm"
             >
               Política de Privacidade
             </Link>
             <Link
               to="/terms-of-use"
-              className="text-gray-300 hover:text-white hover:underline transition-colors text-sm"
+              className="text-gray-500 hover:underline text-sm"
             >
               Termos de Uso
             </Link>

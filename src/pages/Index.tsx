@@ -9,6 +9,7 @@ import CallToActionBanner from "@/components/CallToActionBanner";
 import Testimonials from "@/components/Testimonials";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
+import LightFooter from "@/components/LightFooter";
 
 const Index = () => {
   return (
@@ -23,7 +24,7 @@ const Index = () => {
       <CallToActionBanner />
       <Testimonials />
       <ContactForm />
-      <Footer />
+      <LightFooter />
     </div>
   );
 };
