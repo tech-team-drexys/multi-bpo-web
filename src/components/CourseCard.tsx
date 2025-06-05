@@ -11,7 +11,7 @@ interface CourseCardProps {
 
 const CourseCard = ({ image, tag, subtitle, title, linkText }: CourseCardProps) => {
   return (
-    <div className="group cursor-pointer transition-transform duration-300 hover:scale-105">
+    <div className="group cursor-pointer transition-transform duration-300">
       <div className="relative overflow-hidden rounded-lg mb-4">
         <img 
           src={image} 
