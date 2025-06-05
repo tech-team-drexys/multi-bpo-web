@@ -128,6 +128,7 @@ const Gallery4 = ({
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  
   useEffect(() => {
     if (!carouselApi) {
       return;
@@ -143,6 +144,7 @@ const Gallery4 = ({
       carouselApi.off("select", updateSelection);
     };
   }, [carouselApi]);
+  
   return <section className="py-32">
       <div className="container mx-auto">
         <div className="mb-8 flex items-end justify-between md:mb-14 lg:mb-16">
@@ -182,6 +184,7 @@ const Gallery4 = ({
         <Carousel 
           setApi={setCarouselApi} 
           opts={{
+            dragFree: true,
             breakpoints: {
               "(max-width: 768px)": {
                 dragFree: true
@@ -193,7 +196,7 @@ const Gallery4 = ({
             {items.map(item => (
               <CarouselItem key={item.id} className="max-w-[320px] pl-[20px] lg:max-w-[360px]">
                 <a href={item.href} className="group rounded-xl">
-                  <div className="group relative h-full min-h-[27rem] max-w-full overflow-hidden rounded-xl md:aspect-[5/4] lg:aspect-[16/9] transition-opacity duration-300 hover:opacity-90">
+                  <div className="group relative h-full min-h-[27rem] max-w-full overflow-hidden rounded-xl md:aspect-[5/4] lg:aspect-[16/9] transition-opacity duration-300 hover:opacity-75">
                     <img 
                       src={item.image} 
                       alt={item.title} 
@@ -207,7 +210,7 @@ const Gallery4 = ({
                       <div className="mb-8 line-clamp-2 md:mb-12 lg:mb-9">
                         {item.description}
                       </div>
-                      <div className="inline-flex items-center bg-emerald-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors hover:bg-emerald-600">
+                      <div className="inline-flex items-center bg-emerald-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
                         Saiba mais{" "}
                         <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
                       </div>
@@ -233,4 +236,5 @@ const Gallery4 = ({
       </div>
     </section>;
 };
+
 export { Gallery4 };
