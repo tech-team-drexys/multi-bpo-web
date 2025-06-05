@@ -1,3 +1,4 @@
+
 import Header from "@/components/Header";
 import NewHero from "@/components/NewHero";
 import About from "@/components/About";
@@ -10,6 +11,7 @@ import Testimonials from "@/components/Testimonials";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import LightFooter from "@/components/LightFooter";
+import Courses from "@/components/Courses";
 
 const Index = () => {
   return (
@@ -18,6 +20,7 @@ const Index = () => {
       <NewHero />
       <About />
       <Services />
+      <Courses />
       <WhatsAppAssistant />
       <HowItWorks />
       <Benefits />
