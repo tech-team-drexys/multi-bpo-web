@@ -10,10 +10,7 @@ import {
 import { Attachment, PromptBoxProps } from "./types";
 import { cn } from "@/lib/utils";
 
-export const PromptBox: React.FC<PromptBoxProps> = ({
-  onSubmit,
-  className,
-}) => {
+const PromptBox = ({ onSubmit, className }: PromptBoxProps) => {
   const [message, setMessage] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [attachments, setAttachments] = useState<Attachment[]>([]);
@@ -122,12 +119,18 @@ export const PromptBox: React.FC<PromptBoxProps> = ({
   };
 
   return (
-    <div className={cn("w-full max-w-4xl mx-auto", className)}>
+    <div className={cn("w-full", className)}>
       <div
         ref={promptBoxRef}
-        className="relative bg-white dark:bg-gray-800 rounded-lg shadow-lg border dark:border-gray-700"
+        className="backdrop-blur-md border border-white/20 p-6 shadow-2xl px-[24px] rounded-3xl transition-all duration-300 group bg-black/40 hover:bg-black/60 py-[20px]"
       >
-        <div className="min-h-[100px] p-4 space-y-4">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSubmit();
+          }}
+          className="space-y-4"
+        >
           {/* Área de anexos */}
           {attachments.length > 0 && (
             <div className="flex flex-wrap gap-3">
@@ -143,17 +146,18 @@ export const PromptBox: React.FC<PromptBoxProps> = ({
                       <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
                     </div>
                   ) : (
-                    <div className="w-20 h-20 bg-gray-100 dark:bg-gray-700 rounded-lg flex flex-col items-center justify-center p-2">
+                    <div className="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-lg flex flex-col items-center justify-center p-2">
                       <FontAwesomeIcon
                         icon={faFilePdf}
-                        className="w-8 h-8 text-gray-500"
+                        className="w-8 h-8 text-white/70"
                       />
-                      <span className="text-xs truncate w-full text-center mt-1">
+                      <span className="text-xs truncate w-full text-center mt-1 text-white/70">
                         {attachment.name}
                       </span>
                     </div>
                   )}
                   <button
+                    type="button"
                     onClick={() => removeAttachment(attachment.id)}
                     className="absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-all duration-200 shadow-lg"
                     title="Remover anexo"
@@ -166,78 +170,89 @@ export const PromptBox: React.FC<PromptBoxProps> = ({
           )}
 
           {/* Área de texto */}
-          <textarea
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder="Digite sua mensagem..."
-            className="w-full resize-none bg-transparent border-0 focus:ring-0 outline-none dark:text-white min-h-[60px]"
-            rows={3}
-          />
-        </div>
-
-        {/* Barra de ações */}
-        <div className="border-t dark:border-gray-700 p-4 flex items-center gap-2">
           <div className="relative">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors"
-              title="Adicionar anexo"
-            >
-              <FontAwesomeIcon
-                icon={faPlus}
-                className="w-5 h-5 text-gray-500"
-              />
-            </button>
-
-            {isMenuOpen && (
-              <div
-                ref={dropdownRef}
-                className="absolute bottom-full left-0 mb-2 bg-gray-800/90 backdrop-blur rounded-xl shadow-lg border border-gray-700/50 overflow-hidden min-w-[200px] transition-all duration-200"
-              >
-                <button
-                  onClick={() => handleAttachmentClick("image")}
-                  className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-700/50 text-white transition-colors"
-                >
-                  <FontAwesomeIcon icon={faImage} className="w-4 h-4" />
-                  <span>Adicionar fotos e arquivos</span>
-                </button>
-                <button
-                  onClick={() => handleAttachmentClick("pdf")}
-                  className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-700/50 text-white transition-colors"
-                >
-                  <FontAwesomeIcon icon={faFilePdf} className="w-4 h-4" />
-                  <span>Anexar PDF</span>
-                </button>
-              </div>
-            )}
+            <textarea
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder="Digite sua mensagem..."
+              className="w-full bg-transparent border-none outline-none text-white placeholder:text-white/70 text-lg resize-none max-h-[100px] min-h-[50px] overflow-y-auto scrollbar-custom"
+              rows={2}
+              style={{
+                lineHeight: "1.5",
+                height: "auto",
+              }}
+              onInput={(e) => {
+                const target = e.target as HTMLTextAreaElement;
+                target.style.height = "auto";
+                target.style.height = Math.min(target.scrollHeight, 100) + "px";
+              }}
+            />
           </div>
 
-          <input
-            type="file"
-            ref={fileInputRef}
-            className="hidden"
-            accept="image/*"
-            onChange={(e) => handleFileChange(e, "image")}
-          />
+          {/* Barra de ações */}
+          <div className="flex justify-between items-center">
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="w-10 h-10 rounded-full text-white transition-all bg-transparent hover:bg-white/20 hover:text-white text-base p-2"
+              >
+                <FontAwesomeIcon icon={faPlus} className="w-6 h-6" />
+              </button>
 
-          <input
-            type="file"
-            ref={pdfInputRef}
-            className="hidden"
-            accept=".pdf"
-            onChange={(e) => handleFileChange(e, "pdf")}
-          />
+              {isMenuOpen && (
+                <div
+                  ref={dropdownRef}
+                  className="absolute bottom-full left-0 mb-2 backdrop-blur-md bg-black/90 rounded-xl shadow-lg border border-white/20 overflow-hidden min-w-[200px] transition-all duration-200"
+                >
+                  <button
+                    type="button"
+                    onClick={() => handleAttachmentClick("image")}
+                    className="flex items-center gap-3 w-full px-4 py-3 hover:bg-white/10 text-white transition-colors"
+                  >
+                    <FontAwesomeIcon icon={faImage} className="w-4 h-4" />
+                    <span>Adicionar fotos e arquivos</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleAttachmentClick("pdf")}
+                    className="flex items-center gap-3 w-full px-4 py-3 hover:bg-white/10 text-white transition-colors"
+                  >
+                    <FontAwesomeIcon icon={faFilePdf} className="w-4 h-4" />
+                    <span>Anexar PDF</span>
+                  </button>
+                </div>
+              )}
+            </div>
 
-          <button
-            onClick={handleSubmit}
-            disabled={!message.trim() && attachments.length === 0}
-            className="ml-auto bg-blue-500 hover:bg-blue-600 disabled:bg-gray-400 text-white px-4 py-2 rounded-full flex items-center gap-2 transition-colors"
-          >
-            <span>Enviar</span>
-            <FontAwesomeIcon icon={faPaperPlane} className="w-4 h-4" />
-          </button>
-        </div>
+            <input
+              type="file"
+              ref={fileInputRef}
+              className="hidden"
+              accept="image/*"
+              onChange={(e) => handleFileChange(e, "image")}
+            />
+
+            <input
+              type="file"
+              ref={pdfInputRef}
+              className="hidden"
+              accept=".pdf"
+              onChange={(e) => handleFileChange(e, "pdf")}
+            />
+
+            <button
+              type="submit"
+              disabled={!message.trim() && attachments.length === 0}
+              className="w-10 h-10 rounded-full text-white transition-all bg-transparent hover:bg-white/20 hover:text-white disabled:opacity-50 disabled:hover:bg-transparent p-2"
+            >
+              <FontAwesomeIcon icon={faPaperPlane} className="w-5 h-5" />
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
 };
+
+export { PromptBox };
