@@ -22,8 +22,6 @@ const Index = () => {
       <HowItWorks />
       <Benefits />
       <CallToActionBanner />
-      <Testimonials />
-      <ContactForm />
       <LightFooter />
     </div>
   );
