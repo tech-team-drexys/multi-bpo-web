@@ -168,7 +168,7 @@ const TermsOfUse = () => {
         </div>
       </main>
 
-      <Footer />
+      <LightFooter />
     </div>
   );
 };
