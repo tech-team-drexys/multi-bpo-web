@@ -127,23 +127,31 @@ const Gallery4 = ({
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
   
   useEffect(() => {
     if (!carouselApi) {
       return;
     }
+    
     const updateSelection = () => {
       setCanScrollPrev(carouselApi.canScrollPrev());
       setCanScrollNext(carouselApi.canScrollNext());
-      setCurrentSlide(carouselApi.selectedScrollSnap());
+      setScrollProgress(carouselApi.scrollProgress());
     };
+    
     updateSelection();
     carouselApi.on("select", updateSelection);
+    carouselApi.on("scroll", updateSelection);
+    
     return () => {
       carouselApi.off("select", updateSelection);
+      carouselApi.off("scroll", updateSelection);
     };
   }, [carouselApi]);
+
+  // Calculate active dot based on scroll progress
+  const activeDotIndex = Math.round(scrollProgress * (Math.min(items.length, 15) - 1));
   
   return <section className="py-32">
       <div className="container mx-auto">
@@ -196,21 +204,22 @@ const Gallery4 = ({
             {items.map(item => (
               <CarouselItem key={item.id} className="max-w-[320px] pl-[20px] lg:max-w-[360px]">
                 <a href={item.href} className="group rounded-xl">
-                  <div className="group relative h-full min-h-[27rem] max-w-full overflow-hidden rounded-xl md:aspect-[5/4] lg:aspect-[16/9] transition-opacity duration-300 hover:opacity-75">
+                  <div className="group relative h-full min-h-[27rem] max-w-full overflow-hidden rounded-xl md:aspect-[5/4] lg:aspect-[16/9] transition-all duration-300">
                     <img 
                       src={item.image} 
                       alt={item.title} 
                       className="absolute h-full w-full object-cover object-center transition-opacity duration-300" 
                     />
                     <div className="absolute inset-0 h-full bg-[linear-gradient(transparent_0%,transparent_30%,hsl(var(--primary)/0.4)_50%,hsl(var(--primary)/0.8)_80%,hsl(var(--primary)/1)_100%)] mix-blend-multiply" />
-                    <div className="absolute inset-x-0 bottom-0 flex flex-col items-start p-6 text-primary-foreground md:p-8">
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300" />
+                    <div className="absolute inset-x-0 bottom-0 flex flex-col items-start p-6 text-primary-foreground md:p-8 relative z-10">
                       <div className="mb-2 pt-4 text-xl font-semibold md:mb-3 md:pt-4 lg:pt-4">
                         {item.title}
                       </div>
                       <div className="mb-8 line-clamp-2 md:mb-12 lg:mb-9">
                         {item.description}
                       </div>
-                      <div className="inline-flex items-center bg-emerald-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                      <div className="inline-flex items-center bg-emerald-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors relative z-20">
                         Saiba mais{" "}
                         <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
                       </div>
@@ -226,7 +235,7 @@ const Gallery4 = ({
             <button
               key={index}
               className={`h-2 w-2 rounded-full transition-colors ${
-                currentSlide === index ? "bg-primary" : "bg-primary/20"
+                activeDotIndex === index ? "bg-primary" : "bg-primary/20"
               }`}
               onClick={() => carouselApi?.scrollTo(index)}
               aria-label={`Ir para slide ${index + 1}`}
