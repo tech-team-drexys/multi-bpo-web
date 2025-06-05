@@ -204,15 +204,15 @@ const Gallery4 = ({
             {items.map(item => (
               <CarouselItem key={item.id} className="max-w-[320px] pl-[20px] lg:max-w-[360px]">
                 <a href={item.href} className="group rounded-xl">
-                  <div className="group relative h-full min-h-[27rem] max-w-full overflow-hidden rounded-xl md:aspect-[5/4] lg:aspect-[16/9] transition-all duration-300">
+                  <div className="group relative h-full min-h-[27rem] max-w-full overflow-hidden rounded-xl md:aspect-[5/4] lg:aspect-[16/9] transition-all duration-300 flex flex-col justify-end">
                     <img 
                       src={item.image} 
                       alt={item.title} 
-                      className="absolute h-full w-full object-cover object-center transition-opacity duration-300" 
+                      className="absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-300" 
                     />
                     <div className="absolute inset-0 h-full bg-[linear-gradient(transparent_0%,transparent_30%,hsl(var(--primary)/0.4)_50%,hsl(var(--primary)/0.8)_80%,hsl(var(--primary)/1)_100%)] mix-blend-multiply" />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300" />
-                    <div className="absolute inset-x-0 bottom-0 flex flex-col items-start p-6 text-primary-foreground md:p-8 relative z-10">
+                    <div className="relative z-10 p-6 text-primary-foreground md:p-8">
                       <div className="mb-2 pt-4 text-xl font-semibold md:mb-3 md:pt-4 lg:pt-4">
                         {item.title}
                       </div>
