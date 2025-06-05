@@ -16,109 +16,134 @@ export interface Gallery4Props {
   description?: string;
   items: Gallery4Item[];
 }
-const data = [{
-  id: "automacao-contabil",
-  title: "Automação Contábil",
-  description: "Automatize processos repetitivos, classificação de documentos e geração de relatórios com inteligência artificial avançada.",
-  href: "#",
-  image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=250&fit=crop"
-}, {
-  id: "integracao-whatsapp",
-  title: "Integração WhatsApp",
-  description: "Conecte-se com seus clientes através de chatbots inteligentes e automação completa de atendimento.",
-  href: "#",
-  image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=250&fit=crop"
-}, {
-  id: "desenvolvimento-apps",
-  title: "Desenvolvimento de Apps",
-  description: "Criação de aplicativos personalizados para suas necessidades específicas de gestão contábil.",
-  href: "#",
-  image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=250&fit=crop"
-}, {
-  id: "websites-personalizados",
-  title: "Websites Personalizados",
-  description: "Desenvolvimento de sites profissionais para fortalecer sua presença digital no mercado contábil.",
-  href: "#",
-  image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=250&fit=crop"
-}, {
-  id: "gestao-financeira",
-  title: "Gestão Financeira",
-  description: "Ferramentas avançadas para controle financeiro, fluxo de caixa e análise de performance empresarial.",
-  href: "#",
-  image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=400&h=250&fit=crop"
-}, {
-  id: "marketing-digital",
-  title: "Marketing Digital",
-  description: "Estratégias digitais personalizadas para captar novos clientes e expandir seu escritório contábil.",
-  href: "#",
-  image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=250&fit=crop"
-}, {
-  id: "consultoria-ia",
-  title: "Consultoria em IA",
-  description: "Implementação de inteligência artificial para otimizar processos e aumentar a produtividade do seu negócio.",
-  href: "#",
-  image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=250&fit=crop"
-}, {
-  id: "workflow-automation",
-  title: "Automação de Processos",
-  description: "Otimize fluxos de trabalho complexos com automação inteligente e integração de sistemas.",
-  href: "#",
-  image: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=400&h=250&fit=crop"
-}, {
-  id: "api-integration",
-  title: "Integração de APIs",
-  description: "Conecte diferentes sistemas e plataformas para criar um ecossistema integrado e eficiente.",
-  href: "#",
-  image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=400&h=250&fit=crop"
-}, {
-  id: "business-intelligence",
-  title: "Business Intelligence",
-  description: "Transforme dados em insights valiosos com dashboards interativos e análises avançadas.",
-  href: "#",
-  image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop"
-}, {
-  id: "crm-personalizado",
-  title: "CRM Personalizado",
-  description: "Sistemas de gestão de relacionamento com clientes adaptados às necessidades do seu escritório.",
-  href: "#",
-  image: "https://images.unsplash.com/photo-1553484771-cc0d9b8c2b33?w=400&h=250&fit=crop"
-}, {
-  id: "cloud-computing",
-  title: "Cloud Computing",
-  description: "Migração e otimização de infraestrutura em nuvem para maior segurança e escalabilidade.",
-  href: "#",
-  image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=250&fit=crop"
-}, {
-  id: "analise-dados",
-  title: "Análise de Dados",
-  description: "Extraia insights estratégicos dos seus dados para tomar decisões mais assertivas no negócio.",
-  href: "#",
-  image: "https://images.unsplash.com/photo-1518186233392-c232efbf2373?w=400&h=250&fit=crop"
-}, {
-  id: "seguranca-digital",
-  title: "Segurança Digital",
-  description: "Proteção completa de dados e sistemas com as melhores práticas de segurança cibernética.",
-  href: "#",
-  image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=250&fit=crop"
-}, {
-  id: "suporte-tecnico",
-  title: "Suporte Técnico",
-  description: "Suporte especializado 24/7 para garantir o funcionamento contínuo dos seus sistemas.",
-  href: "#",
-  image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=250&fit=crop"
-}, {
-  id: "transformacao-digital",
-  title: "Transformação Digital",
-  description: "Modernize completamente seus processos contábeis com tecnologias de ponta e metodologias ágeis.",
-  href: "#",
-  image: "https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?w=400&h=250&fit=crop"
-}, {
-  id: "sistemas-gestao",
-  title: "Sistemas de Gestão",
-  description: "Plataformas completas de gestão empresarial integradas às suas operações contábeis existentes.",
-  href: "#",
-  image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=250&fit=crop"
-}];
+const data = [
+  {
+    id: "terceirizacao-contabil",
+    title: "Terceirização do Departamento Contábil",
+    description: "Escrituração completa e auditoria por IA para mais segurança e produtividade.",
+    href: "#",
+    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=250&fit=crop"
+  },
+  {
+    id: "terceirizacao-fiscal",
+    title: "Terceirização do Departamento Fiscal / Tributário",
+    description: "Apuração e entrega fiscal sem erros e sem atrasos, com conformidade garantida por IA.",
+    href: "#",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=250&fit=crop"
+  },
+  {
+    id: "terceirizacao-dp",
+    title: "Terceirização do Departamento Pessoal (DP)",
+    description: "Gestão automatizada da folha, admissões, férias e eSocial com agilidade total.",
+    href: "#",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=250&fit=crop"
+  },
+  {
+    id: "terceirizacao-paralegal",
+    title: "Terceirização do Departamento Paralegal / Legalização",
+    description: "Abertura, alteração e regularização de empresas com rapidez e sem burocracia.",
+    href: "#",
+    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=250&fit=crop"
+  },
+  {
+    id: "planejamento-tributario",
+    title: "Planejamento Tributário Inteligente",
+    description: "Reduza impostos com estratégias legais e tecnologia de análise tributária. Elisão Fiscal com inteligência.",
+    href: "#",
+    image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=400&h=250&fit=crop"
+  },
+  {
+    id: "assessoria-tributaria",
+    title: "Assessoria Tributária e Regularização Fiscal",
+    description: "Regularize CNPJs, reenquadre empresas e recupere créditos com apoio técnico e jurídico.",
+    href: "#",
+    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=250&fit=crop"
+  },
+  {
+    id: "certificados-digitais",
+    title: "Emissão de Certificados Digitais e-CPF e e-CNPJ",
+    description: "Certificação digital com agilidade e validade jurídica garantida.",
+    href: "#",
+    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=250&fit=crop"
+  },
+  {
+    id: "radar-receita",
+    title: "Habilitação no RADAR da Receita Federal",
+    description: "Libere o comércio exterior dos seus clientes com segurança e rapidez.",
+    href: "#",
+    image: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=400&h=250&fit=crop"
+  },
+  {
+    id: "bpo-financeiro",
+    title: "BPO Financeiro com Inteligência e Precisão",
+    description: "Terceirize toda a rotina financeira com controle, fluxo de caixa e cobrança automatizada. Gestão Financeira eficiente.",
+    href: "#",
+    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=400&h=250&fit=crop"
+  },
+  {
+    id: "registro-marca",
+    title: "Registro de Marca no INPI",
+    description: "Proteja o nome e a identidade do seu cliente antes que alguém registre primeiro.",
+    href: "#",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop"
+  },
+  {
+    id: "cursos-treinamentos",
+    title: "Cursos e Treinamentos para Equipes Contábeis",
+    description: "Capacitação prática e atualizada para elevar o desempenho técnico da sua equipe.",
+    href: "#",
+    image: "https://images.unsplash.com/photo-1553484771-cc0d9b8c2b33?w=400&h=250&fit=crop"
+  },
+  {
+    id: "atendimento-ia-whatsapp",
+    title: "Atendimento ao Cliente com IA (WhatsApp)",
+    description: "Atendimento automatizado e humanizado com IA que atendem seus clientes 24h com eficiência e empatia.",
+    href: "#",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=250&fit=crop"
+  },
+  {
+    id: "consultoria-tecnica-ia",
+    title: "Consultoria Técnica com IA (Web + WhatsApp)",
+    description: "Tire dúvidas técnicas com IA treinada e suporte humano especializado.",
+    href: "#",
+    image: "https://images.unsplash.com/photo-1518186233392-c232efbf2373?w=400&h=250&fit=crop"
+  },
+  {
+    id: "endereco-fiscal",
+    title: "Endereço Fiscal em Alphaville",
+    description: "Domicílio fiscal seguro para empresas, em um endereço de alto padrão e prestígio, com incentivo fiscal.",
+    href: "#",
+    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=250&fit=crop"
+  },
+  {
+    id: "estruturacao-holdings",
+    title: "Estruturação de Holdings",
+    description: "Organize o patrimônio do seu cliente com proteção, sucessão e economia tributária.",
+    href: "#",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=250&fit=crop"
+  },
+  {
+    id: "recrutamento-ia",
+    title: "Recrutamento e Seleção com IA",
+    description: "Encontre talentos com mais rapidez, precisão e assertividade usando inteligência artificial.",
+    href: "#",
+    image: "https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?w=400&h=250&fit=crop"
+  },
+  {
+    id: "marketing-digital",
+    title: "Marketing Digital para Escritórios Contábeis, Gestão de Redes Sociais e Criação de Conteúdo",
+    description: "Fortaleça sua marca contábil, atraia clientes e se destaque online, tenha presença nas redes sociais.",
+    href: "#",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=250&fit=crop"
+  },
+  {
+    id: "sites-contabeis",
+    title: "Criação e Otimização de Sites Contábeis",
+    description: "Sites profissionais com foco em autoridade, conversão e presença no Google.",
+    href: "#",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop"
+  }
+];
 const Gallery4 = ({
   title = "Nossos Serviços",
   description = "Descubra como empresas líderes estão aproveitando tecnologias modernas para construir experiências digitais excepcionais. Estes casos de estudo mostram aplicações reais e histórias de sucesso.",
@@ -151,7 +176,8 @@ const Gallery4 = ({
   }, [carouselApi]);
 
   // Calculate active dot based on scroll progress
-  const activeDotIndex = Math.round(scrollProgress * (Math.min(items.length, 15) - 1));
+  const totalDots = Math.min(items.length, 15);
+  const activeDotIndex = Math.round(scrollProgress * (totalDots - 1));
   
   return <section className="py-32">
       <div className="container mx-auto">
@@ -212,7 +238,7 @@ const Gallery4 = ({
                     />
                     <div className="absolute inset-0 h-full bg-[linear-gradient(transparent_0%,transparent_30%,hsl(var(--primary)/0.4)_50%,hsl(var(--primary)/0.8)_80%,hsl(var(--primary)/1)_100%)] mix-blend-multiply" />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300" />
-                    <div className="relative z-10 p-6 text-primary-foreground md:p-8">
+                    <div className="relative z-10 p-6 text-primary-foreground md:p-8 mt-auto">
                       <div className="mb-2 pt-4 text-xl font-semibold md:mb-3 md:pt-4 lg:pt-4">
                         {item.title}
                       </div>
@@ -231,7 +257,7 @@ const Gallery4 = ({
           </CarouselContent>
         </Carousel>
         <div className="mt-8 flex justify-center gap-2">
-          {items.slice(0, 15).map((_, index) => (
+          {Array.from({ length: totalDots }).map((_, index) => (
             <button
               key={index}
               className={`h-2 w-2 rounded-full transition-colors ${
