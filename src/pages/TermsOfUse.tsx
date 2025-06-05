@@ -1,6 +1,6 @@
 
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import LightFooter from '@/components/LightFooter';
 
 const TermsOfUse = () => {
   return (
@@ -168,7 +168,7 @@ const TermsOfUse = () => {
         </div>
       </main>
 
-      <Footer />
+      <LightFooter />
     </div>
   );
 };

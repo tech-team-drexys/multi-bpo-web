@@ -86,35 +86,36 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
 
   const servicosCategories = [
     {
-      title: "Automação & IA",
+      title: "Terceirização",
       items: [
-        "Automação Contábil",
-        "Consultoria em IA",
-        "Workflow Automation",
-        "Process Optimization",
-        "API Integration",
-        "Digital Transformation",
+        "Terceirização do Departamento Contábil",
+        "Terceirização do Departamento Fiscal / Tributário", 
+        "Terceirização do Departamento Pessoal (DP)",
+        "Terceirização do Departamento Paralegal / Legalização",
+        "BPO Financeiro com Inteligência e Precisão"
       ],
     },
     {
-      title: "Desenvolvimento",
+      title: "Consultoria & Assessoria",
       items: [
-        "Desenvolvimento de Apps",
-        "Sistemas de Gestão",
-        "E-commerce Solutions",
-        "CRM Personalizado",
-        "Cloud Computing",
-        "Integração de Sistemas",
+        "Planejamento Tributário Inteligente",
+        "Assessoria Tributária e Regularização Fiscal",
+        "Consultoria Técnica com IA (Web + WhatsApp)",
+        "Estruturação de Holdings",
+        "Cursos e Treinamentos para Equipes Contábeis"
       ],
     },
     {
-      title: "Marketing & Dados",
+      title: "Serviços Digitais",
       items: [
-        "Marketing Digital",
-        "Business Intelligence",
-        "Análise de Dados",
-        "Segurança Digital",
-        "Tech Support",
+        "Emissão de Certificados Digitais e-CPF e e-CNPJ",
+        "Habilitação no RADAR da Receita Federal",
+        "Registro de Marca no INPI",
+        "Atendimento ao Cliente com IA (WhatsApp)",
+        "Endereço Fiscal em Alphaville",
+        "Recrutamento e Seleção com IA",
+        "Marketing Digital para Escritórios Contábeis",
+        "Criação e Otimização de Sites Contábeis"
       ],
     },
   ];
@@ -234,42 +235,19 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
                   </div>
                 </div>
               </div>
-              <div className="relative group">
-                <div
-                  className={`flex items-center px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative cursor-pointer ${
-                    isScrolledState
-                      ? "text-gray-800 hover:text-blue-800"
-                      : "text-white hover:text-white"
-                  }`}
-                >
-                  Cursos
-                  <ChevronDown className="ml-1 h-3 w-3 transition-transform duration-200 group-hover:rotate-180" />
-                  {!isScrolledState && (
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-                  )}
-                </div>
-                <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-[500px] bg-slate-100 shadow-lg border-0 p-6 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                  <div className="grid grid-cols-3 gap-8">
-                    {cursosCategories.map((category, categoryIndex) => (
-                      <div key={categoryIndex} className="text-left">
-                        <h4 className="font-semibold text-gray-900 mb-3 text-sm text-left">
-                          {category.title}
-                        </h4>
-                        <div className="space-y-2">
-                          {category.items.map((item, index) => (
-                            <div
-                              key={index}
-                              className="text-gray-800 hover:bg-white/50 cursor-pointer transition-all duration-200 text-xs p-2 rounded text-left"
-                            >
-                              {item}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <a
+                href="#courses"
+                className={`px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group ${
+                  isScrolledState
+                    ? "text-gray-800 hover:text-blue-800"
+                    : "text-white hover:text-white"
+                }`}
+              >
+                Cursos
+                {!isScrolledState && (
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                )}
+              </a>
               <a
                 href="#blog"
                 className={`px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group ${

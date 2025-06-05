@@ -109,7 +109,7 @@ const NewHero = () => {
                   "a Automação?",
                   "a Inteligência Artificial?",
                 ]}
-                className="text-blue-500"
+                className="text-green-500"
                 typingSpeed={85}
                 deletingSpeed={65}
                 pauseDuration={1500}
