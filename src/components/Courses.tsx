@@ -1,4 +1,3 @@
-
 import CourseCard from './CourseCard';
 
 const Courses = () => {
@@ -27,7 +26,7 @@ const Courses = () => {
   ];
 
   return (
-    <section className="min-h-screen bg-gray-50 flex items-center pt-20">
+    <section className="bg-gray-50 flex items-center pt-20" style={{ height: 'calc(100vh - 64px)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <h2 className="text-4xl font-bold text-gray-900 mb-4 text-left">
           Nossos Cursos
