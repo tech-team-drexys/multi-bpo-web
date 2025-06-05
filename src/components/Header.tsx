@@ -86,35 +86,36 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
 
   const servicosCategories = [
     {
-      title: "Automação & IA",
+      title: "Terceirização",
       items: [
-        "Automação Contábil",
-        "Consultoria em IA",
-        "Workflow Automation",
-        "Process Optimization",
-        "API Integration",
-        "Digital Transformation",
+        "Terceirização do Departamento Contábil",
+        "Terceirização do Departamento Fiscal / Tributário", 
+        "Terceirização do Departamento Pessoal (DP)",
+        "Terceirização do Departamento Paralegal / Legalização",
+        "BPO Financeiro com Inteligência e Precisão"
       ],
     },
     {
-      title: "Desenvolvimento",
+      title: "Consultoria & Assessoria",
       items: [
-        "Desenvolvimento de Apps",
-        "Sistemas de Gestão",
-        "E-commerce Solutions",
-        "CRM Personalizado",
-        "Cloud Computing",
-        "Integração de Sistemas",
+        "Planejamento Tributário Inteligente",
+        "Assessoria Tributária e Regularização Fiscal",
+        "Consultoria Técnica com IA (Web + WhatsApp)",
+        "Estruturação de Holdings",
+        "Cursos e Treinamentos para Equipes Contábeis"
       ],
     },
     {
-      title: "Marketing & Dados",
+      title: "Serviços Digitais",
       items: [
-        "Marketing Digital",
-        "Business Intelligence",
-        "Análise de Dados",
-        "Segurança Digital",
-        "Tech Support",
+        "Emissão de Certificados Digitais e-CPF e e-CNPJ",
+        "Habilitação no RADAR da Receita Federal",
+        "Registro de Marca no INPI",
+        "Atendimento ao Cliente com IA (WhatsApp)",
+        "Endereço Fiscal em Alphaville",
+        "Recrutamento e Seleção com IA",
+        "Marketing Digital para Escritórios Contábeis",
+        "Criação e Otimização de Sites Contábeis"
       ],
     },
   ];
