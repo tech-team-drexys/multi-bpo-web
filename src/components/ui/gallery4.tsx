@@ -188,8 +188,8 @@ const Gallery4 = ({
       <div className="container mx-auto">
         <div className="mb-8 flex items-end justify-between md:mb-14 lg:mb-16">
           <div className="flex flex-col gap-4">
-            <h2 className="text-3xl font-bold text-blue-600 mb-4 md:text-4xl">
-              {title}
+            <h2 className="text-3xl font-bold text-gray-900 mb-4 md:text-4xl">
+              Nossos <span className="text-blue-600">Serviços</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">{description}</p>
           </div>
@@ -241,13 +241,13 @@ const Gallery4 = ({
                       alt={item.title} 
                       className="absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-300" 
                     />
-                    <div className="absolute inset-0 h-full bg-[linear-gradient(transparent_0%,transparent_15%,hsl(var(--primary)/0.3)_35%,hsl(var(--primary)/0.7)_65%,hsl(var(--primary)/0.9)_85%,hsl(var(--primary)/1)_100%)] mix-blend-multiply" />
+                    <div className="absolute inset-0 h-full bg-[linear-gradient(transparent_0%,transparent_10%,hsl(var(--primary)/0.2)_25%,hsl(var(--primary)/0.6)_50%,hsl(var(--primary)/0.8)_70%,hsl(var(--primary)/0.95)_85%,hsl(var(--primary)/1)_100%)] mix-blend-multiply" />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300" />
-                    <div className="relative z-10 p-6 text-primary-foreground md:p-8 mt-auto group-hover:-translate-y-2 transition-transform duration-300">
-                      <div className="mb-2 pt-4 text-lg font-semibold md:mb-3 md:pt-4 lg:pt-4">
+                    <div className="relative z-10 p-6 text-primary-foreground md:p-8 mt-auto transition-transform duration-500 ease-out group-hover:-translate-y-4">
+                      <div className="mb-2 pt-4 text-base font-semibold md:mb-3 md:pt-4 lg:pt-4">
                         {item.title}
                       </div>
-                      <div className="mb-8 text-sm md:mb-12 lg:mb-9 group-hover:line-clamp-none line-clamp-2 transition-all duration-300">
+                      <div className="mb-8 text-xs md:mb-12 lg:mb-9 line-clamp-2 group-hover:line-clamp-none transition-all duration-500">
                         {item.description}
                       </div>
                       <div className="inline-flex items-center bg-emerald-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors relative z-20">
