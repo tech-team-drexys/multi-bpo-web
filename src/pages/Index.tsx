@@ -11,6 +11,7 @@ import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import LightFooter from "@/components/LightFooter";
 import Courses from "@/components/Courses";
+import AboutUs from "@/components/AboutUs";
 
 const Index = () => {
   return (
@@ -21,6 +22,7 @@ const Index = () => {
       <WhatsAppAssistant />
       <HowItWorks />
       <Benefits />
+      <AboutUs />
       <CallToActionBanner />
       <Courses />
       <LightFooter />
