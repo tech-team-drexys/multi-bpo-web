@@ -22,7 +22,6 @@ const Index = () => {
       <WhatsAppAssistant />
       <HowItWorks />
       <Benefits />
-      <AboutUs />
       <CallToActionBanner />
       <Courses />
       <LightFooter />
