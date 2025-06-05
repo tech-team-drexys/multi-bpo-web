@@ -199,7 +199,7 @@ const Gallery4 = ({
                       alt={item.title} 
                       className="absolute h-full w-full object-cover object-center transition-opacity duration-300" 
                     />
-                    <div className="absolute inset-0 h-full bg-[linear-gradient(transparent_0%,transparent_40%,hsl(var(--primary)/0.3)_60%,hsl(var(--primary)/0.7)_80%,hsl(var(--primary)/0.9)_100%)] mix-blend-multiply" />
+                    <div className="absolute inset-0 h-full bg-[linear-gradient(transparent_0%,transparent_30%,hsl(var(--primary)/0.4)_50%,hsl(var(--primary)/0.8)_80%,hsl(var(--primary)/1)_100%)] mix-blend-multiply" />
                     <div className="absolute inset-x-0 bottom-0 flex flex-col items-start p-6 text-primary-foreground md:p-8">
                       <div className="mb-2 pt-4 text-xl font-semibold md:mb-3 md:pt-4 lg:pt-4">
                         {item.title}
@@ -207,9 +207,9 @@ const Gallery4 = ({
                       <div className="mb-8 line-clamp-2 md:mb-12 lg:mb-9">
                         {item.description}
                       </div>
-                      <div className="flex items-center text-sm text-blue-400">
+                      <div className="inline-flex items-center bg-emerald-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors hover:bg-emerald-600">
                         Saiba mais{" "}
-                        <ArrowRight className="ml-2 size-5 transition-transform group-hover:translate-x-1 text-blue-400" />
+                        <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
                       </div>
                     </div>
                   </div>
