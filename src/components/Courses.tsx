@@ -27,11 +27,15 @@ const Courses = () => {
   ];
 
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-bold text-gray-900 mb-12 text-left">
+    <section className="min-h-screen bg-gray-50 flex items-center pt-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <h2 className="text-4xl font-bold text-gray-900 mb-4 text-left">
           Nossos Cursos
-        </h1>
+        </h2>
+        
+        <p className="text-lg text-gray-600 mb-12 text-left max-w-2xl">
+          Desenvolva suas habilidades com nossos cursos especializados em tecnologia e gestão contábil. Aprenda com especialistas e transforme sua carreira.
+        </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {courses.map((course, index) => (
