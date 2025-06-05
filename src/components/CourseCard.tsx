@@ -16,7 +16,7 @@ const CourseCard = ({ image, tag, subtitle, title, linkText }: CourseCardProps) 
         <img 
           src={image} 
           alt={title}
-          className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+          className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
         />
         <div className="absolute top-4 left-4">
           <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium">
