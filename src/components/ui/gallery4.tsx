@@ -1,9 +1,11 @@
+
 "use client";
 
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselApi, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+
 export interface Gallery4Item {
   id: string;
   title: string;
@@ -11,11 +13,13 @@ export interface Gallery4Item {
   href: string;
   image: string;
 }
+
 export interface Gallery4Props {
   title?: string;
   description?: string;
-  items: Gallery4Item[];
+  items?: Gallery4Item[];
 }
+
 const data = [
   {
     id: "terceirizacao-contabil",
@@ -144,6 +148,7 @@ const data = [
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop"
   }
 ];
+
 const Gallery4 = ({
   title = "Nossos Serviços",
   description = "Descubra como empresas líderes estão aproveitando tecnologias modernas para construir experiências digitais excepcionais. Estes casos de estudo mostram aplicações reais e histórias de sucesso.",
@@ -236,13 +241,13 @@ const Gallery4 = ({
                       alt={item.title} 
                       className="absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-300" 
                     />
-                    <div className="absolute inset-0 h-full bg-[linear-gradient(transparent_0%,transparent_30%,hsl(var(--primary)/0.4)_50%,hsl(var(--primary)/0.8)_80%,hsl(var(--primary)/1)_100%)] mix-blend-multiply" />
+                    <div className="absolute inset-0 h-full bg-[linear-gradient(transparent_0%,transparent_15%,hsl(var(--primary)/0.3)_35%,hsl(var(--primary)/0.7)_65%,hsl(var(--primary)/0.9)_85%,hsl(var(--primary)/1)_100%)] mix-blend-multiply" />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300" />
                     <div className="relative z-10 p-6 text-primary-foreground md:p-8 mt-auto">
-                      <div className="mb-2 pt-4 text-xl font-semibold md:mb-3 md:pt-4 lg:pt-4">
+                      <div className="mb-2 pt-4 text-lg font-semibold md:mb-3 md:pt-4 lg:pt-4">
                         {item.title}
                       </div>
-                      <div className="mb-8 line-clamp-2 md:mb-12 lg:mb-9">
+                      <div className="mb-8 line-clamp-2 md:mb-12 lg:mb-9 text-sm">
                         {item.description}
                       </div>
                       <div className="inline-flex items-center bg-emerald-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors relative z-20">
