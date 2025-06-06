@@ -1,7 +1,5 @@
 
 import CourseCard from './CourseCard';
-import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
 
 const Courses = () => {
   const courses = [
@@ -29,23 +27,16 @@ const Courses = () => {
   ];
 
   return (
-    <section className="bg-gray-50 flex items-center" style={{ height: 'calc(100vh - 64px)' }}>
+    <section className="bg-gray-50 py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="flex items-end justify-between mb-12">
-          <div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4 text-left">
-              Nossos Cursos
-            </h2>
-            
-            <p className="text-lg text-gray-600 text-left max-w-2xl">
-              Desenvolva suas habilidades com nossos cursos especializados em tecnologia e gestão contábil. Aprenda com especialistas e transforme sua carreira.
-            </p>
-          </div>
+        <div className="mb-12">
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 text-left">
+            Nossos <span className="text-blue-600">Cursos</span>
+          </h2>
           
-          <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium inline-flex items-center">
-            Veja todos os cursos
-            <ArrowRight className="ml-2 size-4" />
-          </Button>
+          <p className="text-lg text-gray-600 text-left max-w-2xl">
+            Desenvolva suas habilidades com nossos cursos especializados em tecnologia e gestão contábil. Aprenda com especialistas e transforme sua carreira.
+          </p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
