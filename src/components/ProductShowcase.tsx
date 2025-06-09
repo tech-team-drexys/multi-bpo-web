@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 
 const ProductShowcase = () => {
   return (
-    <div className="w-screen h-screen p-4 sm:p-6 lg:p-8">
-      <section className="w-full h-full bg-gray-800 rounded-3xl overflow-hidden">
+    <div className="w-screen h-screen">
+      <section className="w-full h-full bg-gray-800">
         <div className="grid grid-cols-1 lg:grid-cols-5 h-full">
           {/* Content Div - Left Side */}
           <div className="lg:col-span-2 p-8 lg:p-12 flex flex-col justify-center">
