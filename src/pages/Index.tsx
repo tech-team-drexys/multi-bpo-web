@@ -11,6 +11,7 @@ import Footer from "@/components/Footer";
 import LightFooter from "@/components/LightFooter";
 import Courses from "@/components/Courses";
 import AboutUs from "@/components/AboutUs";
+import ShowcaseProduct from "@/components/ShowcaseProduct"
 
 const Index = () => {
   return (
@@ -18,6 +19,7 @@ const Index = () => {
       <Header enableScrollAnimation={true} />
       <NewHero />
       <Services />
+      <ShowcaseProduct />
       <WhatsAppAssistant />
       <HowItWorks />
       <Benefits />
