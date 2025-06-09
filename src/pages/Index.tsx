@@ -1,4 +1,3 @@
-
 import Header from "@/components/Header";
 import NewHero from "@/components/NewHero";
 import Services from "@/components/Services";
@@ -12,14 +11,12 @@ import Footer from "@/components/Footer";
 import LightFooter from "@/components/LightFooter";
 import Courses from "@/components/Courses";
 import AboutUs from "@/components/AboutUs";
-import ShowcaseProduct from "@/components/ShowcaseProduct"
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-white w-full overflow-x-hidden">
       <Header enableScrollAnimation={true} />
       <NewHero />
-      <ShowcaseProduct />
       <Services />
       <WhatsAppAssistant />
       <HowItWorks />
