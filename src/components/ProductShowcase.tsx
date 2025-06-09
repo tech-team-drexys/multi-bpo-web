@@ -1,12 +1,9 @@
-
 import { Button } from "@/components/ui/button";
-
 const ProductShowcase = () => {
-  return (
-    <section className="w-full min-h-screen bg-gray-800 p-8 flex items-center justify-center">
-      <div className="w-full max-w-7xl bg-gray-700 rounded-3xl p-8 flex gap-8 items-center">
+  return <section className="w-full min-h-screen bg-gray-800 p-8 flex items-center justify-center">
+      <div className="w-full max-w-7xl rounded-3xl p-8 flex gap-8 items-center">
         {/* Content Div */}
-        <div className="flex-1 bg-gray-600 rounded-2xl p-8 space-y-6">
+        <div className="flex-1 rounded-2xl p-8 space-y-6 bg-gray-600">
           <h2 className="text-4xl font-bold text-white font-heading">
             Transforme Seu Negócio
           </h2>
@@ -22,15 +19,9 @@ const ProductShowcase = () => {
 
         {/* Image Div */}
         <div className="flex-[1.5] bg-gray-600 rounded-2xl overflow-hidden min-h-[400px] flex items-center justify-center">
-          <img 
-            src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&q=80&w=800&h=600" 
-            alt="Showcase"
-            className="w-full h-full object-cover"
-          />
+          <img src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&q=80&w=800&h=600" alt="Showcase" className="w-full h-full object-cover" />
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ProductShowcase;
