@@ -227,33 +227,9 @@ const Gallery4 = ({
               {description}
             </p>
           </div>
-          <div className="hidden shrink-0 gap-2 md:flex">
-            <Button
-              size="icon"
-              variant="ghost"
-              onClick={() => {
-                carouselApi?.scrollPrev();
-              }}
-              disabled={!canScrollPrev}
-              className="disabled:pointer-events-auto rounded-full"
-            >
-              <ArrowLeft className="size-5" />
-            </Button>
-            <Button
-              size="icon"
-              variant="ghost"
-              onClick={() => {
-                carouselApi?.scrollNext();
-              }}
-              disabled={!canScrollNext}
-              className="disabled:pointer-events-auto rounded-full"
-            >
-              <ArrowRight className="size-5" />
-            </Button>
-          </div>
         </div>
       </div>
-      <div className="w-full">
+      <div className="w-full relative">
         <Carousel
           setApi={setCarouselApi}
           opts={{
@@ -265,6 +241,32 @@ const Gallery4 = ({
             },
           }}
         >
+          {/* Botão de navegação esquerda */}
+          <Button
+            size="icon"
+            variant="ghost"
+            onClick={() => {
+              carouselApi?.scrollPrev();
+            }}
+            disabled={!canScrollPrev}
+            className="absolute left-4 top-[13.5rem] -translate-y-1/2 z-20 h-12 w-12 bg-white/90 hover:bg-white shadow-lg rounded-full disabled:opacity-50 disabled:pointer-events-none transition-all duration-200"
+          >
+            <ArrowLeft className="size-5" />
+          </Button>
+
+          {/* Botão de navegação direita */}
+          <Button
+            size="icon"
+            variant="ghost"
+            onClick={() => {
+              carouselApi?.scrollNext();
+            }}
+            disabled={!canScrollNext}
+            className="absolute right-4 top-[13.5rem] -translate-y-1/2 z-20 h-12 w-12 bg-white/90 hover:bg-white shadow-lg rounded-full disabled:opacity-50 disabled:pointer-events-none transition-all duration-200"
+          >
+            <ArrowRight className="size-5" />
+          </Button>
+
           <CarouselContent className="ml-0 2xl:ml-[max(8rem,calc(50vw-700px))] 2xl:mr-[max(0rem,calc(50vw-700px))]">
             {items.map((item) => (
               <CarouselItem
