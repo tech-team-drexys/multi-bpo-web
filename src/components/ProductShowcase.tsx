@@ -3,7 +3,7 @@ const ProductShowcase = () => {
   return <section className="w-full min-h-screen bg-gray-800 p-8 flex items-center justify-center">
       <div className="w-full max-w-7xl rounded-3xl p-8 flex gap-8 items-center">
         {/* Content Div */}
-        <div className="flex-1 rounded-2xl p-8 space-y-6 bg-gray-600">
+        <div className="flex-1 rounded-2xl h-full p-8 space-y-6 bg-gray-600">
           <h2 className="text-4xl font-bold text-white font-heading">
             Transforme Seu Negócio
           </h2>
