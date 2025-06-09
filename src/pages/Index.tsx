@@ -1,3 +1,4 @@
+
 import Header from "@/components/Header";
 import NewHero from "@/components/NewHero";
 import Services from "@/components/Services";
@@ -18,8 +19,8 @@ const Index = () => {
     <div className="min-h-screen bg-white w-full overflow-x-hidden">
       <Header enableScrollAnimation={true} />
       <NewHero />
-      <Services />
       <ShowcaseProduct />
+      <Services />
       <WhatsAppAssistant />
       <HowItWorks />
       <Benefits />
