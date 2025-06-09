@@ -1,3 +1,4 @@
+
 import Header from "@/components/Header";
 import NewHero from "@/components/NewHero";
 import Services from "@/components/Services";
@@ -11,6 +12,7 @@ import Footer from "@/components/Footer";
 import LightFooter from "@/components/LightFooter";
 import Courses from "@/components/Courses";
 import AboutUs from "@/components/AboutUs";
+import ProductShowcase from "@/components/ProductShowcase";
 
 const Index = () => {
   return (
@@ -22,6 +24,7 @@ const Index = () => {
       <HowItWorks />
       <Benefits />
       <CallToActionBanner />
+      <ProductShowcase />
       <Courses />
       <LightFooter />
     </div>
