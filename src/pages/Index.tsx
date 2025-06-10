@@ -11,7 +11,7 @@ import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import LightFooter from "@/components/LightFooter";
 import Courses from "@/components/Courses";
-import AboutUs from "@/components/AboutUs";
+import QuemSomos from "@/components/QuemSomos";
 import "@/components/ui/showcase-product.css";
 
 const Index = () => {
@@ -21,6 +21,7 @@ const Index = () => {
       <NewHero />
       <ShowcaseProduct />
       <Services />
+      <QuemSomos />
       <WhatsAppAssistant />
       <HowItWorks />
       <Benefits />
