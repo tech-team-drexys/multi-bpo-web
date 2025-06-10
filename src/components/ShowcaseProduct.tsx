@@ -1,53 +1,78 @@
-
-import React from 'react';
+import React from "react";
 
 const ShowcaseProduct = () => {
   const cards = [
     {
-      title: "Reinventing micro-mobility with",
-      highlight: "Award winning",
-      highlightEnd: "design",
-      description: "Our mission is to close the gap between a scooter and a bike. Yoda is the lightest vehicle of its category, designed to be agile and fun for everyone to ride.",
-      image: "https://assets-global.website-files.com/65ae37af356fab4845432048/65be0fdac914d702e08f70ed_Yoda-Helmet_1-transcode.mp4"
+      title: "O seu",
+      highlight: "Escritório Contábil",
+      highlightEnd: "está preso no passado?",
+      description:
+        "Enquanto você perde horas com dúvidas repetitivas, outros escritórios estão acelerando seus processos com inteligência artificial.",
+      image: "/accounting-office.png",
+      ctaText: "Saia do passado",
+      secondaryText: "Começar Agora",
     },
     {
-      title: "Best in class energy management for",
-      highlight: "optimal autonomy",
-      description: "3 riding modes: 🌱 eco, ⚡️ normal & 🚀 boost - that offer up to 80 km range on one single charge with a swappable battery.",
-      image: "https://assets-global.website-files.com/65ae37af356fab4845432048/65ae37af356fab48454320ae_BatteryRemoval_Pingpong_001-transcode.mp4"
+      title: "Venha para o futuro com a",
+      highlight: "MULTI BPO",
+      description:
+        "Junte-se aos contadores que trocaram o caos por clareza. Com nossa consultoria de IA híbrida, você atende melhor, responde mais rápido e ganha tempo pra crescer.",
+      image: "/ai-chip.png",
+      ctaText: "Quero crescer",
+      secondaryText: "Começar Agora",
     },
-    {
-      title: "Durable and effortless,",
-      highlight: "all the way",
-      description: "We spent years crafting Yoda, stripping away unnecessary components to deliver a simple and efficient mobility experience.",
-      image: "https://assets-global.website-files.com/65ae37af356fab4845432048/65be104f9aba74d774b7f4a3_Yoda-Exploded-50-transcode.mp4"
-    }
   ];
 
   return (
-    <section className="showcase-section">
-      <div className="showcase-container">
-        <div className="showcase-grid">
+    <section className="min-h-[100px] bg-[#eaeaea] px-24 py-24 pt-24 m-0 -mt-[30px]">
+      <div className="max-w-[1440px] mx-auto h-full">
+        <div className="flex flex-col gap-24 justify-center min-h-full">
           {cards.map((card, index) => (
-            <div key={index} className="showcase-card">
-              <div className="card-content">
-                <h2 className="card-title">
-                  {card.title} <span className="highlight-text">{card.highlight}</span>
-                  {card.highlightEnd && ` ${card.highlightEnd}`}
-                </h2>
-                <div className="card-line"></div>
-                <p className="card-description">{card.description}</p>
+            <div
+              key={index}
+              className="bg-[#3a3a3a] rounded-[20px] p-12 text-white grid grid-cols-[1.2fr_1fr] gap-8 items-center shadow-[0_8px_32px_rgba(0,0,0,0.3)] min-h-[600px] max-w-full overflow-hidden"
+            >
+              <div className="flex flex-col justify-between h-full">
+                <div>
+                  <h2 className="text-[2.6rem] mb-12 font-normal leading-[1.3] text-white">
+                    {card.title}{" "}
+                    <span className="text-[#00d4aa]">{card.highlight}</span>
+                    {card.highlightEnd && ` ${card.highlightEnd}`}
+                  </h2>
+                  <div className="w-4/5 h-px bg-[#555] mb-12 mx-auto"></div>
+                  <p className="text-base leading-6 text-[#cccccc] mb-12">
+                    {card.description}
+                  </p>
+                </div>
+
+                <div className="flex gap-12 items-center justify-start">
+                  <div className="inline-flex items-center bg-transparent text-white border border-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 w-fit cursor-pointer hover:bg-white hover:text-[#3a3a3a]">
+                    {card.secondaryText}
+                  </div>
+
+                  <div className="group inline-flex items-center bg-[#10b981] text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 w-fit cursor-pointer relative z-20 hover:bg-[#059669]">
+                    {card.ctaText}
+                    <svg
+                      className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
               </div>
-              <div className="card-media">
-                <video 
-                  autoPlay 
-                  loop 
-                  muted 
-                  playsInline
-                  className="card-video"
-                >
-                  <source src={card.image} type="video/mp4" />
-                </video>
+              <div className="w-full h-full overflow-hidden rounded-xl">
+                <img
+                  src={card.image}
+                  alt={card.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           ))}

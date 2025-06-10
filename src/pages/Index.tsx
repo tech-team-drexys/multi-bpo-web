@@ -1,4 +1,3 @@
-
 import Header from "@/components/Header";
 import NewHero from "@/components/NewHero";
 import ShowcaseProduct from "@/components/ShowcaseProduct";

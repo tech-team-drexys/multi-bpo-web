@@ -216,7 +216,7 @@ const Gallery4 = ({
   const activeDotIndex = Math.round(scrollProgress * (totalDots - 1));
 
   return (
-    <section className="py-32">
+    <section className="pb-32 pt-32">
       <div className="container mx-auto">
         <div className="mb-8 flex items-end justify-between md:mb-14 lg:mb-16">
           <div className="flex flex-col gap-4">

@@ -89,10 +89,10 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
       title: "Terceirização",
       items: [
         "Terceirização do Departamento Contábil",
-        "Terceirização do Departamento Fiscal / Tributário", 
+        "Terceirização do Departamento Fiscal / Tributário",
         "Terceirização do Departamento Pessoal (DP)",
         "Terceirização do Departamento Paralegal / Legalização",
-        "BPO Financeiro com Inteligência e Precisão"
+        "BPO Financeiro com Inteligência e Precisão",
       ],
     },
     {
@@ -102,7 +102,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
         "Assessoria Tributária e Regularização Fiscal",
         "Consultoria Técnica com IA (Web + WhatsApp)",
         "Estruturação de Holdings",
-        "Cursos e Treinamentos para Equipes Contábeis"
+        "Cursos e Treinamentos para Equipes Contábeis",
       ],
     },
     {
@@ -115,7 +115,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
         "Endereço Fiscal em Alphaville",
         "Recrutamento e Seleção com IA",
         "Marketing Digital para Escritórios Contábeis",
-        "Criação e Otimização de Sites Contábeis"
+        "Criação e Otimização de Sites Contábeis",
       ],
     },
   ];
@@ -137,11 +137,12 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-1 ${
+      className={`fixed top-0 left-0 right-0 transition-all duration-300 py-1 ${
         isScrolledState
           ? "bg-white border-b border-gray-200"
           : "bg-transparent border-b border-transparent"
       }`}
+      style={{ zIndex: 1000 }}
     >
       <div className="max-w-[1440px] mx-auto px-4 sm:px-14 lg:px-14">
         <div className="flex justify-between items-center h-16">
