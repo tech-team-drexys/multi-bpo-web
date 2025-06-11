@@ -1,17 +1,17 @@
 
 import {
-  LightningBoltIcon,
-  ShieldIcon,
-  PersonIcon,
-  CheckCircledIcon,
-  ClockIcon,
-} from "@radix-ui/react-icons";
+  Zap,
+  Shield,
+  User,
+  CheckCircle,
+  Clock,
+} from "lucide-react";
 
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
 
 const features = [
   {
-    Icon: LightningBoltIcon,
+    Icon: Zap,
     name: "Respostas Imediatas",
     description: "Tire dúvidas e resolva problemas com agilidade através da nossa IA especializada.",
     href: "/",
@@ -20,7 +20,7 @@ const features = [
     className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
   },
   {
-    Icon: ShieldIcon,
+    Icon: Shield,
     name: "Base Legal Sólida",
     description: "Fundamentado em legislações, normas técnicas e jurisprudências atualizadas.",
     href: "/",
@@ -29,7 +29,7 @@ const features = [
     className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
   },
   {
-    Icon: PersonIcon,
+    Icon: User,
     name: "Especialistas Humanos",
     description: "Quando necessário, direcionamento para nossos profissionais especializados.",
     href: "/",
@@ -38,7 +38,7 @@ const features = [
     className: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
   },
   {
-    Icon: CheckCircledIcon,
+    Icon: CheckCircle,
     name: "Segurança nas Entregas",
     description: "Mais confiança, menos retrabalho e zero dúvidas sem resposta.",
     href: "/",
@@ -47,7 +47,7 @@ const features = [
     className: "lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-2",
   },
   {
-    Icon: ClockIcon,
+    Icon: Clock,
     name: "Apoio Constante",
     description: "Suporte técnico disponível sempre que precisar, sem depender de grupos informais.",
     href: "/",
