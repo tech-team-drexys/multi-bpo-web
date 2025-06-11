@@ -41,6 +41,11 @@ export function FeatureSteps({
     return () => clearInterval(timer)
   }, [progress, features.length, autoPlayInterval])
 
+  const handleFeatureClick = (index: number) => {
+    setCurrentFeature(index)
+    setProgress(0)
+  }
+
   return (
     <div className={cn("p-8 md:p-12", className)}>
       <div className="max-w-7xl mx-auto w-full">
@@ -53,10 +58,11 @@ export function FeatureSteps({
             {features.map((feature, index) => (
               <motion.div
                 key={index}
-                className="flex items-center gap-6 md:gap-8"
+                className="flex items-center gap-6 md:gap-8 cursor-pointer"
                 initial={{ opacity: 0.3 }}
                 animate={{ opacity: index === currentFeature ? 1 : 0.3 }}
                 transition={{ duration: 0.5 }}
+                onClick={() => handleFeatureClick(index)}
               >
                 <motion.div
                   className={cn(
@@ -66,11 +72,7 @@ export function FeatureSteps({
                       : "bg-gray-100 border-gray-300",
                   )}
                 >
-                  {index <= currentFeature ? (
-                    <span className="text-lg font-bold">✓</span>
-                  ) : (
-                    <span className="text-lg font-semibold">{index + 1}</span>
-                  )}
+                  <span className="text-lg font-semibold">{index + 1}</span>
                 </motion.div>
 
                 <div className="flex-1">
@@ -107,7 +109,6 @@ export function FeatureSteps({
                         alt={feature.step}
                         className="w-full h-full object-cover transition-transform transform"
                       />
-                      <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-white via-white/50 to-transparent" />
                     </motion.div>
                   ),
               )}

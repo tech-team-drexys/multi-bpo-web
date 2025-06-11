@@ -28,7 +28,7 @@ const ExampleUseCases = () => {
       <FeatureSteps 
         features={useCases}
         title="Exemplos de Casos de Uso"
-        autoPlayInterval={4000}
+        autoPlayInterval={8000}
         imageHeight="h-[400px]"
       />
     </section>
