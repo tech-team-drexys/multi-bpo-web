@@ -19,10 +19,8 @@ const Index = () => {
       <CTABanners />
       <Services />
       <QuemSomos />
-      <WhatsAppAssistant />
-      <HowItWorks />
-      <Courses />
       <Blog />
+      <Courses />
       <LightFooter />
     </div>
   );
