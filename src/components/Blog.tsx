@@ -1,9 +1,6 @@
-
 import { ArrowRight } from 'lucide-react';
-
 const Blog = () => {
-  return (
-    <section className="py-20 bg-gray-50">
+  return <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-left mb-16">
@@ -19,11 +16,7 @@ const Blog = () => {
         <div className="flex justify-center">
           <div className="bg-white rounded-2xl shadow-lg overflow-hidden max-w-4xl w-full group hover:shadow-xl transition-shadow duration-300">
             <div className="relative h-80 overflow-hidden">
-              <img 
-                src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop" 
-                alt="Artigo sobre contabilidade digital"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
+              <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop" alt="Artigo sobre contabilidade digital" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
               <div className="absolute top-4 left-4">
                 <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
                   Contabilidade Digital
@@ -31,7 +24,7 @@ const Blog = () => {
               </div>
             </div>
             
-            <div className="p-10">
+            <div className="p-10 bg-gray-50">
               <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
                 <span>15 de Janeiro, 2024</span>
                 <span>•</span>
@@ -54,8 +47,6 @@ const Blog = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Blog;
