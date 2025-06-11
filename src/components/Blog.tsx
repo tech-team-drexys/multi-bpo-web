@@ -1,6 +1,5 @@
 
 import { ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 
 const Blog = () => {
   return (
@@ -16,10 +15,10 @@ const Blog = () => {
           </p>
         </div>
 
-        {/* Blog Card */}
-        <div className="flex justify-center mb-12">
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden max-w-2xl w-full group hover:shadow-xl transition-shadow duration-300">
-            <div className="relative h-64 overflow-hidden">
+        {/* Blog Card - Increased size */}
+        <div className="flex justify-center">
+          <div className="bg-white rounded-2xl shadow-lg overflow-hidden max-w-4xl w-full group hover:shadow-xl transition-shadow duration-300">
+            <div className="relative h-80 overflow-hidden">
               <img 
                 src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop" 
                 alt="Artigo sobre contabilidade digital"
@@ -32,18 +31,18 @@ const Blog = () => {
               </div>
             </div>
             
-            <div className="p-8">
+            <div className="p-10">
               <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
                 <span>15 de Janeiro, 2024</span>
                 <span>•</span>
                 <span>5 min de leitura</span>
               </div>
               
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-200">
+              <h3 className="text-3xl font-bold text-gray-900 mb-6 group-hover:text-blue-600 transition-colors duration-200">
                 Como a Inteligência Artificial está Revolucionando a Contabilidade
               </h3>
               
-              <p className="text-gray-600 mb-6 leading-relaxed">
+              <p className="text-gray-600 mb-6 leading-relaxed text-lg">
                 Descubra como a IA está transformando processos contábeis, automatizando tarefas repetitivas e permitindo que contadores foquem em atividades estratégicas de maior valor.
               </p>
               
@@ -53,14 +52,6 @@ const Blog = () => {
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Call to Action Button */}
-        <div className="flex justify-center">
-          <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-semibold group">
-            Veja todos os cursos
-            <ArrowRight className="ml-2 w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" />
-          </Button>
         </div>
       </div>
     </section>
