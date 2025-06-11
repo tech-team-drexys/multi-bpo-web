@@ -9,6 +9,7 @@ import LightFooter from "@/components/LightFooter";
 import Courses from "@/components/Courses";
 import QuemSomos from "@/components/QuemSomos";
 import Blog from "@/components/Blog";
+import BentoSection from "@/components/BentoSection";
 import "@/components/ui/showcase-product.css";
 
 const Index = () => {
@@ -17,6 +18,7 @@ const Index = () => {
       <Header enableScrollAnimation={true} />
       <NewHero />
       <CTABanners />
+      <BentoSection />
       <Services />
       <QuemSomos />
       <Blog />
