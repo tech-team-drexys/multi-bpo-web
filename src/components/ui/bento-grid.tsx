@@ -68,7 +68,7 @@ const BentoCard = ({
     >
       <a 
         href={href}
-        className="pointer-events-auto inline-flex items-center text-blue-600 font-medium transition-colors group/button"
+        className="pointer-events-auto inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors group/button"
       >
         {cta}
         <ArrowRightIcon className="ml-2 h-4 w-4 transition-transform group-hover/button:translate-x-1" />
