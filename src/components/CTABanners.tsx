@@ -16,7 +16,7 @@ const CTABanners = () => {
     ctaText: "Quero crescer",
     secondaryText: "Começar Agora"
   }];
-  return <section className="bg-gray-200 px-12 py-24 pt-24 m-0 relative z-20">
+  return <section className="px-12 py-24 pt-24 m-0 relative z-20 bg-stone-950">
       <div className="max-w-[1440px] mx-auto h-full">
         <div className="flex flex-col gap-12 justify-center min-h-full">
           {cards.map((card, index) => <div key={index} className={`bg-cover bg-center bg-no-repeat rounded-[20px] p-16 text-gray-800 flex items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.1)] h-[850px] max-w-full overflow-hidden border border-gray-100 relative`} style={index === 1 ? {
