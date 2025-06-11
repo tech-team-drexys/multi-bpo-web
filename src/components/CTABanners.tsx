@@ -24,7 +24,7 @@ const CTABanners = () => {
         } : {
           backgroundImage: "url(/extended-accouting-table.png)"
         }}>
-              <div className="absolute inset-0 bg-black/50 rounded-[30px]"></div>
+              <div className="absolute inset-0 bg-black/50 rounded-[20px]"></div>
               
               <div className="grid grid-cols-[1fr_1.3fr] gap-20 items-center w-full max-w-6xl relative z-10">
                 <div className="flex flex-col justify-between h-full bg-black/25 backdrop-blur-md py-16 px-10 rounded-3xl shadow-[0_2px_16px_rgba(0,0,0,0.06)] border border-white/30">
