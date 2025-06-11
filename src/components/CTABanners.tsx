@@ -31,7 +31,7 @@ const CTABanners = () => {
           {cards.map((card, index) => (
             <div
               key={index}
-              className={`bg-cover bg-center bg-no-repeat rounded-[20px] p-32 text-gray-800 grid grid-cols-[1fr_1.3fr] gap-20 items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.1)] h-[850px] max-w-full overflow-hidden border border-gray-100 relative`}
+              className={`bg-cover bg-center bg-no-repeat rounded-[20px] p-32 text-gray-800 grid grid-cols-[1fr_1.3fr] gap-20 items-center shadow-[0_4px_20px_rgba(0,0,0,0.1)] h-[850px] max-w-full overflow-hidden border border-gray-100 relative`}
               style={
                 index === 1
                   ? { backgroundImage: "url(/extended-ai-chip.png)" }
@@ -39,8 +39,8 @@ const CTABanners = () => {
               }
             >
               <div className="absolute inset-0 bg-black/50 rounded-[20px]"></div>
-              <div className="flex flex-col justify-center h-full bg-black/25 backdrop-blur-md py-16 px-10 rounded-3xl shadow-[0_2px_16px_rgba(0,0,0,0.06)] border border-white/30 relative z-10">
-                <div className="flex flex-col justify-center items-center text-center h-full">
+              <div className="flex flex-col justify-between h-full bg-black/25 backdrop-blur-md py-16 px-10 rounded-3xl shadow-[0_2px_16px_rgba(0,0,0,0.06)] border border-white/30 relative z-10">
+                <div>
                   <h2 className="text-[3rem] mb-12 leading-[1.3] font-semibold text-gray-50">
                     {card.title}{" "}
                     <span className="text-blue-500 font-semibold">
@@ -52,26 +52,27 @@ const CTABanners = () => {
                   <p className="text-lg leading-7 text-gray-100 mb-12">
                     {card.description}
                   </p>
-                  <div className="flex gap-12 items-center justify-center w-full">
-                    <div className="group inline-flex items-center justify-center bg-green-600 border-[1px] border-green-600 text-white px-6 py-3 rounded-lg text-lg font-semibold transition-all duration-300 cursor-pointer relative z-20 hover:bg-green-700 hover:shadow-md w-full">
-                      {card.ctaText}
-                      <svg
-                        className="ml-2 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M5 12h14" />
-                        <path d="m12 5 7 7-7 7" />
-                      </svg>
-                    </div>
+                </div>
+
+                <div className="flex gap-12 items-center justify-center">
+                  <div className="group inline-flex items-center justify-center bg-green-600 border-[1px] border-green-600 text-white px-6 py-3 rounded-lg text-lg font-semibold transition-all duration-300 cursor-pointer relative z-20 hover:bg-green-700 hover:shadow-md w-full">
+                    {card.ctaText}
+                    <svg
+                      className="ml-2 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
                   </div>
                 </div>
               </div>
-              <div className="w-full h-full overflow-hidden rounded-xl shadow-[0_4px_30px_rgba(0,0,0,0.8)] relative z-10 flex items-center justify-center">
+              <div className="w-full h-full overflow-hidden rounded-xl shadow-[0_4px_30px_rgba(0,0,0,0.8)] relative z-10">
                 <img
                   src={card.image}
                   alt={card.title}
