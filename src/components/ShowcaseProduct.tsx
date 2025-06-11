@@ -3,12 +3,12 @@ import React from "react";
 const ShowcaseProduct = () => {
   const cards = [
     {
-      title: "O seu",
+      title: "Seu",
       highlight: "Escritório Contábil",
       highlightEnd: "está preso no passado?",
       description:
         "Enquanto você perde horas com dúvidas repetitivas, outros escritórios estão acelerando seus processos com inteligência artificial.",
-      image: "/accounting-office.png",
+      image: "/accounting-table.png",
       ctaText: "Saia do passado",
       secondaryText: "Começar Agora",
     },
@@ -24,33 +24,37 @@ const ShowcaseProduct = () => {
   ];
 
   return (
-    <section className="min-h-[100px] bg-[#eaeaea] px-24 py-24 pt-24 m-0 -mt-[30px]">
+    <section className="bg-gray-200 px-24 py-24 pt-24 m-0 relative z-20">
       <div className="max-w-[1440px] mx-auto h-full">
-        <div className="flex flex-col gap-24 justify-center min-h-full">
+        <div className="flex flex-col gap-12 justify-center min-h-full">
           {cards.map((card, index) => (
             <div
               key={index}
-              className="bg-[#3a3a3a] rounded-[20px] p-12 text-white grid grid-cols-[1.2fr_1fr] gap-8 items-center shadow-[0_8px_32px_rgba(0,0,0,0.3)] min-h-[600px] max-w-full overflow-hidden"
+              className={`bg-cover bg-center bg-no-repeat rounded-[20px] p-24 text-gray-800 grid grid-cols-[1fr_1.3fr] gap-16 items-center shadow-[0_4px_20px_rgba(0,0,0,0.1)] h-[750px] max-w-full overflow-hidden border border-gray-100 relative`}
+              style={
+                index === 1
+                  ? { backgroundImage: "url(/extended-ai-chip.png)" }
+                  : { backgroundImage: "url(/extended-accouting-table.png)" }
+              }
             >
-              <div className="flex flex-col justify-between h-full">
+              <div className="absolute inset-0 bg-black/50 rounded-[20px]"></div>
+              <div className="flex flex-col justify-between h-full bg-black/25 backdrop-blur-md py-12 px-8 rounded-3xl shadow-[0_2px_16px_rgba(0,0,0,0.06)] border border-white/30 relative z-10">
                 <div>
-                  <h2 className="text-[2.6rem] mb-12 font-normal leading-[1.3] text-white">
+                  <h2 className="text-[2.6rem] mb-12 leading-[1.3] font-semibold text-gray-50">
                     {card.title}{" "}
-                    <span className="text-[#00d4aa]">{card.highlight}</span>
+                    <span className="text-blue-500 font-semibold">
+                      {card.highlight}
+                    </span>
                     {card.highlightEnd && ` ${card.highlightEnd}`}
                   </h2>
-                  <div className="w-4/5 h-px bg-[#555] mb-12 mx-auto"></div>
-                  <p className="text-base leading-6 text-[#cccccc] mb-12">
+                  <div className="w-full h-px bg-gray-500 mb-12 mx-auto"></div>
+                  <p className="text-base leading-6 text-gray-100 mb-12">
                     {card.description}
                   </p>
                 </div>
 
-                <div className="flex gap-12 items-center justify-start">
-                  <div className="inline-flex items-center bg-transparent text-white border border-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 w-fit cursor-pointer hover:bg-white hover:text-[#3a3a3a]">
-                    {card.secondaryText}
-                  </div>
-
-                  <div className="group inline-flex items-center bg-[#10b981] text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 w-fit cursor-pointer relative z-20 hover:bg-[#059669]">
+                <div className="flex gap-12 items-center justify-center">
+                  <div className="group inline-flex items-center justify-center bg-green-600 border-[1px] border-green-600 text-white px-5 py-2 rounded-lg text-base font-semibold transition-all duration-300 cursor-pointer relative z-20 hover:bg-green-700 hover:shadow-md w-full">
                     {card.ctaText}
                     <svg
                       className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
@@ -67,7 +71,7 @@ const ShowcaseProduct = () => {
                   </div>
                 </div>
               </div>
-              <div className="w-full h-full overflow-hidden rounded-xl">
+              <div className="w-full h-full overflow-hidden rounded-xl shadow-[0_4px_30px_rgba(0,0,0,0.8)] relative z-10">
                 <img
                   src={card.image}
                   alt={card.title}

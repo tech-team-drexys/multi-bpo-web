@@ -1,10 +1,9 @@
-
-import { Gallery4 } from '@/components/ui/gallery4';
+import { CategorizedGallery } from "@/components/ui/gallery4";
 
 const Services = () => {
   return (
     <section id="services" className="bg-white">
-      <Gallery4 
+      <CategorizedGallery
         title="Nossos Serviços"
         description="Uma plataforma completa de BPO desenvolvida especificamente para revolucionar a gestão de escritórios contábeis modernos."
       />
