@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Users, Target, Award, TrendingUp } from "lucide-react";
 
@@ -30,7 +31,7 @@ const QuemSomos = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       <div className="absolute top-20 right-20 w-72 h-72 bg-blue-100 rounded-full blur-3xl opacity-30"></div>
@@ -39,13 +40,13 @@ const QuemSomos = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-left mb-16">
-          <h2 className="text-[2.6rem] font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Quem{" "}
             <span className="bg-blue-600 bg-clip-text text-transparent">
               Somos
             </span>
           </h2>
-          <p className="text-[1.2rem] text-gray-600 max-w-3xl leading-relaxed">
+          <p className="text-xl text-gray-600 max-w-3xl">
             Somos pioneiros em transformação digital para escritórios contábeis,
             combinando tecnologia de ponta com expertise contábil.
           </p>

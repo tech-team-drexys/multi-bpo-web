@@ -1,13 +1,16 @@
+
 import { ArrowRight } from 'lucide-react';
+
 const Blog = () => {
-  return <section className="py-20 bg-white">
+  return (
+    <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-left mb-16">
+        <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Blog
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Acompanhe as últimas novidades, dicas e insights sobre contabilidade e gestão empresarial.
           </p>
         </div>
@@ -47,6 +50,8 @@ const Blog = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Blog;
