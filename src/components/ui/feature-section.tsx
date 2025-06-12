@@ -1,64 +1,75 @@
-
-import React, { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { cn } from "@/lib/utils"
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
+import { typography, spacing } from "@/lib/design-system";
 
 interface Feature {
-  step: string
-  title?: string
-  content: string
-  image: string
+  step: string;
+  title?: string;
+  content: string;
+  image: string;
 }
 
 interface FeatureStepsProps {
-  features: Feature[]
-  className?: string
-  title?: string
-  autoPlayInterval?: number
-  imageHeight?: string
+  features: Feature[];
+  className?: string;
+  title?: string;
+  description?: string;
+  autoPlayInterval?: number;
+  imageHeight?: string;
 }
 
 export function FeatureSteps({
   features,
   className,
   title = "How to get Started",
+  description,
   autoPlayInterval = 3000,
   imageHeight = "h-[400px]",
 }: FeatureStepsProps) {
-  const [currentFeature, setCurrentFeature] = useState(0)
-  const [progress, setProgress] = useState(0)
+  const [currentFeature, setCurrentFeature] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
       if (progress < 100) {
-        setProgress((prev) => prev + 100 / (autoPlayInterval / 100))
+        setProgress((prev) => prev + 100 / (autoPlayInterval / 100));
       } else {
-        setCurrentFeature((prev) => (prev + 1) % features.length)
-        setProgress(0)
+        setCurrentFeature((prev) => (prev + 1) % features.length);
+        setProgress(0);
       }
-    }, 100)
+    }, 100);
 
-    return () => clearInterval(timer)
-  }, [progress, features.length, autoPlayInterval])
+    return () => clearInterval(timer);
+  }, [progress, features.length, autoPlayInterval]);
 
   const handleFeatureClick = (index: number) => {
-    setCurrentFeature(index)
-    setProgress(0)
-  }
+    setCurrentFeature(index);
+    setProgress(0);
+  };
 
   return (
     <div className={cn("p-8 md:p-12", className)}>
       <div className="max-w-7xl mx-auto w-full">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-10 text-center">
-          {title}
-        </h2>
+        <div className={`text-center ${spacing.content.lg}`}>
+          <h2 className={`${typography.heading.lg} text-gray-900 mb-4`}>
+            {title}
+          </h2>
+          {description && (
+            <p
+              className={`${typography.body.lg} text-gray-600 max-w-3xl mx-auto`}
+            >
+              {description}
+            </p>
+          )}
+        </div>
 
-        <div className="flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-10">
-          <div className="order-2 md:order-1 space-y-8">
+        <div className="flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-20">
+          <div className="order-2 md:order-1 space-y-10">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
-                className="flex items-center gap-6 md:gap-8 cursor-pointer"
+                className="flex items-center gap-6 md:gap-12 cursor-pointer"
                 initial={{ opacity: 0.3 }}
                 animate={{ opacity: index === currentFeature ? 1 : 0.3 }}
                 transition={{ duration: 0.5 }}
@@ -66,20 +77,20 @@ export function FeatureSteps({
               >
                 <motion.div
                   className={cn(
-                    "w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center border-2",
+                    "w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center",
                     index === currentFeature
-                      ? "bg-blue-600 border-blue-600 text-white scale-110"
-                      : "bg-gray-100 border-gray-300",
+                      ? "bg-blue-600 text-white scale-105"
+                      : "bg-gray-300"
                   )}
                 >
                   <span className="text-lg font-semibold">{index + 1}</span>
                 </motion.div>
 
                 <div className="flex-1">
-                  <h3 className="text-xl md:text-2xl font-semibold text-gray-900">
+                  <h3 className={`${typography.heading.sm} text-gray-900`}>
                     {feature.title || feature.step}
                   </h3>
-                  <p className="text-sm md:text-lg text-gray-600">
+                  <p className={`${typography.body.md} text-gray-600`}>
                     {feature.content}
                   </p>
                 </div>
@@ -110,12 +121,12 @@ export function FeatureSteps({
                         className="w-full h-full object-cover transition-transform transform"
                       />
                     </motion.div>
-                  ),
+                  )
               )}
             </AnimatePresence>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
