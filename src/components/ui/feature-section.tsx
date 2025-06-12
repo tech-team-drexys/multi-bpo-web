@@ -17,6 +17,7 @@ interface FeatureStepsProps {
   description?: string;
   autoPlayInterval?: number;
   imageHeight?: string;
+  imageWidth?: string;
 }
 
 export function FeatureSteps({
@@ -25,7 +26,6 @@ export function FeatureSteps({
   title = "How to get Started",
   description,
   autoPlayInterval = 3000,
-  imageHeight = "h-[400px]",
 }: FeatureStepsProps) {
   const [currentFeature, setCurrentFeature] = useState(0);
   const [progress, setProgress] = useState(0);
@@ -64,12 +64,12 @@ export function FeatureSteps({
           )}
         </div>
 
-        <div className="flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-20">
-          <div className="order-2 md:order-1 space-y-10">
+        <div className="flex flex-col md:grid md:grid-cols-[1fr_1.3fr] gap-6 md:gap-12 items-stretch">
+          <div className="order-2 md:order-1 space-y-10 md:max-w-md w-full">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
-                className="flex items-center gap-6 md:gap-12 cursor-pointer"
+                className="flex items-center gap-6 md:gap-8 cursor-pointer"
                 initial={{ opacity: 0.3 }}
                 animate={{ opacity: index === currentFeature ? 1 : 0.3 }}
                 transition={{ duration: 0.5 }}
@@ -100,7 +100,7 @@ export function FeatureSteps({
 
           <div
             className={cn(
-              "order-1 md:order-2 relative h-[200px] md:h-[300px] lg:h-[400px] overflow-hidden rounded-lg"
+              `order-1 md:order-2 relative overflow-hidden rounded-lg mx-auto w-full h-[320px] md:h-[520px] lg:h-[560px]`
             )}
           >
             <AnimatePresence mode="wait">
