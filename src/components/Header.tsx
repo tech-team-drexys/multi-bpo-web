@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { components } from "@/lib/design-system";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   DropdownMenu,
@@ -265,17 +266,21 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
             </div>
           </nav>
 
-          <div className="hidden min-[945px]:flex gap-2 lg:gap-4">
-            <Button
-              className={`w-[110px] lg:w-[130px] h-9 lg:h-10 text-xs lg:text-sm font-medium transition-colors duration-300 ${
+          <div className="hidden min-[945px]:flex gap-2 lg:gap-6">
+            <div
+              className={`${components.button.default} ${
                 isScrolledState
-                  ? "text-blue-800 bg-transparent border-[1px] border-blue-800 hover:bg-blue-800 hover:text-white"
-                  : "border-white text-white hover:bg-white hover:text-black bg-transparent"
+                  ? "text-blue-600 hover:text-blue-700"
+                  : "text-white hover:text-gray-200"
               }`}
-              variant={isScrolledState ? "default" : "outline"}
             >
               Começar Agora
-            </Button>
+              <ArrowRight
+                className={`${components.button.defaultArrow} ${
+                  !isScrolledState ? "text-white" : ""
+                }`}
+              />
+            </div>
             <Button
               className={`w-[110px] lg:w-[130px] h-9 lg:h-10 text-xs lg:text-sm font-medium transition-colors duration-300 ${
                 isScrolledState
@@ -409,12 +414,13 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
                 Blog
               </a>
               <div className="flex flex-col gap-2 mt-4 pt-4 border-t border-slate-300">
-                <Button
+                <div
                   onClick={() => setIsMenuOpen(false)}
-                  className="w-full h-10 text-sm font-medium text-blue-800 bg-transparent border-[1px] border-blue-800 hover:bg-blue-800 hover:text-white"
+                  className={`${components.button.default} justify-center w-full h-10 text-sm`}
                 >
                   Começar Agora
-                </Button>
+                  <ArrowRight className={components.button.defaultArrow} />
+                </div>
                 <Button
                   onClick={() => setIsMenuOpen(false)}
                   className="w-full h-10 text-sm font-medium bg-emerald-500 hover:bg-emerald-700 text-white"
