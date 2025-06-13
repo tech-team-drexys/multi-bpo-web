@@ -24,15 +24,16 @@ const CTABanners = () => {
     },
   ];
   return (
-    <section
-      className={`px-12 ${spacing.section.lg} pt-24 m-0 relative z-20 ${backgrounds.secondary}`}
-    >
-      <div className="max-w-[1440px] mx-auto h-full">
-        <div className="flex flex-col gap-12 justify-center min-h-full">
-          {cards.map((card, index) => (
+    <section className="relative z-20">
+      {cards.map((card, index) => (
+        <div
+          key={index}
+          className="relative min-h-screen flex flex-col overflow-hidden"
+        >
+          {/* Background Image with Overlay */}
+          <div className="absolute inset-0 z-0">
             <div
-              key={index}
-              className={`bg-cover bg-center bg-no-repeat rounded-[20px] p-16 text-gray-800 flex items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.1)] h-[850px] max-w-full overflow-hidden border border-gray-100 relative`}
+              className="w-full h-full bg-cover bg-center bg-no-repeat"
               style={
                 index === 1
                   ? {
@@ -42,10 +43,14 @@ const CTABanners = () => {
                       backgroundImage: "url(/extended-accouting-table.png)",
                     }
               }
-            >
-              <div className="absolute inset-0 bg-black/50 rounded-[20px]"></div>
+            />
+            <div className="absolute inset-0 bg-black/50"></div>
+          </div>
 
-              <div className="grid grid-cols-[1fr_1.3fr] gap-20 items-center w-full max-w-6xl relative z-10">
+          {/* Content Container - Card pai */}
+          <div className="relative z-10 flex-1 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto w-full">
+              <div className="grid grid-cols-[1fr_1.3fr] gap-20 items-center w-full">
                 <div className="flex flex-col justify-between h-full bg-black/25 backdrop-blur-md py-16 px-10 rounded-3xl shadow-[0_2px_16px_rgba(0,0,0,0.06)] border border-white/30">
                   <div>
                     <h2 className="text-[2rem] mb-12 leading-[1.3] font-semibold text-gray-50">
@@ -80,7 +85,7 @@ const CTABanners = () => {
                   </div>
                 </div>
 
-                <div className="w-full h-full overflow-hidden rounded-xl shadow-[0_4px_30px_rgba(0,0,0,0.8)]">
+                <div className="w-full h-[600px] overflow-hidden rounded-3xl shadow-[0_4px_30px_rgba(0,0,0,0.8)]">
                   <img
                     src={card.image}
                     alt={card.title}
@@ -89,9 +94,9 @@ const CTABanners = () => {
                 </div>
               </div>
             </div>
-          ))}
+          </div>
         </div>
-      </div>
+      ))}
     </section>
   );
 };
