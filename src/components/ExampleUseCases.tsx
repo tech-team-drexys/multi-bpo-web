@@ -30,7 +30,8 @@ const ExampleUseCases = () => {
     <section className={`${spacing.section.md} ${backgrounds.primary}`}>
       <FeatureSteps
         features={useCases}
-        title="Exemplos de Casos de Uso"
+        title="Exemplos de"
+        span="Casos de Uso"
         description="Veja na prática como nossa IA pode revolucionar o atendimento e suporte técnico do seu escritório contábil."
         autoPlayInterval={8000}
       />

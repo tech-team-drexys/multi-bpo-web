@@ -111,9 +111,11 @@ const Footer = () => {
 
             {/* CRC e endereço */}
             <div className="space-y-2 text-sm text-gray-500">
-              <p className="font-medium">MULTI BPO LTDA | CRC/SP 045316</p>
+              <p className="font-medium">
+                MULTI BPO DO BRASIL LTDA | CRC/SP 045316
+              </p>
               <p>Alameda Araguaia 2044 | Conj. 910 - Bloco 1</p>
-              <p>Alphaville, Barueri - SP | CEP 06455-906</p>
+              <p>Alphaville, Barueri - SP | CEP 06455-000</p>
             </div>
           </div>
 

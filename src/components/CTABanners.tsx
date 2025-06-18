@@ -67,7 +67,7 @@ const CTABanners = () => {
                   </div>
 
                   <div className="flex gap-12 items-center justify-center">
-                    <div className="group inline-flex items-center justify-center bg-green-600 border-[1px] border-green-600 text-white px-6 py-3 rounded-lg text-lg font-semibold transition-all duration-300 cursor-pointer relative z-20 hover:bg-green-700 hover:shadow-md w-full">
+                    <div className="group inline-flex items-center justify-center bg-green-600 text-white px-6 py-3 rounded-lg text-lg font-semibold transition-all duration-300 cursor-pointer relative z-20 hover:bg-green-700 hover:shadow-md w-full">
                       {card.ctaText}
                       <svg
                         className="ml-2 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"

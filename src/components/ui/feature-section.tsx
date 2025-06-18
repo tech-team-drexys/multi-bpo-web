@@ -14,6 +14,7 @@ interface FeatureStepsProps {
   features: Feature[];
   className?: string;
   title?: string;
+  span?: string;
   description?: string;
   autoPlayInterval?: number;
   imageHeight?: string;
@@ -24,6 +25,7 @@ export function FeatureSteps({
   features,
   className,
   title = "How to get Started",
+  span,
   description,
   autoPlayInterval = 3000,
 }: FeatureStepsProps) {
@@ -53,7 +55,7 @@ export function FeatureSteps({
       <div className="max-w-7xl mx-auto w-full">
         <div className={`text-center ${spacing.content.lg}`}>
           <h2 className={`${typography.heading.lg} text-gray-900 mb-4`}>
-            {title}
+            {title} <span className="text-blue-600">{span}</span>
           </h2>
           {description && (
             <p

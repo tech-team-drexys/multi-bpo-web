@@ -77,7 +77,7 @@ export const components = {
   card: {
     base: `bg-white ${borderRadius.lg} ${shadows.card}`,
     hover: shadows.cardHover,
-    padding: "p-6",
+    padding: "px-6 py-8",
   },
   button: {
     default:

@@ -15,30 +15,28 @@ const RevealSection = () => {
   const features = [
     {
       icon: TrendingUp,
-      title: "Crescimento Acelerado",
-      description:
-        "Aumente a produtividade do seu escritório em até 300% com automação inteligente",
-      delay: "delay-200",
+      title: "Produtividade Sem Limites",
+      description: "Automação que eleva a perfomance do seu escritório",
+      delay: "delay-300",
     },
     {
       icon: Users,
-      title: "Equipe Especializada",
+      title: "Tecnologia e Inovação",
       description:
-        "Time multidisciplinar com expertise em contabilidade e tecnologia",
+        "Integramos soluções inteligentes com um time que entende contabilidade",
       delay: "delay-500",
     },
     {
       icon: CheckCircle,
-      title: "Resultados Garantidos",
+      title: "Resultados Reais",
       description:
-        "Mais de 500 escritórios transformados com nossa metodologia comprovada",
+        "Processos estruturados para gerar impacto no dia a dia do seu escritório",
       delay: "delay-700",
     },
     {
       icon: Zap,
-      title: "Implementação Rápida",
-      description:
-        "Transforme seu escritório em até 30 dias com nosso processo estruturado",
+      title: "Rápido. Eficiente. Simples.",
+      description: "Transformação prática e descomplicada",
       delay: "delay-1000",
     },
   ];
@@ -49,7 +47,7 @@ const RevealSection = () => {
       className={`${spacing.section.lg} ${backgrounds.secondary} min-h-screen relative overflow-hidden flex items-center`}
     >
       {/* Background decoration */}
-      <div className={`absolute inset-0 bg-${colors.primary.accent}`}></div>
+      <div className={`absolute inset-0 bg-${backgrounds.accent}`}></div>
 
       <div className={`${spacing.container} relative z-10`}>
         {/* Header */}

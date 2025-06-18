@@ -263,12 +263,28 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                 )}
               </a>
+
+              <a
+                href="#"
+                className={`px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group ${
+                  isScrolledState
+                    ? "text-gray-800 hover:text-blue-800"
+                    : "text-white hover:text-white"
+                }`}
+              >
+                Downloads
+                {!isScrolledState && (
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                )}
+              </a>
             </div>
           </nav>
 
           <div className="hidden min-[945px]:flex gap-2 lg:gap-6">
             <div
-              className={`${components.button.default} ${
+              className={`${
+                components.button.default
+              } text-xs lg:text-sm font-medium ${
                 isScrolledState
                   ? "text-blue-600 hover:text-blue-700"
                   : "text-white hover:text-gray-200"
