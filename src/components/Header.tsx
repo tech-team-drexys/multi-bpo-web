@@ -9,6 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 
 interface HeaderProps {
   enableScrollAnimation?: boolean;
@@ -23,13 +24,14 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
   const location = useLocation();
   const navigate = useNavigate();
   const menuRef = useRef<HTMLDivElement>(null);
+  const { scrollTo } = useSmoothScroll();
 
   const handleNavigateToHome = (
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
   ) => {
     event.preventDefault();
     if (location.pathname === "/") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      scrollTo(0);
     } else {
       navigate("/");
     }
@@ -157,7 +159,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
               <img
                 src="/lovable-uploads/light-logo.png"
                 alt="MULTIBPO Logo"
-                className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${
+                className={`h-7 absolute inset-0 w-full min-[1050px]:h-full object-contain transition-opacity duration-300 ${
                   isScrolledState ? "opacity-0" : "opacity-100"
                 }`}
               />
@@ -172,14 +174,15 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
             </a>
           </div>
 
-          <nav className="hidden min-[945px]:block">
-            <div className="flex items-baseline space-x-4 lg:space-x-6">
+          {/* Nav Bar */}
+          <nav className="hidden min-[980px]:block">
+            <div className="flex items-baseline space-x-4 min-[1160px]:space-x-6">
               <a
                 href="/"
                 onClick={handleNavigateToHome}
                 className={`px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group cursor-pointer ${
                   isScrolledState
-                    ? "text-gray-800 hover:text-blue-800"
+                    ? "text-gray-800 hover:text-blue-600"
                     : "text-white hover:text-white"
                 }`}
               >
@@ -190,9 +193,13 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
               </a>
               <a
                 href="#about"
-                className={`px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group ${
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollTo("#about", { offset: -80 });
+                }}
+                className={`px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group cursor-pointer ${
                   isScrolledState
-                    ? "text-gray-800 hover:text-blue-800"
+                    ? "text-gray-800 hover:text-blue-600"
                     : "text-white hover:text-white"
                 }`}
               >
@@ -205,7 +212,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
                 <div
                   className={`flex items-center px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative cursor-pointer ${
                     isScrolledState
-                      ? "text-gray-800 hover:text-blue-800"
+                      ? "text-gray-800 hover:text-blue-600"
                       : "text-white hover:text-white"
                   }`}
                 >
@@ -239,9 +246,13 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
               </div>
               <a
                 href="#courses"
-                className={`px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group ${
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollTo("#courses", { offset: -80 });
+                }}
+                className={`px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group cursor-pointer ${
                   isScrolledState
-                    ? "text-gray-800 hover:text-blue-800"
+                    ? "text-gray-800 hover:text-blue-600"
                     : "text-white hover:text-white"
                 }`}
               >
@@ -252,9 +263,13 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
               </a>
               <a
                 href="#blog"
-                className={`px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group ${
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollTo("#blog", { offset: -80 });
+                }}
+                className={`px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group cursor-pointer ${
                   isScrolledState
-                    ? "text-gray-800 hover:text-blue-800"
+                    ? "text-gray-800 hover:text-blue-600"
                     : "text-white hover:text-white"
                 }`}
               >
@@ -268,7 +283,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
                 href="#"
                 className={`px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group ${
                   isScrolledState
-                    ? "text-gray-800 hover:text-blue-800"
+                    ? "text-gray-800 hover:text-blue-600"
                     : "text-white hover:text-white"
                 }`}
               >
@@ -280,25 +295,26 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
             </div>
           </nav>
 
-          <div className="hidden min-[945px]:flex gap-2 lg:gap-6">
+          {/* Buttons */}
+          <div className="hidden min-[980px]:flex gap-4 min-[1160px]:gap-6">
             <div
               className={`${
-                components.button.default
+                components.button.neutral
               } text-xs lg:text-sm font-medium ${
                 isScrolledState
-                  ? "text-blue-600 hover:text-blue-700"
+                  ? "text-black"
                   : "text-white hover:text-gray-200"
               }`}
             >
               Começar Agora
               <ArrowRight
                 className={`${components.button.defaultArrow} ${
-                  !isScrolledState ? "text-white" : ""
+                  !isScrolledState ? "text-white" : "text-gray-800"
                 }`}
               />
             </div>
             <Button
-              className={`w-[110px] lg:w-[130px] h-9 lg:h-10 text-xs lg:text-sm font-medium transition-colors duration-300 ${
+              className={`w-[110px] min-[1160px]:w-[130px] h-9 min-[1160px]:h-10 text-xs lg:text-sm font-medium transition-colors duration-300 ${
                 isScrolledState
                   ? "bg-green-500 hover:bg-green-600 text-white"
                   : "bg-white hover:bg-green-500 text-black hover:text-white"
@@ -308,12 +324,13 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
             </Button>
           </div>
 
-          <div className="min-[945px]:hidden">
+          {/* Hamburger Menu Button */}
+          <div className="min-[980px]:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className={`transition-colors ${
                 isScrolledState
-                  ? "text-gray-800 hover:text-blue-600"
+                  ? "text-gray-800 hover:text-blue-500"
                   : "text-white hover:text-blue-300"
               }`}
             >
@@ -335,7 +352,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
         {isMenuOpen && (
           <div
             ref={menuRef}
-            className="min-[945px]:hidden absolute top-full left-0 right-0 mx-6 mt-2 z-50"
+            className="min-[980px]:hidden absolute top-full left-0 right-0 mx-6 mt-2 z-50"
           >
             <div className="py-6 px-6 space-y-1 bg-gray-100 rounded-xl shadow-lg max-h-[calc(100vh-8rem)] overflow-y-auto scrollbar-custom">
               <a
@@ -350,8 +367,12 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
               </a>
               <a
                 href="#about"
-                onClick={() => setIsMenuOpen(false)}
-                className="block text-slate-700 hover:text-blue-600 px-3 py-2 text-base font-medium"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollTo("#about", { offset: -80 });
+                  setIsMenuOpen(false);
+                }}
+                className="block text-slate-700 hover:text-blue-600 px-3 py-2 text-base font-medium cursor-pointer"
               >
                 Quem Somos
               </a>
@@ -424,8 +445,12 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
 
               <a
                 href="#blog"
-                onClick={() => setIsMenuOpen(false)}
-                className="block text-slate-700 hover:text-blue-600 px-3 py-2 text-base font-medium"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollTo("#blog", { offset: -80 });
+                  setIsMenuOpen(false);
+                }}
+                className="block text-slate-700 hover:text-blue-600 px-3 py-2 text-base font-medium cursor-pointer"
               >
                 Blog
               </a>

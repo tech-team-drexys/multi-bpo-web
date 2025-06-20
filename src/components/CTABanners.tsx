@@ -8,19 +8,31 @@ const CTABanners = () => {
       highlight: "Escritório Contábil",
       highlightEnd: "está preso no passado?",
       description:
-        "Enquanto você perde horas com dúvidas repetitivas, outros escritórios estão acelerando seus processos com inteligência artificial.",
-      image: "/accounting-table.png",
+        "Enquanto você perde horas com processos repetitivos, dúvidas, retrabalho, perde prazos, outros escritórios estão acelerando seus processos com Inteligência Artificial - IA.",
+      listItems: [
+        "Pare de pagar multas desnecessárias",
+        "Elimine processos repetitivos",
+        "Reduza retrabalho e dúvidas",
+      ],
       ctaText: "Saia do passado",
       secondaryText: "Começar Agora",
+      backgroundImage: "/extended-accouting-table.png",
+      focusImage: "/accouting-table.png",
     },
     {
       title: "Venha para o futuro com a",
       highlight: "MULTI BPO",
       description:
-        "Junte-se aos contadores que trocaram o caos por clareza. Com nossa consultoria de IA híbrida, você atende melhor, responde mais rápido e ganha tempo pra crescer.",
-      image: "/ai-chip.png",
+        "Junte-se aos contadores que trocaram o caos por clareza. Com nossa consultoria de IA híbrida:",
+      listItems: [
+        "Você atende melhor",
+        "Responde mais rápido",
+        "Ganha mais tempo para crescer",
+      ],
       ctaText: "Quero crescer",
       secondaryText: "Começar Agora",
+      backgroundImage: "/extended-new-office.png",
+      focusImage: "/modern-office.png",
     },
   ];
   return (
@@ -34,15 +46,9 @@ const CTABanners = () => {
           <div className="absolute inset-0 z-0">
             <div
               className="w-full h-full bg-cover bg-center bg-no-repeat"
-              style={
-                index === 1
-                  ? {
-                      backgroundImage: "url(/extended-ai-chip.png)",
-                    }
-                  : {
-                      backgroundImage: "url(/extended-accouting-table.png)",
-                    }
-              }
+              style={{
+                backgroundImage: `url(${card.backgroundImage})`,
+              }}
             />
             <div className="absolute inset-0 bg-black/50"></div>
           </div>
@@ -50,27 +56,57 @@ const CTABanners = () => {
           {/* Content Container - Card pai */}
           <div className="relative z-10 flex-1 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto w-full">
-              <div className="grid grid-cols-[1fr_1.3fr] gap-20 items-center w-full">
-                <div className="flex flex-col justify-between h-full bg-black/25 backdrop-blur-md py-16 px-10 rounded-3xl shadow-[0_2px_16px_rgba(0,0,0,0.06)] border border-white/30">
-                  <div>
-                    <h2 className="text-[2rem] mb-12 leading-[1.3] font-semibold text-gray-50">
+              <div className="grid grid-cols-[1fr_1.3fr] gap-28 items-center w-full">
+                {/* content card */}
+                <div className="flex flex-col justify-between h-full bg-white/95 backdrop-blur-sm py-12 px-8 rounded-2xl shadow-lg border border-gray-200/50">
+                  <div className="space-y-8">
+                    {/* Título */}
+                    <h2 className="text-3xl leading-tight font-bold text-gray-900">
                       {card.title}{" "}
-                      <span className="text-blue-500 font-semibold">
+                      <span className="text-blue-600 font-bold">
                         {card.highlight}
                       </span>
                       {card.highlightEnd && ` ${card.highlightEnd}`}
                     </h2>
-                    <div className="w-full h-px bg-gray-500 mb-12 mx-auto"></div>
-                    <p className="text-lg leading-7 text-gray-100 mb-12">
+
+                    {/* Parágrafo */}
+                    <p className="text-lg leading-relaxed text-gray-700">
                       {card.description}
                     </p>
+
+                    {/* Lista com checkmarks */}
+                    <ul className="space-y-4">
+                      {card.listItems.map((item, itemIndex) => (
+                        <li key={itemIndex} className="flex items-center gap-3">
+                          <div className="flex-shrink-0 w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
+                            <svg
+                              className="w-4 h-4 text-white"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M5 13l4 4L19 7"
+                              />
+                            </svg>
+                          </div>
+                          <span className="text-gray-800 font-medium">
+                            {item}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
 
-                  <div className="flex gap-12 items-center justify-center">
-                    <div className="group inline-flex items-center justify-center bg-green-600 text-white px-6 py-3 rounded-lg text-lg font-semibold transition-all duration-300 cursor-pointer relative z-20 hover:bg-green-700 hover:shadow-md w-full">
+                  {/* Botão */}
+                  <div className="pt-8">
+                    <button className="group w-full bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2">
                       {card.ctaText}
                       <svg
-                        className="ml-2 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                        className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
@@ -81,13 +117,14 @@ const CTABanners = () => {
                         <path d="M5 12h14" />
                         <path d="m12 5 7 7-7 7" />
                       </svg>
-                    </div>
+                    </button>
                   </div>
                 </div>
 
+                {/* focus image */}
                 <div className="w-full h-[600px] overflow-hidden rounded-3xl shadow-[0_4px_30px_rgba(0,0,0,0.8)]">
                   <img
-                    src={card.image}
+                    src={card.focusImage}
                     alt={card.title}
                     className="w-full h-full object-cover"
                   />

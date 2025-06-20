@@ -199,7 +199,7 @@ const NewHero = () => {
 
             {/* Heading 2 */}
             <h2 className="text-xl md:text-2xl font-semibold text-white/90">
-              Conte com as soluções da MULTI BPO
+              Inove com as soluções da MULTI BPO
             </h2>
           </div>
         </div>

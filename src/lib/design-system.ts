@@ -38,10 +38,10 @@ export const colors = {
     accent: "blue-50",
   },
   secondary: {
-    main: "emerald-600",
+    main: "green-600",
     light: "emerald-500",
-    dark: "emerald-700",
-    accent: "emerald-50",
+    dark: "green-700",
+    accent: "green-50",
   },
   neutral: {
     white: "white",
@@ -80,6 +80,8 @@ export const components = {
     padding: "px-6 py-8",
   },
   button: {
+    neutral:
+      "inline-flex items-center text-gray-800 font-medium transition-colors duration-200 group cursor-pointer",
     default:
       "inline-flex items-center text-blue-600 font-medium hover:text-blue-700 transition-colors duration-200 group cursor-pointer",
     defaultArrow:

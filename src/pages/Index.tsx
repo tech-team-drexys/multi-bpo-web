@@ -1,11 +1,8 @@
 import Header from "@/components/Header";
 import NewHero from "@/components/NewHero";
-import SmoothScroll from "@/components/StickySections";
-import RevealSection from "@/components/RevealSection";
+import SecondHero from "@/components/SecondHero";
 import CTABanners from "@/components/CTABanners";
 import Services from "@/components/Services";
-import WhatsAppAssistant from "@/components/WhatsAppAssistant";
-import HowItWorks from "@/components/HowItWorks";
 import LightFooter from "@/components/LightFooter";
 import Courses from "@/components/Courses";
 import QuemSomos from "@/components/QuemSomos";
@@ -17,10 +14,9 @@ import "@/components/ui/showcase-product.css";
 const Index = () => {
   return (
     <div className="min-h-screen bg-white w-full overflow-x-hidden">
-      <SmoothScroll />
       <Header enableScrollAnimation={true} />
       <NewHero />
-      <RevealSection />
+      <SecondHero />
       <CTABanners />
       <ExampleUseCases />
       <BentoSection />

@@ -105,6 +105,10 @@
     position: relative;
   }
 
+  html {
+    scroll-behavior: auto; /* Remove o smooth scroll nativo para usar o Lenis */
+  }
+
   body {
     @apply bg-background text-foreground font-body min-w-[320px];
     overscroll-behavior-x: none;
