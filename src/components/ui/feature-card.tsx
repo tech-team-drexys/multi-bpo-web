@@ -24,13 +24,11 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
 }) => {
   return (
     <div
-      className={`bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-md hover:border-gray-200 text-center group transition-all duration-500 ${delay} ${
-        isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
-      } ${className}`}
+      className={`bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-md hover:border-gray-200 text-center group transition-all duration-300 ${className}`}
     >
       <div className="flex justify-center mb-6">
         <div
-          className={`w-16 h-16 ${iconBg} rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
+          className={`w-16 h-16 ${iconBg} rounded-full flex items-center justify-center group-hover:scale-105 transition-transform duration-300`}
         >
           <Icon className={`w-8 h-8 ${iconColor}`} />
         </div>

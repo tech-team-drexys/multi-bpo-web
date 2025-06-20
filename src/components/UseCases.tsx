@@ -27,7 +27,7 @@ const useCases = [
 
 const ExampleUseCases = () => {
   return (
-    <section className={`${spacing.section.md} ${backgrounds.primary}`}>
+    <section className={`pt-20 ${backgrounds.primary}`}>
       <FeatureSteps
         features={useCases}
         title="Exemplos de"

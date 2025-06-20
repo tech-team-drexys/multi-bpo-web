@@ -7,8 +7,8 @@ import LightFooter from "@/components/LightFooter";
 import Courses from "@/components/Courses";
 import QuemSomos from "@/components/QuemSomos";
 import Blog from "@/components/Blog";
-import BentoSection from "@/components/BentoSection";
-import ExampleUseCases from "@/components/ExampleUseCases";
+import FeaturesSection from "@/components/FeaturesSection";
+import ExampleUseCases from "@/components/UseCases";
 import "@/components/ui/showcase-product.css";
 
 const Index = () => {
@@ -19,7 +19,7 @@ const Index = () => {
       <SecondHero />
       <CTABanners />
       <ExampleUseCases />
-      <BentoSection />
+      <FeaturesSection />
       <Services />
       <QuemSomos />
       <Blog />
