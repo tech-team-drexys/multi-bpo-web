@@ -10,6 +10,8 @@ import Blog from "@/components/Blog";
 import FeaturesSection from "@/components/FeaturesSection";
 import ExampleUseCases from "@/components/UseCases";
 import "@/components/ui/showcase-product.css";
+import WhatsAppAssistant from "@/components/WhatsAppAssistant";
+import WhatsAppChat from "@/components/WhatsAppChat";
 
 const Index = () => {
   return (
@@ -18,7 +20,7 @@ const Index = () => {
       <NewHero />
       <SecondHero />
       <CTABanners />
-      <ExampleUseCases />
+      <WhatsAppAssistant />
       <FeaturesSection />
       <Services />
       <QuemSomos />

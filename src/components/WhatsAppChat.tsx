@@ -132,22 +132,26 @@ const WhatsAppChat: React.FC<WhatsAppChatProps> = ({ activeCategory }) => {
   return (
     <div className="relative">
       {/* Mockup do Celular */}
-      <div className="w-80 h-[600px] bg-black rounded-[3rem] p-2 shadow-2xl">
+      <div className="w-80 h-[590px] bg-gray-300 rounded-[3rem] p-2 shadow-lg">
         <div className="w-full h-full bg-white rounded-[2.5rem] overflow-hidden flex flex-col">
           {/* Header do WhatsApp */}
-          <div className="text-white p-4 flex items-center gap-3 bg-emerald-700">
-            <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center">
-              <span className="text-lg">🤖</span>
+          <div className="text-white p-4 flex items-center gap-3 bg-indigo-600/95">
+            <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+              <img
+                src="/logo-multi-bpo.png"
+                alt="logo"
+                className="w-10 h-10 object-contain"
+              />
             </div>
             <div>
-              <h3 className="font-semibold text-sm">MULTIBPO Assistant</h3>
+              <h3 className="font-semibold text-md">Luca IA</h3>
               <p className="text-xs opacity-90">Online agora</p>
             </div>
           </div>
 
           {/* Área de Mensagens */}
           <div
-            className="flex-1 p-4 overflow-y-auto bg-gray-50 scrollbar-custom"
+            className="flex-1 p-4 overflow-y-auto bg-white scrollbar-custom"
             style={{
               backgroundImage:
                 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23f0f0f0" fill-opacity="0.1"%3E%3Cpath d="m36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
@@ -164,8 +168,8 @@ const WhatsAppChat: React.FC<WhatsAppChatProps> = ({ activeCategory }) => {
                   <div
                     className={`max-w-xs px-4 py-2 rounded-lg shadow-sm animate-fade-in ${
                       message.sender === "user"
-                        ? "bg-emerald-700 text-white rounded-br-none"
-                        : "bg-white text-gray-800 rounded-bl-none border"
+                        ? "bg-white text-gray-800 rounded-br-none border"
+                        : "bg-indigo-500 text-white rounded-bl-none"
                     }`}
                   >
                     <p className="text-sm whitespace-pre-line">
@@ -174,8 +178,8 @@ const WhatsAppChat: React.FC<WhatsAppChatProps> = ({ activeCategory }) => {
                     <p
                       className={`text-xs mt-1 ${
                         message.sender === "user"
-                          ? "text-green-100"
-                          : "text-gray-500"
+                          ? "text-gray-500"
+                          : "text-green-100"
                       }`}
                     >
                       {message.timestamp}
@@ -189,15 +193,15 @@ const WhatsAppChat: React.FC<WhatsAppChatProps> = ({ activeCategory }) => {
                 <div className="flex justify-start">
                   <div className="bg-white text-gray-800 px-4 py-2 rounded-lg rounded-bl-none border shadow-sm">
                     <div className="flex space-x-1">
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                      <div className="w-1.5 h-1.5 bg-gray-500 rounded-full animate-bounce"></div>
                       <div
-                        className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                        className="w-1.5 h-1.5 bg-gray-500 rounded-full animate-bounce"
                         style={{
                           animationDelay: "0.1s",
                         }}
                       ></div>
                       <div
-                        className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                        className="w-1.5 h-1.5 bg-gray-500 rounded-full animate-bounce"
                         style={{
                           animationDelay: "0.2s",
                         }}

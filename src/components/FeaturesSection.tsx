@@ -37,14 +37,14 @@ const features = [
     iconBg: "bg-orange-100",
     iconColor: "text-orange-600",
   },
-  {
-    icon: Clock,
-    title: "Apoio Constante",
-    description:
-      "Suporte técnico disponível 24/7, sem depender de grupos informais.",
-    iconBg: "bg-red-100",
-    iconColor: "text-red-600",
-  },
+  // {
+  //   icon: Clock,
+  //   title: "Apoio Constante",
+  //   description:
+  //     "Suporte técnico disponível 24/7, sem depender de grupos informais.",
+  //   iconBg: "bg-red-100",
+  //   iconColor: "text-red-600",
+  // },
 ];
 
 const FeaturesSection = () => {
@@ -70,7 +70,8 @@ const FeaturesSection = () => {
               <h2
                 className={`${typography.heading.lg} text-gray-900 mb-4 text-left`}
               >
-                Consultoria Técnica com IA
+                Consultoria Técnica com{" "}
+                <span className="text-blue-600">Inteligência Artificial</span>
               </h2>
               <p className={`${typography.body.lg} text-gray-600 text-left`}>
                 Tire dúvidas, resolva problemas e tome decisões técnicas com
