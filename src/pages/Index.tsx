@@ -5,13 +5,11 @@ import CTABanners from "@/components/CTABanners";
 import Services from "@/components/Services";
 import LightFooter from "@/components/LightFooter";
 import Courses from "@/components/Courses";
-import QuemSomos from "@/components/QuemSomos";
 import Blog from "@/components/Blog";
-import FeaturesSection from "@/components/FeaturesSection";
-import ExampleUseCases from "@/components/UseCases";
+import ConsultoriaIA from "@/components/ConsultoriaIA";
 import "@/components/ui/showcase-product.css";
 import WhatsAppAssistant from "@/components/WhatsAppAssistant";
-import WhatsAppChat from "@/components/WhatsAppChat";
+import CTASection from "@/components/CTASection";
 
 const Index = () => {
   return (
@@ -20,10 +18,10 @@ const Index = () => {
       <NewHero />
       <SecondHero />
       <CTABanners />
+      <ConsultoriaIA />
       <WhatsAppAssistant />
-      <FeaturesSection />
+      <CTASection />
       <Services />
-      <QuemSomos />
       <Blog />
       <Courses />
       <LightFooter />

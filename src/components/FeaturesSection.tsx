@@ -53,9 +53,9 @@ const FeaturesSection = () => {
   return (
     <section
       ref={ref}
-      className={`${spacing.section.md} ${backgrounds.secondary} min-h-screen flex items-center`}
+      className={`py-32 bg-gray-50 min-h-screen flex items-center`}
     >
-      <div className={`${spacing.container} w-full`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Side - Content */}
           <div
@@ -74,8 +74,9 @@ const FeaturesSection = () => {
                 <span className="text-blue-600">Inteligência Artificial</span>
               </h2>
               <p className={`${typography.body.lg} text-gray-600 text-left`}>
-                Tire dúvidas, resolva problemas e tome decisões técnicas com
-                segurança, agilidade e base legal.
+                Conheça os benefícios técnicos que nossa IA oferece para
+                otimizar o atendimento e elevar a qualidade das consultorias do
+                seu escritório.
               </p>
             </div>
 
