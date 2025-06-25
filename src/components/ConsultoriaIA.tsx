@@ -1,19 +1,14 @@
-import React from "react";
 import {
-  Brain,
-  Clock,
   Shield,
-  Target,
   Zap,
-  MessageSquare,
   FileText,
   Sparkles,
-  Verified,
   CheckCircle,
-  ArrowRight,
+  FileUser,
+  Landmark,
+  Building,
+  User,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { components } from "@/lib/design-system";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const ConsultoriaIA = () => {
@@ -46,28 +41,41 @@ const ConsultoriaIA = () => {
       description:
         "Mais confiança, menos retrabalho e zero dúvidas sem resposta.",
     },
+    {
+      icon: User,
+      title: "Especialistas Humanos",
+      description:
+        "Quando necessário, direcionamento para nossos profissionais especializados.",
+    },
   ];
 
   const useCases = [
     {
-      icon: Target,
-      title: "Modelo Tributário",
+      icon: Landmark,
+      title: "Consultoria Tributária",
       description:
-        "Rede neural especializada em 200+ tipos de tributos, com precisão de 98.7% em classificações fiscais",
+        "Esclareça dúvidas sobre regimes tributários, créditos de PIS/COFINS, ICMS-ST e outros pontos críticos com respostas contextualizadas e seguras.",
       image: "/placeholder.svg", // Placeholder para imagem do app
     },
     {
-      icon: MessageSquare,
-      title: "Modelo Trabalhista",
+      icon: FileUser,
+      title: "Consultoria Trabalhista",
       description:
-        "Algoritmo específico para CLT, treinado com 50+ anos de jurisprudência e 1M+ casos reais",
+        "Receba orientações sobre admissões, rescisões, afastamentos e obrigações legais com clareza e base na legislação atualizada.",
       image: "/placeholder.svg", // Placeholder para imagem do app
     },
     {
-      icon: Zap,
-      title: "Modelo Societário",
+      icon: Building,
+      title: "Consultoria Societária",
       description:
-        "Sistema especializado em direito empresarial, validado contra 15 Juntas Comerciais",
+        "Conte com apoio na elaboração de alterações contratuais, abertura de filiais, registros e processos societários complexos.",
+      image: "/placeholder.svg", // Placeholder para imagem do app
+    },
+    {
+      icon: FileText,
+      title: "Consultoria Contábil",
+      description:
+        "Tire dúvidas técnicas e operacionais sobre rotinas contábeis, com respostas que aliam agilidade e fundamentação legal.",
       image: "/placeholder.svg", // Placeholder para imagem do app
     },
   ];
@@ -78,7 +86,7 @@ const ConsultoriaIA = () => {
         {/* Header Section */}
         <div
           ref={headerRef}
-          className={`text-center mb-24 scroll-reveal ${
+          className={`text-center mb-36 scroll-reveal ${
             headerVisible ? "is-visible" : ""
           }`}
         >
@@ -87,36 +95,39 @@ const ConsultoriaIA = () => {
             AI Powered
           </div>
           <h2 className="text-[2.5rem] font-bold text-gray-900 mb-8 leading-tight">
-            O Futuro do <span className="text-blue-600">Suporte Contábil </span>
-            ao seu Alcance
+            Consultoria Técnica com{" "}
+            <span className="text-blue-600">Inteligência Artificial - IA</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Entenda a tecnologia e metodologia por trás da nossa Inteligência
-            Artificial especializada em contabilidade.
+            Tire dúvidas, resolva problemas e tome decisões técnicas com total
+            segurança e confiança. Reduza retrabalhos e garanta conformidade
+            legal em todas as suas operações com o suporte de uma base sólida de
+            conhecimento especializado.
           </p>
         </div>
 
         {/* Main Visual Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center mb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-center mb-32">
           <div
             ref={mainContentRef}
             className={`space-y-12 scroll-reveal-from-left ${
               mainContentVisible ? "is-visible" : ""
             }`}
           >
-            <div className="space-y-8">
-              <h3 className="text-3xl font-bold text-gray-900 leading-tight">
-                Arquitetura e Processamento
+            <div className="space-y-5">
+              <h3 className="text-3xl font-bold text-gray-800 leading-tight">
+                Inteligência que Entende o seu dia a dia Contábil
               </h3>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                Nossa IA utiliza modelos de linguagem especializados, treinados
-                com uma base de dados contendo milhões de documentos da área
-                contábil, incluindo legislação, jurisprudências, normas técnicas
-                e casos práticos reais.
+              <p className="text-md text-gray-600 leading-relaxed">
+                Muito além de respostas genéricas. Com base sólida, linguagem
+                especializada e compreensão contextual, nossa IA entrega o que
+                você precisa para atuar com mais precisão — como ter um
+                especialista ao seu lado, 24h por dia.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 gap-6">
+            {/* Benefits Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {benefits.map((benefit, index) => {
                 const { ref: benefitRef, isVisible: benefitVisible } =
                   useScrollReveal<HTMLDivElement>();
@@ -124,20 +135,23 @@ const ConsultoriaIA = () => {
                   <div
                     key={index}
                     ref={benefitRef}
-                    className={`group flex items-start gap-6 p-6 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200 scroll-reveal scroll-reveal-delay-${
-                      (index + 1) * 100
-                    } ${benefitVisible ? "is-visible" : ""}`}
+                    className={`group p-6 bg-white rounded-xl shadow-sm border border-gray-100 
+                      hover:shadow-md transition-shadow duration-300 scroll-reveal scroll-reveal-delay-${
+                        (index + 1) * 100
+                      } ${benefitVisible ? "is-visible" : ""}`}
                   >
-                    <div className="p-3 bg-gray-50 rounded-xl group-hover:bg-gray-100 transition duration-200">
-                      <benefit.icon className="w-6 h-6 text-blue-600" />
-                    </div>
-                    <div className="space-y-2">
-                      <h4 className="font-semibold text-gray-900 text-lg">
-                        {benefit.title}
-                      </h4>
-                      <p className="text-gray-600 leading-relaxed">
-                        {benefit.description}
-                      </p>
+                    <div className="flex flex-col items-start space-y-3">
+                      <div className="w-12 h-12 bg-blue-600 flex items-center justify-center rounded-xl">
+                        <benefit.icon className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                          {benefit.title}
+                        </h4>
+                        <p className="text-sm text-gray-600 leading-relaxed">
+                          {benefit.description}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 );
@@ -158,9 +172,6 @@ const ConsultoriaIA = () => {
                 alt="Interface da Consultoria IA"
                 className="w-full h-96 object-cover rounded-lg bg-gray-100"
               />
-              <div className="absolute -top-4 -right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                Online
-              </div>
             </div>
           </div>
         </div>
@@ -174,20 +185,24 @@ const ConsultoriaIA = () => {
             }`}
           >
             <h3 className="text-3xl font-bold text-gray-900 mb-6">
-              Especialização por Domínio
+              Uma IA, Todas as Soluções
             </h3>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              Cada área possui modelos específicos e bases de conhecimento
-              especializadas para garantir precisão técnica máxima
+              Pare de buscar especialistas diferentes para cada problema. Nossa
+              IA domina tributário, trabalhista, societário e contábil
+              simultaneamente, oferecendo soluções integradas e precisas em
+              segundos. É como ter uma equipe completa de consultores
+              trabalhando para você.
             </p>
           </div>
 
           <div
             ref={useCasesGridRef}
-            className={`grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 scroll-reveal scroll-reveal-delay-200 ${
+            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 lg:gap-8 scroll-reveal scroll-reveal-delay-200 ${
               useCasesGridVisible ? "is-visible" : ""
             }`}
           >
+            {/* Use Cases div */}
             {useCases.map((useCase, index) => {
               const { ref: cardRef, isVisible: cardVisible } =
                 useScrollReveal<HTMLDivElement>();
@@ -195,9 +210,12 @@ const ConsultoriaIA = () => {
                 <div
                   key={index}
                   ref={cardRef}
-                  className={`bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-shadow duration-300 scroll-reveal-scale scroll-reveal-delay-${
-                    (index + 2) * 100
-                  } ${cardVisible ? "is-visible" : ""}`}
+                  className={`bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 ${
+                    cardVisible ? "is-visible" : ""
+                  }`}
+                  style={{
+                    animationDelay: `${(index + 2) * 100}ms`,
+                  }}
                 >
                   <div className="p-4">
                     <img

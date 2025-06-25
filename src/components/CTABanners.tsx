@@ -16,7 +16,7 @@ const CTABanners = () => {
       ],
       ctaText: "Saia do passado",
       secondaryText: "Começar Agora",
-      backgroundImage: "/extended-accouting-table.png",
+      backgroundImage: "/extended-accounting-table-blank.png",
       focusImage: "/accouting-table.png",
     },
     {
@@ -55,13 +55,13 @@ const CTABanners = () => {
 
           {/* Content Container - Card pai */}
           <div className="relative z-10 flex-1 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto w-full">
-              <div className="grid grid-cols-[1fr_1.3fr] gap-28 items-center w-full">
+            <div className="max-w-7xl mx-auto w-full">
+              <div className="grid grid-cols-1 xl:grid-cols-[1fr_1.3fr] gap-8 sm:gap-12 lg:gap-16 xl:gap-28 items-center w-full">
                 {/* content card */}
-                <div className="flex flex-col justify-between h-full bg-white/95 backdrop-blur-sm py-12 px-8 rounded-2xl shadow-lg border border-gray-200/50">
-                  <div className="space-y-8">
+                <div className="flex flex-col justify-between h-full bg-white/95 backdrop-blur-sm py-6 sm:py-8 lg:py-12 px-4 sm:px-6 lg:px-8 rounded-xl sm:rounded-2xl shadow-lg border border-gray-200/50 order-2 xl:order-1">
+                  <div className="space-y-4 sm:space-y-6 lg:space-y-8">
                     {/* Título */}
-                    <h2 className="text-3xl leading-tight font-bold text-gray-900">
+                    <h2 className="text-xl sm:text-2xl lg:text-3xl leading-tight font-bold text-gray-900">
                       {card.title}{" "}
                       <span className="text-blue-600 font-bold">
                         {card.highlight}
@@ -70,17 +70,17 @@ const CTABanners = () => {
                     </h2>
 
                     {/* Parágrafo */}
-                    <p className="text-lg leading-relaxed text-gray-700">
+                    <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-gray-700">
                       {card.description}
                     </p>
 
                     {/* Lista com checkmarks */}
-                    <ul className="space-y-4">
+                    <ul className="space-y-3 sm:space-y-4">
                       {card.listItems.map((item, itemIndex) => (
                         <li key={itemIndex} className="flex items-center gap-3">
-                          <div className="flex-shrink-0 w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
+                          <div className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 bg-blue-600 rounded-full flex items-center justify-center">
                             <svg
-                              className="w-4 h-4 text-white"
+                              className="w-3 h-3 sm:w-4 sm:h-4 text-white"
                               fill="none"
                               stroke="currentColor"
                               viewBox="0 0 24 24"
@@ -93,7 +93,7 @@ const CTABanners = () => {
                               />
                             </svg>
                           </div>
-                          <span className="text-gray-800 font-medium">
+                          <span className="text-sm sm:text-base text-gray-800 font-medium">
                             {item}
                           </span>
                         </li>
@@ -102,11 +102,11 @@ const CTABanners = () => {
                   </div>
 
                   {/* Botão */}
-                  <div className="pt-8">
-                    <button className="group w-full bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2">
+                  <div className="pt-6 sm:pt-8">
+                    <button className="group w-full bg-green-600 hover:bg-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl text-base sm:text-lg font-semibold transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2">
                       {card.ctaText}
                       <svg
-                        className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                        className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-x-1"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
@@ -122,7 +122,7 @@ const CTABanners = () => {
                 </div>
 
                 {/* focus image */}
-                <div className="w-full h-[600px] overflow-hidden rounded-3xl shadow-[0_4px_30px_rgba(0,0,0,0.8)]">
+                <div className="w-full h-64 sm:h-80 md:h-96 lg:h-[500px] xl:h-[600px] overflow-hidden rounded-2xl sm:rounded-3xl shadow-[0_4px_30px_rgba(0,0,0,0.8)] order-1 xl:order-2">
                   <img
                     src={card.focusImage}
                     alt={card.title}

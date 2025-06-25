@@ -409,6 +409,12 @@ const Footer = () => {
                     </li>
                   </ul>
                 </div>
+                <a
+                  href="#"
+                  className="flex w-full text-left text-gray-600 hover:underline transition-colors"
+                >
+                  Downloads
+                </a>
               </div>
             </div>
 
@@ -439,7 +445,7 @@ const Footer = () => {
         <div className="border-t border-gray-300 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm sm:pr-8">
             © MULTI BPO DO BRASIL LTDA | CNPJ 46.505.712/0001-63 | Todos os
-            direitos reservados.
+            direitos reservados • Powered by Drexys
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link to="/" className="text-gray-500 hover:underline text-sm">

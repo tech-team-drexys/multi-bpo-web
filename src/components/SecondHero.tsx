@@ -1,20 +1,10 @@
-import { useRef } from "react";
-import {
-  CheckCircle,
-  TrendingUp,
-  Users,
-  Zap,
-  ArrowRight,
-  Play,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import {
   spacing,
   backgrounds,
   typography,
   components,
   colors,
-  borderRadius,
-  shadows,
 } from "@/lib/design-system";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Button } from "@/components/ui/button";
@@ -42,13 +32,19 @@ const SecondHero = () => {
           >
             {/* Main Title */}
             <h2
-              className={`${typography.heading.xl} text-${colors.neutral.gray900} ${spacing.content.sm} leading-tight`}
+              className={`${typography.heading.xl} text-${colors.neutral.gray900} mb-6 leading-tight`}
             >
               Transforme Seu{" "}
               <span className={`text-${colors.primary.main}`}>
                 Escritório Contábil
               </span>
             </h2>
+
+            <h3
+              className={`${typography.heading.md} text-gray-800 ${spacing.content.xs} leading-relaxed max-w-xl`}
+            >
+              Através da Terceirização de Departamentos
+            </h3>
 
             {/* Description */}
             <p
@@ -69,10 +65,10 @@ const SecondHero = () => {
               </a>
               <Button
                 variant="default"
-                className={`text-white bg-green-400 hover:bg-green-500 px-8 py-3 text-lg`}
+                className={`text-white bg-green-500 hover:bg-green-600 px-8 py-3 text-md`}
                 size="lg"
               >
-                Teste Grátis
+                Maximize seus Lucros
               </Button>
             </div>
           </div>

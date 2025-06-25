@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import WhatsAppChat from "./WhatsAppChat";
-import { Clock, Users, Zap, Target, FileText } from "lucide-react";
+import { Building, Landmark, FileText, FileUser } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const WhatsAppAssistant = () => {
@@ -17,21 +17,21 @@ const WhatsAppAssistant = () => {
     {
       id: "tributacao",
       title: "Tributação",
-      icon: FileText,
+      icon: Landmark,
       description:
         "Esclareça dúvidas sobre regimes tributários, enquadramentos e estratégias fiscais com nossa IA especializada em contabilidade.",
     },
     {
       id: "questoesTrabalhistas",
       title: "Questões Trabalhistas",
-      icon: FileText,
+      icon: FileUser,
       description:
         "Tenha respostas precisas sobre legislação trabalhista, CLT, cálculos de rescisão e obrigações acessórias, com agilidade e segurança.",
     },
     {
       id: "procedimentosSocietarios",
       title: "Procedimentos Societários",
-      icon: FileText,
+      icon: Building,
       description:
         "Obtenha orientações sobre alterações contratuais, registros e procedimentos societários complexos.",
     },
