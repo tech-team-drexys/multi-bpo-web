@@ -16,7 +16,7 @@ const CTABanners = () => {
       ],
       ctaText: "Saia do passado",
       secondaryText: "Começar Agora",
-      backgroundImage: "/extended-accounting-table-blank.png",
+      backgroundImage: "/extended-accounting-table.png",
       focusImage: "/accouting-table.png",
     },
     {
@@ -28,6 +28,7 @@ const CTABanners = () => {
         "Você atende melhor",
         "Responde mais rápido",
         "Ganha mais tempo para crescer",
+        "Maximiza os lucros do seu escritório",
       ],
       ctaText: "Quero crescer",
       secondaryText: "Começar Agora",

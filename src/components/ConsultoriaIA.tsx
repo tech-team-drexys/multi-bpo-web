@@ -86,7 +86,7 @@ const ConsultoriaIA = () => {
         {/* Header Section */}
         <div
           ref={headerRef}
-          className={`text-center mb-36 scroll-reveal ${
+          className={`text-center mb-20 scroll-reveal ${
             headerVisible ? "is-visible" : ""
           }`}
         >
@@ -106,11 +106,12 @@ const ConsultoriaIA = () => {
           </p>
         </div>
 
-        {/* Main Visual Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-center mb-32">
+        {/* Main Visual Section - Conteúdo Escrito à Esquerda, Imagem à Direita */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-28 items-center mb-16">
+          {/* Conteúdo Escrito - Lado Esquerdo */}
           <div
             ref={mainContentRef}
-            className={`space-y-12 scroll-reveal-from-left ${
+            className={`space-y-8 scroll-reveal-from-left ${
               mainContentVisible ? "is-visible" : ""
             }`}
           >
@@ -125,55 +126,69 @@ const ConsultoriaIA = () => {
                 especialista ao seu lado, 24h por dia.
               </p>
             </div>
-
-            {/* Benefits Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {benefits.map((benefit, index) => {
-                const { ref: benefitRef, isVisible: benefitVisible } =
-                  useScrollReveal<HTMLDivElement>();
-                return (
-                  <div
-                    key={index}
-                    ref={benefitRef}
-                    className={`group p-6 bg-white rounded-xl shadow-sm border border-gray-100 
-                      hover:shadow-md transition-shadow duration-300 scroll-reveal scroll-reveal-delay-${
-                        (index + 1) * 100
-                      } ${benefitVisible ? "is-visible" : ""}`}
-                  >
-                    <div className="flex flex-col items-start space-y-3">
-                      <div className="w-12 h-12 bg-blue-600 flex items-center justify-center rounded-xl">
-                        <benefit.icon className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                          {benefit.title}
-                        </h4>
-                        <p className="text-sm text-gray-600 leading-relaxed">
-                          {benefit.description}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
           </div>
 
-          {/* Main App Screenshot */}
+          {/* Imagem - Lado Direito */}
           <div
             ref={imageRef}
             className={`relative scroll-reveal-from-right ${
               imageVisible ? "is-visible" : ""
             }`}
           >
-            <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-200">
-              <img
-                src="/placeholder.svg"
-                alt="Interface da Consultoria IA"
-                className="w-full h-96 object-cover rounded-lg bg-gray-100"
-              />
+            <img
+              src="/wagner-contador.png"
+              alt="Interface da Consultoria IA"
+              className="h-[26rem] object-cover rounded-lg"
+            />
+
+            {/* Tags no canto inferior direito */}
+            <div className="absolute bottom-1 left-64 space-y-3">
+              <div className="bg-white bg-opacity-95 backdrop-blur-sm rounded-lg px-5 py-3 shadow-lg border border-gray-100">
+                <p className="text-base font-medium text-gray-900">
+                  Wagner Ramos
+                </p>
+                <p className="text-sm text-gray-700">
+                  Analista Fiscal MULTI BPO
+                </p>
+              </div>
             </div>
           </div>
+        </div>
+
+        {/* Cards de Benefícios - Parte de Baixo */}
+        <div
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-32 scroll-reveal ${
+            mainContentVisible ? "is-visible" : ""
+          }`}
+        >
+          {benefits.map((benefit, index) => {
+            const { ref: benefitRef, isVisible: benefitVisible } =
+              useScrollReveal<HTMLDivElement>();
+            return (
+              <div
+                key={index}
+                ref={benefitRef}
+                className={`group p-6 bg-white rounded-xl shadow-sm border border-gray-100 
+                  hover:shadow-md transition-shadow duration-300 scroll-reveal scroll-reveal-delay-${
+                    (index + 1) * 100
+                  } ${benefitVisible ? "is-visible" : ""}`}
+              >
+                <div className="flex flex-col items-start space-y-3">
+                  <div className="w-12 h-12 bg-blue-600 flex items-center justify-center rounded-xl">
+                    <benefit.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                      {benefit.title}
+                    </h4>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      {benefit.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
 
         {/* Use Cases Section */}
