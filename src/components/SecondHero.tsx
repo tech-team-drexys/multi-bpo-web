@@ -51,7 +51,7 @@ const SecondHero = () => {
               className={`${typography.body.md} text-${colors.neutral.gray600} ${spacing.content.sm} leading-relaxed max-w-xl`}
             >
               Descubra como milhares de contadores estão revolucionando seus
-              negócios com tecnologia de ponta e processos automatizados que
+              escritórios com tecnologia de ponta e processos automatizados que
               entregam resultados reais com Inteligência Artificial - IA.
             </p>
 
@@ -79,42 +79,22 @@ const SecondHero = () => {
               isVisible
                 ? "translate-x-0 opacity-100"
                 : "translate-x-12 opacity-0"
-            } flex justify-end items-center h-full`}
-            style={{ overflow: "visible" }}
+            }`}
           >
-            <div
-              className="w-[900px] max-w-none h-[700px] flex items-center justify-end overflow-hidden absolute right-0 rounded-2xl shadow-2xl"
-              style={{ marginRight: "calc(-50vw + 60%)" }}
-            >
-              <div className="relative w-full h-full overflow-hidden rounded-2xl">
-                {/* Browser Header */}
-                <div
-                  className={`bg-${colors.neutral.gray100} px-4 py-3 flex items-center gap-2 border-b border-${colors.neutral.gray100}`}
-                >
-                  <div className="flex gap-2">
-                    <div className="w-3 h-3 bg-red-400 rounded-full"></div>
-                    <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                    <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-                  </div>
-                  <div
-                    className={`flex-1 bg-${colors.neutral.white} rounded-md px-3 py-1 mx-4`}
-                  >
-                    <span className={`text-xs text-${colors.neutral.gray600}`}>
-                      www.multibpo.com.br
-                    </span>
-                  </div>
-                </div>
-                {/* Screenshot */}
-                <div className="relative w-full h-[600px]">
-                  <img
-                    src="/project-app-screenshot.png"
-                    alt="Multi BPO Dashboard"
-                    className="absolute left-0 top-0 w-full h-full object-cover"
-                    style={{ objectPosition: "left" }}
-                  />
-                  {/* Overlay gradient for better integration */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent pointer-events-none"></div>
-                </div>
+            <img
+              src="/andre-braga.png"
+              alt="Interface da Consultoria IA"
+              className="h-[35rem] object-cover rounded-lg"
+            />
+
+            {/* Tags no canto inferior direito */}
+            <div className="absolute bottom-4 left-6 space-y-3">
+              <div className="bg-white bg-opacity-95 backdrop-blur-sm rounded-lg px-8 py-3 shadow-lg border border-gray-100">
+                <p className="text-base font-medium text-gray-900">
+                  André Braga
+                </p>
+                <p className="text-sm text-gray-700">CEO da MULTI BPO</p>
+                <p className="text-sm text-gray-700">CRA 6-006176 </p>
               </div>
             </div>
           </div>

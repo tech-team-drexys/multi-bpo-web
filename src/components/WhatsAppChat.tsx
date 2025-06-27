@@ -151,7 +151,7 @@ const WhatsAppChat: React.FC<WhatsAppChatProps> = ({
             </div>
             <div>
               <h3 className="font-semibold text-md">Luca IA</h3>
-              <p className="text-xs opacity-90">Consultor Contábil IA</p>
+              <p className="text-xs opacity-90">Consultor Contábil</p>
             </div>
           </div>
 

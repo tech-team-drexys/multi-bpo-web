@@ -8,7 +8,6 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfUse from "./pages/TermsOfUse";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
-import Claude from "./pages/Claude";
 import FloatingWhatsAppButton from "./components/FloatingWhatsAppButton";
 import { useSmoothScroll } from "./hooks/useSmoothScroll";
 
@@ -29,7 +28,6 @@ const App = () => {
             <Route path="/" element={<Index />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-use" element={<TermsOfUse />} />
-            <Route path="/claude" element={<Claude />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

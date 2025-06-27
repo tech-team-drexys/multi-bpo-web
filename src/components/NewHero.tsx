@@ -79,7 +79,10 @@ const NewHero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col overflow-hidden">
+    <section
+      className="relative min-h-screen flex flex-col overflow-hidden"
+      id="prompt"
+    >
       {/* Video Background with Overlay */}
       <div className="absolute inset-0 z-0">
         <video

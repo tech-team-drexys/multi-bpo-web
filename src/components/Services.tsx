@@ -6,7 +6,7 @@ const Services = () => {
     <section id="services" className={`${backgrounds.primary}`}>
       <CategorizedGallery
         title="Nossos Serviços"
-        description="Uma plataforma completa de BPO desenvolvida especificamente para revolucionar a gestão de escritórios contábeis modernos."
+        description="Uma plataforma completa de BPO desenvolvida especificamente para revolucionar a gestão operacional dos Escritórios de Contabilidade modernos."
       />
     </section>
   );

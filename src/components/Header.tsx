@@ -297,27 +297,24 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
 
           {/* Buttons */}
           <div className="hidden min-[980px]:flex gap-4 min-[1160px]:gap-6">
-            <div
-              className={`${
-                components.button.neutral
-              } text-xs lg:text-sm font-medium ${
+            <a
+              href="#"
+              className={`px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group ${
                 isScrolledState
-                  ? "text-black"
-                  : "text-white hover:text-gray-200"
+                  ? "text-gray-800 hover:text-blue-600"
+                  : "text-white hover:text-white"
               }`}
             >
-              Começar Agora
-              <ArrowRight
-                className={`${components.button.defaultArrow} ${
-                  !isScrolledState ? "text-white" : "text-gray-800"
-                }`}
-              />
-            </div>
+              Cadastrar-se
+              {!isScrolledState && (
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+              )}
+            </a>
             <Button
               className={`w-[110px] min-[1160px]:w-[130px] h-9 min-[1160px]:h-10 text-xs lg:text-sm font-medium transition-colors duration-300 ${
                 isScrolledState
-                  ? "bg-green-500 hover:bg-green-600 text-white"
-                  : "bg-white hover:bg-green-500 text-black hover:text-white"
+                  ? "bg-blue-600 hover:bg-blue-700 text-white"
+                  : "bg-white hover:bg-blue-500 text-black hover:text-white"
               }`}
             >
               Login
@@ -455,13 +452,13 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
                 Blog
               </a>
               <div className="flex flex-col gap-2 mt-4 pt-4 border-t border-slate-300">
-                <div
+                <a
+                  href="#"
                   onClick={() => setIsMenuOpen(false)}
-                  className={`${components.button.default} justify-center w-full h-10 text-sm`}
+                  className={`${components.button.neutral} justify-center w-full h-10 text-sm`}
                 >
-                  Começar Agora
-                  <ArrowRight className={components.button.defaultArrow} />
-                </div>
+                  Cadastrar-se
+                </a>
                 <Button
                   onClick={() => setIsMenuOpen(false)}
                   className="w-full h-10 text-sm font-medium bg-emerald-500 hover:bg-emerald-700 text-white"

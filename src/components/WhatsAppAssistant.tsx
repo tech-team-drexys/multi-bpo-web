@@ -47,13 +47,14 @@ const WhatsAppAssistant = () => {
           }`}
         >
           <h2 className="text-3xl md:text-3xl font-bold text-gray-900 mb-4">
-            Nossa IA contábil direto no{" "}
+            Nossa IA Contábil direto no{" "}
             <span className="text-blue-600">seu WhatsApp</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-md text-gray-600 max-w-2xl mx-auto">
             A mesma tecnologia inteligente que você já conhece, também
-            disponível no seu WhatsApp — com rapidez, eficiência e precisão no
-            atendimento.
+            disponível no seu WhatsApp, 24h por dia 7 dias por semana — com
+            rapidez, eficiência e precisão no atendimento. Sem filas de espera e
+            limites de consulta.
           </p>
         </div>
 

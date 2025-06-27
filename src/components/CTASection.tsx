@@ -21,14 +21,24 @@ const CTASection = () => {
           containerVisible ? "is-visible" : ""
         }`}
       >
-        <h3
+        <h2
           ref={titleRef}
-          className={`text-3xl font-bold text-gray-900 mb-6 scroll-reveal scroll-reveal-delay-100 ${
+          className={`text-4xl font-bold text-gray-900 mb-6 scroll-reveal scroll-reveal-delay-100 ${
             titleVisible ? "is-visible" : ""
           }`}
         >
-          Descubra o potencial
-        </h3>
+          Descubra o <span className="text-blue-600">Potencial</span>
+        </h2>
+        <h4 className="text-xl lg:text-2xl font-medium text-gray-600 mb-8 leading-relaxed">
+          Inicie seu{" "}
+          <span className="font-semibold text-gray-800">teste gratuito</span>{" "}
+          agora,{" "}
+          <span className="font-semibold text-blue-600">sem cobrança</span>.{" "}
+          <br />
+          <span className="text-lg text-gray-500">
+            Não solicitamos cartão de crédito.
+          </span>
+        </h4>
         <p
           ref={textRef}
           className={`text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed scroll-reveal scroll-reveal-delay-200 ${
@@ -36,8 +46,10 @@ const CTASection = () => {
           }`}
         >
           Experimente agora e veja na prática como nossa tecnologia responde às
-          suas dúvidas em segundos — direto no site ou no seu WhatsApp.
+          suas dúvidas em segundos — direto no seu computador ou no seu
+          WhatsApp.
         </p>
+
         <div
           ref={buttonsRef}
           className={`flex flex-col sm:flex-row gap-8 justify-center items-center scroll-reveal scroll-reveal-delay-300 ${
@@ -45,10 +57,10 @@ const CTASection = () => {
           }`}
         >
           <Button className="text-sm font-medium bg-green-500 hover:bg-green-600 text-white px-5">
-            Testar no WhatsApp
+            Teste no seu WhatsApp
           </Button>
           <div className={`${components.button.default} text-sm font-medium`}>
-            Testar no Site
+            Teste no Site
             <ArrowRight className={components.button.defaultArrow} />
           </div>
         </div>
