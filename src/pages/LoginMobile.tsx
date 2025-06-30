@@ -19,12 +19,12 @@ const LoginMobile = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center p-4">
       <div className="w-full min-[480px]:max-w-[26rem]">
-        <Card className="min-[480px]:shadow-2xl shadow-none border-none rounded-xl py-6 px-3">
-          <CardHeader className="text-center pb-9">
+        <Card className="min-[480px]:shadow-2xl shadow-none border-none rounded-xl py-4 px-3">
+          <CardHeader className="text-center pb-6">
             {/* Logo MULTI BPO */}
-            <div className="flex justify-start mb-6">
+            <div className="flex justify-start mb-4">
               <img
                 src="/lovable-uploads/logo.png"
                 alt="MULTI BPO"
@@ -38,7 +38,7 @@ const LoginMobile = () => {
             </h1>
           </CardHeader>
 
-          <CardContent className="space-y-10">
+          <CardContent className="space-y-6">
             {/* Botão Login com Google */}
             <Button
               onClick={handleGoogleLogin}
@@ -79,7 +79,7 @@ const LoginMobile = () => {
             </div>
 
             {/* Formulário de Login */}
-            <form onSubmit={handleLogin} className="space-y-7">
+            <form onSubmit={handleLogin} className="space-y-4">
               {/* Campo Login/Email */}
               <div>
                 <label
@@ -137,7 +137,7 @@ const LoginMobile = () => {
             </form>
 
             {/* Link para Cadastro */}
-            <div className="text-center pt-6">
+            <div className="text-center pt-4">
               <p className="text-sm text-gray-600">
                 Não possui conta?{" "}
                 <a
