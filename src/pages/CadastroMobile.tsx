@@ -217,7 +217,7 @@ const CadastroMobile = () => {
                 className="w-full h-10 text-base font-medium bg-blue-600 hover:bg-blue-700 active:bg-blue-800 active:scale-[.99] text-white transition-all duration-150"
                 disabled={!acceptTerms}
               >
-                Cadastrar-se
+                Enviar
               </Button>
             </form>
 

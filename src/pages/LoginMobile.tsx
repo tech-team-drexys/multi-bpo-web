@@ -34,7 +34,7 @@ const LoginMobile = () => {
 
             {/* Título H1 */}
             <h1 className="text-2xl font-bold text-gray-800 text-left">
-              Já possui uma conta?
+              Já possui conta?
             </h1>
           </CardHeader>
 

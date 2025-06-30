@@ -11,9 +11,10 @@ const TermsOfUse = () => {
 
       <main className="pt-32 pb-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex gap-16">
+          {/* Layout responsivo: flex para telas grandes, centralizado para telas menores */}
+          <div className="min-[1480px]:flex min-[1480px]:gap-16">
             {/* Conteúdo principal */}
-            <div className="flex-1 max-w-4xl">
+            <div className="min-[1480px]:flex-1 min-[1480px]:max-w-4xl max-[1479px]:max-w-4xl max-[1479px]:mx-auto">
               {/* Collapsible ToC for smaller screens */}
               <div className="block min-[1480px]:hidden mb-8">
                 <button
