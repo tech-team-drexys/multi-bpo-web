@@ -22,9 +22,9 @@ const LoginMobile = () => {
     <div className="min-h-screen flex items-center justify-center">
       <div className="w-full min-[480px]:max-w-[26rem]">
         <Card className="min-[480px]:shadow-2xl shadow-none border-none rounded-xl py-6 px-3">
-          <CardHeader className="text-center pb-8">
+          <CardHeader className="text-center pb-9">
             {/* Logo MULTI BPO */}
-            <div className="flex justify-start mb-5">
+            <div className="flex justify-start mb-6">
               <img
                 src="/lovable-uploads/logo.png"
                 alt="MULTI BPO"
@@ -38,7 +38,7 @@ const LoginMobile = () => {
             </h1>
           </CardHeader>
 
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-10">
             {/* Botão Login com Google */}
             <Button
               onClick={handleGoogleLogin}
@@ -79,12 +79,19 @@ const LoginMobile = () => {
             </div>
 
             {/* Formulário de Login */}
-            <form onSubmit={handleLogin} className="space-y-4">
+            <form onSubmit={handleLogin} className="space-y-7">
               {/* Campo Login/Email */}
               <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  E-mail
+                </label>
                 <Input
+                  id="email"
                   type="email"
-                  placeholder="E-mail"
+                  placeholder="Digite seu e-mail"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="h-12 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
@@ -94,9 +101,16 @@ const LoginMobile = () => {
 
               {/* Campo Senha */}
               <div>
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  Senha
+                </label>
                 <Input
+                  id="password"
                   type="password"
-                  placeholder="Senha"
+                  placeholder="Digite sua senha"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="h-12 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
@@ -123,7 +137,7 @@ const LoginMobile = () => {
             </form>
 
             {/* Link para Cadastro */}
-            <div className="text-center pt-4">
+            <div className="text-center pt-6">
               <p className="text-sm text-gray-600">
                 Não possui conta?{" "}
                 <a

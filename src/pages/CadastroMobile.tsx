@@ -30,11 +30,11 @@ const CadastroMobile = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <div className="w-full min-[480px]:max-w-[27rem]">
-        <Card className="min-[480px]:shadow-2xl shadow-none border-none rounded-xl py-6 px-3">
+      <div className="w-full min-[520px]:max-w-[27rem]">
+        <Card className="min-[520px]:shadow-2xl shadow-none border-none rounded-xl py-4 px-3">
           <CardHeader className="text-center pb-8">
             {/* Logo MULTI BPO */}
-            <div className="flex justify-start mb-5">
+            <div className="flex justify-start mb-6">
               <img
                 src="/lovable-uploads/logo.png"
                 alt="MULTI BPO"
@@ -43,17 +43,17 @@ const CadastroMobile = () => {
             </div>
 
             {/* Título H1 */}
-            <h1 className="text-2xl font-bold text-gray-800 text-left">
-              Cadastre-se
+            <h1 className="text-xl font-bold text-gray-800 text-left leading-tight">
+              Cadastre-se e tenha acesso à benefícios exclusivos
             </h1>
           </CardHeader>
 
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-6">
             {/* Botão Cadastro com Google */}
             <Button
               onClick={handleGoogleRegister}
               variant="outline"
-              className="w-full h-12 text-base font-medium bg-gray-50 border-gray-300 hover:bg-gray-50 active:bg-gray-100 active:scale-[.99] transition-all duration-150"
+              className="w-full h-12 text-gray-800 text-base font-medium bg-gray-50 border-gray-300 hover:bg-gray-50 active:bg-gray-100 active:scale-[.99] transition-all duration-150"
             >
               <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24">
                 <path
@@ -92,48 +92,76 @@ const CadastroMobile = () => {
             <form onSubmit={handleRegister} className="space-y-4">
               {/* Campo E-mail */}
               <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  E-mail
+                </label>
                 <Input
+                  id="email"
                   type="email"
-                  placeholder="E-mail"
+                  placeholder="Digite seu e-mail"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="h-12 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
+                  className="h-10 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
                   required
                 />
               </div>
 
               {/* Campo WhatsApp */}
               <div>
+                <label
+                  htmlFor="whatsapp"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  WhatsApp
+                </label>
                 <Input
+                  id="whatsapp"
                   type="tel"
-                  placeholder="WhatsApp (telefone)"
+                  placeholder="Digite seu número de WhatsApp"
                   value={whatsapp}
                   onChange={(e) => setWhatsapp(e.target.value)}
-                  className="h-12 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
+                  className="h-10 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
                   required
                 />
               </div>
 
               {/* Campo Senha */}
               <div>
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  Senha
+                </label>
                 <Input
+                  id="password"
                   type="password"
-                  placeholder="Senha"
+                  placeholder="Digite sua senha"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="h-12 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
+                  className="h-10 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
                   required
                 />
               </div>
 
               {/* Campo Repetir Senha */}
               <div>
+                <label
+                  htmlFor="confirmPassword"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  Repetir Senha
+                </label>
                 <Input
+                  id="confirmPassword"
                   type="password"
-                  placeholder="Repetir Senha"
+                  placeholder="Confirme sua senha"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="h-12 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
+                  className="h-10 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
                   required
                 />
               </div>
@@ -142,25 +170,25 @@ const CadastroMobile = () => {
               <Button
                 type="button"
                 variant="outline"
-                className="w-full h-12 text-base font-medium bg-gray-50 border-gray-300 hover:bg-gray-50 active:bg-gray-100 active:scale-[.99] transition-all duration-150"
+                className="w-full h-10 text-gray-800 text-base font-medium bg-gray-50 border-gray-300 hover:bg-gray-50 active:bg-gray-100 active:scale-[.98] transition-all duration-150"
               >
                 Captcha
               </Button>
 
               {/* Checkbox - Aceitar Política de Privacidade e Termos de Uso */}
-              <div className="flex items-start space-x-3 pt-2">
+              <div className="flex items-center space-x-3 pt-1">
                 <Checkbox
                   id="terms"
                   checked={acceptTerms}
                   onCheckedChange={(checked) =>
                     setAcceptTerms(checked === true)
                   }
-                  className="mt-1"
+                  className="flex-shrink-0"
                   required
                 />
                 <label
                   htmlFor="terms"
-                  className="text-sm text-gray-600 leading-tight cursor-pointer"
+                  className="text-xs text-gray-600 leading-tight cursor-pointer"
                 >
                   Aceito a{" "}
                   <a
@@ -186,7 +214,7 @@ const CadastroMobile = () => {
               {/* Botão Cadastrar-se */}
               <Button
                 type="submit"
-                className="w-full h-12 text-base font-medium bg-blue-600 hover:bg-blue-700 active:bg-blue-800 active:scale-[.99] text-white transition-all duration-150"
+                className="w-full h-10 text-base font-medium bg-blue-600 hover:bg-blue-700 active:bg-blue-800 active:scale-[.99] text-white transition-all duration-150"
                 disabled={!acceptTerms}
               >
                 Cadastrar-se
@@ -194,7 +222,7 @@ const CadastroMobile = () => {
             </form>
 
             {/* Link para Login */}
-            <div className="text-center pt-4">
+            <div className="text-center pt-2">
               <p className="text-sm text-gray-600">
                 Já possui conta?{" "}
                 <a

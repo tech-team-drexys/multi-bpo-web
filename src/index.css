@@ -100,9 +100,14 @@
 
   html,
   body {
-    @apply overflow-x-hidden;
     width: 100%;
     position: relative;
+  }
+
+  /* Prevenir overflow horizontal em seções específicas que precisam */
+  .carousel-container,
+  .header-dropdown-container {
+    @apply overflow-x-hidden;
   }
 
   html {
@@ -115,7 +120,6 @@
   }
 
   #root {
-    @apply overflow-x-hidden;
     width: 100%;
   }
 
