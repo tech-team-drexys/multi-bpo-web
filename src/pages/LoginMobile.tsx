@@ -19,7 +19,7 @@ const LoginMobile = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center">
+    <section className="min-h-screen flex items-start justify-center">
       <div className="w-full min-[480px]:max-w-[26rem]">
         <Card className="min-[480px]:shadow-2xl shadow-none border-none rounded-xl min-[480px]:py-4 px-2 min-[480px]:px-4">
           <CardHeader className="text-center pb-6">
