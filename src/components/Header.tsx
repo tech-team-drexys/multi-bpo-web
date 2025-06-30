@@ -222,7 +222,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                   )}
                 </div>
-                <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-[650px] bg-slate-100 shadow-lg border-0 p-6 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-[650px] bg-gray-50 shadow-lg border-0 p-6 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                   <div className="grid grid-cols-3 gap-8">
                     {servicosCategories.map((category, categoryIndex) => (
                       <div key={categoryIndex} className="text-left">

@@ -2,25 +2,35 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
 
-const LoginMobile = () => {
+const CadastroMobile = () => {
   const [email, setEmail] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [acceptTerms, setAcceptTerms] = useState(false);
 
-  const handleGoogleLogin = () => {
-    // Implementar login com Google
-    console.log("Login com Google");
+  const handleGoogleRegister = () => {
+    // Implementar cadastro com Google
+    console.log("Cadastro com Google");
   };
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
-    // Implementar lógica de login
-    console.log("Login:", { email, password });
+    // Implementar lógica de cadastro
+    console.log("Cadastro:", {
+      email,
+      whatsapp,
+      password,
+      confirmPassword,
+      acceptTerms,
+    });
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <div className="w-full min-[480px]:max-w-[26rem]">
+      <div className="w-full min-[480px]:max-w-[27rem]">
         <Card className="min-[480px]:shadow-2xl shadow-none border-none rounded-xl py-6 px-3">
           <CardHeader className="text-center pb-8">
             {/* Logo MULTI BPO */}
@@ -34,14 +44,14 @@ const LoginMobile = () => {
 
             {/* Título H1 */}
             <h1 className="text-2xl font-bold text-gray-800 text-left">
-              Já possui uma conta?
+              Cadastre-se
             </h1>
           </CardHeader>
 
           <CardContent className="space-y-4">
-            {/* Botão Login com Google */}
+            {/* Botão Cadastro com Google */}
             <Button
-              onClick={handleGoogleLogin}
+              onClick={handleGoogleRegister}
               variant="outline"
               className="w-full h-12 text-base font-medium bg-gray-50 border-gray-300 hover:bg-gray-50 active:bg-gray-100 active:scale-[.99] transition-all duration-150"
             >
@@ -63,7 +73,7 @@ const LoginMobile = () => {
                   d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
                 />
               </svg>
-              Login com Google
+              Cadastro com Google
             </Button>
 
             {/* Separador OR */}
@@ -78,15 +88,27 @@ const LoginMobile = () => {
               </div>
             </div>
 
-            {/* Formulário de Login */}
-            <form onSubmit={handleLogin} className="space-y-4">
-              {/* Campo Login/Email */}
+            {/* Formulário de Cadastro */}
+            <form onSubmit={handleRegister} className="space-y-4">
+              {/* Campo E-mail */}
               <div>
                 <Input
                   type="email"
                   placeholder="E-mail"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  className="h-12 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
+                  required
+                />
+              </div>
+
+              {/* Campo WhatsApp */}
+              <div>
+                <Input
+                  type="tel"
+                  placeholder="WhatsApp (telefone)"
+                  value={whatsapp}
+                  onChange={(e) => setWhatsapp(e.target.value)}
                   className="h-12 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
                   required
                 />
@@ -104,6 +126,18 @@ const LoginMobile = () => {
                 />
               </div>
 
+              {/* Campo Repetir Senha */}
+              <div>
+                <Input
+                  type="password"
+                  placeholder="Repetir Senha"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  className="h-12 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
+                  required
+                />
+              </div>
+
               {/* Botão Captcha */}
               <Button
                 type="button"
@@ -113,24 +147,61 @@ const LoginMobile = () => {
                 Captcha
               </Button>
 
-              {/* Botão Entrar */}
+              {/* Checkbox - Aceitar Política de Privacidade e Termos de Uso */}
+              <div className="flex items-start space-x-3 pt-2">
+                <Checkbox
+                  id="terms"
+                  checked={acceptTerms}
+                  onCheckedChange={(checked) =>
+                    setAcceptTerms(checked === true)
+                  }
+                  className="mt-1"
+                  required
+                />
+                <label
+                  htmlFor="terms"
+                  className="text-sm text-gray-600 leading-tight cursor-pointer"
+                >
+                  Aceito a{" "}
+                  <a
+                    href="/politica"
+                    className="text-blue-600 hover:underline font-medium"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Política de Privacidade
+                  </a>{" "}
+                  e os{" "}
+                  <a
+                    href="/politica"
+                    className="text-blue-600 hover:underline font-medium"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Termos de Uso
+                  </a>
+                </label>
+              </div>
+
+              {/* Botão Cadastrar-se */}
               <Button
                 type="submit"
                 className="w-full h-12 text-base font-medium bg-blue-600 hover:bg-blue-700 active:bg-blue-800 active:scale-[.99] text-white transition-all duration-150"
+                disabled={!acceptTerms}
               >
-                Entrar
+                Cadastrar-se
               </Button>
             </form>
 
-            {/* Link para Cadastro */}
+            {/* Link para Login */}
             <div className="text-center pt-4">
               <p className="text-sm text-gray-600">
-                Não possui conta?{" "}
+                Já possui conta?{" "}
                 <a
-                  href="/cadastro"
+                  href="/login"
                   className="text-blue-600 hover:underline font-medium"
                 >
-                  Cadastre-se aqui
+                  Entre aqui
                 </a>
               </p>
             </div>
@@ -141,4 +212,4 @@ const LoginMobile = () => {
   );
 };
 
-export default LoginMobile;
+export default CadastroMobile;

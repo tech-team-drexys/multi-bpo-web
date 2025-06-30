@@ -12,6 +12,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import FloatingWhatsAppButton from "./components/FloatingWhatsAppButton";
 import { useSmoothScroll } from "./hooks/useSmoothScroll";
 import Politica from "./pages/Politica";
+import CadastroMobile from "./pages/CadastroMobile";
 
 const queryClient = new QueryClient();
 
@@ -28,9 +29,13 @@ const App = () => {
           <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/terms-of-use" element={<TermsOfUse />} />
+            <Route
+              path="/politica-de-privacidade"
+              element={<PrivacyPolicy />}
+            />
+            <Route path="/termos-de-uso" element={<TermsOfUse />} />
             <Route path="/login-mobile" element={<LoginMobile />} />
+            <Route path="/cadastro-mobile" element={<CadastroMobile />} />
             <Route path="/politica" element={<Politica />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
