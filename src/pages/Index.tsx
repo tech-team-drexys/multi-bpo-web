@@ -10,7 +10,6 @@ import ConsultoriaIA from "@/components/ConsultoriaIA";
 import "@/components/ui/showcase-product.css";
 import WhatsAppAssistant from "@/components/WhatsAppAssistant";
 import CTASection from "@/components/CTASection";
-import PricingPlans from "@/components/PricingPlans";
 
 const Index = () => {
   return (

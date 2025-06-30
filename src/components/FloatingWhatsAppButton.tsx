@@ -1,6 +1,17 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 
 const FloatingWhatsAppButton: React.FC = () => {
+  const location = useLocation();
+
+  // Lista de páginas onde o botão NÃO deve aparecer
+  const hiddenPages = ["/login-mobile", "/admin", "/dashboard"];
+
+  // Se a página atual está na lista de páginas ocultas, não renderiza o botão
+  if (hiddenPages.includes(location.pathname)) {
+    return null;
+  }
+
   // Número do WhatsApp (substitua pelo número real)
   const whatsappNumber = "5511980883377"; // Formato: código do país + DDD + número
 
