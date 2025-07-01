@@ -1,3 +1,4 @@
+
 import { components } from "@/lib/design-system";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -12,6 +13,9 @@ const CTASection = () => {
     useScrollReveal<HTMLParagraphElement>();
   const { ref: buttonsRef, isVisible: buttonsVisible } =
     useScrollReveal<HTMLDivElement>();
+
+  const whatsappMessage = encodeURIComponent("Olá! Gostaria de testar a IA da MULTI BPO.");
+  const whatsappUrl = `https://wa.me/5511945648629?text=${whatsappMessage}`;
 
   return (
     <section className="px-4">
@@ -56,8 +60,13 @@ const CTASection = () => {
             buttonsVisible ? "is-visible" : ""
           }`}
         >
-          <Button className="text-sm font-medium bg-green-500 hover:bg-green-600 text-white px-5">
-            Teste no seu WhatsApp
+          <Button 
+            asChild
+            className="text-sm font-medium bg-green-500 hover:bg-green-600 text-white px-5"
+          >
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+              Teste no seu WhatsApp
+            </a>
           </Button>
           <div className={`${components.button.default} text-sm font-medium`}>
             Teste no Site
