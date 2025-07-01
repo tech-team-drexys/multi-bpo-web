@@ -111,7 +111,9 @@ const CTABanners = () => {
                   {/* Botão */}
                   <div className="pt-6 sm:pt-8">
                     <button className="group w-full bg-green-600 hover:bg-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl text-base sm:text-lg font-semibold transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2">
-                      {card.ctaText}
+                      <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                        {card.ctaText}
+                      </a>
                       <svg
                         className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-x-1"
                         viewBox="0 0 24 24"
