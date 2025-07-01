@@ -14,7 +14,7 @@ const CTASection = () => {
   const { ref: buttonsRef, isVisible: buttonsVisible } =
     useScrollReveal<HTMLDivElement>();
 
-  const whatsappMessage = encodeURIComponent("Olá! Gostaria de testar a IA da MULTI BPO.");
+  const whatsappMessage = encodeURIComponent("Olá, Luca! Tudo bem?");
   const whatsappUrl = `https://wa.me/5511945648629?text=${whatsappMessage}`;
 
   return (
