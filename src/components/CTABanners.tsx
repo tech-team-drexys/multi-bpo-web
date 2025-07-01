@@ -2,6 +2,10 @@ import React from "react";
 import { spacing, backgrounds } from "@/lib/design-system";
 
 const CTABanners = () => {
+  
+    const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre os serviços da MultiBPO.");
+    const whatsappUrl = `https://wa.me/5511980883377?text=${whatsappMessage}`;
+  
   const cards = [
     {
       title: "Seu",
