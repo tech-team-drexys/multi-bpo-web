@@ -10,6 +10,10 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Button } from "@/components/ui/button";
 
 const SecondHero = () => {
+  const whatsappMessage = encodeURIComponent(
+    "Olá! Gostaria de saber mais sobre os serviços da MultiBPO."
+  );
+  const whatsappUrl = `https://wa.me/5511980883377?text=${whatsappMessage}`;
   const { ref: sectionRef, isVisible } = useScrollReveal();
 
   return (
@@ -63,13 +67,15 @@ const SecondHero = () => {
                 Comece Agora
                 <ArrowRight className={`${components.button.defaultArrow}`} />
               </a>
-              <Button
-                variant="default"
-                className={`text-white bg-green-500 hover:bg-green-600 px-8 py-3 text-md`}
-                size="lg"
-              >
-                Maximize seus Lucros
-              </Button>
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                <Button
+                  variant="default"
+                  className={`text-white bg-green-500 hover:bg-green-600 px-8 py-3 text-md`}
+                  size="lg"
+                >
+                  Maximize seus Lucros
+                </Button>
+              </a>
             </div>
           </div>
 
