@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Link } from "react-router-dom";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const LoginMobile = () => {
   const [email, setEmail] = useState("");
@@ -25,7 +26,7 @@ const LoginMobile = () => {
         <Card className="min-[480px]:shadow-2xl shadow-none border-none rounded-xl min-[480px]:py-4 px-2 min-[480px]:px-4">
           <CardHeader className="text-center pb-6">
             {/* Logo MULTI BPO */}
-            <div className="flex justify-start mb-4">
+            <div className="flex justify-center mb-4">
               <Link to="/">
                 <img
                   src="/lovable-uploads/logo.png"
@@ -36,7 +37,7 @@ const LoginMobile = () => {
             </div>
 
             {/* Título H1 */}
-            <h1 className="text-2xl font-bold text-gray-800 text-left">
+            <h1 className="text-2xl font-bold text-gray-800 text-center">
               Já possui conta?
             </h1>
           </CardHeader>
@@ -46,7 +47,7 @@ const LoginMobile = () => {
             <Button
               onClick={handleGoogleLogin}
               variant="outline"
-              className="w-full h-12 text-base font-medium bg-gray-50 border-gray-300 hover:bg-gray-50 active:bg-gray-100 active:scale-[.99] transition-all duration-150"
+              className="w-full h-12 text-base font-medium text-gray-700 bg-gray-50 border-gray-300 hover:bg-gray-50 active:bg-gray-100 active:scale-[.99] transition-all duration-150"
             >
               <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24">
                 <path
@@ -121,11 +122,27 @@ const LoginMobile = () => {
                 />
               </div>
 
+              <div className="flex justify-between items-center pb-6">
+                <div className="flex items-center gap-2">
+                  <Checkbox id="terms" />
+                  <label htmlFor="terms" className="text-sm text-gray-600">
+                    Lembre-se de mim
+                  </label>
+                </div>
+
+                <a
+                  href="/cadastro"
+                  className="text-blue-600 hover:underline text-sm"
+                >
+                  Esqueceu sua senha?
+                </a>
+              </div>
+
               {/* Botão Captcha */}
               <Button
                 type="button"
                 variant="outline"
-                className="w-full h-12 text-base font-medium bg-gray-50 border-gray-300 hover:bg-gray-50 active:bg-gray-100 active:scale-[.99] transition-all duration-150"
+                className="w-full h-12 text-base font-medium text-gray-700 bg-gray-50 border-gray-300 hover:bg-gray-50 active:bg-gray-100 active:scale-[.99] transition-all duration-150"
               >
                 Captcha
               </Button>

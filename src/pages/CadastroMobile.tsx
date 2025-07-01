@@ -169,17 +169,8 @@ const CadastroMobile = () => {
                 />
               </div>
 
-              {/* Botão Captcha */}
-              <Button
-                type="button"
-                variant="outline"
-                className="w-full h-10 text-gray-800 text-base font-medium bg-gray-50 border-gray-300 hover:bg-gray-50 active:bg-gray-100 active:scale-[.98] transition-all duration-150"
-              >
-                Captcha
-              </Button>
-
               {/* Checkbox - Aceitar Política de Privacidade e Termos de Uso */}
-              <div className="flex items-center space-x-3 pt-1">
+              <div className="flex items-center space-x-3 pt-1 pb-6">
                 <Checkbox
                   id="terms"
                   checked={acceptTerms}
@@ -214,6 +205,15 @@ const CadastroMobile = () => {
                 </label>
               </div>
 
+              {/* Botão Captcha */}
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full h-10 text-gray-800 text-base font-medium bg-gray-50 border-gray-300 hover:bg-gray-50 active:bg-gray-100 active:scale-[.98] transition-all duration-150"
+              >
+                Captcha
+              </Button>
+
               {/* Botão Cadastrar-se */}
               <Button
                 type="submit"
@@ -224,7 +224,7 @@ const CadastroMobile = () => {
               </Button>
             </form>
 
-            {/* Link para Login */}
+            {/* Link para Login 
             <div className="text-center pt-2">
               <p className="text-sm text-gray-600">
                 Já possui conta?{" "}
@@ -236,6 +236,7 @@ const CadastroMobile = () => {
                 </a>
               </p>
             </div>
+            */}
           </CardContent>
         </Card>
       </div>
