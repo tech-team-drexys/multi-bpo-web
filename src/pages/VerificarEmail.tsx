@@ -7,8 +7,17 @@ const VerificarEmail = () => {
   const [searchParams] = useSearchParams();
   const email = searchParams.get("email") || "seu-email@exemplo.com";
   const handleGoToInbox = () => {
-    // Abre o cliente de e-mail padrão
-    window.open("mailto:", "_blank");
+    // Abre o cliente de e-mail padrão sem abrir janela de composição
+    if (navigator.userAgent.includes("Windows")) {
+      // Para Windows - abre o cliente padrão
+      window.location.href = "ms-outlook://";
+    } else if (navigator.userAgent.includes("Mac")) {
+      // Para Mac - abre o Mail.app
+      window.location.href = "message://";
+    } else {
+      // Fallback - tenta abrir cliente padrão
+      window.location.href = "mailto:";
+    }
   };
 
   return (
@@ -51,8 +60,8 @@ const VerificarEmail = () => {
 
               {/* Mensagem de instrução */}
               <p className="text-sm text-gray-600 text-center leading-relaxed">
-                Clique no link em seu email para validar seu cadastro. Se você
-                não encontrar o email, verifique sua{" "}
+                Clique no link enviado para o seu email para validar seu
+                cadastro. Se você não encontrar o email, verifique sua{" "}
                 <strong>caixa de spam</strong>.
               </p>
             </CardHeader>

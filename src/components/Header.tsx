@@ -10,6 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
+import LoginModal from "@/components/LoginModal";
 
 interface HeaderProps {
   enableScrollAnimation?: boolean;
@@ -21,6 +22,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
   const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(
     null
   );
+  const [showLoginModal, setShowLoginModal] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const menuRef = useRef<HTMLDivElement>(null);
@@ -311,6 +313,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
               )}
             </a>
             <Button
+              onClick={() => setShowLoginModal(true)}
               className={`w-[110px] min-[1160px]:w-[130px] h-9 min-[1160px]:h-10 text-xs lg:text-sm font-medium transition-colors duration-300 ${
                 isScrolledState
                   ? "bg-blue-600 hover:bg-blue-700 text-white"
@@ -460,7 +463,10 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
                   Cadastrar-se
                 </a>
                 <Button
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    setShowLoginModal(true);
+                  }}
                   className="w-full h-10 text-sm font-medium bg-emerald-500 hover:bg-emerald-700 text-white"
                 >
                   Login
@@ -470,6 +476,12 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
           </div>
         )}
       </div>
+
+      {/* Modal de Login */}
+      <LoginModal
+        isOpen={showLoginModal}
+        onClose={() => setShowLoginModal(false)}
+      />
     </header>
   );
 };
