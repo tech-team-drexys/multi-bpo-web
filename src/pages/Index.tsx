@@ -3,7 +3,7 @@ import NewHero from "@/components/NewHero";
 import SecondHero from "@/components/SecondHero";
 import CTABanners from "@/components/CTABanners";
 import Services from "@/components/Services";
-import LightFooter from "@/components/LightFooter";
+import LightFooter from "@/components/Footer";
 import Courses from "@/components/Courses";
 import Blog from "@/components/Blog";
 import ConsultoriaIA from "@/components/ConsultoriaIA";

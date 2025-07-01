@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Link } from "react-router-dom";
 
 const LoginMobile = () => {
   const [email, setEmail] = useState("");
@@ -25,11 +26,13 @@ const LoginMobile = () => {
           <CardHeader className="text-center pb-6">
             {/* Logo MULTI BPO */}
             <div className="flex justify-start mb-4">
-              <img
-                src="/lovable-uploads/logo.png"
-                alt="MULTI BPO"
-                className="h-8 w-auto"
-              />
+              <Link to="/">
+                <img
+                  src="/lovable-uploads/logo.png"
+                  alt="MULTI BPO"
+                  className="h-8 w-auto"
+                />
+              </Link>
             </div>
 
             {/* Título H1 */}

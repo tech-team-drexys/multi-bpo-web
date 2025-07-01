@@ -1,5 +1,5 @@
 import Header from "@/components/Header";
-import LightFooter from "@/components/LightFooter";
+import LightFooter from "@/components/Footer";
 import { useState } from "react";
 
 const TermsOfUse = () => {

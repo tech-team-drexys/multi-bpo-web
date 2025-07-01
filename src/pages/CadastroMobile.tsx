@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Link } from "react-router-dom";
 
 const CadastroMobile = () => {
   const [email, setEmail] = useState("");
@@ -34,21 +35,23 @@ const CadastroMobile = () => {
         <Card className="min-[520px]:shadow-2xl shadow-none border-none rounded-xl py-4 px-3">
           <CardHeader className="text-center pb-8">
             {/* Logo MULTI BPO */}
-            <div className="flex justify-start mb-6">
-              <img
-                src="/lovable-uploads/logo.png"
-                alt="MULTI BPO"
-                className="h-8 w-auto"
-              />
+            <div className="flex justify-center mb-6">
+              <Link to="/">
+                <img
+                  src="/lovable-uploads/logo.png"
+                  alt="MULTIBPO Logo"
+                  className="h-8 w-auto"
+                />
+              </Link>
             </div>
 
             {/* Título H1 */}
-            <h1 className="text-xl font-bold text-gray-800 text-left leading-tight">
+            <h1 className="text-xl font-bold text-gray-800 text-center leading-tight">
               Cadastre-se e tenha acesso à benefícios exclusivos
             </h1>
           </CardHeader>
 
-          <CardContent className="space-y-6">
+          <CardContent className="space-y-4">
             {/* Botão Cadastro com Google */}
             <Button
               onClick={handleGoogleRegister}

@@ -448,17 +448,22 @@ const Footer = () => {
             direitos reservados • Powered by Drexys
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link to="/" className="text-gray-500 hover:underline text-sm">
+            <Link
+              to="https://wa.me/5511980883377?text=Olá! Gostaria de saber mais sobre os serviços da MultiBPO."
+              className="text-gray-500 hover:underline text-sm"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Contato
             </Link>
             <Link
-              to="/privacy-policy"
+              to="/politica-de-privacidade"
               className="text-gray-500 hover:underline text-sm"
             >
               Política de Privacidade
             </Link>
             <Link
-              to="/terms-of-use"
+              to="/termos-de-uso"
               className="text-gray-500 hover:underline text-sm"
             >
               Termos de Uso
