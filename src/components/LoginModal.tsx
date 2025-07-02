@@ -10,6 +10,7 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { X, Eye, EyeOff } from "lucide-react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
+import PaymentModal from "./PaymentModal";
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -21,6 +22,7 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
   const handleGoogleLogin = () => {
     console.log("Login com Google");
@@ -37,7 +39,7 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
         {/* Overlay customizado com z-index maior que o header */}
         <div className="fixed inset-0 z-[1050] bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
 
-        <DialogPrimitive.Content className="fixed left-[50%] top-[50%] z-[1100] grid w-[calc(100vw-2rem)] max-w-md md:max-w-5xl min-[1200px]:max-w-6xl translate-x-[-50%] translate-y-[-50%] py-6 md:py-0 gap-0 bg-white overflow-hidden border-none rounded-xl shadow-2xl duration-200 max-h-[90vh] md:max-h-[80vh] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]">
+        <DialogPrimitive.Content className="fixed left-[50%] top-[50%] z-[1100] grid w-[calc(100vw-2rem)] max-w-md md:max-w-5xl min-[1200px]:max-w-6xl translate-x-[-50%] translate-y-[-50%] py-6 md:py-0 gap-0 bg-white overflow-hidden border-none rounded-xl shadow-2xl duration-200 max-h-[90vh] md:max-h-[80vh] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] ">
           {/* Botão fechar */}
           <DialogPrimitive.Close className="absolute right-4 top-4 z-10 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
             <X className="w-5 h-5 text-gray-500" />
@@ -219,8 +221,7 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                         type="button"
                         className="text-blue-600 hover:text-blue-800 font-medium hover:underline"
                         onClick={() => {
-                          // Aqui você pode abrir o modal de cadastro ou navegar
-                          console.log("Abrir cadastro");
+                          setIsPaymentModalOpen(true);
                         }}
                       >
                         Cadastre-se
@@ -233,6 +234,15 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
           </div>
         </DialogPrimitive.Content>
       </DialogPortal>
+
+      {/* Modal de Pagamento */}
+      <PaymentModal
+        isOpen={isPaymentModalOpen}
+        onClose={() => setIsPaymentModalOpen(false)}
+        planName="Plano Premium"
+        planPrice={97.9}
+        planDescription="Acesso completo aos serviços Multi BPO"
+      />
     </Dialog>
   );
 };

@@ -1,4 +1,3 @@
-
 import { components } from "@/lib/design-system";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -60,9 +59,9 @@ const CTASection = () => {
             buttonsVisible ? "is-visible" : ""
           }`}
         >
-          <Button 
+          <Button
             asChild
-            className="text-sm font-medium bg-green-500 hover:bg-green-600 text-white px-5"
+            className="text-sm font-medium bg-green-500 hover:bg-green-600 text-white px-5 active:scale-[.98] transition-all duration-150"
           >
             <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
               Teste no seu WhatsApp

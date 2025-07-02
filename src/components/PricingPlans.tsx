@@ -220,7 +220,7 @@ const PricingPlans = () => {
               </ul>
 
               {/* CTA Button */}
-              <Button className="w-full py-3 font-semibold transition-all duration-300 bg-blue-600 hover:bg-blue-700 text-white">
+              <Button className="w-full py-3 font-semibold transition-all duration-300 bg-blue-600 hover:bg-blue-700 text-white active:scale-[.98]">
                 Contrate Agora
               </Button>
             </div>

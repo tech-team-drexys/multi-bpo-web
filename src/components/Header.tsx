@@ -314,7 +314,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
             </a>
             <Button
               onClick={() => setShowLoginModal(true)}
-              className={`w-[110px] min-[1160px]:w-[130px] h-9 min-[1160px]:h-10 text-xs lg:text-sm font-medium transition-colors duration-300 ${
+              className={`w-[110px] min-[1160px]:w-[130px] h-9 min-[1160px]:h-10 text-xs lg:text-sm font-medium transition-all duration-300 active:scale-[.98] ${
                 isScrolledState
                   ? "bg-blue-600 hover:bg-blue-700 text-white"
                   : "bg-white hover:bg-blue-500 text-black hover:text-white"
@@ -467,7 +467,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
                     setIsMenuOpen(false);
                     setShowLoginModal(true);
                   }}
-                  className="w-full h-10 text-sm font-medium bg-emerald-500 hover:bg-emerald-700 text-white"
+                  className="w-full h-10 text-sm font-medium bg-emerald-500 hover:bg-emerald-700 text-white active:scale-[.98] transition-all duration-150"
                 >
                   Login
                 </Button>

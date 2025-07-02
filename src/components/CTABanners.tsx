@@ -2,10 +2,11 @@ import React from "react";
 import { spacing, backgrounds } from "@/lib/design-system";
 
 const CTABanners = () => {
-  
-    const whatsappMessage = encodeURIComponent("Olá! Gostaria de saber mais sobre os serviços da MultiBPO.");
-    const whatsappUrl = `https://wa.me/5511980883377?text=${whatsappMessage}`;
-  
+  const whatsappMessage = encodeURIComponent(
+    "Olá! Gostaria de saber mais sobre os serviços da MultiBPO."
+  );
+  const whatsappUrl = `https://wa.me/5511980883377?text=${whatsappMessage}`;
+
   const cards = [
     {
       title: "Seu",
@@ -110,22 +111,26 @@ const CTABanners = () => {
 
                   {/* Botão */}
                   <div className="pt-6 sm:pt-8">
-                    <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-                    <button className="group w-full bg-green-600 hover:bg-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl text-base sm:text-lg font-semibold transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2">
-                      {card.ctaText}
-                      <svg
-                        className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-x-1"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M5 12h14" />
-                        <path d="m12 5 7 7-7 7" />
-                      </svg>
-                    </button>
+                    <a
+                      href={whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <button className="group w-full bg-green-600 hover:bg-green-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl text-base sm:text-lg font-semibold transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2 active:scale-[.98]">
+                        {card.ctaText}
+                        <svg
+                          className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-x-1"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="M5 12h14" />
+                          <path d="m12 5 7 7-7 7" />
+                        </svg>
+                      </button>
                     </a>
                   </div>
                 </div>

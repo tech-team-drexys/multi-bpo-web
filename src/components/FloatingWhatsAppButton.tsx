@@ -28,7 +28,7 @@ const FloatingWhatsAppButton: React.FC = () => {
     <div className="fixed bottom-6 right-6 z-50">
       <button
         onClick={handleWhatsAppClick}
-        className="flex items-center justify-center w-16 h-16 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg transition-all duration-300"
+        className="flex items-center justify-center w-16 h-16 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg transition-all duration-300 active:scale-[.98]"
         aria-label="Falar no WhatsApp"
       >
         {/* Ícone do WhatsApp */}

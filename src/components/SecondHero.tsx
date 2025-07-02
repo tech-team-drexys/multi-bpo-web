@@ -70,7 +70,7 @@ const SecondHero = () => {
               <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                 <Button
                   variant="default"
-                  className={`text-white bg-green-500 hover:bg-green-600 px-8 py-3 text-md`}
+                  className={`text-white bg-green-500 hover:bg-green-600 px-8 py-3 text-md active:scale-[.98] transition-all duration-150`}
                   size="lg"
                 >
                   Maximize seus Lucros
