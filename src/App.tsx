@@ -13,6 +13,7 @@ import FloatingWhatsAppButton from "./components/FloatingWhatsAppButton";
 import { useSmoothScroll } from "./hooks/useSmoothScroll";
 import Politica from "./pages/Politica";
 import CadastroMobile from "./pages/CadastroMobile";
+import CheckoutMobile from "./pages/CheckoutMobile";
 import VerificarEmail from "./pages/VerificarEmail";
 import CadastroValidado from "./pages/CadastroValidado";
 
@@ -38,6 +39,7 @@ const App = () => {
             <Route path="/termos-de-uso" element={<TermosDeUso />} />
             <Route path="/login-mobile" element={<LoginMobile />} />
             <Route path="/cadastro-mobile" element={<CadastroMobile />} />
+            <Route path="/checkout-mobile" element={<CheckoutMobile />} />
             <Route path="/verificar-email" element={<VerificarEmail />} />
             <Route path="/cadastro-validado" element={<CadastroValidado />} />
             <Route path="/politica" element={<Politica />} />

@@ -1,30 +1,28 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import { X, ChevronDown, ChevronUp, CreditCard, Ticket } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ChevronDown, ChevronUp, CreditCard, Ticket } from "lucide-react";
 
-interface PaymentModalProps {
-  isOpen: boolean;
-  onClose: () => void;
+interface CheckoutMobileProps {
   planName?: string;
   planDescription?: string;
   originalPrice?: number;
   discount?: number;
 }
 
-const PaymentModal = ({
-  isOpen,
-  onClose,
+const CheckoutMobile = ({
   planName = "Plano Premium",
   planDescription = "Acesso completo à consultoria com IA da Multi BPO",
   originalPrice = 199.9,
   discount = 100.0,
-}: PaymentModalProps) => {
+}: CheckoutMobileProps) => {
   const [cpfCnpj, setCpfCnpj] = useState("");
   const [cardNumber, setCardNumber] = useState("");
   const [cardName, setCardName] = useState("");
@@ -40,71 +38,17 @@ const PaymentModal = ({
   const [coupon, setCoupon] = useState("");
 
   // Estados para controlar qual seção está aberta (apenas uma por vez)
-  const [openSection, setOpenSection] = useState<string | null>("card");
-  const [isClosing, setIsClosing] = useState(false);
+  const [openSection, setOpenSection] = useState<string | null>(null);
 
   const toggleSection = (section: string) => {
     setOpenSection(openSection === section ? null : section);
   };
 
-  const handleClose = () => {
-    setIsClosing(true);
-    // Aguarda a animação terminar antes de fechar
-    setTimeout(() => {
-      setIsClosing(false);
-      onClose();
-    }, 200); // Duração da animação
-  };
+  const total = originalPrice - discount;
 
-  // Fechar modal com ESC e desabilitar Lenis
-  useEffect(() => {
-    const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === "Escape") handleClose();
-    };
-
-    if (isOpen) {
-      document.addEventListener("keydown", handleEsc);
-
-      // Desabilitar Lenis smooth scroll se existir
-      const lenis = (window as any).lenis;
-      if (lenis && typeof lenis.stop === "function") {
-        lenis.stop();
-      }
-
-      // Lock scroll no body e html
-      document.body.style.overflow = "hidden";
-      document.documentElement.style.overflow = "hidden";
-
-      // Adicionar classe para prevenir scroll em touch devices
-      document.body.style.position = "fixed";
-      document.body.style.width = "100%";
-      document.body.style.height = "100%";
-
-      return () => {
-        document.removeEventListener("keydown", handleEsc);
-
-        // Reabilitar Lenis
-        if (lenis && typeof lenis.start === "function") {
-          lenis.start();
-        }
-
-        // Restaurar scroll
-        document.body.style.overflow = "";
-        document.documentElement.style.overflow = "";
-        document.body.style.position = "";
-        document.body.style.width = "";
-        document.body.style.height = "";
-      };
-    }
-
-    return () => {
-      document.removeEventListener("keydown", handleEsc);
-    };
-  }, [isOpen, onClose]);
-
-  const handlePayment = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Processando pagamento:", {
+    console.log("Checkout:", {
       cpfCnpj,
       cardNumber,
       cardName,
@@ -115,182 +59,64 @@ const PaymentModal = ({
     });
   };
 
-  const total = originalPrice - discount;
-
-  if (!isOpen) return null;
-
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center"
-      onWheel={(e) => e.stopPropagation()}
-      onTouchMove={(e) => e.stopPropagation()}
-    >
-      {/* Overlay */}
-      <div
-        className={`absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity duration-200 ${
-          isClosing ? "opacity-0" : "opacity-100"
-        }`}
-        onClick={handleClose}
-      />
+    <div className="min-h-screen flex bg-gray-50 min-[580px]:py-4">
+      <div className="w-full min-[580px]:max-w-[32rem] min-[580px]:mx-auto flex">
+        <Card className="min-[520px]:shadow-2xl shadow-none border-none min-[580px]:rounded-xl rounded-none py-4 px-3 flex flex-col w-full">
+          <CardHeader className="pb-7 flex-shrink-0 bg-white text-gray-900 rounded-t-xl -m-3 mb-6 p-6 border-b border-gray-100">
+            {/* Logo MULTI BPO */}
+            <div className="flex justify-start mb-6">
+              <img
+                src="/lovable-uploads/logo.png"
+                alt="MULTI BPO"
+                className="h-8 w-auto"
+              />
+            </div>
 
-      {/* Modal Container */}
-      <div
-        className={`relative w-[calc(100vw-2rem)] md:max-w-5xl min-[1200px]:max-w-6xl h-[90vh] md:h-[80vh] bg-white rounded-xl shadow-2xl transition-all duration-200 ${
-          isClosing
-            ? "opacity-0 scale-95 translate-y-4"
-            : "opacity-100 scale-100 translate-y-0 animate-in fade-in-0 zoom-in-95"
-        }`}
-        onWheel={(e) => e.stopPropagation()}
-        onTouchMove={(e) => e.stopPropagation()}
-      >
-        {/* Botão fechar */}
-        <button
-          onClick={handleClose}
-          className="absolute right-4 top-4 z-10 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
-        >
-          <X className="w-5 h-5 text-gray-500" />
-          <span className="sr-only">Close</span>
-        </button>
+            {/* Assinar Plano Premium */}
+            <div className="text-sm text-gray-600 mb-1">Assinar {planName}</div>
 
-        <div className="flex flex-col md:flex-row h-full rounded-xl overflow-hidden">
-          {/* Lado esquerdo - Resumo do Plano */}
-          <div className="hidden min-[820px]:flex min-[820px]:w-2/5">
-            <div className="w-full bg-gray-900 text-white p-6 md:p-10 lg:p-12 flex flex-col justify-between">
-              {/* Logo */}
-              <div className="flex justify-start mb-6">
-                <img
-                  src="/lovable-uploads/light-logo.png"
-                  alt="MULTI BPO"
-                  className="h-8 w-auto"
-                />
-              </div>
+            {/* Preço principal */}
+            <div className="text-3xl font-bold mb-6">
+              R$ {originalPrice.toFixed(2)}
+              <span className="text-sm font-normal text-gray-400 ml-1">
+                por mês
+              </span>
+            </div>
 
-              {/* Plano Info */}
-              <div className="flex-1">
-                <div className="mb-6">
-                  <h2 className="text-sm text-gray-400 mb-1">
-                    Assinar {planName}
-                  </h2>
-                  <div className="text-3xl font-bold mb-1">
-                    R$ {originalPrice.toFixed(2)}
-                    <span className="text-sm font-normal text-gray-400 ml-1">
-                      por mês
-                    </span>
+            {/* Detalhes do plano */}
+            <div className="space-y-4">
+              <div className="flex justify-between items-center">
+                <div>
+                  <div className="text-sm font-medium">{planName}</div>
+                  <div className="text-xs text-gray-500 mr-2">
+                    {planDescription}
                   </div>
+                  <div className="text-xs text-gray-400">Cobrança mensal</div>
                 </div>
-
-                {/* Detalhes do plano */}
-                <div className="space-y-4 mb-8">
-                  <div className="flex justify-between items-center py-2">
-                    <div>
-                      <div className="text-sm font-medium">{planName}</div>
-                      <div className="text-xs text-gray-400 mr-2">
-                        {planDescription}
-                      </div>
-                      <div className="text-xs text-gray-400">
-                        Cobrança mensal
-                      </div>
-                    </div>
-                    <div className="text-sm">
-                      R$ {originalPrice.toFixed(2)}{" "}
-                      <span className="text-sm font-normal text-gray-400 ml-1">
-                        / mês
-                      </span>
-                    </div>
-                  </div>
-
-                  <hr className="border-gray-700" />
-
-                  <div className="space-y-6">
-                    <div className="flex justify-between text-sm">
-                      <span>Valor</span>
-                      <span>
-                        R$ {originalPrice.toFixed(2)}{" "}
-                        <span className="text-sm font-normal text-gray-400 ml-1">
-                          / mês
-                        </span>
-                      </span>
-                    </div>
-
-                    <div className="flex justify-between text-sm">
-                      <span>Cupom de desconto</span>
-                      <span className="text-green-400">
-                        - R$ {discount.toFixed(2)}
-                      </span>
-                    </div>
-
-                    <hr className="border-gray-700" />
-
-                    <div className="flex justify-between font-bold text-lg">
-                      <span>Total</span>
-                      <div>
-                        R$ {total.toFixed(2)}
-                        <span className="text-sm font-normal text-gray-400 ml-1">
-                          / mês
-                        </span>
-                      </div>
-                    </div>
-                  </div>
+                <div className="text-sm">
+                  R$ {originalPrice.toFixed(2)}
+                  <span className="text-sm font-normal text-gray-400 ml-1">
+                    / mês
+                  </span>
                 </div>
               </div>
             </div>
-          </div>
+          </CardHeader>
 
-          {/* Lado direito - Formulário de Checkout */}
-
-          <div className="flex-1 md:min-[820px]:w-3/5 bg-white overflow-y-auto">
-            <div className="p-7 md:p-10 lg:p-12">
-              {/* Header mobile (só aparece em telas <820px) */}
-              <div className="block min-[820px]:hidden pb-7 flex-shrink-0 bg-white text-gray-900 rounded-t-xl -mx-7 -mt-7 mb-6 p-6 border-b border-gray-100">
-                {/* Logo MULTI BPO */}
-                <div className="flex justify-start mb-6">
-                  <img
-                    src="/lovable-uploads/logo.png"
-                    alt="MULTI BPO"
-                    className="h-8 w-auto"
-                  />
-                </div>
-                {/* Assinar Plano Premium */}
-                <div className="text-sm text-gray-600 mb-1">
-                  Assinar {planName}
-                </div>
-                {/* Preço principal */}
-                <div className="text-3xl font-bold mb-6">
-                  R$ {originalPrice.toFixed(2)}
-                  <span className="text-sm font-normal text-gray-400 ml-1">
-                    por mês
-                  </span>
-                </div>
-                {/* Detalhes do plano */}
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <div className="text-sm font-medium">{planName}</div>
-                      <div className="text-xs text-gray-500 mr-2">
-                        {planDescription}
-                      </div>
-                      <div className="text-xs text-gray-400">
-                        Cobrança mensal
-                      </div>
-                    </div>
-                    <div className="text-sm">
-                      R$ {originalPrice.toFixed(2)}
-                      <span className="text-sm font-normal text-gray-400 ml-1">
-                        / mês
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* Fim do header mobile */}
-              <form onSubmit={handlePayment} className="space-y-6">
+          <CardContent className="flex-1 flex flex-col">
+            <form
+              onSubmit={handleSubmit}
+              className="flex-1 flex flex-col justify-between"
+            >
+              <div className="space-y-4">
                 {/* Campo CPF/CNPJ */}
                 <div>
                   <label
                     htmlFor="cpfCnpj"
                     className="block text-sm font-medium text-gray-700 mb-1"
                   >
-                    CPF/CNPJ
+                    CPF / CNPJ
                   </label>
                   <Input
                     id="cpfCnpj"
@@ -305,8 +131,8 @@ const PaymentModal = ({
 
                 {/* Seção Forma de Pagamento */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Forma de pagamento
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Forma de Pagamento
                   </label>
                   <Collapsible
                     open={openSection === "card"}
@@ -342,7 +168,7 @@ const PaymentModal = ({
                             placeholder="1234 1234 1234 1234"
                             value={cardNumber}
                             onChange={(e) => setCardNumber(e.target.value)}
-                            className="h-12 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors"
+                            className="h-12 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
                             required
                           />
                         </div>
@@ -354,7 +180,7 @@ const PaymentModal = ({
                             placeholder="MM / AA"
                             value={cardExpiry}
                             onChange={(e) => setCardExpiry(e.target.value)}
-                            className="h-12 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors"
+                            className="h-12 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
                             required
                           />
                           <Input
@@ -363,7 +189,7 @@ const PaymentModal = ({
                             placeholder="CVC"
                             value={cardCvv}
                             onChange={(e) => setCardCvv(e.target.value)}
-                            className="h-12 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors"
+                            className="h-12 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
                             required
                           />
                         </div>
@@ -381,7 +207,7 @@ const PaymentModal = ({
                             placeholder="Nome completo"
                             value={cardName}
                             onChange={(e) => setCardName(e.target.value)}
-                            className="h-12 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors"
+                            className="h-12 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
                             required
                           />
                         </div>
@@ -423,7 +249,7 @@ const PaymentModal = ({
                         placeholder="00000-000"
                         value={cep}
                         onChange={(e) => setCep(e.target.value)}
-                        className="h-10 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors"
+                        className="h-10 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
                         required
                       />
                     </div>
@@ -441,7 +267,7 @@ const PaymentModal = ({
                         placeholder="Rua, Avenida, etc."
                         value={street}
                         onChange={(e) => setStreet(e.target.value)}
-                        className="h-10 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors"
+                        className="h-10 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
                         required
                       />
                     </div>
@@ -460,7 +286,7 @@ const PaymentModal = ({
                           placeholder="123"
                           value={number}
                           onChange={(e) => setNumber(e.target.value)}
-                          className="h-10 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors"
+                          className="h-10 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
                           required
                         />
                       </div>
@@ -478,7 +304,7 @@ const PaymentModal = ({
                           placeholder="Apt, Sala, etc."
                           value={complement}
                           onChange={(e) => setComplement(e.target.value)}
-                          className="h-10 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors"
+                          className="h-10 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
                         />
                       </div>
                     </div>
@@ -496,7 +322,7 @@ const PaymentModal = ({
                         placeholder="Bairro"
                         value={neighborhood}
                         onChange={(e) => setNeighborhood(e.target.value)}
-                        className="h-10 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors"
+                        className="h-10 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
                         required
                       />
                     </div>
@@ -515,7 +341,7 @@ const PaymentModal = ({
                           placeholder="Cidade"
                           value={city}
                           onChange={(e) => setCity(e.target.value)}
-                          className="h-10 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors"
+                          className="h-10 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
                           required
                         />
                       </div>
@@ -533,7 +359,7 @@ const PaymentModal = ({
                           placeholder="UF"
                           value={state}
                           onChange={(e) => setState(e.target.value)}
-                          className="h-10 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors"
+                          className="h-10 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
                           required
                         />
                       </div>
@@ -541,6 +367,7 @@ const PaymentModal = ({
                   </CollapsibleContent>
                 </Collapsible>
 
+                {/* Resumo da Compra - Colapsável que abre para cima */}
                 {/* Resumo da Compra */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-4">
@@ -574,38 +401,39 @@ const PaymentModal = ({
                     </div>
                   </div>
                 </div>
+              </div>
 
-                {/* Campo Cupom de Desconto */}
-                <div className="space-y-6">
-                  <div className="relative">
-                    <div className="absolute left-4 top-1/2 transform -translate-y-1/2 flex items-center gap-3">
-                      <Ticket className="w-5 h-5 text-blue-600" />
-                    </div>
-                    <Input
-                      id="coupon"
-                      type="text"
-                      placeholder="Cupom de desconto"
-                      value={coupon}
-                      onChange={(e) => setCoupon(e.target.value)}
-                      className="h-12 text-base bg-white border-gray-300 hover:bg-gray-50 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors text-center"
-                    />
+              {/* Campo Cupom de Desconto */}
+              <div className="flex flex-col gap-6">
+                <div className="relative">
+                  <div className="absolute left-4 top-1/2 transform -translate-y-1/2 flex items-center gap-3">
+                    <Ticket className="w-5 h-5 text-blue-600" />
                   </div>
-
-                  {/* Botão Finalizar */}
-                  <Button
-                    type="submit"
-                    className="w-full h-12 text-base font-medium bg-green-600 hover:bg-green-700 text-white active:scale-[.98] transition-all duration-150"
-                  >
-                    Finalizar Compra
-                  </Button>
+                  <Input
+                    id="coupon"
+                    type="text"
+                    placeholder="Cupom de desconto"
+                    value={coupon}
+                    onChange={(e) => setCoupon(e.target.value)}
+                    className="h-12 text-base bg-white border-gray-300 hover:bg-gray-50 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none text-center"
+                  />
                 </div>
-              </form>
-            </div>
-          </div>
-        </div>
+
+                {/* Botão Continuar */}
+                <Button
+                  type="submit"
+                  className="w-full h-12 text-base font-medium bg-blue-600 hover:bg-blue-700 active:bg-blue-800 active:scale-[.99] text-white transition-all duration-150"
+                >
+                  Finalizar Compra
+                </Button>
+              </div>
+            </form>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
 };
 
-export default PaymentModal;
+export default CheckoutMobile;
+export type { CheckoutMobileProps };
