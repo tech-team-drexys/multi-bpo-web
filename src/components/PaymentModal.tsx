@@ -6,7 +6,15 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import { X, ChevronDown, ChevronUp, CreditCard, Ticket } from "lucide-react";
+import {
+  X,
+  ChevronDown,
+  ChevronUp,
+  CreditCard,
+  Ticket,
+  Check,
+  AlertCircle,
+} from "lucide-react";
 
 interface PaymentModalProps {
   isOpen: boolean;
@@ -23,7 +31,6 @@ const PaymentModal = ({
   planName = "Plano Premium",
   planDescription = "Acesso completo à consultoria com IA da Multi BPO",
   originalPrice = 199.9,
-  discount = 100.0,
 }: PaymentModalProps) => {
   const [cpfCnpj, setCpfCnpj] = useState("");
   const [cardNumber, setCardNumber] = useState("");
@@ -38,10 +45,21 @@ const PaymentModal = ({
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [coupon, setCoupon] = useState("");
+  const [appliedCoupon, setAppliedCoupon] = useState<string | null>(null);
+  const [couponDiscount, setCouponDiscount] = useState(0);
+  const [couponStatus, setCouponStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
+  const [couponMessage, setCouponMessage] = useState("");
 
   // Estados para controlar qual seção está aberta (apenas uma por vez)
   const [openSection, setOpenSection] = useState<string | null>("card");
   const [isClosing, setIsClosing] = useState(false);
+
+  // Cupons válidos (em produção, isso viria de uma API)
+  const validCoupons = {
+    QUEROAGORA: { discount: 100, description: "Desconto de 50%" },
+  };
 
   const toggleSection = (section: string) => {
     setOpenSection(openSection === section ? null : section);
@@ -54,6 +72,42 @@ const PaymentModal = ({
       setIsClosing(false);
       onClose();
     }, 200); // Duração da animação
+  };
+
+  // Função para aplicar cupom
+  const applyCoupon = () => {
+    if (!coupon.trim()) {
+      setCouponStatus("error");
+      setCouponMessage("Digite um cupom válido");
+      return;
+    }
+
+    setCouponStatus("loading");
+
+    // Simula uma chamada de API
+    setTimeout(() => {
+      const upperCoupon = coupon.trim().toUpperCase();
+      const couponData = validCoupons[upperCoupon as keyof typeof validCoupons];
+
+      if (couponData) {
+        setAppliedCoupon(upperCoupon);
+        setCouponDiscount(couponData.discount);
+        setCouponStatus("success");
+        setCouponMessage(couponData.description);
+        setCoupon(""); // Limpa o campo
+      } else {
+        setCouponStatus("error");
+        setCouponMessage("Cupom inválido ou expirado");
+      }
+    }, 1000);
+  };
+
+  // Função para remover cupom
+  const removeCoupon = () => {
+    setAppliedCoupon(null);
+    setCouponDiscount(0);
+    setCouponStatus("idle");
+    setCouponMessage("");
   };
 
   // Fechar modal com ESC e desabilitar Lenis
@@ -111,17 +165,19 @@ const PaymentModal = ({
       cardExpiry,
       cardCvv,
       address: { cep, street, number, complement, neighborhood, city, state },
-      coupon,
+      appliedCoupon,
+      couponDiscount,
     });
   };
 
-  const total = originalPrice - discount;
+  // Calcula o total com base no cupom aplicado
+  const total = originalPrice - (appliedCoupon ? couponDiscount : 0);
 
   if (!isOpen) return null;
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center"
+      className="fixed inset-0 h-full z-50 flex items-center justify-center"
       onWheel={(e) => e.stopPropagation()}
       onTouchMove={(e) => e.stopPropagation()}
     >
@@ -135,7 +191,7 @@ const PaymentModal = ({
 
       {/* Modal Container */}
       <div
-        className={`relative w-[calc(100vw-2rem)] md:max-w-5xl min-[1200px]:max-w-6xl h-[90vh] md:h-[80vh] bg-white rounded-xl shadow-2xl transition-all duration-200 ${
+        className={`relative w-full min-[700px]:max-w-4xl min-[1050px]:max-w-5xl min-[1200px]:max-w-6xl h-full min-[700px]:h-[80vh] bg-white min-[700px]:rounded-xl shadow-2xl transition-all duration-200 ${
           isClosing
             ? "opacity-0 scale-95 translate-y-4"
             : "opacity-100 scale-100 translate-y-0 animate-in fade-in-0 zoom-in-95"
@@ -171,11 +227,31 @@ const PaymentModal = ({
                   <h2 className="text-sm text-gray-400 mb-1">
                     Assinar {planName}
                   </h2>
-                  <div className="text-3xl font-bold mb-1">
-                    R$ {originalPrice.toFixed(2)}
-                    <span className="text-sm font-normal text-gray-400 ml-1">
-                      por mês
-                    </span>
+                  <div className="font-bold mb-1">
+                    <div className="flex items-center gap-3">
+                      <div
+                        className={`${
+                          appliedCoupon
+                            ? "line-through text-gray-500 text-xl"
+                            : "text-3xl"
+                        }`}
+                      >
+                        R$ {originalPrice.toFixed(2)}
+                        {!appliedCoupon && (
+                          <span className="text-sm font-normal text-gray-400 ml-1">
+                            por mês
+                          </span>
+                        )}
+                      </div>
+                      {appliedCoupon && (
+                        <div className="text-3xl font-bold text-green-400">
+                          R$ {total.toFixed(2)}
+                          <span className="text-sm font-normal text-green-300 ml-1">
+                            por mês
+                          </span>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
 
@@ -212,14 +288,20 @@ const PaymentModal = ({
                       </span>
                     </div>
 
-                    <div className="flex justify-between text-sm">
-                      <span>Cupom de desconto</span>
-                      <span className="text-green-400">
-                        - R$ {discount.toFixed(2)}
-                      </span>
-                    </div>
-
-                    <hr className="border-gray-700" />
+                    {appliedCoupon && (
+                      <>
+                        <div className="flex justify-between text-sm">
+                          <span>Cupom ({appliedCoupon})</span>
+                          <span className="text-green-300">
+                            - R$ {couponDiscount.toFixed(2)}
+                            <span className="font-thin text-green-200 ml-1">
+                              / mês
+                            </span>
+                          </span>
+                        </div>
+                        <hr className="border-gray-700" />
+                      </>
+                    )}
 
                     <div className="flex justify-between font-bold text-lg">
                       <span>Total</span>
@@ -255,11 +337,31 @@ const PaymentModal = ({
                   Assinar {planName}
                 </div>
                 {/* Preço principal */}
-                <div className="text-3xl font-bold mb-6">
-                  R$ {originalPrice.toFixed(2)}
-                  <span className="text-sm font-normal text-gray-400 ml-1">
-                    por mês
-                  </span>
+                <div className="font-bold mb-5 mt-1">
+                  <div className="flex items-center gap-3">
+                    <div
+                      className={`${
+                        appliedCoupon
+                          ? "line-through text-gray-700 text-xl"
+                          : "text-gray-800 text-4xl"
+                      }`}
+                    >
+                      R$ {originalPrice.toFixed(2)}
+                      {!appliedCoupon && (
+                        <span className="text-sm font-normal text-gray-400 ml-1">
+                          por mês
+                        </span>
+                      )}
+                    </div>
+                    {appliedCoupon && (
+                      <div className="text-3xl font-bold text-green-500">
+                        R$ {total.toFixed(2)}
+                        <span className="text-sm font-normal text-green-500 ml-1">
+                          por mês
+                        </span>
+                      </div>
+                    )}
+                  </div>
                 </div>
                 {/* Detalhes do plano */}
                 <div className="space-y-4">
@@ -556,13 +658,22 @@ const PaymentModal = ({
                         </span>
                       </span>
                     </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-gray-600">Cupom de desconto:</span>
-                      <span className="font-medium text-green-600">
-                        - R$ {discount.toFixed(2)}
-                      </span>
-                    </div>
-                    <hr className="border-gray-200" />
+                    {appliedCoupon && (
+                      <>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-gray-600">
+                            Cupom ({appliedCoupon}):
+                          </span>
+                          <span className="font-medium text-green-500">
+                            - R$ {couponDiscount.toFixed(2)}
+                            <span className="font-thin text-green-500 ml-1">
+                              / mês
+                            </span>
+                          </span>
+                        </div>
+                        <hr className="border-gray-200" />
+                      </>
+                    )}
                     <div className="flex justify-between text-lg font-bold">
                       <span className="text-gray-800">Total:</span>
                       <div>
@@ -577,24 +688,80 @@ const PaymentModal = ({
 
                 {/* Campo Cupom de Desconto */}
                 <div className="space-y-6">
-                  <div className="relative">
-                    <div className="absolute left-4 top-1/2 transform -translate-y-1/2 flex items-center gap-3">
-                      <Ticket className="w-5 h-5 text-blue-600" />
+                  {!appliedCoupon ? (
+                    <div className="space-y-3">
+                      <div className="relative">
+                        <div className="absolute left-4 top-1/2 transform -translate-y-1/2 flex items-center gap-3">
+                          <Ticket className="w-5 h-5 text-blue-600" />
+                        </div>
+                        <Input
+                          id="coupon"
+                          type="text"
+                          placeholder="Cupom de desconto"
+                          value={coupon}
+                          onChange={(e) => setCoupon(e.target.value)}
+                          onKeyPress={(e) => e.key === "Enter" && applyCoupon()}
+                          className="h-12 text-base bg-white border-gray-300 hover:bg-gray-50 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors text-center pr-20"
+                          disabled={couponStatus === "loading"}
+                        />
+                        <Button
+                          type="button"
+                          onClick={applyCoupon}
+                          disabled={
+                            couponStatus === "loading" || !coupon.trim()
+                          }
+                          className="absolute right-2 top-1/2 transform -translate-y-1/2 h-8 px-3 text-sm bg-blue-600 hover:bg-blue-700 text-white disabled:bg-gray-300 disabled:cursor-not-allowed"
+                        >
+                          {couponStatus === "loading"
+                            ? "Aplicando..."
+                            : "Aplicar"}
+                        </Button>
+                      </div>
+
+                      {/* Mensagem de status do cupom */}
+                      {couponStatus === "success" && (
+                        <div className="flex items-center gap-2 text-sm text-green-600 bg-green-50 p-3 rounded-lg">
+                          <Check className="w-4 h-4" />
+                          {couponMessage}
+                        </div>
+                      )}
+
+                      {couponStatus === "error" && (
+                        <div className="flex items-center gap-2 text-sm text-red-600 bg-red-50 p-3 rounded-lg">
+                          <AlertCircle className="w-4 h-4" />
+                          {couponMessage}
+                        </div>
+                      )}
                     </div>
-                    <Input
-                      id="coupon"
-                      type="text"
-                      placeholder="Cupom de desconto"
-                      value={coupon}
-                      onChange={(e) => setCoupon(e.target.value)}
-                      className="h-12 text-base bg-white border-gray-300 hover:bg-gray-50 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors text-center"
-                    />
-                  </div>
+                  ) : (
+                    <div className="flex items-center justify-between bg-green-50 p-4 rounded-lg border border-green-200">
+                      <div className="flex items-center gap-3">
+                        <Check className="w-5 h-5 text-green-600" />
+                        <div>
+                          <div className="text-sm font-medium text-green-800">
+                            Cupom aplicado: {appliedCoupon}
+                          </div>
+                          <div className="text-xs text-green-600">
+                            {couponMessage}
+                          </div>
+                        </div>
+                      </div>
+                      <Button
+                        type="button"
+                        onClick={removeCoupon}
+                        variant="outline"
+                        size="sm"
+                        className="text-red-600 border-red-300 hover:bg-red-50"
+                      >
+                        Remover
+                      </Button>
+                    </div>
+                  )}
 
                   {/* Botão Finalizar */}
                   <Button
                     type="submit"
-                    className="w-full h-12 text-base font-medium bg-green-600 hover:bg-green-700 text-white active:scale-[.98] transition-all duration-150"
+                    className="w-full h-12 text-base font-medium bg-blue-600 hover:bg-blue-700 text-white active:scale-[.98] transition-all duration-150"
                   >
                     Finalizar Compra
                   </Button>
