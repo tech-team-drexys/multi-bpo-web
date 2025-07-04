@@ -2,27 +2,28 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
 import { Link } from "react-router-dom";
 import {
-  ChevronDown,
-  ChevronUp,
   CreditCard,
   Ticket,
   Check,
   AlertCircle,
   Shield,
-  Diamond,
   Crown,
-  Star,
 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+// Importando o componente CEPSearch
+import { CEPSearch, type Address } from "@/components/CEPSearch";
 
 interface CheckoutMobileProps {
   planName?: string;
@@ -39,9 +40,9 @@ const CheckoutMobile = ({
 }: CheckoutMobileProps) => {
   const [cpfCnpj, setCpfCnpj] = useState("");
   const [cardNumber, setCardNumber] = useState("");
-  const [cardName, setCardName] = useState("");
-  const [cardExpiry, setCardExpiry] = useState("");
-  const [cardCvv, setCardCvv] = useState("");
+  const [cardholderName, setCardholderName] = useState("");
+  const [expiryDate, setExpiryDate] = useState("");
+  const [cvc, setCvc] = useState("");
   const [cep, setCep] = useState("");
   const [street, setStreet] = useState("");
   const [number, setNumber] = useState("");
@@ -57,14 +58,8 @@ const CheckoutMobile = ({
   >("idle");
   const [couponMessage, setCouponMessage] = useState("");
 
-  // Estados para controlar qual seção está aberta (apenas uma por vez)
-  const [openSection, setOpenSection] = useState<string | null>(null);
-
-  // Novo estado para endereços mockados e seleção
-  const [enderecos, setEnderecos] = useState<any[]>([]);
-  const [enderecoSelecionado, setEnderecoSelecionado] = useState<number | null>(
-    null
-  );
+  // Estado para endereço selecionado via CEPSearch
+  const [selectedAddress, setSelectedAddress] = useState<Address | null>(null);
 
   // Cupons válidos (em produção, isso viria de uma API)
   const validCoupons = {
@@ -73,10 +68,6 @@ const CheckoutMobile = ({
     // Adicione novos cupons aqui:
     // NOVO50: { discount: 50, description: "Desconto de R$ 50,00" },
     // BLACKFRIDAY: { discount: 75, description: "Desconto de R$ 75,00" },
-  };
-
-  const toggleSection = (section: string) => {
-    setOpenSection(openSection === section ? null : section);
   };
 
   // Função para aplicar cupom
@@ -118,37 +109,20 @@ const CheckoutMobile = ({
   // Calcula o total com base no cupom aplicado
   const total = originalPrice - (appliedCoupon ? couponDiscount : 0);
 
-  // Função mock para buscar endereços pelo CEP
-  const buscarEnderecosPorCep = () => {
-    // Exemplo de mock: sempre retorna 3 endereços para qualquer CEP
-    setEnderecos([
-      {
-        id: 1,
-        rua: "Rua das Flores, 123",
-        bairro: "Centro",
-        cidade: "São Paulo",
-        estado: "SP",
-        cep: cep || "55555-555",
-      },
-      {
-        id: 2,
-        rua: "Rua das Flores, 456",
-        bairro: "Centro",
-        cidade: "São Paulo",
-        estado: "SP",
-        cep: cep || "55555-555",
-        complemento: "Apt 201",
-      },
-      {
-        id: 3,
-        rua: "Rua das Flores, 789",
-        bairro: "Centro",
-        cidade: "São Paulo",
-        estado: "SP",
-        cep: cep || "55555-555",
-      },
-    ]);
-    setEnderecoSelecionado(1);
+  // Função para lidar com a seleção de endereço do CEPSearch
+  const handleAddressSelect = (address: Address | null) => {
+    setSelectedAddress(address);
+    if (address) {
+      // Extrair informações do endereço selecionado
+      const streetParts = address.street.split(", ");
+      setStreet(streetParts[0] || "");
+      setNumber(streetParts[1] || "");
+      setNeighborhood(address.neighborhood);
+      setCity(address.city);
+      setState(address.state);
+      setCep(address.cep);
+      setComplement(address.complement || "");
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -156,10 +130,11 @@ const CheckoutMobile = ({
     console.log("Checkout:", {
       cpfCnpj,
       cardNumber,
-      cardName,
-      cardExpiry,
-      cardCvv,
+      cardholderName,
+      expiryDate,
+      cvc,
       address: { cep, street, number, complement, neighborhood, city, state },
+      selectedAddress,
       appliedCoupon,
       couponDiscount,
     });
@@ -264,333 +239,89 @@ const CheckoutMobile = ({
                   />
                 </div>
 
-                {/* Endereço de Cobrança - CEP */}
-                <div>
-                  <label
-                    htmlFor="cep"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Endereço de Cobrança
-                  </label>
-                  <div className="flex items-center w-full">
-                    <Input
-                      id="cep"
-                      type="text"
-                      placeholder="Digite seu CEP"
-                      value={cep}
-                      onChange={(e) => setCep(e.target.value)}
-                      className="h-11 md:h-12 text-sm md:text-base border-gray-300 focus:border-blue-500 focus:ring-blue-500 pr-12"
-                      style={{ borderRadius: 8 }}
-                    />
-                    <div className="ml-2">
-                      <Button
-                        type="button"
-                        className="h-11 md:h-12 w-11 min-w-0 px-0 border border-gray-200 flex items-center justify-center bg-white hover:bg-gray-100"
-                        style={{ borderRadius: 8 }}
-                        onClick={buscarEnderecosPorCep}
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-5 w-5 text-gray-500"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z"
-                          />
-                        </svg>
-                      </Button>
-                    </div>
-                  </div>
-                </div>
+                {/* Componente CEPSearch substituindo o input de endereço */}
+                <CEPSearch
+                  onAddressSelect={handleAddressSelect}
+                  label="Endereço de Cobrança"
+                  placeholder="Digite seu CEP"
+                  className=""
+                />
 
-                {/* Lista de endereços encontrados */}
-                {enderecos.length > 0 && (
-                  <div className="mt-4">
-                    <div className="text-sm text-gray-700 mb-2">
-                      Selecione seu endereço:
-                    </div>
-                    <div className="flex flex-col gap-3 max-h-64 overflow-y-auto">
-                      {enderecos.map((end, idx) => (
-                        <label
-                          key={end.id}
-                          className={
-                            `flex items-start gap-3 p-4 rounded-xl cursor-pointer transition-shadow hover:shadow-sm ` +
-                            (enderecoSelecionado === end.id
-                              ? "border border-blue-600 bg-blue-50"
-                              : "border border-gray-200 bg-white")
-                          }
-                        >
-                          <input
-                            type="radio"
-                            name="endereco"
-                            checked={enderecoSelecionado === end.id}
-                            onChange={() => setEnderecoSelecionado(end.id)}
-                            className="mt-1 accent-blue-500"
-                          />
-                          <div>
-                            <div className="font-medium text-gray-900">
-                              {end.rua}
-                            </div>
-                            <div className="text-xs text-gray-700">
-                              {end.bairro}, {end.cidade} - {end.estado}
-                            </div>
-                            <div className="text-xs text-gray-500">
-                              CEP: {end.cep}
-                            </div>
-                            {end.complemento && (
-                              <div className="text-xs text-gray-500">
-                                {end.complemento}
-                              </div>
-                            )}
-                          </div>
-                        </label>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Seção Forma de Pagamento */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                {/* Forma de Pagamento */}
+                <div className="space-y-2">
+                  <Label className="text-sm font-medium text-gray-700">
                     Forma de Pagamento
-                  </label>
-                  <Collapsible
-                    open={openSection === "card"}
-                    onOpenChange={() => toggleSection("card")}
-                  >
-                    <CollapsibleTrigger asChild>
-                      <Button
-                        type="button"
-                        variant="outline"
-                        className="w-full h-12 text-gray-800 text-base font-medium bg-white border-gray-300 hover:bg-gray-50 justify-start gap-3 px-4"
-                      >
-                        <CreditCard className="w-5 h-5 text-gray-600" />
-                        Cartão
-                        <div className="ml-auto">
-                          {openSection === "card" ? (
-                            <ChevronUp className="h-4 w-4" />
-                          ) : (
-                            <ChevronDown className="h-4 w-4" />
-                          )}
-                        </div>
-                      </Button>
-                    </CollapsibleTrigger>
-                    <CollapsibleContent className="space-y-4 pt-4">
-                      <div className="bg-gray-50 p-4 rounded-lg space-y-4">
-                        <h4 className="text-sm font-medium text-gray-700 mb-3">
-                          Dados do cartão
-                        </h4>
-
-                        <div>
-                          <Input
-                            id="cardNumber"
-                            type="text"
-                            placeholder="1234 1234 1234 1234"
-                            value={cardNumber}
-                            onChange={(e) => setCardNumber(e.target.value)}
-                            className="h-12 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
-                            required
-                          />
-                        </div>
-
-                        <div className="grid grid-cols-2 gap-3">
-                          <Input
-                            id="cardExpiry"
-                            type="text"
-                            placeholder="MM / AA"
-                            value={cardExpiry}
-                            onChange={(e) => setCardExpiry(e.target.value)}
-                            className="h-12 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
-                            required
-                          />
-                          <Input
-                            id="cardCvv"
-                            type="text"
-                            placeholder="CVC"
-                            value={cardCvv}
-                            onChange={(e) => setCardCvv(e.target.value)}
-                            className="h-12 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
-                            required
-                          />
-                        </div>
-
-                        <div>
-                          <label
-                            htmlFor="cardName"
-                            className="block text-sm font-medium text-gray-700 mb-2"
-                          >
-                            Nome do titular do cartão
-                          </label>
-                          <Input
-                            id="cardName"
-                            type="text"
-                            placeholder="Nome completo"
-                            value={cardName}
-                            onChange={(e) => setCardName(e.target.value)}
-                            className="h-12 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
-                            required
-                          />
-                        </div>
+                  </Label>
+                  <Select defaultValue="card">
+                    <SelectTrigger className="h-12">
+                      <div className="flex items-center gap-2">
+                        <CreditCard className="w-4 h-4 text-gray-500" />
+                        <SelectValue />
                       </div>
-                    </CollapsibleContent>
-                  </Collapsible>
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="card">Cartão</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
 
-                {/* Seção Endereço (Desativado) */}
-                {/* <Collapsible
-                  open={openSection === "address"}
-                  onOpenChange={() => toggleSection("address")}
-                >
-                  <CollapsibleTrigger asChild>
-                    <Button
-                      type="button"
-                      variant="outline"
-                      className="w-full h-12 text-gray-800 text-base font-medium border-gray-300 hover:bg-gray-100 justify-between"
+                {/* Dados do cartão */}
+                <div className="space-y-4">
+                  <h3 className="text-sm font-medium text-gray-700">
+                    Dados do cartão
+                  </h3>
+
+                  <div className="space-y-2">
+                    <Input
+                      id="cardNumber"
+                      type="text"
+                      placeholder="1234 1234 1234 1234"
+                      value={cardNumber}
+                      onChange={(e) => setCardNumber(e.target.value)}
+                      className="h-12"
+                      required
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <Input
+                      id="cardExpiry"
+                      type="text"
+                      placeholder="MM / AA"
+                      value={expiryDate}
+                      onChange={(e) => setExpiryDate(e.target.value)}
+                      className="h-12"
+                      required
+                    />
+                    <Input
+                      id="cardCvv"
+                      type="text"
+                      placeholder="CVC"
+                      value={cvc}
+                      onChange={(e) => setCvc(e.target.value)}
+                      className="h-12"
+                      required
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="cardName"
+                      className="text-sm font-medium text-gray-700"
                     >
-                      Endereço de Cobrança
-                      {openSection === "address" ? (
-                        <ChevronUp className="h-4 w-4" />
-                      ) : (
-                        <ChevronDown className="h-4 w-4" />
-                      )}
-                    </Button>
-                  </CollapsibleTrigger>
-                  <CollapsibleContent className="space-y-4 pt-4">
-                    <div>
-                      <label
-                        htmlFor="cep"
-                        className="block text-sm font-medium text-gray-700 mb-1"
-                      >
-                        CEP
-                      </label>
-                      <Input
-                        id="cep"
-                        type="text"
-                        placeholder="00000-000"
-                        value={cep}
-                        onChange={(e) => setCep(e.target.value)}
-                        className="h-10 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="street"
-                        className="block text-sm font-medium text-gray-700 mb-1"
-                      >
-                        Endereço
-                      </label>
-                      <Input
-                        id="street"
-                        type="text"
-                        placeholder="Rua, Avenida, etc."
-                        value={street}
-                        onChange={(e) => setStreet(e.target.value)}
-                        className="h-10 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
-                        required
-                      />
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-3">
-                      <div>
-                        <label
-                          htmlFor="number"
-                          className="block text-sm font-medium text-gray-700 mb-1"
-                        >
-                          Número
-                        </label>
-                        <Input
-                          id="number"
-                          type="text"
-                          placeholder="123"
-                          value={number}
-                          onChange={(e) => setNumber(e.target.value)}
-                          className="h-10 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
-                          required
-                        />
-                      </div>
-
-                      <div>
-                        <label
-                          htmlFor="complement"
-                          className="block text-sm font-medium text-gray-700 mb-1"
-                        >
-                          Complemento
-                        </label>
-                        <Input
-                          id="complement"
-                          type="text"
-                          placeholder="Apt, Sala, etc."
-                          value={complement}
-                          onChange={(e) => setComplement(e.target.value)}
-                          className="h-10 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="neighborhood"
-                        className="block text-sm font-medium text-gray-700 mb-1"
-                      >
-                        Bairro
-                      </label>
-                      <Input
-                        id="neighborhood"
-                        type="text"
-                        placeholder="Bairro"
-                        value={neighborhood}
-                        onChange={(e) => setNeighborhood(e.target.value)}
-                        className="h-10 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
-                        required
-                      />
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-3">
-                      <div>
-                        <label
-                          htmlFor="city"
-                          className="block text-sm font-medium text-gray-700 mb-1"
-                        >
-                          Cidade
-                        </label>
-                        <Input
-                          id="city"
-                          type="text"
-                          placeholder="Cidade"
-                          value={city}
-                          onChange={(e) => setCity(e.target.value)}
-                          className="h-10 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
-                          required
-                        />
-                      </div>
-
-                      <div>
-                        <label
-                          htmlFor="state"
-                          className="block text-sm font-medium text-gray-700 mb-1"
-                        >
-                          Estado
-                        </label>
-                        <Input
-                          id="state"
-                          type="text"
-                          placeholder="UF"
-                          value={state}
-                          onChange={(e) => setState(e.target.value)}
-                          className="h-10 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
-                          required
-                        />
-                      </div>
-                    </div>
-                  </CollapsibleContent>
-                </Collapsible> */}
+                      Nome do titular do cartão
+                    </Label>
+                    <Input
+                      id="cardName"
+                      type="text"
+                      placeholder="Nome completo"
+                      value={cardholderName}
+                      onChange={(e) => setCardholderName(e.target.value)}
+                      className="h-12"
+                      required
+                    />
+                  </div>
+                </div>
 
                 {/* Salvar dados para futuras compras */}
                 <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg border border-gray-200">
