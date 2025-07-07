@@ -39,6 +39,11 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
     }
   };
 
+  const handleLoginClick = (event: React.FormEvent) => {
+    event.preventDefault();
+    setShowLoginModal(true);
+  };
+
   useEffect(() => {
     if (!enableScrollAnimation) return;
 
@@ -294,7 +299,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
               )}
             </a>
             <Button
-              onClick={() => setShowLoginModal(true)}
+              onClick={handleLoginClick}
               className={`w-[110px] min-[1160px]:w-[130px] h-9 min-[1160px]:h-10 text-xs lg:text-sm font-medium transition-all duration-300 active:scale-[.98] ${
                 isScrolledState
                   ? "bg-blue-600 hover:bg-blue-700 text-white"
@@ -410,7 +415,8 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
                   Cadastrar-se
                 </a>
                 <Button
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.preventDefault();
                     setIsMenuOpen(false);
                     setShowLoginModal(true);
                   }}
