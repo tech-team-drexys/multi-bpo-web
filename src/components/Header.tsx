@@ -360,68 +360,32 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
 
               {/* Dropdown Serviços Mobile */}
               <div>
-                <button
-                  onClick={() => toggleMobileDropdown("servicos")}
+                <a
+                  href="#services"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollTo("#services", { offset: -80 });
+                    setIsMenuOpen(false);
+                  }}
                   className="w-full flex justify-between items-center text-slate-700 hover:text-blue-600 px-3 py-2 text-base font-medium"
                 >
                   Serviços
-                  <ChevronDown
-                    className={`ml-1 h-4 w-4 transition-transform duration-200 ${
-                      openMobileDropdown === "servicos" ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-                {openMobileDropdown === "servicos" && (
-                  <div className="pl-6 pb-2 space-y-1">
-                    {servicosCategories.map((category) =>
-                      category.items.map((item, index) => (
-                        <a
-                          key={`${category.title}-${index}`}
-                          href={`#service-${item
-                            .toLowerCase()
-                            .replace(/\s+/g, "-")}`}
-                          onClick={() => setIsMenuOpen(false)}
-                          className="block text-slate-600 hover:text-blue-500 px-3 py-1.5 text-sm"
-                        >
-                          {item}
-                        </a>
-                      ))
-                    )}
-                  </div>
-                )}
+                </a>
               </div>
 
               {/* Dropdown Cursos Mobile */}
               <div>
-                <button
-                  onClick={() => toggleMobileDropdown("cursos")}
+                <a
+                  href="#courses"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollTo("#courses", { offset: -80 });
+                    setIsMenuOpen(false);
+                  }}
                   className="w-full flex justify-between items-center text-slate-700 hover:text-blue-600 px-3 py-2 text-base font-medium"
                 >
                   Cursos
-                  <ChevronDown
-                    className={`ml-1 h-4 w-4 transition-transform duration-200 ${
-                      openMobileDropdown === "cursos" ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-                {openMobileDropdown === "cursos" && (
-                  <div className="pl-6 pb-2 space-y-1">
-                    {cursosCategories.map((category) =>
-                      category.items.map((item, index) => (
-                        <a
-                          key={`${category.title}-${index}`}
-                          href={`#course-${item
-                            .toLowerCase()
-                            .replace(/\s+/g, "-")}`}
-                          onClick={() => setIsMenuOpen(false)}
-                          className="block text-slate-600 hover:text-blue-500 px-3 py-1.5 text-sm"
-                        >
-                          {item}
-                        </a>
-                      ))
-                    )}
-                  </div>
-                )}
+                </a>
               </div>
 
               <a
