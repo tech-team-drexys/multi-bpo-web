@@ -21,7 +21,7 @@ interface PaymentModalProps {
   onClose: () => void;
   planName?: string;
   planDescription?: string;
-  originalPrice?: number;
+  planPrice?: number;
   discount?: number;
 }
 
@@ -30,7 +30,7 @@ const PaymentModal = ({
   onClose,
   planName = "Plano Premium",
   planDescription = "Acesso completo à consultoria com IA da Multi BPO",
-  originalPrice = 199.9,
+  planPrice = 199.9,
 }: PaymentModalProps) => {
   const [cpfCnpj, setCpfCnpj] = useState("");
   const [cardNumber, setCardNumber] = useState("");
@@ -171,7 +171,7 @@ const PaymentModal = ({
   };
 
   // Calcula o total com base no cupom aplicado
-  const total = originalPrice - (appliedCoupon ? couponDiscount : 0);
+  const total = planPrice - (appliedCoupon ? couponDiscount : 0);
 
   if (!isOpen) return null;
 
@@ -236,7 +236,7 @@ const PaymentModal = ({
                             : "text-3xl"
                         }`}
                       >
-                        R$ {originalPrice.toFixed(2)}
+                        R$ {planPrice.toFixed(2)}
                         {!appliedCoupon && (
                           <span className="text-sm font-normal text-gray-400 ml-1">
                             por mês
@@ -268,7 +268,7 @@ const PaymentModal = ({
                       </div>
                     </div>
                     <div className="text-sm">
-                      R$ {originalPrice.toFixed(2)}{" "}
+                      R$ {planPrice.toFixed(2)}{" "}
                       <span className="text-sm font-normal text-gray-400 ml-1">
                         / mês
                       </span>
@@ -281,7 +281,7 @@ const PaymentModal = ({
                     <div className="flex justify-between text-sm">
                       <span>Valor</span>
                       <span>
-                        R$ {originalPrice.toFixed(2)}{" "}
+                        R$ {planPrice.toFixed(2)}{" "}
                         <span className="text-sm font-normal text-gray-400 ml-1">
                           / mês
                         </span>
@@ -346,7 +346,7 @@ const PaymentModal = ({
                           : "text-gray-800 text-4xl"
                       }`}
                     >
-                      R$ {originalPrice.toFixed(2)}
+                      R$ {planPrice.toFixed(2)}
                       {!appliedCoupon && (
                         <span className="text-sm font-normal text-gray-400 ml-1">
                           por mês
@@ -376,7 +376,7 @@ const PaymentModal = ({
                       </div>
                     </div>
                     <div className="text-sm">
-                      R$ {originalPrice.toFixed(2)}
+                      R$ {planPrice.toFixed(2)}
                       <span className="text-sm font-normal text-gray-400 ml-1">
                         / mês
                       </span>
@@ -652,7 +652,7 @@ const PaymentModal = ({
                     <div className="flex justify-between text-sm">
                       <span className="text-gray-600">Valor:</span>
                       <span className="font-medium text-gray-700">
-                        R$ {originalPrice.toFixed(2)}{" "}
+                        R$ {planPrice.toFixed(2)}{" "}
                         <span className="text-sm font-normal text-gray-400 ml-1">
                           / mês
                         </span>
