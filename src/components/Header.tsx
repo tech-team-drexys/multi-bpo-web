@@ -10,6 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
+import { useScrollLock } from "@/hooks/useScrollLock";
 import LoginModal from "@/components/LoginModal";
 import SignupModal from "@/components/SignupModal";
 
@@ -80,17 +81,8 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
     };
   }, [isMenuOpen]);
 
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    // Cleanup function to restore scroll on component unmount if menu was open
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isMenuOpen]);
+  // Usar o hook para gerenciar o scroll do menu mobile
+  useScrollLock(isMenuOpen);
 
   // Se a animação não está habilitada, sempre use o estilo "scrolled"
   const isScrolledState = enableScrollAnimation ? hasScrolled : true;

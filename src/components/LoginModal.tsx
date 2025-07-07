@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { X, Eye, EyeOff } from "lucide-react";
+import { useScrollLock } from "@/hooks/useScrollLock";
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -16,6 +17,9 @@ const LoginModal = ({ isOpen, onClose, onOpenSignup }: LoginModalProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+
+  // Usar o hook para gerenciar o scroll
+  useScrollLock(isOpen);
 
   const handleGoogleLogin = () => {
     console.log("Login com Google");
@@ -44,7 +48,7 @@ const LoginModal = ({ isOpen, onClose, onOpenSignup }: LoginModalProps) => {
     }
   };
 
-  // Fechar modal com ESC e desabilitar Lenis
+  // Fechar modal com ESC
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") handleClose();
@@ -52,37 +56,6 @@ const LoginModal = ({ isOpen, onClose, onOpenSignup }: LoginModalProps) => {
 
     if (isOpen) {
       document.addEventListener("keydown", handleEsc);
-
-      // Desabilitar Lenis smooth scroll se existir
-      const lenis = (window as any).lenis;
-      if (lenis && typeof lenis.stop === "function") {
-        lenis.stop();
-      }
-
-      // Lock scroll no body e html
-      document.body.style.overflow = "hidden";
-      document.documentElement.style.overflow = "hidden";
-
-      // Adicionar classe para prevenir scroll em touch devices
-      document.body.style.position = "fixed";
-      document.body.style.width = "100%";
-      document.body.style.height = "100%";
-
-      return () => {
-        document.removeEventListener("keydown", handleEsc);
-
-        // Reabilitar Lenis
-        if (lenis && typeof lenis.start === "function") {
-          lenis.start();
-        }
-
-        // Restaurar scroll
-        document.body.style.overflow = "";
-        document.documentElement.style.overflow = "";
-        document.body.style.position = "";
-        document.body.style.width = "";
-        document.body.style.height = "";
-      };
     }
 
     return () => {
@@ -140,7 +113,7 @@ const LoginModal = ({ isOpen, onClose, onOpenSignup }: LoginModalProps) => {
           <div className="flex-1 flex flex-col justify-center p-4 md:p-10 lg:p-12 relative bg-white overflow-y-auto">
             <div className="w-full max-w-xs md:max-w-sm mx-auto">
               {/* Logo */}
-              <div className="flex justify-start mb-4 md:mb-6">
+              <div className="flex justify-center mb-4 md:mb-6">
                 <img
                   src="/lovable-uploads/logo.png"
                   alt="MULTI BPO"

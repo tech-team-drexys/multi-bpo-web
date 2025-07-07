@@ -1,9 +1,10 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { X } from "lucide-react";
+import { useScrollLock } from "@/hooks/useScrollLock";
+import PhoneModal from "./PhoneModal";
 
 interface SignupModalProps {
   isOpen: boolean;
@@ -17,9 +18,29 @@ const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [acceptTerms, setAcceptTerms] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const [showPhoneModal, setShowPhoneModal] = useState(false);
+  const [googleUserEmail, setGoogleUserEmail] = useState("");
+
+  // Usar o hook para gerenciar o scroll
+  useScrollLock(isOpen || showPhoneModal);
 
   const handleGoogleRegister = () => {
-    console.log("Cadastro com Google");
+    // Simular dados do usuário do Google
+    const mockGoogleUser = {
+      email: "usuario@gmail.com",
+      name: "Usuário Google",
+      picture: "https://via.placeholder.com/40",
+    };
+
+    setGoogleUserEmail(mockGoogleUser.email);
+    console.log("Cadastro com Google:", mockGoogleUser);
+
+    // Fechar modal atual e abrir modal de telefone
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsClosing(false);
+      setShowPhoneModal(true);
+    }, 200);
   };
 
   const handleRegister = (e: React.FormEvent) => {
@@ -41,46 +62,52 @@ const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
     }, 200);
   };
 
+  const handlePhoneModalClose = () => {
+    setShowPhoneModal(false);
+    setGoogleUserEmail("");
+  };
+
+  const handlePhoneModalBack = () => {
+    setShowPhoneModal(false);
+    // Reabrir o modal de cadastro
+    setTimeout(() => {
+      setIsClosing(false);
+    }, 200);
+  };
+
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === "Escape") handleClose();
+      if (e.key === "Escape") {
+        if (showPhoneModal) {
+          handlePhoneModalClose();
+        } else {
+          handleClose();
+        }
+      }
     };
 
-    if (isOpen) {
+    if (isOpen || showPhoneModal) {
       document.addEventListener("keydown", handleEsc);
-
-      const lenis = (window as any).lenis;
-      if (lenis && typeof lenis.stop === "function") {
-        lenis.stop();
-      }
-
-      document.body.style.overflow = "hidden";
-      document.documentElement.style.overflow = "hidden";
-      document.body.style.position = "fixed";
-      document.body.style.width = "100%";
-      document.body.style.height = "100%";
-
-      return () => {
-        document.removeEventListener("keydown", handleEsc);
-
-        if (lenis && typeof lenis.start === "function") {
-          lenis.start();
-        }
-
-        document.body.style.overflow = "";
-        document.documentElement.style.overflow = "";
-        document.body.style.position = "";
-        document.body.style.width = "";
-        document.body.style.height = "";
-      };
     }
 
     return () => {
       document.removeEventListener("keydown", handleEsc);
     };
-  }, [isOpen]);
+  }, [isOpen, showPhoneModal]);
 
-  if (!isOpen) return null;
+  if (!isOpen && !showPhoneModal) return null;
+
+  // Se o modal de telefone estiver aberto, renderizar ele
+  if (showPhoneModal) {
+    return (
+      <PhoneModal
+        isOpen={showPhoneModal}
+        onClose={handlePhoneModalClose}
+        onBack={handlePhoneModalBack}
+        userEmail={googleUserEmail}
+      />
+    );
+  }
 
   return (
     <div
@@ -127,8 +154,8 @@ const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
           </div>
 
           {/* Lado direito - Conteúdo */}
-          <div className="flex-1 flex flex-col justify-center p-4 md:p-10 lg:p-12 relative bg-white overflow-y-auto">
-            <div className="w-full max-w-xs md:max-w-sm mx-auto">
+          <div className="flex-1 flex flex-col justify-start p-10 lg:p-12 relative bg-white overflow-y-auto">
+            <div className="w-full max-w-sm md:max-w-md mx-auto">
               {/* Logo */}
               <div className="flex justify-start mb-4 md:mb-6">
                 <img
@@ -151,7 +178,7 @@ const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
                 <Button
                   onClick={handleGoogleRegister}
                   variant="outline"
-                  className="w-full h-11 md:h-12 text-sm md:text-base font-medium text-gray-700 bg-white border-gray-300 hover:bg-gray-50 transition-all duration-200"
+                  className="w-full h-11 md:h-12 text-sm md:text-base font-medium text-gray-700 bg-white border-gray-300 hover:bg-gray-50 active:scale-[.98] transition-all duration-150"
                 >
                   <svg
                     className="w-4 h-4 md:w-5 md:h-5 mr-2 md:mr-3"
@@ -190,7 +217,10 @@ const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
                 </div>
 
                 {/* Formulário de cadastro */}
-                <form onSubmit={handleRegister} className="space-y-3 md:space-y-4">
+                <form
+                  onSubmit={handleRegister}
+                  className="space-y-3 md:space-y-4"
+                >
                   {/* Campo E-mail */}
                   <div>
                     <label
@@ -221,7 +251,7 @@ const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
                     <Input
                       id="whatsapp"
                       type="tel"
-                      placeholder="Digite seu número de WhatsApp"
+                      placeholder="(11) 99999-9999"
                       value={whatsapp}
                       onChange={(e) => setWhatsapp(e.target.value)}
                       className="h-11 md:h-12 text-sm md:text-base border-gray-300 focus:border-blue-500 focus:ring-blue-500"
@@ -248,13 +278,13 @@ const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
                     />
                   </div>
 
-                  {/* Campo Repetir Senha */}
+                  {/* Campo Confirmar Senha */}
                   <div>
                     <label
                       htmlFor="confirmPassword"
                       className="block text-sm font-medium text-gray-700 mb-1"
                     >
-                      Repetir Senha
+                      Confirmar Senha
                     </label>
                     <Input
                       id="confirmPassword"
@@ -267,58 +297,51 @@ const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
                     />
                   </div>
 
-                  {/* Checkbox - Aceitar Política de Privacidade e Termos de Uso */}
-                  <div className="flex items-center space-x-3 pt-1 pb-4">
+                  {/* Captcha */}
+                  <div className="flex items-center justify-center">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      className="w-full h-11 md:h-12 text-sm md:text-base font-medium text-gray-700 bg-white border-gray-300 hover:bg-gray-50 active:scale-[.98] transition-all duration-150"
+                    >
+                      Captcha
+                    </Button>
+                  </div>
+
+                  {/* Termos */}
+                  <div className="flex items-center space-x-2">
                     <Checkbox
                       id="terms"
                       checked={acceptTerms}
                       onCheckedChange={(checked) =>
-                        setAcceptTerms(checked === true)
+                        setAcceptTerms(checked as boolean)
                       }
-                      className="flex-shrink-0"
-                      required
                     />
-                    <label
-                      htmlFor="terms"
-                      className="text-xs text-gray-600 leading-tight cursor-pointer"
-                    >
-                      Aceito a{" "}
-                      <a
-                        href="/politica"
-                        className="text-blue-600 hover:underline font-medium"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Política de Privacidade
-                      </a>{" "}
-                      e os{" "}
-                      <a
-                        href="/politica"
-                        className="text-blue-600 hover:underline font-medium"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <label htmlFor="terms" className="text-sm text-gray-600">
+                      Aceito os{" "}
+                      <button
+                        type="button"
+                        className="text-blue-600 hover:text-blue-800 underline"
                       >
                         Termos de Uso
-                      </a>
+                      </button>{" "}
+                      e{" "}
+                      <button
+                        type="button"
+                        className="text-blue-600 hover:text-blue-800 underline"
+                      >
+                        Política de Privacidade
+                      </button>
                     </label>
                   </div>
 
-                  {/* Botão Captcha */}
-                  <Button
-                    type="button"
-                    variant="outline"
-                    className="w-full h-11 md:h-12 text-sm md:text-base font-medium text-gray-700 bg-white border-gray-300 hover:bg-gray-50 transition-all duration-200"
-                  >
-                    Captcha
-                  </Button>
-
-                  {/* Botão Cadastrar-se */}
+                  {/* Botão Cadastrar */}
                   <Button
                     type="submit"
-                    className="w-full h-11 md:h-12 text-sm md:text-base font-medium bg-blue-600 hover:bg-blue-700 text-white transition-all duration-200"
+                    className="w-full h-11 md:h-12 text-sm md:text-base font-medium bg-blue-600 hover:bg-blue-700 text-white active:scale-[.98] transition-all duration-150"
                     disabled={!acceptTerms}
                   >
-                    Enviar
+                    Cadastrar
                   </Button>
                 </form>
               </div>
