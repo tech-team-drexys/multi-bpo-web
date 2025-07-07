@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 import LoginModal from "@/components/LoginModal";
-import PaymentModal from "@/components/PaymentModal";
 
 interface HeaderProps {
   enableScrollAnimation?: boolean;
@@ -24,7 +23,6 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
     null
   );
   const [showLoginModal, setShowLoginModal] = useState(false);
-  const [showPaymentModal, setShowPaymentModal] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const menuRef = useRef<HTMLDivElement>(null);
@@ -212,42 +210,23 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                 )}
               </a>
-              <div className="relative group">
-                <div
-                  className={`flex items-center px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative cursor-pointer ${
-                    isScrolledState
-                      ? "text-gray-800 hover:text-blue-600"
-                      : "text-white hover:text-white"
-                  }`}
-                >
-                  Serviços
-                  <ChevronDown className="ml-1 h-3 w-3 transition-transform duration-200 group-hover:rotate-180" />
-                  {!isScrolledState && (
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-                  )}
-                </div>
-                <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-[650px] bg-gray-50 shadow-lg border-0 p-6 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                  <div className="grid grid-cols-3 gap-8">
-                    {servicosCategories.map((category, categoryIndex) => (
-                      <div key={categoryIndex} className="text-left">
-                        <h4 className="font-semibold text-gray-900 mb-3 text-sm text-left">
-                          {category.title}
-                        </h4>
-                        <div className="space-y-2">
-                          {category.items.map((item, index) => (
-                            <div
-                              key={index}
-                              className="text-gray-800 hover:bg-white/50 cursor-pointer transition-all duration-200 text-xs p-2 rounded text-left"
-                            >
-                              {item}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <a
+                href="#services"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollTo("#services", { offset: -80 });
+                }}
+                className={`px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group cursor-pointer ${
+                  isScrolledState
+                    ? "text-gray-800 hover:text-blue-600"
+                    : "text-white hover:text-white"
+                }`}
+              >
+                Serviços
+                {!isScrolledState && (
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                )}
+              </a>
               <a
                 href="#courses"
                 onClick={(e) => {
@@ -301,8 +280,8 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
 
           {/* Buttons */}
           <div className="hidden min-[980px]:flex gap-4 min-[1160px]:gap-6">
-            <button
-              onClick={() => setShowPaymentModal(true)}
+            <a
+              href="#"
               className={`px-2 py-2 text-xs lg:text-sm font-medium transition-colors relative group cursor-pointer ${
                 isScrolledState
                   ? "text-gray-800 hover:text-blue-600"
@@ -313,7 +292,7 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
               {!isScrolledState && (
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
               )}
-            </button>
+            </a>
             <Button
               onClick={() => setShowLoginModal(true)}
               className={`w-[110px] min-[1160px]:w-[130px] h-9 min-[1160px]:h-10 text-xs lg:text-sm font-medium transition-all duration-300 active:scale-[.98] ${
@@ -457,15 +436,15 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
                 Blog
               </a>
               <div className="flex flex-col gap-2 mt-4 pt-4 border-t border-slate-300">
-                <button
+                <a
+                  href="#"
                   onClick={() => {
                     setIsMenuOpen(false);
-                    setShowPaymentModal(true);
                   }}
                   className={`${components.button.neutral} justify-center w-full h-10 text-sm`}
                 >
                   Cadastrar-se
-                </button>
+                </a>
                 <Button
                   onClick={() => {
                     setIsMenuOpen(false);
@@ -485,15 +464,6 @@ const Header = ({ enableScrollAnimation = false }: HeaderProps) => {
       <LoginModal
         isOpen={showLoginModal}
         onClose={() => setShowLoginModal(false)}
-      />
-
-      {/* Modal de Pagamento */}
-      <PaymentModal
-        isOpen={showPaymentModal}
-        onClose={() => setShowPaymentModal(false)}
-        planName="Plano Premium"
-        planPrice={97.9}
-        planDescription="Acesso completo aos serviços Multi BPO"
       />
     </header>
   );
