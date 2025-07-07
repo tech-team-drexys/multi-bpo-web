@@ -1,50 +1,46 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
-import { X, Eye, EyeOff } from "lucide-react";
+import { X } from "lucide-react";
 
-interface LoginModalProps {
+interface SignupModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onOpenSignup?: () => void;
 }
 
-const LoginModal = ({ isOpen, onClose, onOpenSignup }: LoginModalProps) => {
+const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
   const [email, setEmail] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [acceptTerms, setAcceptTerms] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
 
-  const handleGoogleLogin = () => {
-    console.log("Login com Google");
+  const handleGoogleRegister = () => {
+    console.log("Cadastro com Google");
   };
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Login:", { email, password });
+    console.log("Cadastro:", {
+      email,
+      whatsapp,
+      password,
+      confirmPassword,
+      acceptTerms,
+    });
   };
 
   const handleClose = () => {
     setIsClosing(true);
-    // Aguarda a animação terminar antes de fechar
     setTimeout(() => {
       setIsClosing(false);
       onClose();
-    }, 200); // Duração da animação
+    }, 200);
   };
 
-  const handleSignupClick = () => {
-    onClose();
-    if (onOpenSignup) {
-      setTimeout(() => {
-        onOpenSignup();
-      }, 250);
-    }
-  };
-
-  // Fechar modal com ESC e desabilitar Lenis
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") handleClose();
@@ -53,17 +49,13 @@ const LoginModal = ({ isOpen, onClose, onOpenSignup }: LoginModalProps) => {
     if (isOpen) {
       document.addEventListener("keydown", handleEsc);
 
-      // Desabilitar Lenis smooth scroll se existir
       const lenis = (window as any).lenis;
       if (lenis && typeof lenis.stop === "function") {
         lenis.stop();
       }
 
-      // Lock scroll no body e html
       document.body.style.overflow = "hidden";
       document.documentElement.style.overflow = "hidden";
-
-      // Adicionar classe para prevenir scroll em touch devices
       document.body.style.position = "fixed";
       document.body.style.width = "100%";
       document.body.style.height = "100%";
@@ -71,12 +63,10 @@ const LoginModal = ({ isOpen, onClose, onOpenSignup }: LoginModalProps) => {
       return () => {
         document.removeEventListener("keydown", handleEsc);
 
-        // Reabilitar Lenis
         if (lenis && typeof lenis.start === "function") {
           lenis.start();
         }
 
-        // Restaurar scroll
         document.body.style.overflow = "";
         document.documentElement.style.overflow = "";
         document.body.style.position = "";
@@ -130,7 +120,7 @@ const LoginModal = ({ isOpen, onClose, onOpenSignup }: LoginModalProps) => {
           <div className="flex-1 relative hidden md:flex">
             <img
               src="/login-image.jpeg"
-              alt="Imagem do login"
+              alt="Imagem do cadastro"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-transparent"></div>
@@ -151,18 +141,15 @@ const LoginModal = ({ isOpen, onClose, onOpenSignup }: LoginModalProps) => {
               {/* Título */}
               <div className="text-left mb-6 md:mb-8">
                 <h1 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
-                  Bem-vindo de volta!
+                  Cadastre-se e tenha acesso à benefícios exclusivos
                 </h1>
-                <p className="text-sm md:text-base text-gray-600">
-                  Faça login para acessar sua conta.
-                </p>
               </div>
 
               {/* Formulário */}
               <div className="space-y-4 md:space-y-6">
                 {/* Botão Google */}
                 <Button
-                  onClick={handleGoogleLogin}
+                  onClick={handleGoogleRegister}
                   variant="outline"
                   className="w-full h-11 md:h-12 text-sm md:text-base font-medium text-gray-700 bg-white border-gray-300 hover:bg-gray-50 transition-all duration-200"
                 >
@@ -187,7 +174,7 @@ const LoginModal = ({ isOpen, onClose, onOpenSignup }: LoginModalProps) => {
                       d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
                     />
                   </svg>
-                  Continuar com Google
+                  Cadastro com Google
                 </Button>
 
                 {/* Separador */}
@@ -202,22 +189,41 @@ const LoginModal = ({ isOpen, onClose, onOpenSignup }: LoginModalProps) => {
                   </div>
                 </div>
 
-                {/* Formulário de login */}
-                <form onSubmit={handleLogin} className="space-y-3 md:space-y-4">
-                  {/* Campo Email */}
+                {/* Formulário de cadastro */}
+                <form onSubmit={handleRegister} className="space-y-3 md:space-y-4">
+                  {/* Campo E-mail */}
                   <div>
                     <label
                       htmlFor="email"
                       className="block text-sm font-medium text-gray-700 mb-1"
                     >
-                      Email
+                      E-mail
                     </label>
                     <Input
                       id="email"
                       type="email"
-                      placeholder="Digite seu email"
+                      placeholder="Digite seu e-mail"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
+                      className="h-11 md:h-12 text-sm md:text-base border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                      required
+                    />
+                  </div>
+
+                  {/* Campo WhatsApp */}
+                  <div>
+                    <label
+                      htmlFor="whatsapp"
+                      className="block text-sm font-medium text-gray-700 mb-1"
+                    >
+                      WhatsApp
+                    </label>
+                    <Input
+                      id="whatsapp"
+                      type="tel"
+                      placeholder="Digite seu número de WhatsApp"
+                      value={whatsapp}
+                      onChange={(e) => setWhatsapp(e.target.value)}
                       className="h-11 md:h-12 text-sm md:text-base border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                       required
                     />
@@ -231,77 +237,90 @@ const LoginModal = ({ isOpen, onClose, onOpenSignup }: LoginModalProps) => {
                     >
                       Senha
                     </label>
-                    <div className="relative">
-                      <Input
-                        id="password"
-                        type={showPassword ? "text" : "password"}
-                        placeholder="Digite sua senha"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        className="h-11 md:h-12 text-sm md:text-base border-gray-300 focus:border-blue-500 focus:ring-blue-500 pr-12"
-                        required
-                      />
-                      <button
-                        type="button"
-                        onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
-                      >
-                        {showPassword ? (
-                          <EyeOff className="w-4 h-4 md:w-5 md:h-5" />
-                        ) : (
-                          <Eye className="w-4 h-4 md:w-5 md:h-5" />
-                        )}
-                      </button>
-                    </div>
+                    <Input
+                      id="password"
+                      type="password"
+                      placeholder="Digite sua senha"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      className="h-11 md:h-12 text-sm md:text-base border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                      required
+                    />
                   </div>
 
-                  {/* Opções */}
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0">
-                    <div className="flex items-center space-x-2">
-                      <Checkbox
-                        id="remember"
-                        checked={rememberMe}
-                        onCheckedChange={(checked) =>
-                          setRememberMe(checked as boolean)
-                        }
-                      />
-                      <label
-                        htmlFor="remember"
-                        className="text-sm text-gray-600"
-                      >
-                        Lembrar-se de mim
-                      </label>
-                    </div>
-                    <button
-                      type="button"
-                      className="text-sm text-blue-600 hover:text-blue-800 hover:underline text-left sm:text-right"
+                  {/* Campo Repetir Senha */}
+                  <div>
+                    <label
+                      htmlFor="confirmPassword"
+                      className="block text-sm font-medium text-gray-700 mb-1"
                     >
-                      Esqueceu sua senha?
-                    </button>
+                      Repetir Senha
+                    </label>
+                    <Input
+                      id="confirmPassword"
+                      type="password"
+                      placeholder="Confirme sua senha"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      className="h-11 md:h-12 text-sm md:text-base border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                      required
+                    />
                   </div>
 
-                  {/* Botão Login */}
+                  {/* Checkbox - Aceitar Política de Privacidade e Termos de Uso */}
+                  <div className="flex items-center space-x-3 pt-1 pb-4">
+                    <Checkbox
+                      id="terms"
+                      checked={acceptTerms}
+                      onCheckedChange={(checked) =>
+                        setAcceptTerms(checked === true)
+                      }
+                      className="flex-shrink-0"
+                      required
+                    />
+                    <label
+                      htmlFor="terms"
+                      className="text-xs text-gray-600 leading-tight cursor-pointer"
+                    >
+                      Aceito a{" "}
+                      <a
+                        href="/politica"
+                        className="text-blue-600 hover:underline font-medium"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Política de Privacidade
+                      </a>{" "}
+                      e os{" "}
+                      <a
+                        href="/politica"
+                        className="text-blue-600 hover:underline font-medium"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Termos de Uso
+                      </a>
+                    </label>
+                  </div>
+
+                  {/* Botão Captcha */}
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="w-full h-11 md:h-12 text-sm md:text-base font-medium text-gray-700 bg-white border-gray-300 hover:bg-gray-50 transition-all duration-200"
+                  >
+                    Captcha
+                  </Button>
+
+                  {/* Botão Cadastrar-se */}
                   <Button
                     type="submit"
-                    className="w-full h-11 md:h-12 text-sm md:text-base font-medium bg-green-600 hover:bg-green-700 text-white transition-all duration-200"
+                    className="w-full h-11 md:h-12 text-sm md:text-base font-medium bg-blue-600 hover:bg-blue-700 text-white transition-all duration-200"
+                    disabled={!acceptTerms}
                   >
-                    Login
+                    Enviar
                   </Button>
                 </form>
-
-                {/* Link para cadastro */}
-                <div className="text-center pt-3 md:pt-4">
-                  <p className="text-sm text-gray-600">
-                    Não possui uma conta?{" "}
-                    <button
-                      type="button"
-                      className="text-blue-600 hover:text-blue-800 font-medium hover:underline"
-                      onClick={handleSignupClick}
-                    >
-                      Cadastre-se
-                    </button>
-                  </p>
-                </div>
               </div>
             </div>
           </div>
@@ -311,4 +330,4 @@ const LoginModal = ({ isOpen, onClose, onOpenSignup }: LoginModalProps) => {
   );
 };
 
-export default LoginModal;
+export default SignupModal;
