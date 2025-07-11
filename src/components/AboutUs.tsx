@@ -84,7 +84,7 @@ const AboutUs = () => {
           ))}
         </div>
 
-        {/* Main Content */}
+        {/* Main Content with Team Image */}
         <div
           className={`grid lg:grid-cols-2 gap-16 items-center transition-all duration-1000 delay-500 ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
@@ -105,35 +105,68 @@ const AboutUs = () => {
               um atendimento personalizado e eficiente, sempre alinhado às necessidades 
               específicas de cada cliente.
             </p>
-            <a
-              href="#contato"
-              className={`${components.button.default} inline-flex items-center`}
-            >
-              <span>Conheça Nossa Equipe</span>
-              <ArrowRight className={components.button.defaultArrow} />
-            </a>
+
+            {/* Values Cards */}
+            <div className="space-y-6">
+              {values.map((value, index) => (
+                <div
+                  key={index}
+                  className={`${components.card.base} ${components.card.padding} ${components.card.hover} flex items-start gap-4`}
+                >
+                  <div className="bg-blue-50 p-3 rounded-xl shrink-0">
+                    <value.icon className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <h4 className={`${typography.heading.sm} text-gray-900 mb-2`}>
+                      {value.title}
+                    </h4>
+                    <p className={`${typography.body.sm} text-gray-600 leading-relaxed`}>
+                      {value.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8">
+              <a
+                href="#contato"
+                className={`${components.button.default} inline-flex items-center`}
+              >
+                <span>Conheça Nossa Equipe</span>
+                <ArrowRight className={components.button.defaultArrow} />
+              </a>
+            </div>
           </div>
 
-          {/* Right Content - Values */}
-          <div className="space-y-8">
-            {values.map((value, index) => (
-              <div
-                key={index}
-                className={`${components.card.base} ${components.card.padding} ${components.card.hover} flex items-start gap-4`}
-              >
-                <div className="bg-blue-50 p-3 rounded-xl shrink-0">
-                  <value.icon className="w-6 h-6 text-blue-600" />
-                </div>
-                <div>
-                  <h4 className={`${typography.heading.sm} text-gray-900 mb-2`}>
-                    {value.title}
-                  </h4>
-                  <p className={`${typography.body.sm} text-gray-600 leading-relaxed`}>
-                    {value.description}
-                  </p>
-                </div>
+          {/* Right Content - Team Image */}
+          <div className="relative">
+            <div className={`${components.card.base} overflow-hidden`}>
+              <div className="aspect-[4/3] bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center">
+                <img
+                  src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=1200&q=80"
+                  alt="Nossa Equipe"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    const parent = target.parentElement;
+                    if (parent) {
+                      parent.innerHTML = `
+                        <div class="flex flex-col items-center justify-center text-blue-600">
+                          <Users class="w-16 h-16 mb-4" />
+                          <p class="text-lg font-medium">Nossa Equipe</p>
+                        </div>
+                      `;
+                    }
+                  }}
+                />
               </div>
-            ))}
+            </div>
+            
+            {/* Decorative elements */}
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-blue-600 rounded-full opacity-10"></div>
+            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-blue-400 rounded-full opacity-5"></div>
           </div>
         </div>
       </div>
