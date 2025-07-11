@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { PhoneInput } from "@/components/ui/phone-input";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Link } from "react-router-dom";
@@ -8,6 +9,7 @@ import { Link } from "react-router-dom";
 const CadastroMobile = () => {
   const [email, setEmail] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
+  const [whatsappNumbers, setWhatsappNumbers] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [acceptTerms, setAcceptTerms] = useState(false);
@@ -22,7 +24,7 @@ const CadastroMobile = () => {
     // Implementar lógica de cadastro
     console.log("Cadastro:", {
       email,
-      whatsapp,
+      whatsapp: whatsappNumbers,
       password,
       confirmPassword,
       acceptTerms,
@@ -120,12 +122,12 @@ const CadastroMobile = () => {
                 >
                   WhatsApp
                 </label>
-                <Input
+                <PhoneInput
                   id="whatsapp"
-                  type="tel"
-                  placeholder="Digite seu número de WhatsApp"
+                  placeholder="(11) 99999-9999"
                   value={whatsapp}
-                  onChange={(e) => setWhatsapp(e.target.value)}
+                  onChange={setWhatsapp}
+                  onNumbersChange={setWhatsappNumbers}
                   className="h-10 text-base focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-colors !focus:outline-none !outline-none"
                   required
                 />

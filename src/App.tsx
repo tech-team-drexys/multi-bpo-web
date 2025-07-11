@@ -10,19 +10,16 @@ import NotFound from "./pages/NotFound";
 import LoginMobile from "./pages/LoginMobile";
 import ScrollToTop from "./components/ScrollToTop";
 import FloatingWhatsAppButton from "./components/FloatingWhatsAppButton";
-import { useSmoothScroll } from "./hooks/useSmoothScroll";
 import Politica from "./pages/Politica";
 import CadastroMobile from "./pages/CadastroMobile";
 import CheckoutMobile from "./pages/CheckoutMobile";
 import VerificarEmail from "./pages/VerificarEmail";
 import CadastroValidado from "./pages/CadastroValidado";
+import AppMVP from "./pages/AppMVP";
 
 const queryClient = new QueryClient();
 
 const App = () => {
-  // Ativa o smooth scroll globalmente
-  useSmoothScroll();
-
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
@@ -43,6 +40,7 @@ const App = () => {
             <Route path="/verificar-email" element={<VerificarEmail />} />
             <Route path="/cadastro-validado" element={<CadastroValidado />} />
             <Route path="/politica" element={<Politica />} />
+            <Route path="/app-mvp" element={<AppMVP />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

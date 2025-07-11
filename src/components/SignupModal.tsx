@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
+import { PhoneInput } from "@/components/ui/phone-input";
 import { X } from "lucide-react";
 import { useScrollLock } from "@/hooks/useScrollLock";
 import PhoneModal from "./PhoneModal";
@@ -14,6 +15,7 @@ interface SignupModalProps {
 const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
   const [email, setEmail] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
+  const [whatsappNumbers, setWhatsappNumbers] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [acceptTerms, setAcceptTerms] = useState(false);
@@ -47,7 +49,7 @@ const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
     e.preventDefault();
     console.log("Cadastro:", {
       email,
-      whatsapp,
+      whatsapp: whatsappNumbers,
       password,
       confirmPassword,
       acceptTerms,
@@ -248,12 +250,12 @@ const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
                     >
                       WhatsApp
                     </label>
-                    <Input
+                    <PhoneInput
                       id="whatsapp"
-                      type="tel"
                       placeholder="(11) 99999-9999"
                       value={whatsapp}
-                      onChange={(e) => setWhatsapp(e.target.value)}
+                      onChange={setWhatsapp}
+                      onNumbersChange={setWhatsappNumbers}
                       className="h-11 md:h-12 text-sm md:text-base border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                       required
                     />

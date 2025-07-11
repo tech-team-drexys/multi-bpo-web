@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { PhoneInput } from "@/components/ui/phone-input";
 import { X, Phone, ArrowLeft } from "lucide-react";
 import { useScrollLock } from "@/hooks/useScrollLock";
 import VerificationModal from "./VerificationModal";
@@ -19,6 +20,7 @@ const PhoneModal = ({
   userEmail,
 }: PhoneModalProps) => {
   const [phone, setPhone] = useState("");
+  const [phoneNumbers, setPhoneNumbers] = useState("");
   const [isClosing, setIsClosing] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showVerificationModal, setShowVerificationModal] = useState(false);
@@ -51,7 +53,7 @@ const PhoneModal = ({
     // Simular envio
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
-    console.log("Telefone enviado:", { email: userEmail, phone });
+    console.log("Telefone enviado:", { email: userEmail, phone: phoneNumbers });
 
     // Fechar modal atual e abrir modal de verificação
     setIsClosing(true);
@@ -202,12 +204,12 @@ const PhoneModal = ({
               >
                 Número de Celular
               </label>
-              <Input
+              <PhoneInput
                 id="phone"
-                type="tel"
                 placeholder="(11) 99999-9999"
                 value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                onChange={setPhone}
+                onNumbersChange={setPhoneNumbers}
                 className="h-12 text-base border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                 required
               />

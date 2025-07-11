@@ -5,6 +5,7 @@ import {
   faPlus,
   faMicrophone,
   faArrowUp,
+  faPaperclip,
 } from "@fortawesome/free-solid-svg-icons";
 import TypewriterEffect from "./TypewriterEffect";
 import SuggestionButtons from "./SuggestionButtons";
@@ -160,9 +161,12 @@ const NewHero = () => {
                       type="button"
                       variant="ghost"
                       size="icon"
-                      className="w-10 h-10 rounded-full text-white transition-all bg-transparent hover:bg-white/20 hover:text-white text-base"
+                      className="w-10 h-10 rounded-full text-gray-300 transition-all bg-transparent hover:bg-white/20 hover:text-white text-base"
                     >
-                      <FontAwesomeIcon icon={faPlus} className="!w-6 !h-6" />
+                      <FontAwesomeIcon
+                        icon={faPaperclip}
+                        className="!w-5 !h-5"
+                      />
                     </Button>
 
                     <div className="flex gap-6">
@@ -170,7 +174,7 @@ const NewHero = () => {
                         type="button"
                         variant="ghost"
                         size="icon"
-                        className="w-10 h-10 rounded-full text-white transition-all bg-transparent hover:bg-white/20 hover:text-white"
+                        className="w-10 h-10 rounded-full text-gray-300 transition-all bg-transparent hover:bg-white/20 hover:text-white"
                       >
                         <FontAwesomeIcon
                           icon={faMicrophone}
@@ -182,7 +186,7 @@ const NewHero = () => {
                         type="submit"
                         variant="ghost"
                         size="icon"
-                        className="w-10 h-10 rounded-full text-white transition-all bg-transparent hover:bg-white/20 hover:text-white"
+                        className="w-10 h-10 rounded-full text-gray-800 transition-all bg-gray-300 hover:bg-white hover:text-gray-900"
                       >
                         <FontAwesomeIcon
                           icon={faArrowUp}
